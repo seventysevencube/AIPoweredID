@@ -21,7 +21,7 @@ Planning decisions through October 17, 2026. These are summarized decisions, not
 | Generated media | Exclude generated images, audio narration, and video; allow written scripts and media specifications. |
 | Performance support | Produce complete written drafts, not only specifications. |
 | Development sample | Generate the whole skeleton with a representative section populated; preserve the label “Generate Development sample”. “Preview draft section” was suggested but not adopted. |
-| Exports | PDF and editable PowerPoint. Allow labeled drafts and a reviewed “Ready for handoff” state; export saved content without an AI rewrite. |
+| Exports | Readable PDF handoff documents and editable PowerPoint storyboards with continuation slides. Preserve draft/ready and version/source/issue labels; export saved content without an AI rewrite. Comments optional, off by default, in a separate version/target-labeled appendix. Exact templates remain open. |
 | Collaboration | Guest review without an account; content-anchored comments; required unverified display names. Links pin a fixed draft version; sharing updates creates a new link and preserves earlier comment references. Other lifecycle/thread details remain open. |
 | AI preferences | Guidance depth, contribution, output detail, and resources are separate controls; reflection is optional. |
 | Breaks | Optional pause/resume and accessible break choices; reminders off by default. |
@@ -59,3 +59,7 @@ See the [checkpoint](checkpoints/2026-10-17-design-review.md) and [screen status
 - Current next decision: PDF/PPTX contents/templates and optional reviewer-comment inclusion. The proposed comment default is not yet approved.
 
 These later approvals supersede pending statuses in the earlier checkpoint. Current per-screen status is maintained in [screen review status](ui/screen-review-status.md).
+
+## Export refinement — approved October 17, 2026
+
+The user approved PDF handoff-document and editable PowerPoint storyboard organization, continuation slides for long content, preserved version/draft/source/issue details, and optional reviewer comments off by default in a separate appendix. Exact visual templates remain open. The [implementation brief](implementation-brief.md) consolidates the agreed workflow and identifies proposed delivery order and remaining choices; its creation is planning work, not authorization to start building.

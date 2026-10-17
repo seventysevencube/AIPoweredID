@@ -97,6 +97,8 @@ Choose microlearning, a course, or a mix; review what each unit/module addresses
 
 ### Objectives, enabling objectives, and assessments
 
+Current form order: main/enabling objectives → assessments → content and instructional support → sequence → detailed Design plan. The objective step covers objectives/alignment only; content/support planning is a separate later step.
+
 AI proposes editable main objectives using revised Bloom's taxonomy for cognitive outcomes: Remember, Understand, Apply, Analyze, Evaluate, Create. Show a proposed level for review, based on actual task demand rather than only the verb. Capture observable performance, conditions/resources, success criteria, L2 linkage, and unit/module placement.
 
 Break each main objective into meaningful enabling objectives. Map each to its contribution, essential content, sources, instructional support, practice/feedback, evidence, and sequence. Preserve stable main/child IDs and reviewed Bloom levels. Avoid arbitrary counts or trivial fragmentation. Assess integrated main-objective performance as well as component coverage.
@@ -135,7 +137,9 @@ Export drafts at any point with clear Draft status and visible unresolved issues
 
 Clearly specified media placeholders, permitted L3/L4 unknowns, and acknowledged nonblocking dependencies may remain visible. Later relevant changes mark affected sections as needing update. Prior exports remain snapshots of their stated version.
 
-Export PDF and editable PowerPoint from the selected saved structured version without an AI rewrite. Include project/version/date/tool information, sources, and outstanding issues. Exact templates and optional inclusion of comments remain open.
+Export PDF and editable PowerPoint from the selected saved structured version without an AI rewrite. PDF is a readable handoff document with complete content, assessment details, production/build/accessibility notes, sources, and outstanding issues. Editable PowerPoint is organized by screen, Rise block group, or written-aid section, using continuation slides as needed instead of squeezing detail into unreadable slides.
+
+Both formats retain project/version/date/tool identification, draft/readiness and section review status, sources, and open issues. Reviewer comments are optional and off by default; when selected, place them in a separate appendix with their original version and target references. Exact page/slide templates and accessible-output verification remain open.
 
 ## 7. Guest review, preferences, and breaks
 

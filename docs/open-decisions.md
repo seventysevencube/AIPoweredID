@@ -4,11 +4,11 @@ Updated: October 17, 2026. Items below are unresolved details, not approved addi
 
 ## Next design work
 
-1. Specify PDF/PPTX export contents and layouts, including optional reviewer comments (proposed off by default). Guest-review screen and required-name/fixed-version behavior are approved for the MVP. See [screen review status](ui/screen-review-status.md).
+1. Settle exact source-upload formats and limits. Review the [implementation brief](implementation-brief.md), which consolidates approved requirements and separates proposed delivery order from remaining choices.
 2. Walk through a representative five-minute workplace example, covering both Storyline and Rise treatment and a nonlearning/performance-support branch.
 3. Create reviewed examples of a Design skeleton, main/enabling-objective map, assessments, a Storyline screen, a Rise block sequence, and a complete written job aid.
-4. Specify PDF/PPTX templates, placement of long build notes and source/open-issue appendices, accessible document structure, and whether reviewer comments can be included optionally.
-5. Consolidate the implementation brief after these examples and visual reviews expose any gaps.
+4. Review representative PDF/PPTX page/slide templates, long build notes, source/open-issue appendices, accessible document structure, and the optional comment appendix. Contents/organization and comments optional/off by default are approved.
+5. Refine the implementation brief as the representative examples, remaining policies, and export layouts are reviewed. Building requires the user's subsequent instruction.
 
 ## Product and operational choices
 

@@ -13,6 +13,7 @@ Each stage's designer-reviewed output becomes the input for an editable, prefill
 3. [AI creation and quality process](docs/ai/creation-and-quality.md) — prompt strategy, checks, examples, testing, and cost controls.
 4. [Decision log](docs/decision-log.md) — significant refinements and superseded decisions.
 5. [Open decisions and next steps](docs/open-decisions.md) — items still to settle before or during implementation.
+6. [MVP implementation brief](docs/implementation-brief.md) — consolidated workflow, approved export policy, proposed delivery order, and remaining choices.
 
 ## Key decisions
 
@@ -25,12 +26,12 @@ Each stage's designer-reviewed output becomes the input for an editable, prefill
 - Main and enabling objectives use revised Bloom's taxonomy for cognitive learning outcomes.
 - Assessments are defined in Design and carried into the storyboard.
 - Project-wide source settings support text/file material, web research, or both; no scanned extraction.
-- Storyboards and complete written performance-support drafts; PDF and editable PowerPoint exports.
+- Storyboards and complete written performance-support drafts; readable PDF and editable PowerPoint exports. Reviewer comments are optional/off by default in a separate appendix.
 - A full deliverable skeleton with a representative populated section is generated first using **Generate Development sample**.
-- Guest review with comments anchored to specific content.
+- Guest review with required unverified display names, content-anchored comments, and fixed-version links; shared updates create new links.
 - Autosave, recovery, version history, and explicit human review protect work and decisions.
 - Generated images, audio, video, and native authoring-tool projects are outside the MVP.
 
 ## Reading the records
 
-The current requirements and detailed notes incorporate the latest decisions from the planning discussion through **October 17, 2026**. Earlier planning drafts are retained in [the archive](docs/archive/README.md) for history and may contain superseded requirements. Open implementation details are labeled; no provider, technology stack, budget estimate, production prompt pack, or completed wireframe is implied by these notes.
+The current requirements and detailed notes incorporate the latest decisions from the planning discussion through **October 17, 2026**. Earlier planning drafts are retained in [the archive](docs/archive/README.md) for history and may contain superseded requirements. Open implementation details are labeled; no provider, technology stack, budget estimate, or production prompt pack is selected. Interactive wireframes preserve reviewed design patterns and illustrative sample data; they do not implement a working application.

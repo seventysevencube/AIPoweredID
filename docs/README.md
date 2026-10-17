@@ -5,6 +5,7 @@ Updated: October 17, 2026.
 ## Current agreement
 
 - [Consolidated requirements](requirements.md)
+- [MVP implementation brief](implementation-brief.md) — approved workflow and export requirements; proposed delivery order and open choices
 - [Analysis questions, output, layout, and handoff](notes/analysis-form-decisions.md)
 - [Design questions, objective hierarchy, assessments, content mapping, and handoff](notes/design-form-decisions.md)
 - [Development workspace and export readiness](notes/development-workspace-decisions.md)
@@ -20,7 +21,7 @@ Updated: October 17, 2026.
 - [Screen review status and precedence](ui/screen-review-status.md)
 - [Standalone wireframes and editable fragments](../prototypes/README.md)
 
-The checkpoint includes approved patterns, superseded alternatives, and the new objective-hierarchy proposal awaiting review. These are independent design prototypes with illustrative data, not a production application.
+The checkpoint is historical; subsequent objective, assessment, content/sequence, Development, and guest-review approvals are recorded in the current screen review status and detailed notes. These remain independent design prototypes with illustrative data, not a production application.
 
 ## History and remaining work
 

@@ -2,7 +2,7 @@
 
 Updated: October 17, 2026
 
-Status: Workspace, sample review, full-draft review, and export-readiness approach agreed; exact document templates and optional inclusion of reviewer comments remain open. No app development has started. Synced project sources remain read-only.
+Status: Workspace, sample review, full-draft review, export contents/organization, and optional reviewer comments off by default are approved. Exact document templates and output accessibility verification remain open. No app development has started. Synced project sources remain read-only.
 
 ## Confirmed input and scope
 
@@ -102,3 +102,11 @@ Proposed next refinement:
 - Reviewer comments: optional, off by default; if selected, include them in a separate appendix labeled with their original version and target, so older feedback is not mistaken for comments on changed content. This option/default and appendix presentation await user confirmation.
 
 Actual export layouts, handling long content, and accessible output verification will be reviewed subsequently. No new document generation or app build is part of recording this proposal.
+
+## Export contents, organization, and comments — approved
+
+The user approved the export recommendation: readable PDF handoff documents with complete content/build notes/assessments/sources/open issues; editable PowerPoint organized by screen, block group, or written-aid section with continuation slides as needed; and project/version/date/tool plus draft/readiness labels. Exports reuse saved structured content without another AI generation.
+
+Reviewer comments are optional and off by default. When selected, include them in a separate appendix, retaining original version and target references. Older feedback must not be presented as if it concerned a changed version.
+
+This supersedes earlier notes that optional comment inclusion was undecided. Exact page/slide layouts, long-content examples, and output accessibility verification remain to be reviewed. No actual PDF/PPTX export, app build, or AI connection has started. See the [implementation brief](../implementation-brief.md) for the consolidated planning handoff.
