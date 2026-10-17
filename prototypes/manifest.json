@@ -89,15 +89,15 @@
     {
       "path": "design-assessments-wireframe.html",
       "kind": "standalone preview",
-      "bytes": 112845,
-      "sha256": "b091cfaf0d38273fd4a7d3595388bf9b2aeaffecc271e2e5858be6422abe5123"
+      "bytes": 113082,
+      "sha256": "a8976edbe4abf99e3901335a01c8da7d2359d5550f8c028630f51e64bebdfed7"
     },
     {
       "path": "fragments/design-assessments-wireframe.html",
       "kind": "editable fragment",
-      "bytes": 28960,
-      "sha256": "33da09dbaf3be6f6ec11904132f8f3e82b19247a17c4ed3ddb893ee5cb8243cf"
+      "bytes": 29158,
+      "sha256": "5173ae87c7531e006abcfa36839ff0dde949e317e581f38c1d4e1fd93be661af"
     }
   ],
-  "revision": "Objective-only pattern approved. Assessment-definition/alignment preview added for review; content/support follows assessments."
+  "revision": "Assessment/Practice display labels expanded; stable internal record IDs retained."
 }
