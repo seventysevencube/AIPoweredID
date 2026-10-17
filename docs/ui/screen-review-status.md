@@ -13,8 +13,9 @@ Updated: October 17, 2026. See the [checkpoint](../checkpoints/2026-10-17-design
 | Main/enabling objectives | Objective-only pattern approved | Objective title clarified; this screen now covers only objectives/alignment. Content and support move to a separate subsequent Design step. Nonlearning aid work uses task/performance requirements. |
 | Assessments/alignment | Screen pattern approved | Assessments must be defined during Design. |
 | Content and instructional support | Screen pattern approved | Reviewed objectives and assessment records carry forward; retain project-wide source settings. |
-| Learning sequence | New proposal — awaiting review | Reorder linked records, review prerequisites and gaps, and retain source/review flags. |
+| Learning sequence | Screen pattern approved | Reorder linked records, review prerequisites and gaps, and retain source/review flags. |
 | Content mapping | Initial source-map pattern approved | Source questions remain project-wide; final placement is refined through sequencing. |
-| Design plan review / Development / guest comments / exports | Wireframes pending | Agreed requirements remain in their detailed notes. |
+| Detailed Design-plan review | New proposal — awaiting review | Linked sections, edit/update flags, optional sharing/preferences, and sample-scope/readiness review. |
+| Development / guest comments / exports | Wireframes pending | Agreed requirements remain in their detailed notes. |
 
 Approvals concern patterns and the stated requirements. They do not verify sample instructional content or confirm production functionality. The next user correction takes precedence over earlier previews.

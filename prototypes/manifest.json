@@ -121,7 +121,19 @@
       "kind": "editable fragment",
       "bytes": 31607,
       "sha256": "eb05dec946f5edefa16424d263cd0167d89b6d68a75c4218144116c5ce7a0acb"
+    },
+    {
+      "path": "design-plan-review-wireframe.html",
+      "kind": "standalone preview",
+      "bytes": 117012,
+      "sha256": "f9abb46e31a84f2413158bcdb9784c3217621c27f790e87e1b84078d296683e0"
+    },
+    {
+      "path": "fragments/design-plan-review-wireframe.html",
+      "kind": "editable fragment",
+      "bytes": 32588,
+      "sha256": "4e29e5ee0079be9448d2c600ad638d00f7841a8584357716d90210e40facb8c8"
     }
   ],
-  "revision": "Content/support screen pattern approved. Learning-sequence preview added for review, with stable record references and visible planning gaps."
+  "revision": "Learning-sequence pattern approved. Detailed Design-plan review and explicit Development-sample scope preview added for review."
 }
