@@ -95,3 +95,7 @@ The user set the monthly AI budget at $20 in response to the question about the 
 ## AI spending controls — approved
 
 The user approved an in-app warning at $16 of the shared $20 monthly pilot AI budget and pausing new AI requests that would exceed $20. Preserve saved work and continue to allow manual editing, review, and non-AI exports. This supersedes the earlier proposal status of the thresholds/stop policy. Provider selection, usage assumptions, accounting/reset behavior, and enforcement implementation remain open; no live spending controls have been configured.
+
+## Expected monthly completion volume — 0–1 project
+
+The user expects about zero to one complete project per month, in response to the question about total output across the five-designer pilot. Record this as the total pilot planning estimate, not a per-person allowance or a hard project cap. Drafting/revisions may consume AI in months with no completed project; the estimate does not prove that the workload fits the $20 budget. Next, select a representative source/example for an end-to-end walkthrough and subsequent quality/cost benchmarking.

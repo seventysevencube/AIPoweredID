@@ -256,3 +256,9 @@ Existing controls still apply: explicit AI actions, reuse parsed sources/context
 ## AI spending-control approval
 
 The user approved the $16 warning and the pause on new AI requests that would exceed the $20 shared monthly pilot budget. Apply this admission policy to new AI generation/revision/review operations; non-AI source extraction, saving, manual editing, reading/comments, and exports remain available. Preserve completed and accepted work. Provider/cost accounting and enforcement require validation; the budget is not a guarantee of workload capacity or a numerical generation quota.
+
+## Monthly project-completion estimate
+
+The expected completion volume is approximately 0–1 complete project per month across the five-designer pilot, interpreting the user's answer to the question about total monthly pilot projects. This is a planning estimate, not a per-designer allowance or an enforced project limit. Ongoing drafts, revisions, AI review, and research can incur AI usage even when no project is completed. Generation frequency, source volume, concurrency, and actual cost per accepted output still require measurement.
+
+Use the end-to-end representative example to reveal realistic sources, stage drafts, review/repair calls, and revisions before estimating costs or choosing a model. Keep completion counts distinct from AI request counts and retain explicit-generation, source-reuse, and approved spending controls. No price estimate or guarantee of $20 workload coverage follows from this completion estimate.

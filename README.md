@@ -18,6 +18,7 @@ Each stage's designer-reviewed output becomes the input for an editable, prefill
 ## Key decisions
 
 - Pilot planned for five designers, with an approved-email list and one-time email-code sign-in; guest review remains account-free through shared links.
+- Expected pilot completion volume: approximately 0–1 complete project per month in total; this is a planning estimate, not a quota.
 - $20 total monthly pilot AI budget: warn at $16 and pause new AI requests that would exceed $20; saved work, editing, review, and exports stay available. Provider choice and actual cost/enforcement implementation remain open.
 
 - Desktop experience with a WCAG 2.2 AA acceptance target.
