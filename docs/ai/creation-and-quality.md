@@ -214,3 +214,11 @@ These references inform the proposal; no AI provider or model has been selected.
 - [Saving and recovery](../notes/saving-and-recovery-decisions.md)
 
 This working plan has been reconciled with the latest agreed workflow. The unmodified earlier draft is retained in the archive. Revisit the plan, examples, and tests when connecting AI in each phase, as explicitly requested by the user.
+
+## Design task: evidence-based solution choice before deliverables
+
+Add a focused solution-choice task after the Six Boxes response decision and before output-type confirmation. Inputs: reviewed Analysis version, evidence/source references, Six Boxes findings, confirmed route/evaluation records, audience/context, existing resources, and constraints. Propose e-learning, a performance aid, both, or further investigation. Explain the contribution of each proposed component and how the available evidence supports it. Keep uncertainty and required follow-up visible; do not invent a skill gap, a need for a new aid, or an unsupported confidence score.
+
+Use practice/feedback needs, availability and usability of support during work, task demands, prior knowledge, and known constraints to compare the approaches. Existing resources may be sufficient. Do not make both the default. Keep AI recommendations separate from the designer's accepted choice and preserve any override rationale. The confirmed approach determines the output types: Detailed e-learning storyboard and/or **Written job aid / performance-support draft** (the renamed complete written aid output).
+
+Quality checks must confirm that the choice follows the evidence, that output types agree with the accepted solution, and that the aid's intended learning/workplace use agrees with the response route and L2 applicability. Route changes require designer confirmation and updates to linked records; no duplicate evaluation plan or silent overwrite. Only e-learning components need format and Storyline/Rise allocation. Further investigation must hold drafting. Revisit prompts, grounded examples, counterexamples, and these checks when connecting AI to this Design phase; this is a requirements addition, not an implemented AI call.
