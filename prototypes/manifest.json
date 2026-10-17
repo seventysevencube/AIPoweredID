@@ -109,7 +109,19 @@
       "kind": "editable fragment",
       "bytes": 32120,
       "sha256": "982dfdddfd609700a9f430092d939c7df7259d0c4a9dc4996b4c7ec892dc4e3f"
+    },
+    {
+      "path": "design-sequence-wireframe.html",
+      "kind": "standalone preview",
+      "bytes": 115953,
+      "sha256": "5a8e9343f15fda6d0e69ac17efbaae5ede9c611ba7b49c48535ad78a64942db2"
+    },
+    {
+      "path": "fragments/design-sequence-wireframe.html",
+      "kind": "editable fragment",
+      "bytes": 31607,
+      "sha256": "eb05dec946f5edefa16424d263cd0167d89b6d68a75c4218144116c5ce7a0acb"
     }
   ],
-  "revision": "Assessment screen pattern approved. Content and instructional support preview added for review, with project-wide source settings."
+  "revision": "Content/support screen pattern approved. Learning-sequence preview added for review, with stable record references and visible planning gaps."
 }
