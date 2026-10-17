@@ -270,3 +270,9 @@ The user asked to proceed after the revised AI-supported solution-choice/deliver
 
 The checkpoint includes the current planning documents, screen-review status, seven illustrative wireframes as editable fragments and standalone previews, and a manifest. The newly proposed learning-objectives screen covers a main objective, enabling-objective hierarchy, revised Bloom levels, L2 links, conditions/criteria, content/support needs, review status, stable IDs, and integrated coverage review. It awaits user review; the assessment-definition/alignment screen is next. The sample learning-aid branch does not limit the MVP to aid-only delivery. No production app, live AI, backend saving/sharing, or deployment is implemented.
 
+
+## Objective screen scope — refined after checkpoint
+
+The user asked what “Short label for navigation” meant and requested that content and instructional support move to a subsequent step. Rename the field **Objective title** and explain that it is a brief sidebar title (for example, “Classify the complaint”), separate from the complete measurable objective. It is not an additional learning objective or a substitute for the statement.
+
+Keep the current Design screen focused on main and enabling learning objectives, their hierarchy/contribution, revised Bloom levels, conditions/resources, success criteria, L2 links, and objective review/alignment. Move essential-content and instructional-support fields into a separate **Content and instructional support** step after objective review, still within Design. The reviewed hierarchy becomes its input; preserve stable IDs and existing deferred notes. Source settings remain project-wide. Detailed assessments are still defined and aligned during Design and retain evidence of the integrated main performance. This supersedes the first objective preview’s embedded content/support fields and its direct assessment-planning handoff. The revised objective screen still awaits visual review.
