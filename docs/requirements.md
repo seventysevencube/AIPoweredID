@@ -160,3 +160,11 @@ Use shared rules plus stage/task-specific prompts, approved project context, rel
 During each phase's AI integration, revisit prompts, add reviewed examples, test typical and difficult cases, and adjust the approach. Start with prompting/source grounding/evaluation rather than custom model training. Benchmark quality, unsupported claims, designer correction time, cost per accepted output, and latency. No provider/model or numerical quality threshold is selected yet.
 
 Next planned work: desktop wireframes and a representative end-to-end walkthrough, example storyboard/export templates, unresolved product/operational choices, and an implementation brief. App building has not started.
+
+## Refinement: decide the solution before confirming deliverables
+
+After the Six Boxes response decision, use the reviewed Analysis to support a designer-confirmed choice of e-learning, a performance aid, or both, before confirming output types. AI must explain its evidence, rationale, assumptions, alternatives, and unresolved questions. Insufficient evidence may lead to further investigation rather than forced drafting. Check whether existing resources already meet the need.
+
+Derive the output types from that choice: Detailed e-learning storyboard; **Written job aid / performance-support draft**; or both. The latter label replaces “Complete written learning-support draft” and still means complete written content for the aid. Designers refine the scope after the solution decision. Keep this distinct from the Six Boxes learning/nonlearning decision and from later e-learning format/tool choices.
+
+A performance aid’s purpose determines its learning/nonlearning treatment. Confirm any required route/evaluation-plan change explicitly, retaining relevant L3/L4 measures and recording L2 as not applicable only for a route with no learning component. Do not force aid-only work through e-learning format or tool questions, and do not force nonlearning aid work through learning objectives/assessments. Preserve previous versions and flag affected downstream content for review.
