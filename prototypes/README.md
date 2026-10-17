@@ -10,7 +10,8 @@ These are illustrative, independent wireframes, not the application. Download a 
 | [Six Boxes](design-solution-wireframe.html) | Approved evidence review and route decision pattern. |
 | [Earlier intervention / format / tools](design-structure-wireframe.html) | Historical opening: deliverable-first question and old support label are superseded. Format/tool interactions remain available for review. |
 | [Solution choice before deliverables](design-solution-choice-wireframe.html) | Current revised intervention sequence and renamed aid output. |
-| [Main and enabling objectives](design-objectives-wireframe.html) | New proposal; awaiting user review. |
+| [Main and enabling objectives](design-objectives-wireframe.html) | Objective-only pattern approved; assessments come next. |
+| [Assessment definition and alignment](design-assessments-wireframe.html) | New proposal; awaiting review. Fictional exercise rules and cases. |
 
 The matching sources in [fragments](fragments/) preserve the editable in-conversation fragments. The files above add a standalone preview wrapper with preview styling, interactions, and fallback state handling. They are design artifacts, not a chosen production framework or technology stack. The wrapper does not verify browser accessibility or instructional correctness.
 

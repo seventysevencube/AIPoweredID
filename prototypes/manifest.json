@@ -85,7 +85,19 @@
       "kind": "standalone preview",
       "bytes": 100948,
       "sha256": "5c0099f04614e7db97bd6cccc3dd32693f4c96b46db6f8c5416bd02f54082cd1"
+    },
+    {
+      "path": "design-assessments-wireframe.html",
+      "kind": "standalone preview",
+      "bytes": 112845,
+      "sha256": "b091cfaf0d38273fd4a7d3595388bf9b2aeaffecc271e2e5858be6422abe5123"
+    },
+    {
+      "path": "fragments/design-assessments-wireframe.html",
+      "kind": "editable fragment",
+      "bytes": 28960,
+      "sha256": "33da09dbaf3be6f6ec11904132f8f3e82b19247a17c4ed3ddb893ee5cb8243cf"
     }
   ],
-  "revision": "Objectives-only screen; assessments precede the separate content and instructional-support step."
+  "revision": "Objective-only pattern approved. Assessment-definition/alignment preview added for review; content/support follows assessments."
 }
