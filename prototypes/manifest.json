@@ -29,14 +29,14 @@
     {
       "path": "fragments/design-objectives-wireframe.html",
       "kind": "editable fragment",
-      "bytes": 28330,
-      "sha256": "334aa486d9929d945bcfbe386d40ad88e87bf1d445fd97feca872875872e6264"
+      "bytes": 28353,
+      "sha256": "79160985faa98d06c0139c42b000344571b87e140fb432dfb9e2f1d7aa0faa36"
     },
     {
       "path": "design-objectives-wireframe.html",
       "kind": "standalone preview",
-      "bytes": 112281,
-      "sha256": "2a7d21133a7bb62a0459c63c2228bb2c90596758892f0339937cc3ee18c97292"
+      "bytes": 112304,
+      "sha256": "dc984a54d857566a21095749a47319e968cf76111befcb01be6f7497032c65ec"
     },
     {
       "path": "fragments/design-solution-choice-wireframe.html",
@@ -87,5 +87,5 @@
       "sha256": "5c0099f04614e7db97bd6cccc3dd32693f4c96b46db6f8c5416bd02f54082cd1"
     }
   ],
-  "revision": "Objectives-only screen; content/support moved to a subsequent Design step."
+  "revision": "Objectives-only screen; assessments precede the separate content and instructional-support step."
 }
