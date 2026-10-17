@@ -4,7 +4,7 @@ Updated: October 17, 2026. Items below are unresolved details, not approved addi
 
 ## Next design work
 
-1. Settle pilot invitation administration. Invitation-only access and one-time email-code sign-in are approved; open public registration is excluded. A simple approved-email list is the next proposed approach, not yet approved. Review the [implementation brief](implementation-brief.md) for the consolidated workflow and remaining choices.
+1. Establish the expected pilot size to inform capacity and AI-usage planning. Invitation-only access, a simple approved-email list, and one-time email-code sign-in are approved. Review the [implementation brief](implementation-brief.md) for the consolidated workflow and remaining choices.
 2. Walk through a representative five-minute workplace example, covering both Storyline and Rise treatment and a nonlearning/performance-support branch.
 3. Create reviewed examples of a Design skeleton, main/enabling-objective map, assessments, a Storyline screen, a Rise block sequence, and a complete written job aid.
 4. Review representative PDF/PPTX page/slide templates, long build notes, source/open-issue appendices, accessible document structure, and the optional comment appendix. Contents/organization and comments optional/off by default are approved.
@@ -12,7 +12,7 @@ Updated: October 17, 2026. Items below are unresolved details, not approved addi
 
 ## Product and operational choices
 
-- Pilot invitation administration, authentication provider, code/session handling, and remaining account lifecycle details. One-time email-code sign-in, invitation-only access (no public registration), one project owner, and multiple projects are agreed. A simple approved-email list is proposed for pilot management; it is not yet confirmed. Account-free guest review links remain separate.
+- Expected pilot size and usage; approved-email-list storage/maintenance implementation, authentication provider, code/session handling, and remaining account lifecycle details (including access removal and existing sessions). A simple approved-email list, one-time email-code sign-in, invitation-only access, one project owner, and multiple projects are agreed. No dedicated invitation dashboard is included. Account-free guest review links remain separate.
 - Guest link revocation/expiry and remaining lifecycle details; whether replies/resolution should be added later. Required unverified display names, fixed-version links, and new links for shared updates are now approved; do not expand collaboration scope by implication.
 - Default settings for the four AI assistance controls and final reflection UI. Break reminders are already off by default.
 - Upload size/count limits, straightforward table-text behavior, and remaining processing errors. The no-usable-text case is settled: deterministic warning/exclusion, with no AI, summary, text preview, or import-review gate. Source formats are settled: .docx/.pptx only, using basic extraction. No OCR, image/diagram interpretation, or complex layout reconstruction; PDF/TXT uploads and legacy conversion are outside initial scope.

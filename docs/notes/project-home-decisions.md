@@ -4,7 +4,7 @@ Updated: October 17, 2026
 
 The user approved this approach before requesting that all work and notes be saved to the GitHub repository.
 
-- Invited pilot designers sign in to access saved projects; public registration is outside the MVP. One-time email-code sign-in is selected; invitation-management and implementation details remain open.
+- Invited pilot designers sign in to access saved projects; public registration is outside the MVP. One-time email-code sign-in and a simple approved-email list are selected; storage/provider and lifecycle details remain open.
 - Each project has one designer who manages content and sharing. Multiple simultaneous authoring roles or team workspaces have not been added to the MVP.
 - Each designer can maintain multiple projects.
 - Start a new project with a working title, then begin Analysis.
@@ -31,3 +31,9 @@ The subsequent user decision below selects the designer sign-in method. Invitati
 Invited designers sign in using a one-time code sent to their invited email address. They enter their email, request the code, enter it to complete sign-in, and reach their saved projects. No password creation or password-reset flow is required for this selected method. Requesting a code does not grant pilot eligibility or open public registration; the invitation-only access rule still applies.
 
 Guest review through shared links remains account-free and uses its separate unverified display-name behavior. Provider selection, code/session parameters, invite administration, and lifecycle details remain open. A simple approved-email list is proposed as the next pilot-management decision; no invitation-management dashboard is approved by implication. No authentication implementation or real email sending has started.
+
+## Approved-email list — latest approved pilot-access method
+
+Manage pilot eligibility through a simple list of approved email addresses maintained by the pilot operator. Only listed email addresses are eligible for designer sign-in, and a valid one-time email code is still required. No dedicated invitation-management dashboard is included in the MVP. Guest reviewers continue to use active shared review links without an account or membership on the pilot list.
+
+The operator manages the pilot list; a code request does not itself add someone to it. Exact list storage/maintenance implementation, authentication provider, code/session parameters, and account lifecycle/access-removal behavior remain open. This supersedes the earlier proposal status of the list. No actual list, addresses, accounts, or email service have been created or changed by the documentation work.

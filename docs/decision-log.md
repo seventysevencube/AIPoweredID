@@ -26,7 +26,7 @@ Planning decisions through October 17, 2026. These are summarized decisions, not
 | AI preferences | Guidance depth, contribution, output detail, and resources are separate controls; reflection is optional. |
 | Breaks | Optional pause/resume and accessible break choices; reminders off by default. |
 | Saving | Autosave, recovery, truthful server-confirmed status, version/undo/conflict protection, and optional Save now. Saving does not equal acceptance or progression. |
-| Project management | Invitation-only pilot for designer accounts; no public registration. Designers own multiple saved projects and resume from project home. Guest link access remains account-free. One-time email-code sign-in is selected; invitation-management and provider details remain open. |
+| Project management | Invitation-only pilot for designer accounts; no public registration. Designers own multiple saved projects and resume from project home. Guest link access remains account-free. Approved-email-list pilot management and one-time email-code sign-in are selected; provider/storage/lifecycle details remain open. |
 | AI quality process | Agreed baseline; revisit prompts, add examples, test, and refine at each phase's AI integration. |
 | Repository | User requested all planning work/notes be saved to seventysevencube/AIPoweredID. No app build has been authorized by this documentation-saving request. |
 
@@ -79,3 +79,7 @@ The user chose an invitation-only pilot rather than open registration for design
 ## Designer sign-in — one-time email code approved
 
 The user selected one-time email codes instead of email/password sign-in for invited designers. Invited designers sign in using a one-time code sent to their invited email address. They enter their email, request the code, enter it to complete sign-in, and reach their saved projects. No password creation or password-reset flow is required for this selected method. Requesting a code does not grant pilot eligibility or open public registration; the invitation-only access rule still applies. Guest review stays account-free. Invitation administration, authentication provider, code/session parameters, and account lifecycle details remain open; no real code emails, invitations, or accounts were created by this planning update.
+
+## Approved-email list — pilot management approved
+
+The user approved a simple list of allowed email addresses maintained by the pilot operator. Manage pilot eligibility through a simple list of approved email addresses maintained by the pilot operator. Only listed email addresses are eligible for designer sign-in, and a valid one-time email code is still required. No dedicated invitation-management dashboard is included in the MVP. Guest reviewers continue to use active shared review links without an account or membership on the pilot list. Technical storage/provider choices, access-removal/session behavior, and account lifecycle details remain open. No actual addresses were supplied or changed, and no emails or invitations were sent by this planning update.
