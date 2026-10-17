@@ -16,7 +16,7 @@ Status: Guest access, anchored comments, required unverified display names, and 
 
 ## Proposed access and content scope
 
-- Project owners sign in to manage saved projects and share links; authentication method remains undecided.
+- Invited project owners sign in with a one-time email code to manage saved projects and share links. Guest reviewers retain separate account-free access.
 - For the MVP, guest reviewers can open a link and enter a display name before commenting, without creating an account. Display names are unverified and are not proof of identity.
 - Anyone possessing an active guest link can view the selected shared version. Make this access scope visible to the owner before link creation.
 - Share a selected version of the Analysis brief, Design plan, or Development draft. Let the owner select any supporting source material to include; do not automatically expose all project records or raw uploads.
@@ -65,3 +65,7 @@ This latest approval supersedes earlier statements that display-name and version
 ## Pilot access versus guest review — latest clarification
 
 The user selected invitation-only access for designer accounts. This does not require reviewers to join the pilot or create accounts: an active review link continues to grant access to its selected fixed-version draft for viewing/comments. A guest link does not create designer access or permit project ownership/direct editing. Required unverified display names, original comment version/target references, and the approved link-snapshot behavior remain as agreed. No real invitation or account has been created.
+
+## Designer sign-in refinement
+
+The user selected one-time email codes for invited designer accounts. This does not add code sign-in or account requirements to the guest-review flow. Guest display names remain unverified; guest links continue to grant only the agreed fixed-draft view/comment access. No real code email has been sent by the planning work.

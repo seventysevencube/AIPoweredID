@@ -17,7 +17,7 @@ Each stage's designer-reviewed output becomes the input for an editable, prefill
 
 ## Key decisions
 
-- Invitation-only pilot for designer accounts; guest review remains account-free through shared links.
+- Invitation-only designer pilot with one-time email-code sign-in; guest review remains account-free through shared links.
 
 - Desktop experience with a WCAG 2.2 AA acceptance target.
 - Shared workflow for new and experienced designers, with adjustable guidance and AI contribution.

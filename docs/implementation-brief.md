@@ -28,7 +28,9 @@ Use [current requirements](requirements.md) and the [detailed notes](README.md) 
 
 Designer access is an invitation-only pilot. Only invited participants may create or activate designer accounts; open public registration is outside the MVP. Each designer still owns their own projects and may save multiple projects. Guest reviewers do not need a pilot invitation or an account: an active shared review link grants the agreed view/comment access to its selected fixed-version snapshot, not designer account access.
 
-Designer sign-in method, invitation administration, and remaining account lifecycle details are still open. This access decision does not add an admin console or authorize sending invitations, creating accounts, or deploying the app.
+Invited designers sign in using a one-time code sent to their invited email address. They enter their email, request the code, enter it to complete sign-in, and reach their saved projects. No password creation or password-reset flow is required for this selected method. Requesting a code does not grant pilot eligibility or open public registration; the invitation-only access rule still applies.
+
+Invitation administration, the authentication provider, code/session handling, and remaining account lifecycle details are still open. These decisions do not add an admin console or authorize sending real emails, creating accounts, or deploying the app.
 
 ## Content and state contracts
 
@@ -91,6 +93,6 @@ Existing wireframes are independent, local design examples with fictional conten
 
 ## Decisions still needed
 
-See [open decisions](open-decisions.md). Priorities include upload size/count limits and other import-error handling, reviewed reference content/export layouts, designer sign-in, remaining link lifecycle controls, retention/recovery policy, Storyline/Rise feasibility, AI/provider/budget choices, and production quality thresholds.
+See [open decisions](open-decisions.md). Priorities include upload size/count limits and other import-error handling, reviewed reference content/export layouts, sign-in implementation and invitation administration, remaining link lifecycle controls, retention/recovery policy, Storyline/Rise feasibility, AI/provider/budget choices, and production quality thresholds.
 
 Generated images/audio/video, OCR, native course files, direct reviewer editing, team coauthoring, and evaluation execution remain outside the approved MVP. Replies, resolution, and other collaboration additions are not included by implication.

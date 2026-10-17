@@ -173,7 +173,7 @@ Show actual saving/saved/device-only/error status. **All changes saved** require
 
 The MVP uses an invitation-only pilot: only invited participants may create or activate designer accounts. Public registration is outside scope. Account invitation does not replace the separate account-free guest-review link flow.
 
-Designers sign in, own/manage their projects, and can have multiple projects. Project home shows current stage, saved time, issues, and next action. New projects start with a working title and Analysis; **Continue project** resumes saved work. Authentication method and invitation-management details are not yet chosen.
+Designers sign in, own/manage their projects, and can have multiple projects. Project home shows current stage, saved time, issues, and next action. New projects start with a working title and Analysis; **Continue project** resumes saved work. Invited designers sign in using a one-time code sent to their invited email address. They enter their email, request the code, enter it to complete sign-in, and reach their saved projects. No password creation or password-reset flow is required for this selected method. Requesting a code does not grant pilot eligibility or open public registration; the invitation-only access rule still applies. Invitation-management details, authentication provider, code/session handling, and remaining account lifecycle details are still to be specified.
 
 ## 9. AI process and next work
 
