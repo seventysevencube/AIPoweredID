@@ -125,15 +125,15 @@
     {
       "path": "design-plan-review-wireframe.html",
       "kind": "standalone preview",
-      "bytes": 117012,
-      "sha256": "f9abb46e31a84f2413158bcdb9784c3217621c27f790e87e1b84078d296683e0"
+      "bytes": 119564,
+      "sha256": "afdd1c553dcca9e928b790c542c54a7dacd42fb2057eed1534a191c9c56fad87"
     },
     {
       "path": "fragments/design-plan-review-wireframe.html",
       "kind": "editable fragment",
-      "bytes": 32588,
-      "sha256": "4e29e5ee0079be9448d2c600ad638d00f7841a8584357716d90210e40facb8c8"
+      "bytes": 34866,
+      "sha256": "dc54484c3d5249d7a28614fd29db16d0cb55fb72994fddea8facd432859a00e8"
     }
   ],
-  "revision": "Learning-sequence pattern approved. Detailed Design-plan review and explicit Development-sample scope preview added for review."
+  "revision": "Development sample choices now show descriptions, examples, and intended use; both retain a full outline and one representative section."
 }
