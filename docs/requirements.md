@@ -1,0 +1,162 @@
+# Current MVP Requirements
+
+Updated: October 17, 2026. Status: agreed product baseline; implementation choices and open details are listed separately.
+
+## 1. Purpose and scope
+
+Support novice and experienced instructional designers through Analysis, Design, and partial Development for workplace e-learning and performance support. Use one workflow with adjustable guidance. Target desktop use, with a WCAG 2.2 AA acceptance target including keyboard use, focus, screen-reader operation, and zoom/reflow.
+
+Primary deliverables are detailed build-ready storyboard specifications and complete written performance-support drafts. They must contain the content, behavior, assessment, accessibility, and build information appropriate to the selected tool or support format.
+
+The reference project for testing quality and estimating cost is approximately five minutes and moderately interactive. It is not a maximum project length or a rule determining microlearning.
+
+### In scope
+
+- Designer accounts, one owner per project, and multiple saved projects per designer.
+- Analysis forms and an editable synthesized Analysis brief.
+- Full evaluation-planning questions to identify Kirkpatrick L2 learning, L3 behavior, and L4 results measures.
+- Six Boxes review to determine whether learning, nonlearning responses, a combination, or further investigation is appropriate.
+- Microlearning, courses, or mixed e-learning; Storyline, Rise, or both selected during Design.
+- Main and enabling objectives, reviewed Bloom alignment, assessments, instructional support, sequencing, and content mapping.
+- Text entry and file sources, initially Word and text-based PDFs, plus permitted web research. Exact extensions and size limits remain open.
+- Tool-specific storyboard skeletons, written scripts/specifications, and complete written job-aid/performance-support drafts.
+- Guest comments anchored to specific content, adjustable AI preferences, optional reflection and breaks, autosave, recovery, and version history.
+- PDF and editable PowerPoint exports of saved structured content.
+
+### Outside current scope
+
+- Full Implementation and Evaluation modules; administering evaluation, collecting results, and analyzing results.
+- Generated images, audio narration, or video. Written narration scripts, media descriptions, and placeholders are allowed.
+- Scanned-document extraction/OCR.
+- Native authoring-tool project files or automatically built courses.
+- Direct reviewer editing, formal reviewer approval gates, and multi-author/team project ownership.
+- Implementing recommended organizational or HR changes. Nonlearning recommendations can be documented and handed off.
+- Smaller-screen product layouts. The desktop scope does not remove accessibility requirements.
+
+Current data assumption: no confidential organizational material.
+
+## 2. Core stage-to-stage contract
+
+Each stage's designer-reviewed output becomes the input for the next stage and prefills an editable skeleton. Carry accepted decisions, objective/enabling-objective/assessment IDs, sources, constraints, and permitted unresolved questions forward. Designers do not manually transfer the same information between stages.
+
+AI output remains a proposal until accepted. Distinguish designer decisions, source-supported facts, proposed instructional treatments, and unknowns. A reviewed unknown remains unknown. Later changes flag affected downstream content for review, preserve the earlier version, and never silently overwrite accepted work.
+
+Saving, accepting, marking reviewed, sharing, and advancing are distinct actions. AI calls occur through explicit generation/revision actions rather than typing, autosave, or ordinary navigation.
+
+## 3. Analysis
+
+The agreed questions are in [the Analysis notes](notes/analysis-form-decisions.md). Sections:
+
+1. Project context and performance gap.
+2. Evidence and possible causes.
+3. Audience and work environment.
+4. Stakeholders and project constraints, including review availability and turnaround.
+5. Evaluation planning: L4 results → L3 workplace behaviors → L2 learning measures.
+
+Use the exact supporting-material prompt: **“Add documentation of any supporting evidence if available”**. Supporting documents are optional. Do not reintroduce the audience-time question removed from the stakeholder/constraints section.
+
+Capture evaluation measures, baseline/target where known, data source/method, responsibility, timing/frequency, and intended use of findings. Reuse prior desired-performance and source information. Evaluation planning is included even though evaluation execution is excluded.
+
+Core information for a useful Design draft is the task, desired/current performance, and audience. A working title can be supplied or suggested. Saving incomplete work is always allowed. Permitted gaps are summarized before handoff and can remain in an explicitly incomplete draft.
+
+### Analysis output
+
+An editable Analysis brief synthesizes:
+
+1. Project and performance gap.
+2. Evidence and possible causes.
+3. Audience and work environment.
+4. Stakeholders and constraints.
+5. Evaluation plan.
+6. Open questions and assumptions.
+
+**Do not include the recommended intervention here; it belongs in Design.** The designer reviews/edits the brief, can share it for optional comments, then selects **Generate Design skeleton**.
+
+## 4. Design: performance-solution decision first
+
+Start with a prefilled Six Boxes review using Analysis evidence:
+
+- Expectations and Feedback.
+- Tools and Resources.
+- Consequences and Incentives.
+- Skills and Knowledge.
+- Selection and Assignment — Capacity.
+- Motives and Preferences — Attitude.
+
+Show evidence, potential issues, and unanswered questions. Treat these as interacting influences, not six mutually exclusive interventions or a diagnosis of individual motivation/capacity. Designer-reviewed routes: learning, nonlearning response, a combination, or further investigation.
+
+After route confirmation, propose interventions and their rationale, contribution, limitations, and dependencies. Document nonlearning recommendations without forcing course production. A selected performance-support deliverable can proceed to a written draft without automatically becoming a learning intervention.
+
+### Conditional L2 gate
+
+Entry into the initial performance-solution review can occur while L2 applicability is unresolved. Once learning is confirmed, L2 measures must be identified and designer-confirmed before instructional Design proceeds; **Not known yet** cannot bypass this requirement. If no learning component exists, use **Not applicable — no learning intervention**, with rationale. Retain relevant L3/L4 planning. Reflect confirmed changes in the linked evaluation-plan record rather than making a separate inconsistent plan.
+
+### E-learning format and tools
+
+Choose microlearning, a course, or a mix; review what each unit/module addresses; then choose Storyline, Rise, or both. If both, identify tool allocation and how components connect. Verify feasibility before producing final build instructions. Do not hardwire microlearning to Rise or courses to Storyline.
+
+### Objectives, enabling objectives, and assessments
+
+AI proposes editable main objectives using revised Bloom's taxonomy for cognitive outcomes: Remember, Understand, Apply, Analyze, Evaluate, Create. Show a proposed level for review, based on actual task demand rather than only the verb. Capture observable performance, conditions/resources, success criteria, L2 linkage, and unit/module placement.
+
+Break each main objective into meaningful enabling objectives. Map each to its contribution, essential content, sources, instructional support, practice/feedback, evidence, and sequence. Preserve stable main/child IDs and reviewed Bloom levels. Avoid arbitrary counts or trivial fragmentation. Assess integrated main-objective performance as well as component coverage.
+
+Define assessments during Design: linked objectives/L2 measures, purpose, method, actual prompt/task, options where relevant, expected response/rubric, feedback, scoring, retries/remediation, and completion rules. Not every enabling objective needs a separate scored question; evidence can be shared with explicit mapping. Confidence and commitment measures do not substitute for demonstrated cognitive/skill achievement.
+
+Sequence explanation/examples, practice, assessment, and workplace support. Reuse existing reviewed assessment/practice records rather than duplicating or silently modifying them.
+
+### Sources and content mapping
+
+Ask source questions once for the entire project's content mapping: provided sources/web/both, selected materials, preferred/excluded sources, precedence, content boundaries, and gap handling. Make existing sources available early for relevant drafts; the mapping section consolidates coverage rather than postponing all source use.
+
+AI applies these settings per enabling objective. Designers review matches, resolve specific issues, and can assign an objective-specific source without repeating the whole questionnaire or overriding the permitted source mode implicitly.
+
+Map main objective → enabling objective → required content/source → instructional support → practice/assessment → planned location. Show supported, partially supported, missing, and conflicting statuses. References must support the claims attributed to them. Preserve gaps instead of inventing facts.
+
+### Design output and handoff
+
+The reviewed detailed Design plan includes the solution decision, structure/tools, objective hierarchy, defined assessments, learning sequence, content map, evaluation alignment, and open issues. Omit irrelevant learning sections for nonlearning-only routes.
+
+Review solution/deliverables, relevant L2/objectives/Bloom alignment, assessments, structure/tools, and content readiness. Peer review and reflection remain optional. Select **Generate Development sample** from a reviewed version.
+
+## 5. Partial Development
+
+Generate the full deliverable outline/skeleton with one representative section filled in: a few Storyline screens, a Rise lesson/block section, or a written-support section. This is a preview of specifications/written content, not a built course.
+
+Workspace: full outline on the left; selected editable section in the center; optional contextual sources/guidance/issues/comments panel. Display relevant statuses such as outline only, draft, needs review, reviewed, and needs update.
+
+Designer actions: edit directly, **Request changes**, and **Generate full draft**. Changes can concern style/detail/structure/build-note depth. A sample establishes presentation and treatment; use each remaining section's own mapped facts and objectives rather than copying sample content. Preserve accepted sample edits and Design decisions. Upstream changes require linked record review.
+
+The full draft retains IDs, objective/enabling-objective/source/assessment relationships, exact learner-facing content, written scripts where needed, visual/media descriptions, interaction behavior, feedback, build instructions, accessibility requirements, and open issues.
+
+## 6. Review and exports
+
+Export drafts at any point with clear Draft status and visible unresolved issues. **Ready for handoff** is a designer-confirmed state: required review and coverage checks complete, reviewed assessments preserved, tool instructions feasible, and essential accuracy/source/implementation issues resolved.
+
+Clearly specified media placeholders, permitted L3/L4 unknowns, and acknowledged nonblocking dependencies may remain visible. Later relevant changes mark affected sections as needing update. Prior exports remain snapshots of their stated version.
+
+Export PDF and editable PowerPoint from the selected saved structured version without an AI rewrite. Include project/version/date/tool information, sources, and outstanding issues. Exact templates and optional inclusion of comments remain open.
+
+## 7. Guest review, preferences, and breaks
+
+Guest reviewers need no account and can comment on specific sections, objectives, assessments, screens, or blocks. Reviews are optional and comments do not directly edit content or approve stage progression. Names/identity handling, link lifecycle, and thread details remain open; see [sharing notes](notes/shared-review-decisions.md).
+
+Four project-level adjustable preferences: guidance depth, AI contribution, output detail, and additional resources. Preserve essential fields, factual/source rules, reviewed decisions, and human approval at all levels. Optional **Adjust AI assistance** reflection is skippable; controls remain available independently. Changes apply to future generation; revising accepted content is explicit and scoped.
+
+Save/pause throughout. Break reminders are off by default and adjustable/dismissible. Offer quiet pauses or optional accessible activities. Resume at the saved location with a concise recap and next step, without automatically regenerating content.
+
+## 8. Saving, recovery, and project home
+
+Automatically protect edits across all stages. Target online saves about one second after a typing pause, at least every five seconds of continuous typing while connected, immediately for discrete selections, and before normal navigation. Capture device recovery drafts during editing and preserve completed generation results automatically.
+
+Show actual saving/saved/device-only/error status. **All changes saved** requires server acknowledgement. Provide reconnection recovery, version history/undo, conflict protection, and supported warnings for unsynced changes. Autosave never accepts or publishes content; reviewer comment drafts are separate from posting. Timings are implementation targets to verify, not an absolute guarantee against every device/storage failure. Retention and backup policy remain open.
+
+Designers sign in, own/manage their projects, and can have multiple projects. Project home shows current stage, saved time, issues, and next action. New projects start with a working title and Analysis; **Continue project** resumes saved work. Authentication method is not yet chosen.
+
+## 9. AI process and next work
+
+Use shared rules plus stage/task-specific prompts, approved project context, relevant source passages, examples, structured outputs, and quality checks. Only run the prompts required for the action. Use application validation, focused AI review, and designer judgment; bound repairs and never silently rewrite accepted content.
+
+During each phase's AI integration, revisit prompts, add reviewed examples, test typical and difficult cases, and adjust the approach. Start with prompting/source grounding/evaluation rather than custom model training. Benchmark quality, unsupported claims, designer correction time, cost per accepted output, and latency. No provider/model or numerical quality threshold is selected yet.
+
+Next planned work: desktop wireframes and a representative end-to-end walkthrough, example storyboard/export templates, unresolved product/operational choices, and an implementation brief. App building has not started.
