@@ -4,7 +4,7 @@ Updated: October 17, 2026. Items below are unresolved details, not approved addi
 
 ## Next design work
 
-1. Establish the expected pilot size to inform capacity and AI-usage planning. Invitation-only access, a simple approved-email list, and one-time email-code sign-in are approved. Review the [implementation brief](implementation-brief.md) for the consolidated workflow and remaining choices.
+1. Establish the pilot's monthly AI budget and usage assumptions. Expected pilot size is five designers; this is not an enforced account cap. Invitation-only access, an approved-email list, and one-time email-code sign-in are approved. Review the [implementation brief](implementation-brief.md) for the consolidated workflow and remaining choices.
 2. Walk through a representative five-minute workplace example, covering both Storyline and Rise treatment and a nonlearning/performance-support branch.
 3. Create reviewed examples of a Design skeleton, main/enabling-objective map, assessments, a Storyline screen, a Rise block sequence, and a complete written job aid.
 4. Review representative PDF/PPTX page/slide templates, long build notes, source/open-issue appendices, accessible document structure, and the optional comment appendix. Contents/organization and comments optional/off by default are approved.
@@ -12,7 +12,7 @@ Updated: October 17, 2026. Items below are unresolved details, not approved addi
 
 ## Product and operational choices
 
-- Expected pilot size and usage; approved-email-list storage/maintenance implementation, authentication provider, code/session handling, and remaining account lifecycle details (including access removal and existing sessions). A simple approved-email list, one-time email-code sign-in, invitation-only access, one project owner, and multiple projects are agreed. No dedicated invitation dashboard is included. Account-free guest review links remain separate.
+- Expected pilot usage/concurrency and budget; participant count is settled at five designers for planning, without an enforced account cap. Approved-email-list storage/maintenance implementation, authentication provider, code/session handling, and remaining account lifecycle details (including access removal and existing sessions) remain open. A simple approved-email list, one-time email-code sign-in, invitation-only access, one project owner, and multiple projects are agreed. No dedicated invitation dashboard is included. Account-free guest review links remain separate.
 - Guest link revocation/expiry and remaining lifecycle details; whether replies/resolution should be added later. Required unverified display names, fixed-version links, and new links for shared updates are now approved; do not expand collaboration scope by implication.
 - Default settings for the four AI assistance controls and final reflection UI. Break reminders are already off by default.
 - Upload size/count limits, straightforward table-text behavior, and remaining processing errors. The no-usable-text case is settled: deterministic warning/exclusion, with no AI, summary, text preview, or import-review gate. Source formats are settled: .docx/.pptx only, using basic extraction. No OCR, image/diagram interpretation, or complex layout reconstruction; PDF/TXT uploads and legacy conversion are outside initial scope.

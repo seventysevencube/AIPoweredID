@@ -83,3 +83,7 @@ The user selected one-time email codes instead of email/password sign-in for inv
 ## Approved-email list — pilot management approved
 
 The user approved a simple list of allowed email addresses maintained by the pilot operator. Manage pilot eligibility through a simple list of approved email addresses maintained by the pilot operator. Only listed email addresses are eligible for designer sign-in, and a valid one-time email code is still required. No dedicated invitation-management dashboard is included in the MVP. Guest reviewers continue to use active shared review links without an account or membership on the pilot list. Technical storage/provider choices, access-removal/session behavior, and account lifecycle details remain open. No actual addresses were supplied or changed, and no emails or invitations were sent by this planning update.
+
+## Expected pilot size — five designers
+
+The user expects five designers in the initial pilot. Use this count for capacity and AI-usage planning without inferring a hard account cap, project quota, simultaneous generation load, or approved spending budget. Guest reviewers are separate from the designer count. The next planning decision is the monthly pilot AI budget and associated usage assumptions.

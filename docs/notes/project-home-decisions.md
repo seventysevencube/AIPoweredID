@@ -37,3 +37,7 @@ Guest review through shared links remains account-free and uses its separate unv
 Manage pilot eligibility through a simple list of approved email addresses maintained by the pilot operator. Only listed email addresses are eligible for designer sign-in, and a valid one-time email code is still required. No dedicated invitation-management dashboard is included in the MVP. Guest reviewers continue to use active shared review links without an account or membership on the pilot list.
 
 The operator manages the pilot list; a code request does not itself add someone to it. Exact list storage/maintenance implementation, authentication provider, code/session parameters, and account lifecycle/access-removal behavior remain open. This supersedes the earlier proposal status of the list. No actual list, addresses, accounts, or email service have been created or changed by the documentation work.
+
+## Expected pilot size — approved planning assumption
+
+Plan the initial pilot for five instructional designers. This is an expected participant count for capacity and AI-usage planning, not a hard five-account limit, a project quota, or an assumption that all five will generate content simultaneously. Guest reviewers are separate from this designer count. Monthly AI budget, usage frequency, and any spending/usage limits remain to be agreed.

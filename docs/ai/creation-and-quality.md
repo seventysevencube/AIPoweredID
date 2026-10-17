@@ -238,3 +238,7 @@ The approved initial file imports are Word (.docx) and PowerPoint (.pptx), using
 ## Import checks are not AI tasks — approved refinement
 
 Source-file extraction and no-usable-text detection use conventional parsing and deterministic checks only. No AI call, AI summary, extracted-content summary, or text preview belongs in the import flow. If no usable text is extracted, warn and exclude the empty source from AI context, while allowing continued work with other sources/direct text entry. Do not add a mandatory import-review gate. Later stage generation and source coverage/accuracy checks remain in scope. A nonempty extraction is not proof of completeness, meaning, or factual correctness.
+
+## Pilot capacity and cost-planning context
+
+The initial pilot is expected to have five instructional designers. This does not establish project counts, generation frequency, concurrency, a hard account cap, or a numerical AI budget. Establish usage assumptions and the operator's monthly AI budget before claiming a pilot cost estimate or selecting numerical quotas. Reuse the agreed approximately five-minute/moderately interactive reference project for benchmarking, keeping that duration distinct from the five-person participant count. Guest reviewers do not add designer AI-generation access by implication.

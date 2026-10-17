@@ -26,6 +26,8 @@ Use [current requirements](requirements.md) and the [detailed notes](README.md) 
 
 ## Designer access — approved pilot scope
 
+Plan the initial pilot for five instructional designers. This is an expected participant count for capacity and AI-usage planning, not a hard five-account limit, a project quota, or an assumption that all five will generate content simultaneously. Guest reviewers are separate from this designer count. Monthly AI budget, usage frequency, and any spending/usage limits remain to be agreed.
+
 Designer access is an invitation-only pilot. Only invited participants may create or activate designer accounts; open public registration is outside the MVP. Each designer still owns their own projects and may save multiple projects. Guest reviewers do not need a pilot invitation or an account: an active shared review link grants the agreed view/comment access to its selected fixed-version snapshot, not designer account access.
 
 Invited designers sign in using a one-time code sent to their invited email address. They enter their email, request the code, enter it to complete sign-in, and reach their saved projects. No password creation or password-reset flow is required for this selected method. Requesting a code does not grant pilot eligibility or open public registration; the invitation-only access rule still applies.
