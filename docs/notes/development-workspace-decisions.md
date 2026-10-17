@@ -52,7 +52,7 @@ The user approved the workspace, sample-review actions, full-draft generation, a
 
 The user approved draft exports and the reviewed “Ready for handoff” state, including review checks, version/date/tool identification, sources/open issues, and marking affected content as needing update after relevant upstream changes. Exact PDF/PPTX templates and optional inclusion of reviewer comments remain to be specified.
 
-## Development sample workspace — new UI proposal, awaiting review
+## Development sample workspace — screen pattern approved
 
 The next wireframe presents Written aid, Storyline, and Rise examples through the preview's comparison controls. These are separate example deliverables, not an in-product tool selector; project tool choice remains in Design. The aid example continues the structural sample from the prior screen. The tool examples illustrate alternative specification structures rather than changing that sample project's approved deliverables.
 
@@ -63,5 +63,24 @@ The next wireframe presents Written aid, Storyline, and Rise examples through th
 - Request changes exposes scope, writing style, content detail, structure, build-instruction depth, and free text. The preview only records an unsent request. Requests affecting upstream decisions must return to explicit Design review.
 - Generate full draft opens readiness review. This illustrative dataset has essential source/answer/practice gaps, so factual generation remains on hold; sample edits are preserved. Full-draft review/export layouts remain subsequent work.
 
-This is a proposed interface awaiting user review, not a new approval of every control or a production implementation. Preview state is local/illustrative. Structural and script-syntax checks do not establish browser runtime behavior, accessibility conformance, persistence, or instructional accuracy.
+The user subsequently approved this screen pattern. It is not a production implementation. Preview state is local/illustrative. Structural and script-syntax checks do not establish browser runtime behavior, accessibility conformance, persistence, or instructional accuracy.
+
+
+## Development sample workspace — approval recorded
+
+The user approved the sample-workspace screen pattern, including the Written aid, Storyline, and Rise examples, direct edits, separate sample-treatment acceptance, revision requests, and visible source/readiness flags. This does not verify the fictional instructional content or select a different authoring tool for a live project.
+
+## Full-draft review and readiness — new UI proposal, awaiting review
+
+The next standalone wireframe uses the Storyline example to examine section review, linked records, and handoff checks. It illustrates the review screen with structural draft/sample data; it does not claim that the preceding source blockers were resolved or that a full factual draft was generated. The same review approach is intended for Rise blocks and written-aid sections, with output-specific content/build fields.
+
+- Keep the full outline, stable screen IDs, objective/Bloom/assessment links, and individual Draft / Needs review / Reviewed / Needs update statuses visible. The accepted sample treatment remains identified; remaining sections are not automatically reviewed.
+- Direct edits clear the affected section's review status. Show the prior edit snapshot and restore it as a new draft revision, preserving essential issue flags. The preview retains one earlier snapshot only; production history retention and recovery remain open implementation work.
+- Allow the designer to mark review complete while open issues remain, using the explicit label “Mark reviewed with open issues.” This records review of the current draft, not source verification or readiness. The user has not yet approved this exact interaction.
+- Show linked assessment/practice task, expected response, feedback, scoring, and retry rules as Design-owned records. Editable storyboard build notes do not alter those records. Changes to their intent or content require explicit Design review. The fictional written-response examples retain the facilitator/collection feasibility issue.
+- Targeted revision requests remain tied to the selected section. The preview records unsent requests without running AI or rewriting content.
+- A review summary lists sections needing attention and essential source, answer, routing-practice, and tool/process issues. These issues block Ready for handoff even if every section is marked reviewed; acknowledgement alone cannot remove the blockers. No bypass or factual source approval is simulated.
+- Draft PDF/PPTX export remains permitted under the agreed policy. This preview only captures an illustrative export summary of the current structured version with its review status and open issues; it produces no document file. Actual templates and guest-comment screens are still to be reviewed.
+
+Only the earlier sample-workspace pattern is approved at this checkpoint. The full-draft review screen and its exact controls are proposals. Static fragment/script checks do not establish browser runtime behavior, accessibility conformance, real autosave, version recovery, or instructional accuracy.
 

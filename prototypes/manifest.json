@@ -145,7 +145,19 @@
       "kind": "editable fragment",
       "bytes": 22465,
       "sha256": "fdd847daa79599ba5bd2d8b94d2ad6ee0ecd964c5fc015f6422d980799660c82"
+    },
+    {
+      "path": "development-review-wireframe.html",
+      "kind": "standalone preview",
+      "bytes": 115784,
+      "sha256": "0214779ae239dedc75b7eaf5d67f07101dea539e38fb23ddb34df6357ceb40bb"
+    },
+    {
+      "path": "fragments/development-review-wireframe.html",
+      "kind": "editable fragment",
+      "bytes": 31314,
+      "sha256": "c0e98826550ad88a05024d91ad8dc4b573d48f82d55f0043942de4e503d242fb"
     }
   ],
-  "revision": "Design-plan review and sample explanations approved; Development sample workspace proposed with Written aid, Storyline, and Rise examples."
+  "revision": "Development sample workspace approved; full-draft review and readiness screen proposed. Draft export summary only; no live generation or document export."
 }

@@ -16,8 +16,10 @@ Updated: October 17, 2026. See the [checkpoint](../checkpoints/2026-10-17-design
 | Learning sequence | Screen pattern approved | Reorder linked records, review prerequisites and gaps, and retain source/review flags. |
 | Content mapping | Initial source-map pattern approved | Source questions remain project-wide; final placement is refined through sequencing. |
 | Detailed Design-plan review | Screen pattern and sample explanations approved | Linked sections, edit/update flags, optional sharing/preferences, and two explained sample scopes. |
-| Development sample workspace | New proposal — awaiting review | Full outline, editable sample, separate treatment acceptance, revision request, and source/readiness flags; Written aid / Storyline / Rise examples. |
-| Full-draft review / guest comments / exports | Wireframes pending | Agreed requirements remain in their detailed notes. |
+| Development sample workspace | Screen pattern approved | Full outline, editable sample, separate treatment acceptance, revision request, and source/readiness flags; Written aid / Storyline / Rise examples. |
+| Full-draft review and readiness | New proposal — awaiting review | Storyline example; section edits/review, prior edit snapshot, Design-owned assessment records, and essential issue/readiness checks. |
+| Guest comments / document export layouts | Wireframes pending | Agreed requirements remain in their detailed notes; no actual document export is implemented. |
 
 Approvals concern patterns and the stated requirements. They do not verify sample instructional content or confirm production functionality. The next user correction takes precedence over earlier previews.
+
 
