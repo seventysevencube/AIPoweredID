@@ -26,7 +26,7 @@ Use [current requirements](requirements.md) and the [detailed notes](README.md) 
 
 ## Designer access — approved pilot scope
 
-Plan the initial pilot for five instructional designers. This is an expected participant count for capacity and AI-usage planning, not a hard five-account limit, a project quota, or an assumption that all five will generate content simultaneously. Guest reviewers are separate from this designer count. Monthly AI budget, usage frequency, and any spending/usage limits remain to be agreed.
+Plan the initial pilot for five instructional designers. This is an expected participant count for capacity and AI-usage planning, not a hard five-account limit, a project quota, or an assumption that all five will generate content simultaneously. Guest reviewers are separate from this designer count. The monthly AI budget is $20 total for the pilot; usage frequency and the warning/stop policy remain to be agreed.
 
 Designer access is an invitation-only pilot. Only invited participants may create or activate designer accounts; open public registration is outside the MVP. Each designer still owns their own projects and may save multiple projects. Guest reviewers do not need a pilot invitation or an account: an active shared review link grants the agreed view/comment access to its selected fixed-version snapshot, not designer account access.
 
@@ -75,7 +75,13 @@ Use shared guardrails plus focused stage/task prompts, the accepted context, per
 
 Explicit generation/revision actions initiate AI work. Typing, autosave, navigation, and document export do not. Bound repair attempts; preserve accepted work and completed results if generation fails. Show unsupported/conflicting facts and require explicit review of material upstream changes.
 
-Provider/model, costs, budgets, numerical quality thresholds, production prompts, and retrieval implementation remain undecided. Benchmark against the approximately five-minute, moderately interactive workplace reference; it is not a project duration limit.
+The monthly pilot AI budget is approved at $20 total. Provider/model, actual usage/cost estimates, warning/stop behavior, numerical quality thresholds, production prompts, and retrieval implementation remain undecided. Benchmark against the approximately five-minute, moderately interactive workplace reference; it is not a project duration limit.
+
+### Pilot AI spending budget
+
+The approved monthly AI budget is $20 total for the five-designer pilot, shared across the pilot rather than $20 per designer. This is a spending budget, not an estimate or a promise of a particular number of projects/generations. Hosting, storage, and sign-in email delivery are separate costs; no budgets for those have been approved. Provider/model selection, realistic usage benchmarking, and budget tracking/enforcement details remain open.
+
+Proposed next decision, not yet approved: show an in-app warning at $16 (80% of the monthly budget), then pause new AI requests that would exceed the $20 budget while preserving work and keeping manual editing, review, and non-AI exports available. Exact enforcement must account for in-flight requests and be validated with the selected provider; no live cap or warning is configured by these notes.
 
 ## Suggested delivery order — proposal
 
@@ -97,6 +103,6 @@ Existing wireframes are independent, local design examples with fictional conten
 
 ## Decisions still needed
 
-See [open decisions](open-decisions.md). Priorities include upload size/count limits and other import-error handling, reviewed reference content/export layouts, sign-in and approved-list implementation, remaining link lifecycle controls, retention/recovery policy, Storyline/Rise feasibility, AI/provider/budget choices, and production quality thresholds.
+See [open decisions](open-decisions.md). Priorities include upload size/count limits and other import-error handling, reviewed reference content/export layouts, sign-in and approved-list implementation, remaining link lifecycle controls, retention/recovery policy, Storyline/Rise feasibility, AI/provider choices and budget enforcement, and production quality thresholds.
 
 Generated images/audio/video, OCR, native course files, direct reviewer editing, team coauthoring, and evaluation execution remain outside the approved MVP. Replies, resolution, and other collaboration additions are not included by implication.

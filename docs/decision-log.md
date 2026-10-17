@@ -87,3 +87,7 @@ The user approved a simple list of allowed email addresses maintained by the pil
 ## Expected pilot size — five designers
 
 The user expects five designers in the initial pilot. Use this count for capacity and AI-usage planning without inferring a hard account cap, project quota, simultaneous generation load, or approved spending budget. Guest reviewers are separate from the designer count. The next planning decision is the monthly pilot AI budget and associated usage assumptions.
+
+## Monthly pilot AI budget — $20 approved
+
+The user set the monthly AI budget at $20 in response to the question about the five-designer pilot's AI budget. This is a total shared pilot budget, not a per-designer allocation or an estimate of what the workload will cost. Hosting/storage/sign-in emails are separate costs. Warning and stop behavior are the next decision; no provider, numerical generation quota, or live spending enforcement is selected or configured.

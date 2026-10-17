@@ -241,4 +241,12 @@ Source-file extraction and no-usable-text detection use conventional parsing and
 
 ## Pilot capacity and cost-planning context
 
-The initial pilot is expected to have five instructional designers. This does not establish project counts, generation frequency, concurrency, a hard account cap, or a numerical AI budget. Establish usage assumptions and the operator's monthly AI budget before claiming a pilot cost estimate or selecting numerical quotas. Reuse the agreed approximately five-minute/moderately interactive reference project for benchmarking, keeping that duration distinct from the five-person participant count. Guest reviewers do not add designer AI-generation access by implication.
+The initial pilot is expected to have five instructional designers. This does not establish project counts, generation frequency, concurrency, or a hard account cap. The subsequent approved AI budget is $20/month total for the pilot. Establish usage assumptions and benchmark actual costs before claiming a pilot workload estimate or selecting numerical generation quotas. Reuse the agreed approximately five-minute/moderately interactive reference project for benchmarking, keeping that duration distinct from the five-person participant count. Guest reviewers do not add designer AI-generation access by implication.
+
+## Monthly AI spending budget — approved constraint
+
+The approved monthly AI budget is $20 total for the five-designer pilot, shared across the pilot rather than $20 per designer. This is a spending budget, not an estimate or a promise of a particular number of projects/generations. Hosting, storage, and sign-in email delivery are separate costs; no budgets for those have been approved. Provider/model selection, realistic usage benchmarking, and budget tracking/enforcement details remain open.
+
+Proposed next decision, not yet approved: show an in-app warning at $16 (80% of the monthly budget), then pause new AI requests that would exceed the $20 budget while preserving work and keeping manual editing, review, and non-AI exports available. Exact enforcement must account for in-flight requests and be validated with the selected provider; no live cap or warning is configured by these notes.
+
+Existing controls still apply: explicit AI actions, reuse parsed sources/context, targeted revisions, bounded repairs, preservation of accepted work, and document exports without an AI rewrite. Count actual AI operation costs consistently once provider billing and supporting services are selected. No automatic per-user $4 allocation or guaranteed generation count follows from the five-person/$20 planning figures.

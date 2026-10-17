@@ -40,4 +40,8 @@ The operator manages the pilot list; a code request does not itself add someone 
 
 ## Expected pilot size — approved planning assumption
 
-Plan the initial pilot for five instructional designers. This is an expected participant count for capacity and AI-usage planning, not a hard five-account limit, a project quota, or an assumption that all five will generate content simultaneously. Guest reviewers are separate from this designer count. Monthly AI budget, usage frequency, and any spending/usage limits remain to be agreed.
+Plan the initial pilot for five instructional designers. This is an expected participant count for capacity and AI-usage planning, not a hard five-account limit, a project quota, or an assumption that all five will generate content simultaneously. Guest reviewers are separate from this designer count. The monthly AI budget is now $20 total for the pilot; usage frequency and warning/stop behavior remain open.
+
+## Monthly AI budget — approved pilot constraint
+
+The approved monthly AI budget is $20 total for the five-designer pilot, shared across the pilot rather than $20 per designer. This is a spending budget, not an estimate or a promise of a particular number of projects/generations. Hosting, storage, and sign-in email delivery are separate costs; no budgets for those have been approved. Provider/model selection, realistic usage benchmarking, and budget tracking/enforcement details remain open. Manual editing, review, and export do not initiate AI calls under the existing workflow. How the UI warns or pauses AI generation at the limit remains the next policy decision.

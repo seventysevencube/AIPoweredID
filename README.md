@@ -18,6 +18,7 @@ Each stage's designer-reviewed output becomes the input for an editable, prefill
 ## Key decisions
 
 - Pilot planned for five designers, with an approved-email list and one-time email-code sign-in; guest review remains account-free through shared links.
+- $20 total monthly AI budget for the pilot; provider choice, actual cost estimates, and enforcement policy remain open.
 
 - Desktop experience with a WCAG 2.2 AA acceptance target.
 - Shared workflow for new and experienced designers, with adjustable guidance and AI contribution.

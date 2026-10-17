@@ -179,6 +179,10 @@ Designers sign in, own/manage their projects, and can have multiple projects. Pr
 
 ## 9. AI process and next work
 
+The approved monthly AI budget is $20 total for the five-designer pilot, shared across the pilot rather than $20 per designer. This is a spending budget, not an estimate or a promise of a particular number of projects/generations. Hosting, storage, and sign-in email delivery are separate costs; no budgets for those have been approved. Provider/model selection, realistic usage benchmarking, and budget tracking/enforcement details remain open.
+
+The warning threshold and behavior at the spending limit have not yet been approved. No per-designer dollar allocation or generation quota is implied.
+
 Use shared rules plus stage/task-specific prompts, approved project context, relevant source passages, examples, structured outputs, and quality checks. Only run the prompts required for the action. Use application validation, focused AI review, and designer judgment; bound repairs and never silently rewrite accepted content.
 
 During each phase's AI integration, revisit prompts, add reviewed examples, test typical and difficult cases, and adjust the approach. Start with prompting/source grounding/evaluation rather than custom model training. Benchmark quality, unsupported claims, designer correction time, cost per accepted output, and latency. No provider/model or numerical quality threshold is selected yet.
