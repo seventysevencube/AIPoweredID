@@ -51,3 +51,17 @@ The user approved the workspace, sample-review actions, full-draft generation, a
 - Exports format the saved structured content without AI rewriting. Exact templates and whether reviewer comments should be optionally included remain to be specified.
 
 The user approved draft exports and the reviewed “Ready for handoff” state, including review checks, version/date/tool identification, sources/open issues, and marking affected content as needing update after relevant upstream changes. Exact PDF/PPTX templates and optional inclusion of reviewer comments remain to be specified.
+
+## Development sample workspace — new UI proposal, awaiting review
+
+The next wireframe presents Written aid, Storyline, and Rise examples through the preview's comparison controls. These are separate example deliverables, not an in-product tool selector; project tool choice remains in Design. The aid example continues the structural sample from the prior screen. The tool examples illustrate alternative specification structures rather than changing that sample project's approved deliverables.
+
+- Full outline on the left; one sample section in the center; Sources & links or Guidance in an optional panel.
+- Written aid separates exact written content from layout/use and accessibility notes. Storyline separates on-screen text, optional written narration, interaction/state/layer/trigger requirements, and asset/accessibility specifications. Rise separates learner text, proposed block order/types, build/navigation instructions, and asset/accessibility specifications. Tool capabilities still require verification during implementation.
+- All examples retain visible placeholders for missing approved procedures. Fictional sample evidence is not treated as verified organizational content. Existing assessment records are linked and are not silently rewritten.
+- Direct editing preserves the local sample and clears its prior treatment acceptance. Accept sample confirms the sample's treatment as the basis for later drafting; it does not verify sources or mark other sections reviewed.
+- Request changes exposes scope, writing style, content detail, structure, build-instruction depth, and free text. The preview only records an unsent request. Requests affecting upstream decisions must return to explicit Design review.
+- Generate full draft opens readiness review. This illustrative dataset has essential source/answer/practice gaps, so factual generation remains on hold; sample edits are preserved. Full-draft review/export layouts remain subsequent work.
+
+This is a proposed interface awaiting user review, not a new approval of every control or a production implementation. Preview state is local/illustrative. Structural and script-syntax checks do not establish browser runtime behavior, accessibility conformance, persistence, or instructional accuracy.
+

@@ -316,3 +316,8 @@ Readiness review distinguishes defined records from verified facts and essential
 ## Development sample options — explanations requested
 
 The user requested explanations distinguishing the two sample options. Replace the compact dropdown with two visible radio choices, each with a description, intended use, and a checklist-section example. Both provide the full deliverable outline and one representative section; neither is the full completed draft. **Outline + sample section with placeholders** supports reviewing structure while missing facts remain explicit. **Outline + written sample using verified sources** supports reviewing actual wording, accuracy, tone, and detail after essential source/answer verification; the generated draft still requires designer review. The sample’s factual option remains blocked by its unresolved source gaps. Preserve the existing scope acknowledgement and baseline behavior. This clarification does not constitute approval of the complete Design-plan review screen.
+
+## Detailed Design review and sample explanations — approved
+
+The user approved the detailed Design-plan review pattern and the clarified Development sample choices. Both choices provide the full outline plus one representative section: a structural sample retains explicit factual placeholders, while a written sample requires verified sources. Sample acceptance does not establish factual verification. The next UI review is the Development sample workspace.
+

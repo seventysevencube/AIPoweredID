@@ -133,7 +133,19 @@
       "kind": "editable fragment",
       "bytes": 34866,
       "sha256": "dc54484c3d5249d7a28614fd29db16d0cb55fb72994fddea8facd432859a00e8"
+    },
+    {
+      "path": "development-sample-wireframe.html",
+      "kind": "standalone preview",
+      "bytes": 105379,
+      "sha256": "0fd204d3796187dec683e424e405fde762b6a58017d51c4dfb11cfaff5e7f224"
+    },
+    {
+      "path": "fragments/development-sample-wireframe.html",
+      "kind": "editable fragment",
+      "bytes": 22465,
+      "sha256": "fdd847daa79599ba5bd2d8b94d2ad6ee0ecd964c5fc015f6422d980799660c82"
     }
   ],
-  "revision": "Development sample choices now show descriptions, examples, and intended use; both retain a full outline and one representative section."
+  "revision": "Design-plan review and sample explanations approved; Development sample workspace proposed with Written aid, Storyline, and Rise examples."
 }

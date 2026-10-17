@@ -4,7 +4,7 @@ Updated: October 17, 2026. Items below are unresolved details, not approved addi
 
 ## Next design work
 
-1. Review the new detailed Design-plan review and Development-sample handoff, including the proposed limited structural sample for unresolved factual gaps. Objectives, assessments, content/support, and sequence patterns are approved. Then design the Development sample/full-draft workspace, guest review, and exports. See [screen review status](ui/screen-review-status.md).
+1. Review the Development sample workspace, including the Written aid, Storyline, and Rise examples. The detailed Design-plan review and sample-choice explanations are approved. Then refine full-draft review, guest review, and exports. See [screen review status](ui/screen-review-status.md).
 2. Walk through a representative five-minute workplace example, covering both Storyline and Rise treatment and a nonlearning/performance-support branch.
 3. Create reviewed examples of a Design skeleton, main/enabling-objective map, assessments, a Storyline screen, a Rise block sequence, and a complete written job aid.
 4. Specify PDF/PPTX templates, placement of long build notes and source/open-issue appendices, accessible document structure, and whether reviewer comments can be included optionally.
@@ -34,4 +34,5 @@ Updated: October 17, 2026. Items below are unresolved details, not approved addi
 Implementation and evaluation execution remain later scope; evaluation planning stays included. Do not add generated media, OCR, native course files, verified reviewer accounts, or team coauthoring by implication. Unknown details do not authorize overwriting reviewed content or manufacturing missing facts.
 
 Saving these notes to GitHub is documentation work. Application development, deployment, and AI connections have not started.
+
 

@@ -14,8 +14,10 @@ These are illustrative, independent wireframes, not the application. Download a 
 | [Assessment definition and alignment](design-assessments-wireframe.html) | Screen pattern approved; sample exercise content remains fictional. |
 | [Content and instructional support](design-content-support-wireframe.html) | Screen pattern approved; source gaps remain illustrative and unverified. |
 | [Learning sequence](design-sequence-wireframe.html) | Screen pattern approved; linked record placements and visible dependencies. |
-| [Detailed Design-plan review](design-plan-review-wireframe.html) | New proposal; awaiting review. Linked-record edits, section/update flags, optional sharing/preferences, and sample-scope review. |
+| [Detailed Design-plan review](design-plan-review-wireframe.html) | Screen pattern and sample-choice explanations approved. |
+| [Development sample workspace](development-sample-wireframe.html) | New proposal; awaiting review. Written aid, Storyline, and Rise example workspaces with sample editing/acceptance and source/readiness flags. |
 
 The matching sources in [fragments](fragments/) preserve the editable in-conversation fragments. The files above add a standalone preview wrapper with preview styling, interactions, and fallback state handling. They are design artifacts, not a chosen production framework or technology stack. The wrapper does not verify browser accessibility or instructional correctness.
 
 See [screen status](../docs/ui/screen-review-status.md) and the [checkpoint](../docs/checkpoints/2026-10-17-design-review.md) for precedence, limitations, and next steps. Do not use historical labels or sample decisions to override current requirements.
+
