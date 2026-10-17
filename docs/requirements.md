@@ -18,7 +18,7 @@ The reference project for testing quality and estimating cost is approximately f
 - Six Boxes review to determine whether learning, nonlearning responses, a combination, or further investigation is appropriate.
 - Microlearning, courses, or mixed e-learning; Storyline, Rise, or both selected during Design.
 - Main and enabling objectives, reviewed Bloom alignment, assessments, instructional support, sequencing, and content mapping.
-- Text entry and file sources, initially Word and text-based PDFs, plus permitted web research. Exact extensions and size limits remain open.
+- Direct text entry and Word (.docx)/PowerPoint (.pptx) source uploads with basic extraction, plus permitted web research. File-size/count limits remain open.
 - Tool-specific storyboard skeletons, written scripts/specifications, and complete written job-aid/performance-support drafts.
 - Guest comments anchored to specific content, adjustable AI preferences, optional reflection and breaks, autosave, recovery, and version history.
 - PDF and editable PowerPoint exports of saved structured content.
@@ -114,6 +114,16 @@ Ask source questions once for the entire project's content mapping: provided sou
 AI applies these settings per enabling objective. Designers review matches, resolve specific issues, and can assign an objective-specific source without repeating the whole questionnaire or overriding the permitted source mode implicitly.
 
 Map main objective → enabling objective → required content/source → instructional support → practice/assessment → planned location. Show supported, partially supported, missing, and conflicting statuses. References must support the claims attributed to them. Preserve gaps instead of inventing facts.
+
+### Basic source-file import — approved MVP scope
+
+Accept Word (.docx) and PowerPoint (.pptx) uploads only. Direct pasted/typed source text remains available; permitted web research remains governed by the project's source settings.
+
+Use conventional parsers for basic extraction of available editable text and basic structure. Include PowerPoint speaker notes when present and retain slide references; retain Word section/heading references where available. Read straightforward table text where possible without promising complex table/layout reconstruction.
+
+No OCR, image/diagram interpretation, or faithful layout recreation is included. Flag missing or insufficient extractable text for designer review rather than inventing content. Basic file parsing does not require an AI call; later AI tasks use the extracted source content under the agreed source/review rules.
+
+PDF/TXT uploads and legacy .doc/.ppt conversion are outside this initial import scope. PDF and editable PowerPoint exports remain supported. File-size/count limits and detailed extraction-preview/error handling remain open.
 
 ### Design output and handoff
 

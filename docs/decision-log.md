@@ -14,7 +14,7 @@ Planning decisions through October 17, 2026. These are summarized decisions, not
 | Objective hierarchy | Break main objectives into meaningful enabling objectives to identify required content/support comprehensively. Keep integrated main-objective assessment. |
 | Assessments | Define and identify assessments in Design; carry them into storyboards rather than inventing them in Development. |
 | Source scope | Ask source questions once project-wide; map content/source relationships per enabling objective without repeating the questionnaire. |
-| Uploads | Text and file sources, without scanned extraction. |
+| Uploads | Basic extraction from Word (.docx) and PowerPoint (.pptx) only, including available speaker notes. Direct text entry remains; PDF/TXT uploads, legacy conversion, OCR, visual interpretation, and complex layout reconstruction are outside initial scope. PDF/PPTX exports remain supported. |
 | Supporting-material wording | “Add documentation of any supporting evidence if available”. |
 | Stakeholders | Add review availability and expected turnaround. |
 | Audience time | Remove the audience-time question from the stakeholder/constraints section. Five minutes remains a benchmark, not a universal cap. |
@@ -63,3 +63,7 @@ These later approvals supersede pending statuses in the earlier checkpoint. Curr
 ## Export refinement — approved October 17, 2026
 
 The user approved PDF handoff-document and editable PowerPoint storyboard organization, continuation slides for long content, preserved version/draft/source/issue details, and optional reviewer comments off by default in a separate appendix. Exact visual templates remain open. The [implementation brief](implementation-brief.md) consolidates the agreed workflow and identifies proposed delivery order and remaining choices; its creation is planning work, not authorization to start building.
+
+## Source import refinement — latest decision
+
+The user selected basic extraction and Word/PowerPoint uploads only. This replaces the earlier proposed Word/PDF/TXT/PPTX import set: the initial accepted file extensions are .docx and .pptx. Keep direct text entry and permitted web research. Basic extraction uses conventional parsers, with available PowerPoint speaker notes and useful source references; missing text stays visible. Size/count limits and detailed import preview/error handling remain open. PDF and editable PowerPoint exports are unaffected.

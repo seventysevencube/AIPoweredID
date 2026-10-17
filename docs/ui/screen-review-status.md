@@ -25,3 +25,7 @@ Approvals concern patterns and the stated requirements. They do not verify sampl
 
 
 
+
+## Upload-scope refinement after screen review
+
+The latest approved source-file scope is Word (.docx) and PowerPoint (.pptx), using basic extraction, including available speaker notes. Direct text entry remains. Earlier wireframe upload labels or accept filters showing PDF/TXT are superseded by this requirement and must be aligned during implementation; those independent design examples do not define the accepted production file types. PDF/PPTX exports remain supported. No source-import functionality has been implemented.

@@ -321,3 +321,7 @@ The user requested explanations distinguishing the two sample options. Replace t
 
 The user approved the detailed Design-plan review pattern and the clarified Development sample choices. Both choices provide the full outline plus one representative section: a structural sample retains explicit factual placeholders, while a written sample requires verified sources. Sample acceptance does not establish factual verification. The next UI review is the Development sample workspace.
 
+
+## Source upload scope — latest refinement
+
+The user limited source-file imports to Word (.docx) and PowerPoint (.pptx) with basic text/structure extraction, including available speaker notes and useful source references. Direct text entry and project-wide provided/web/both choices remain available. PDF/TXT uploads, legacy conversion, OCR, image/diagram interpretation, and complex layout reconstruction are outside initial scope. Source coverage and accuracy still require review; extracting text does not verify the claims it contains. PDF/PPTX export requirements are unchanged. Size/count limits and detailed import preview/error handling remain open.

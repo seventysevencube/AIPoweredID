@@ -25,7 +25,7 @@ Each stage's designer-reviewed output becomes the input for an editable, prefill
 - E-learning can be microlearning, a course, or a mix; select Storyline, Rise, or both afterward.
 - Main and enabling objectives use revised Bloom's taxonomy for cognitive learning outcomes.
 - Assessments are defined in Design and carried into the storyboard.
-- Project-wide source settings support text/file material, web research, or both; no scanned extraction.
+- Project-wide source settings support direct text entry, Word (.docx)/PowerPoint (.pptx) uploads with basic extraction, permitted web research, or both. No OCR or visual interpretation.
 - Storyboards and complete written performance-support drafts; readable PDF and editable PowerPoint exports. Reviewer comments are optional/off by default in a separate appendix.
 - A full deliverable skeleton with a representative populated section is generated first using **Generate Development sample**.
 - Guest review with required unverified display names, content-anchored comments, and fixed-version links; shared updates create new links.

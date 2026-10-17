@@ -230,3 +230,7 @@ The objectives task should produce only main/enabling objectives and their title
 ## Confirmed task order: objectives → assessments → content/support
 
 The user clarified that assessment design precedes content and instructional support. Keep the objectives task limited to objective records. Use the reviewed hierarchy and L2 links for the assessment task, including integrated main-objective evidence and the agreed task/answer/rubric/feedback/scoring/retry fields. Then pass the reviewed objectives and assessment records into the separate content/instructional-support task. This supersedes any direct objective-to-content handoff implied by the prior task-boundary note. Reuse stable records, retain uncertainty, and preserve prior drafts rather than rewriting accepted objectives or assessments during content planning.
+
+## Source parsing scope refinement
+
+The approved initial file imports are Word (.docx) and PowerPoint (.pptx), using conventional basic text/structure extraction rather than an AI parsing call. Include available speaker notes and retain useful source references. Direct text entry and permitted web research remain available. Do not apply OCR, interpret images/diagrams, reconstruct complex layouts, or invent content when text is unavailable. No PDF/TXT upload or legacy format-conversion support is included initially. Extracted text is source material, not verified truth; preserve coverage/conflict/missing-content checks before generation. Document exports remain PDF/PPTX and reuse saved structured content.

@@ -23,7 +23,7 @@ Proposed presentation from the discussion: short text fields and optional exampl
 1. What information supports your description of the performance gap? Examples: observations, work samples, stakeholder feedback, errors, or performance measures. Allow “Evidence not yet available.”
 2. Add documentation of any supporting evidence if available
 
-   Optional pasted text or file uploads; no scanned-document extraction. Preserve source references.
+   Optional pasted text or Word (.docx)/PowerPoint (.pptx) uploads with basic extraction; no scanned-document extraction. Preserve source references.
 3. What might be contributing to the gap? Select any that may apply: knowledge or skills; unclear expectations; process or workflow; tools or access; time or resources; incentives or competing priorities; other; not sure. These are hypotheses, not established causes.
 4. What has already been tried, and what happened? Allow “Nothing yet” and “Not known.”
 
@@ -159,3 +159,7 @@ The user approved this desktop layout approach. Form entry and brief review are 
 The user reviewed the Analysis form preview, including Project context/performance gap and Evidence/possible causes, with section navigation, optional guidance, and a preview autosave indicator, and said it looks good. Keep this layout pattern for the other Analysis sections. Next visual review: editable Analysis brief, sources/open issues, optional sharing, and handoff to the first Design performance-solution review. Wireframe sample data is illustrative and has no live backend or AI connection.
 
 The user also approved the Analysis brief review and handoff preview: expandable editable sections, explicit section-review status, contextual sources/guidance, visible open items, and confirmation before opening the initial Design structure. Preserve the distinction between saved edits, reviewed sections, and the accepted stage handoff. Next visual review is the detailed Design performance-solution screen using Six Boxes.
+
+## Source upload scope — latest refinement
+
+The user confirmed basic extraction from Word (.docx) and PowerPoint (.pptx) only, including available speaker notes. Keep direct text entry. This supersedes any earlier PDF/TXT upload examples. Use conventional parsers; flag missing text rather than applying OCR or interpreting image/diagram content. Size/count limits and detailed import preview/error behavior remain open. Export formats are unaffected.

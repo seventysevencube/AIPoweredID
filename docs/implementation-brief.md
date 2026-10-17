@@ -37,6 +37,10 @@ Keep these meanings separate:
 
 Guest comments remain feedback, not direct content edits or automatic AI instructions. Source files remain evidence, not application instructions.
 
+## Approved source imports
+
+Support Word (.docx) and PowerPoint (.pptx) uploads using basic extraction of editable text and structure, including available speaker notes and useful source references. Direct text entry and permitted web research remain available. Use conventional parsing rather than an AI call for basic extraction; preserve missing-text flags and do not infer image/diagram meaning. PDF/TXT source uploads, legacy format conversion, OCR, and complex layout reconstruction are outside the initial import scope. PDF/PPTX export support is unchanged. Size/count limits and detailed preview/error behavior remain open.
+
 ## Saving and accessibility
 
 Target device recovery capture during typing, server saves about one second after a pause, at least every five seconds of continuous typing while connected, immediate discrete saves, and navigation flushes. Only server acknowledgement permits an all-changes-saved claim. Protect unsynced work, completed AI results, undo/history, and conflict recovery. Retention and failure recovery still require decisions and testing.
@@ -63,7 +67,7 @@ Provider/model, costs, budgets, numerical quality thresholds, production prompts
 
 ## Suggested delivery order — proposal
 
-1. Finish the representative end-to-end examples and export layout review; settle the initial source formats/limits and critical account/sharing/recovery policies.
+1. Finish the representative end-to-end examples and export layout review; settle source size/count limits and import preview/error behavior and critical account/sharing/recovery policies.
 2. Establish the structured records, versioning, designer projects, and reliable autosave before integrating AI.
 3. Implement and check the Analysis → Design → Development workflow incrementally, retaining deterministic validation and review gates.
 4. Connect one phase's AI tasks at a time, adding positive/negative examples and measuring quality, correction effort, latency, and cost.
@@ -81,6 +85,6 @@ Existing wireframes are independent, local design examples with fictional conten
 
 ## Decisions still needed
 
-See [open decisions](open-decisions.md). Priorities include exact upload formats and limits, reviewed reference content/export layouts, designer sign-in, remaining link lifecycle controls, retention/recovery policy, Storyline/Rise feasibility, AI/provider/budget choices, and production quality thresholds.
+See [open decisions](open-decisions.md). Priorities include upload size/count limits and import preview/error behavior, reviewed reference content/export layouts, designer sign-in, remaining link lifecycle controls, retention/recovery policy, Storyline/Rise feasibility, AI/provider/budget choices, and production quality thresholds.
 
 Generated images/audio/video, OCR, native course files, direct reviewer editing, team coauthoring, and evaluation execution remain outside the approved MVP. Replies, resolution, and other collaboration additions are not included by implication.
