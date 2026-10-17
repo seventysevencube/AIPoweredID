@@ -17,7 +17,7 @@ Updated: October 17, 2026.
 
 ## Representative walkthrough
 
-- [Fictional complaint-routing example](examples/complaint-routing/README.md) — selected example; source packet and prefilled Analysis/brief are proposed for review before Six Boxes.
+- [Fictional complaint-routing example](examples/complaint-routing/README.md) — deferred at the user's request; source packet and prefilled Analysis/brief are retained as unreviewed drafts.
 
 ## Desktop review checkpoint
 

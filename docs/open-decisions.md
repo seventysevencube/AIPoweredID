@@ -4,13 +4,15 @@ Updated: October 17, 2026. Items below are unresolved details, not approved addi
 
 ## Next design work
 
-1. Review the [fictional complaint-routing reference packet and Analysis](examples/complaint-routing/README.md). The user selected this example; newly authored facts/measures and the Analysis draft await review. Then use the accepted Analysis as input to Six Boxes. Retain the approved pilot size, budget, and spending controls.
-2. Walk through a representative five-minute workplace example, covering both Storyline and Rise treatment and a nonlearning/performance-support branch.
-3. Create reviewed examples of a Design skeleton, main/enabling-objective map, assessments, a Storyline screen, a Rise block sequence, and a complete written job aid.
+1. Draft a technical build plan for the agreed MVP: application/data structure, sign-in and approved-email access, hosting/storage, AI connection, spending controls, and delivery order. Confirm the non-AI operating budget before recommending services. The user deferred the example walkthrough for now; it is not the current prerequisite for this planning step.
+2. Deferred at the user's request: the fictional complaint-routing walkthrough and its source/Analysis review. Retain the draft and revisit examples during the agreed phase-by-phase AI integration/quality work.
+3. When example review resumes, create/review the Design skeleton, main/enabling-objective map, assessments, Storyline screen, Rise block sequence, and complete written job aid. No example content has been approved by the deferral.
 4. Review representative PDF/PPTX page/slide templates, long build notes, source/open-issue appendices, accessible document structure, and the optional comment appendix. Contents/organization and comments optional/off by default are approved.
 5. Refine the implementation brief as the representative examples, remaining policies, and export layouts are reviewed. Building requires the user's subsequent instruction.
 
 ## Product and operational choices
+
+- Hosting, storage, and sign-in email operating budget, separate from the approved $20/month AI budget. No non-AI budget or technical service is selected yet.
 
 - Actual generation/revision/source volume, concurrency, and budget accounting/reset/enforcement implementation; expected completed output is approximately 0–1 total project/month for the pilot, not a quota; five designers, a total monthly AI budget of $20, an in-app warning at $16, and pausing requests that would exceed $20 are approved, without a hard account cap or per-designer allocation. Approved-email-list storage/maintenance implementation, authentication provider, code/session handling, and remaining account lifecycle details (including access removal and existing sessions) remain open. A simple approved-email list, one-time email-code sign-in, invitation-only access, one project owner, and multiple projects are agreed. No dedicated invitation dashboard is included. Account-free guest review links remain separate.
 - Guest link revocation/expiry and remaining lifecycle details; whether replies/resolution should be added later. Required unverified display names, fixed-version links, and new links for shared updates are now approved; do not expand collaboration scope by implication.

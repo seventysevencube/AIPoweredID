@@ -176,3 +176,7 @@ The user selected the existing fictional complaint-routing example for the end-t
 
 The draft separates the twenty-case audit from six-person observations, L3 routing accuracy from uncollected L2/L4 baselines, evidence from possible causes, and identified candidate L2 measures from final Design assessment items. It does not preselect an intervention or tool. Review this Analysis baseline before Six Boxes. The source packet is direct text; no DOCX/PPTX extraction, app AI generation, or live workflow has been tested by preparing it.
 
+
+## Fictional walkthrough deferred — latest steering
+
+The user asked to skip the example for now. Retain the packet/Analysis draft as unreviewed content and do not treat the prior proposed checkpoint as accepted or advance the example into Six Boxes. The next proposed planning work is the technical build plan. This deferral does not alter the approved Analysis form, source-import behavior, handoff contract, or later phase-by-phase prompt/example review requirement.

@@ -2,7 +2,7 @@
 
 Version: 1. Updated: October 17, 2026.
 
-Status: proposed prefilled responses and synthesized Analysis brief for designer review. Uses the [fictional reference packet](sources.md). This planning draft was authored in the conversation; the app's AI pipeline has not run. No route, intervention, assessment item, or authoring tool is approved by this draft.
+Status: proposed prefilled responses and synthesized Analysis brief retained as an unreviewed draft; the user deferred this walkthrough for now. Uses the [fictional reference packet](sources.md). This planning draft was authored in the conversation; the app's AI pipeline has not run. No route, intervention, assessment item, or authoring tool is approved by this draft.
 
 ## 1. Prefilled Analysis form
 

@@ -89,7 +89,7 @@ Budget accounting, treatment of pending/in-flight costs, reset timing, provider 
 
 ## Suggested delivery order — proposal
 
-1. Finish the representative end-to-end examples and export layout review; settle source size/count limits and other import-error handling and critical account/sharing/recovery policies.
+1. Prepare a technical build plan and confirm the non-AI operating budget. The user deferred the representative example walkthrough for now; retain it for later phase-by-phase AI quality work. Settle practical source limits, remaining operating policies, and export layouts as the plan is refined.
 2. Establish the structured records, versioning, designer projects, and reliable autosave before integrating AI.
 3. Implement and check the Analysis → Design → Development workflow incrementally, retaining deterministic validation and review gates.
 4. Connect one phase's AI tasks at a time, adding positive/negative examples and measuring quality, correction effort, latency, and cost.
@@ -115,3 +115,7 @@ Generated images/audio/video, OCR, native course files, direct reviewer editing,
 
 The user selected the [fictional complaint-routing example](examples/complaint-routing/README.md). Its authored source packet and proposed prefilled Analysis/brief are prepared for review; the content remains fictional and unapproved as an exercise baseline until reviewed. Use the accepted Analysis to seed Six Boxes before choosing interventions, then work through the remaining Design/Development/export examples. This is planning content, not a live pipeline test or proof of cost/accessibility/readiness.
 
+
+## Walkthrough deferred — latest steering
+
+The user asked to skip the fictional example for now and move to the next step. Preserve its source packet and Analysis draft as unreviewed planning content; do not progress its Six Boxes/Design stages or treat its assumptions as accepted. The next proposed work is the technical build plan, including hosting/storage/sign-in/AI choices and a phased implementation approach. Confirm the hosting/storage/sign-in-email budget separately from the $20 AI budget before recommending services. No actual app build, deployment, or AI connection is authorized by documenting this next step. Revisit instructional examples during each phase's AI integration as previously agreed.

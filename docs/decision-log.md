@@ -104,3 +104,7 @@ The user expects about zero to one complete project per month, in response to th
 
 The user selected the fictional complaint-routing example rather than a real organizational project. A new reference packet and prefilled Analysis/brief have been prepared for designer review. Example selection does not approve the newly authored facts, evaluation measures, intervention route, or authoring tools. The next checkpoint is Analysis review followed by Six Boxes. See the [example index](examples/complaint-routing/README.md). No app/AI pipeline or actual source import has run.
 
+
+## Fictional walkthrough deferred
+
+The user requested skipping the fictional complaint-routing example for now. Retain the authored source packet and Analysis draft without approving their content or proceeding with the exercise. The next proposed planning step is a technical build plan for the approved MVP and clarification of the non-AI operating budget. The earlier requirement to revisit prompts/examples during phase-by-phase AI integration remains in place. Application implementation has not started.

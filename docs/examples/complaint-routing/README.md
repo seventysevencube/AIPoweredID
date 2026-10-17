@@ -2,7 +2,7 @@
 
 Version: 1. Updated: October 17, 2026.
 
-Status: The user selected this fictional example for an end-to-end walkthrough. The newly written source facts, measures, and Analysis draft below await designer review. Selecting the example does not accept its detailed content or a learning intervention.
+Status: Deferred at the user's request. The source facts, measures, and Analysis draft are retained for later review; no new exercise content or learning intervention has been accepted. Do not advance this walkthrough until the user resumes it.
 
 ## Review order
 
@@ -23,4 +23,4 @@ The earlier independent wireframes use related fictional complaint examples, but
 
 ## Current checkpoint
 
-Source packet: proposed for review. Analysis: proposed for review. Route/interventions, learning objectives, detailed assessments, deliverables, and authoring tools: not yet decided for this walkthrough.
+Source packet: unreviewed; review deferred. Analysis: unreviewed; review deferred. Route/interventions, learning objectives, detailed assessments, deliverables, and authoring tools: not yet decided for this walkthrough.
