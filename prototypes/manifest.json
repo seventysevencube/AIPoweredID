@@ -157,7 +157,19 @@
       "kind": "editable fragment",
       "bytes": 31314,
       "sha256": "c0e98826550ad88a05024d91ad8dc4b573d48f82d55f0043942de4e503d242fb"
+    },
+    {
+      "path": "guest-review-wireframe.html",
+      "kind": "standalone preview",
+      "bytes": 106067,
+      "sha256": "1ba2a602af9b2b77077c8a759ecba108f12467f53ac7987d5fe8aebb2c4a3b5f"
+    },
+    {
+      "path": "fragments/guest-review-wireframe.html",
+      "kind": "editable fragment",
+      "bytes": 23634,
+      "sha256": "01b8e90796ddf5a31a3ab888ec6ed04c59e3dca41280ed5f60bff98ac07d3d59"
     }
   ],
-  "revision": "Development sample workspace approved; full-draft review and readiness screen proposed. Draft export summary only; no live generation or document export."
+  "revision": "Full-draft review/readiness approved; guest-review sharing/commenting UI proposed with fixed-version links and unverified display names. No live sharing or messaging."
 }

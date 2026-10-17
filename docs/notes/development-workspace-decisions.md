@@ -84,3 +84,8 @@ The next standalone wireframe uses the Storyline example to examine section revi
 
 Only the earlier sample-workspace pattern is approved at this checkpoint. The full-draft review screen and its exact controls are proposals. Static fragment/script checks do not establish browser runtime behavior, accessibility conformance, real autosave, version recovery, or instructional accuracy.
 
+
+## Full-draft review and readiness — screen pattern approved
+
+The user confirmed the full-draft review pattern and the distinction between section review and Ready for handoff. Source/answer/practice/tool blockers remain independent of review flags. This approval does not verify fictional content, resolve example issues, select Storyline for a live project, or confirm production functionality. Guest review and document export layouts remain subsequent screen work.
+

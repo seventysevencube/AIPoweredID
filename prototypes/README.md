@@ -16,10 +16,12 @@ These are illustrative, independent wireframes, not the application. Download a 
 | [Learning sequence](design-sequence-wireframe.html) | Screen pattern approved; linked record placements and visible dependencies. |
 | [Detailed Design-plan review](design-plan-review-wireframe.html) | Screen pattern and sample-choice explanations approved. |
 | [Development sample workspace](development-sample-wireframe.html) | Screen pattern approved. Written aid, Storyline, and Rise examples. |
-| [Full-draft review and readiness](development-review-wireframe.html) | New proposal; awaiting review. Storyline example with section editing/review, prior edit snapshot, linked assessment records, and readiness checks. Draft export summary only; no PDF/PPTX file generation. |
+| [Full-draft review and readiness](development-review-wireframe.html) | Screen pattern approved. Storyline example; review completion remains separate from handoff readiness. Draft export summary only. |
+| [Guest review and anchored comments](guest-review-wireframe.html) | New proposal; awaiting review. Designer sharing and guest commenting views, fixed-version link and display-name proposals. No live link or external posting. |
 
 The matching sources in [fragments](fragments/) preserve the editable in-conversation fragments. The files above add a standalone preview wrapper with preview styling, interactions, and fallback state handling. They are design artifacts, not a chosen production framework or technology stack. The wrapper does not verify browser accessibility or instructional correctness.
 
 See [screen status](../docs/ui/screen-review-status.md) and the [checkpoint](../docs/checkpoints/2026-10-17-design-review.md) for precedence, limitations, and next steps. Do not use historical labels or sample decisions to override current requirements.
+
 
 

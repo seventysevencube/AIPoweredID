@@ -31,3 +31,20 @@ Status: Guest access and anchored comments confirmed for the MVP; other details 
 - Keep review optional and progression under the designer's control. No automatic external invitations or messages are implied by these proposals.
 
 The user explicitly selected guest review without an account and content-anchored comments for the MVP. Keep the review experience focused on these requirements. Owner authentication method, display-name requirements, comment threading/reply/resolution, expiry defaults, and detailed version/link-update interactions are not yet confirmed; they are not automatically required MVP features merely because they were proposed above.
+
+## Guest-review screen — new proposal, awaiting review
+
+Two connected example views show Designer sharing and Guest comments. The draft selector represents different reviewable artifacts (Analysis brief, Design plan, Storyline/Rise storyboard, and written aid); it is not a project tool-choice control. Only representative review targets are included in the wireframe.
+
+- Share a selected artifact/version, with source references and open issues visible. Optional supporting material requires explicit selection; raw uploads and private owner notes are not automatically exposed.
+- Proposed access wording: anyone with an active review link can view/comment on that shared snapshot without an account. Guests cannot directly edit content or approve stage progression.
+- Proposed name behavior: a display name is required before posting; it is visible with the comment and explicitly unverified. This remains a proposal for user review, not an authentication method or a previously confirmed MVP requirement.
+- Proposed version behavior: a review link stays tied to a fixed draft snapshot. Later edits do not silently replace it; sharing an updated draft creates a new link and earlier comments retain their original version references. Exact lifecycle/revocation/expiry details remain open.
+- Guests choose a section, objective, enabling objective, assessment, screen, block group, or support section in the outline and comment directly on that target. Preserve stable target IDs and snapshot references behind human-readable labels.
+- Unsent comment drafts stay associated with their selected review target in the preview. Posted example comments appear in both the guest item view and the designer feedback view, labeled with the original artifact/version and target.
+- Designer comments view preserves original references; feedback does not rewrite content or become accepted AI instructions automatically. Replies, resolution, expiry, and notifications are not added to this screen by implication.
+
+All link creation and posting in the wireframe are local illustrations. The reserved example address is inactive. No real reviewer is invited and no external message is sent. Default sample comments are fictional; saved prototype files do not include user-entered interaction snapshots. The preview's bounded text/comment capacity is not a product limit decision. Structural/script checks do not verify browser behavior, accessibility, server persistence, security, or actual link access controls.
+
+The guest-review interface, required-name proposal, and fixed-version/new-link proposal await user review. Previously confirmed MVP requirements remain guest access without an account and comments anchored to specific content.
+
