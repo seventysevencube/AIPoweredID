@@ -157,3 +157,5 @@ The user approved this desktop layout approach. Form entry and brief review are 
 ## Wireframe review
 
 The user reviewed the Analysis form preview, including Project context/performance gap and Evidence/possible causes, with section navigation, optional guidance, and a preview autosave indicator, and said it looks good. Keep this layout pattern for the other Analysis sections. Next visual review: editable Analysis brief, sources/open issues, optional sharing, and handoff to the first Design performance-solution review. Wireframe sample data is illustrative and has no live backend or AI connection.
+
+The user also approved the Analysis brief review and handoff preview: expandable editable sections, explicit section-review status, contextual sources/guidance, visible open items, and confirmation before opening the initial Design structure. Preserve the distinction between saved edits, reviewed sections, and the accepted stage handoff. Next visual review is the detailed Design performance-solution screen using Six Boxes.
