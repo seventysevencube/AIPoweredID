@@ -24,6 +24,12 @@ Use [current requirements](requirements.md) and the [detailed notes](README.md) 
 8. **Optional guest review:** account-free review of a selected fixed-version snapshot, with required unverified display names and anchored comments. Sharing an updated version creates a new link; earlier comments keep their original version/target. Select supporting materials explicitly.
 9. **Export:** PDF handoff document or editable PowerPoint storyboard from the selected saved structured content, without an AI rewrite. Draft exports retain visible gaps. Ready for handoff is a separate designer-confirmed state with essential issues resolved.
 
+## Designer access — approved pilot scope
+
+Designer access is an invitation-only pilot. Only invited participants may create or activate designer accounts; open public registration is outside the MVP. Each designer still owns their own projects and may save multiple projects. Guest reviewers do not need a pilot invitation or an account: an active shared review link grants the agreed view/comment access to its selected fixed-version snapshot, not designer account access.
+
+Designer sign-in method, invitation administration, and remaining account lifecycle details are still open. This access decision does not add an admin console or authorize sending invitations, creating accounts, or deploying the app.
+
 ## Content and state contracts
 
 Preserve stable record IDs, accepted decisions, objective/enabling-objective/Bloom relationships, defined assessments, source references, content mappings, sequence placements, tool allocation, and open issues across stages.

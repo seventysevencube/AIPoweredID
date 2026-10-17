@@ -61,3 +61,7 @@ The user accepted the guest-review approach for the MVP after reviewing both des
 - Replies, resolution, expiry, revocation/lifecycle controls, and notifications are not added to the MVP by this approval. Their detailed scope remains open.
 
 This latest approval supersedes earlier statements that display-name and version-link behavior were undecided. It approves requirements/interface patterns, not actual sharing, persistence, or access-control implementation. No real links, reviewer invitations, or messages were created by the prototype.
+
+## Pilot access versus guest review — latest clarification
+
+The user selected invitation-only access for designer accounts. This does not require reviewers to join the pilot or create accounts: an active review link continues to grant access to its selected fixed-version draft for viewing/comments. A guest link does not create designer access or permit project ownership/direct editing. Required unverified display names, original comment version/target references, and the approved link-snapshot behavior remain as agreed. No real invitation or account has been created.

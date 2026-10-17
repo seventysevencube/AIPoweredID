@@ -12,7 +12,7 @@ The reference project for testing quality and estimating cost is approximately f
 
 ### In scope
 
-- Designer accounts, one owner per project, and multiple saved projects per designer.
+- Invitation-only designer accounts, one owner per project, and multiple saved projects per designer; no open public registration.
 - Analysis forms and an editable synthesized Analysis brief.
 - Full evaluation-planning questions to identify Kirkpatrick L2 learning, L3 behavior, and L4 results measures.
 - Six Boxes review to determine whether learning, nonlearning responses, a combination, or further investigation is appropriate.
@@ -171,7 +171,9 @@ Automatically protect edits across all stages. Target online saves about one sec
 
 Show actual saving/saved/device-only/error status. **All changes saved** requires server acknowledgement. Provide reconnection recovery, version history/undo, conflict protection, and supported warnings for unsynced changes. Autosave never accepts or publishes content; reviewer comment drafts are separate from posting. Timings are implementation targets to verify, not an absolute guarantee against every device/storage failure. Retention and backup policy remain open.
 
-Designers sign in, own/manage their projects, and can have multiple projects. Project home shows current stage, saved time, issues, and next action. New projects start with a working title and Analysis; **Continue project** resumes saved work. Authentication method is not yet chosen.
+The MVP uses an invitation-only pilot: only invited participants may create or activate designer accounts. Public registration is outside scope. Account invitation does not replace the separate account-free guest-review link flow.
+
+Designers sign in, own/manage their projects, and can have multiple projects. Project home shows current stage, saved time, issues, and next action. New projects start with a working title and Analysis; **Continue project** resumes saved work. Authentication method and invitation-management details are not yet chosen.
 
 ## 9. AI process and next work
 

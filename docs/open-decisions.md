@@ -4,7 +4,7 @@ Updated: October 17, 2026. Items below are unresolved details, not approved addi
 
 ## Next design work
 
-1. Settle source-upload size/count limits and remaining processing-error details. Basic extraction from Word (.docx) and PowerPoint (.pptx) only is approved. Review the [implementation brief](implementation-brief.md), which consolidates approved requirements and separates proposed delivery order from remaining choices.
+1. Choose the designer sign-in method. Invitation-only pilot access is approved; open public registration is excluded. Review the [implementation brief](implementation-brief.md) for the consolidated workflow and remaining choices.
 2. Walk through a representative five-minute workplace example, covering both Storyline and Rise treatment and a nonlearning/performance-support branch.
 3. Create reviewed examples of a Design skeleton, main/enabling-objective map, assessments, a Storyline screen, a Rise block sequence, and a complete written job aid.
 4. Review representative PDF/PPTX page/slide templates, long build notes, source/open-issue appendices, accessible document structure, and the optional comment appendix. Contents/organization and comments optional/off by default are approved.
@@ -12,7 +12,7 @@ Updated: October 17, 2026. Items below are unresolved details, not approved addi
 
 ## Product and operational choices
 
-- Designer sign-in method and account lifecycle; project ownership/multiple projects are already agreed.
+- Designer sign-in method, invitation administration, and remaining account lifecycle details. Invitation-only pilot access (no public registration), one project owner, and multiple projects are already agreed. Account-free guest review links remain separate.
 - Guest link revocation/expiry and remaining lifecycle details; whether replies/resolution should be added later. Required unverified display names, fixed-version links, and new links for shared updates are now approved; do not expand collaboration scope by implication.
 - Default settings for the four AI assistance controls and final reflection UI. Break reminders are already off by default.
 - Upload size/count limits, straightforward table-text behavior, and remaining processing errors. The no-usable-text case is settled: deterministic warning/exclusion, with no AI, summary, text preview, or import-review gate. Source formats are settled: .docx/.pptx only, using basic extraction. No OCR, image/diagram interpretation, or complex layout reconstruction; PDF/TXT uploads and legacy conversion are outside initial scope.

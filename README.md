@@ -17,6 +17,8 @@ Each stage's designer-reviewed output becomes the input for an editable, prefill
 
 ## Key decisions
 
+- Invitation-only pilot for designer accounts; guest review remains account-free through shared links.
+
 - Desktop experience with a WCAG 2.2 AA acceptance target.
 - Shared workflow for new and experienced designers, with adjustable guidance and AI contribution.
 - Analysis includes Kirkpatrick L2/L3/L4 evaluation planning.

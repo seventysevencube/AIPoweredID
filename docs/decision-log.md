@@ -26,7 +26,7 @@ Planning decisions through October 17, 2026. These are summarized decisions, not
 | AI preferences | Guidance depth, contribution, output detail, and resources are separate controls; reflection is optional. |
 | Breaks | Optional pause/resume and accessible break choices; reminders off by default. |
 | Saving | Autosave, recovery, truthful server-confirmed status, version/undo/conflict protection, and optional Save now. Saving does not equal acceptance or progression. |
-| Project management | Designers sign in, own projects, and can have multiple projects; resume from project home. Auth method remains open. |
+| Project management | Invitation-only pilot for designer accounts; no public registration. Designers own multiple saved projects and resume from project home. Guest link access remains account-free. Sign-in method and invitation-management details remain open. |
 | AI quality process | Agreed baseline; revisit prompts, add examples, test, and refine at each phase's AI integration. |
 | Repository | User requested all planning work/notes be saved to seventysevencube/AIPoweredID. No app build has been authorized by this documentation-saving request. |
 
@@ -71,3 +71,7 @@ The user selected basic extraction and Word/PowerPoint uploads only. This replac
 ## Import flow simplification — latest decision
 
 The user required a warning when a file has no usable text, with no AI used for this check and no extraction summary or text preview. Use deterministic checks of conventional extraction results. A file with no extracted source text is excluded from AI context; the designer may continue using other sources or direct text entry. No mandatory import-review gate is introduced. This supersedes the proposed summary/preview flow and earlier notes leaving preview behavior open. Word/PowerPoint import scope and PDF/PowerPoint exports are unchanged.
+
+## Designer access — invitation-only pilot approved
+
+The user chose an invitation-only pilot rather than open registration for designer accounts. Restrict designer account creation/activation to invited participants while retaining one project owner and multiple saved projects. Guest reviewers still use active shared links without accounts or pilot membership. Designer sign-in method and invitation-management details remain undecided. This is a requirements decision, not authorization to send invitations, create accounts, or launch the pilot.
