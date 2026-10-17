@@ -11,7 +11,8 @@ These are illustrative, independent wireframes, not the application. Download a 
 | [Earlier intervention / format / tools](design-structure-wireframe.html) | Historical opening: deliverable-first question and old support label are superseded. Format/tool interactions remain available for review. |
 | [Solution choice before deliverables](design-solution-choice-wireframe.html) | Current revised intervention sequence and renamed aid output. |
 | [Main and enabling objectives](design-objectives-wireframe.html) | Objective-only pattern approved; assessments come next. |
-| [Assessment definition and alignment](design-assessments-wireframe.html) | New proposal; awaiting review. Fictional exercise rules and cases. |
+| [Assessment definition and alignment](design-assessments-wireframe.html) | Screen pattern approved; sample exercise content remains fictional. |
+| [Content and instructional support](design-content-support-wireframe.html) | New proposal; awaiting review. Project-wide source settings, per-objective plans, and coverage gaps. |
 
 The matching sources in [fragments](fragments/) preserve the editable in-conversation fragments. The files above add a standalone preview wrapper with preview styling, interactions, and fallback state handling. They are design artifacts, not a chosen production framework or technology stack. The wrapper does not verify browser accessibility or instructional correctness.
 

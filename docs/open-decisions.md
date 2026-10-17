@@ -4,7 +4,7 @@ Updated: October 17, 2026. Items below are unresolved details, not approved addi
 
 ## Next design work
 
-1. Review the new assessment-definition/alignment wireframe. The objective-only screen pattern and objectives → assessments → content/support order are approved. Then design content and instructional support, activities/content mapping, Design plan review, Development outline/sample/review, guest review, and exports. See [screen review status](ui/screen-review-status.md).
+1. Review the new Content and instructional support wireframe. Objectives-only and assessment-definition/alignment patterns are approved; keep objectives → assessments → content/support. Then design learning sequencing, the assembled Design-plan review, Development outline/sample/review, guest review, and exports. See [screen review status](ui/screen-review-status.md).
 2. Walk through a representative five-minute workplace example, covering both Storyline and Rise treatment and a nonlearning/performance-support branch.
 3. Create reviewed examples of a Design skeleton, main/enabling-objective map, assessments, a Storyline screen, a Rise block sequence, and a complete written job aid.
 4. Specify PDF/PPTX templates, placement of long build notes and source/open-issue appendices, accessible document structure, and whether reviewer comments can be included optionally.

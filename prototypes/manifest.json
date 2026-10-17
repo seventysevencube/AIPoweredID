@@ -97,7 +97,19 @@
       "kind": "editable fragment",
       "bytes": 29158,
       "sha256": "5173ae87c7531e006abcfa36839ff0dde949e317e581f38c1d4e1fd93be661af"
+    },
+    {
+      "path": "design-content-support-wireframe.html",
+      "kind": "standalone preview",
+      "bytes": 117291,
+      "sha256": "7bf19269b5d0c20cdf7f240f63495865d2923f2b038cfdb380c64eb932ee2895"
+    },
+    {
+      "path": "fragments/design-content-support-wireframe.html",
+      "kind": "editable fragment",
+      "bytes": 32120,
+      "sha256": "982dfdddfd609700a9f430092d939c7df7259d0c4a9dc4996b4c7ec892dc4e3f"
     }
   ],
-  "revision": "Assessment/Practice display labels expanded; stable internal record IDs retained."
+  "revision": "Assessment screen pattern approved. Content and instructional support preview added for review, with project-wide source settings."
 }
