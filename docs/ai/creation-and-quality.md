@@ -247,6 +247,12 @@ The initial pilot is expected to have five instructional designers. This does no
 
 The approved monthly AI budget is $20 total for the five-designer pilot, shared across the pilot rather than $20 per designer. This is a spending budget, not an estimate or a promise of a particular number of projects/generations. Hosting, storage, and sign-in email delivery are separate costs; no budgets for those have been approved. Provider/model selection, realistic usage benchmarking, and budget tracking/enforcement details remain open.
 
-Proposed next decision, not yet approved: show an in-app warning at $16 (80% of the monthly budget), then pause new AI requests that would exceed the $20 budget while preserving work and keeping manual editing, review, and non-AI exports available. Exact enforcement must account for in-flight requests and be validated with the selected provider; no live cap or warning is configured by these notes.
+Approved spending-control policy: show an in-app warning when total monthly pilot AI usage reaches $16 (80% of the $20 budget). Pause new AI requests that would exceed the $20 monthly pilot budget. Preserve saved work and keep manual editing, review, and non-AI exports available. This is a shared pilot limit, not a per-designer allowance.
+
+Budget accounting, treatment of pending/in-flight costs, reset timing, provider selection, and practical enforcement still require implementation and validation. These planning notes configure no live spending limit or provider account.
 
 Existing controls still apply: explicit AI actions, reuse parsed sources/context, targeted revisions, bounded repairs, preservation of accepted work, and document exports without an AI rewrite. Count actual AI operation costs consistently once provider billing and supporting services are selected. No automatic per-user $4 allocation or guaranteed generation count follows from the five-person/$20 planning figures.
+
+## AI spending-control approval
+
+The user approved the $16 warning and the pause on new AI requests that would exceed the $20 shared monthly pilot budget. Apply this admission policy to new AI generation/revision/review operations; non-AI source extraction, saving, manual editing, reading/comments, and exports remain available. Preserve completed and accepted work. Provider/cost accounting and enforcement require validation; the budget is not a guarantee of workload capacity or a numerical generation quota.

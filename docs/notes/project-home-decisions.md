@@ -40,8 +40,14 @@ The operator manages the pilot list; a code request does not itself add someone 
 
 ## Expected pilot size — approved planning assumption
 
-Plan the initial pilot for five instructional designers. This is an expected participant count for capacity and AI-usage planning, not a hard five-account limit, a project quota, or an assumption that all five will generate content simultaneously. Guest reviewers are separate from this designer count. The monthly AI budget is now $20 total for the pilot; usage frequency and warning/stop behavior remain open.
+Plan the initial pilot for five instructional designers. This is an expected participant count for capacity and AI-usage planning, not a hard five-account limit, a project quota, or an assumption that all five will generate content simultaneously. Guest reviewers are separate from this designer count. The monthly AI budget is now $20 total for the pilot; usage frequency remains open, while the later $16 warning/$20 pause decision is approved.
 
 ## Monthly AI budget — approved pilot constraint
 
-The approved monthly AI budget is $20 total for the five-designer pilot, shared across the pilot rather than $20 per designer. This is a spending budget, not an estimate or a promise of a particular number of projects/generations. Hosting, storage, and sign-in email delivery are separate costs; no budgets for those have been approved. Provider/model selection, realistic usage benchmarking, and budget tracking/enforcement details remain open. Manual editing, review, and export do not initiate AI calls under the existing workflow. How the UI warns or pauses AI generation at the limit remains the next policy decision.
+The approved monthly AI budget is $20 total for the five-designer pilot, shared across the pilot rather than $20 per designer. This is a spending budget, not an estimate or a promise of a particular number of projects/generations. Hosting, storage, and sign-in email delivery are separate costs; no budgets for those have been approved. Provider/model selection, realistic usage benchmarking, and budget tracking/enforcement details remain open. Manual editing, review, and export do not initiate AI calls under the existing workflow. The later approved rule is a $16 warning and pausing new AI requests that would exceed $20; exact UI presentation and accounting implementation remain open.
+
+## AI spending warning and pause — approved
+
+Approved spending-control policy: show an in-app warning when total monthly pilot AI usage reaches $16 (80% of the $20 budget). Pause new AI requests that would exceed the $20 monthly pilot budget. Preserve saved work and keep manual editing, review, and non-AI exports available. This is a shared pilot limit, not a per-designer allowance.
+
+The limit must not sign a designer out, discard edits, or block reading/exporting existing work. Budget accounting, treatment of pending/in-flight costs, reset timing, provider selection, and practical enforcement still require implementation and validation. These planning notes configure no live spending limit or provider account.

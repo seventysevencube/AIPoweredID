@@ -181,7 +181,9 @@ Designers sign in, own/manage their projects, and can have multiple projects. Pr
 
 The approved monthly AI budget is $20 total for the five-designer pilot, shared across the pilot rather than $20 per designer. This is a spending budget, not an estimate or a promise of a particular number of projects/generations. Hosting, storage, and sign-in email delivery are separate costs; no budgets for those have been approved. Provider/model selection, realistic usage benchmarking, and budget tracking/enforcement details remain open.
 
-The warning threshold and behavior at the spending limit have not yet been approved. No per-designer dollar allocation or generation quota is implied.
+Approved spending-control policy: show an in-app warning when total monthly pilot AI usage reaches $16 (80% of the $20 budget). Pause new AI requests that would exceed the $20 monthly pilot budget. Preserve saved work and keep manual editing, review, and non-AI exports available. This is a shared pilot limit, not a per-designer allowance.
+
+Budget accounting, treatment of pending/in-flight costs, reset timing, provider selection, and practical enforcement still require implementation and validation. These planning notes configure no live spending limit or provider account. No per-designer dollar allocation or generation quota is implied.
 
 Use shared rules plus stage/task-specific prompts, approved project context, relevant source passages, examples, structured outputs, and quality checks. Only run the prompts required for the action. Use application validation, focused AI review, and designer judgment; bound repairs and never silently rewrite accepted content.
 

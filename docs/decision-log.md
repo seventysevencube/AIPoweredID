@@ -91,3 +91,7 @@ The user expects five designers in the initial pilot. Use this count for capacit
 ## Monthly pilot AI budget — $20 approved
 
 The user set the monthly AI budget at $20 in response to the question about the five-designer pilot's AI budget. This is a total shared pilot budget, not a per-designer allocation or an estimate of what the workload will cost. Hosting/storage/sign-in emails are separate costs. Warning and stop behavior are the next decision; no provider, numerical generation quota, or live spending enforcement is selected or configured.
+
+## AI spending controls — approved
+
+The user approved an in-app warning at $16 of the shared $20 monthly pilot AI budget and pausing new AI requests that would exceed $20. Preserve saved work and continue to allow manual editing, review, and non-AI exports. This supersedes the earlier proposal status of the thresholds/stop policy. Provider selection, usage assumptions, accounting/reset behavior, and enforcement implementation remain open; no live spending controls have been configured.
