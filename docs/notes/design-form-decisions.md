@@ -263,3 +263,10 @@ The designer reviews, accepts, edits, or overrides the proposal before output ty
 Keep the response route and evaluation plan consistent. A performance aid may support learning, workplace performance, or both; its purpose determines whether learning objectives and L2 measures apply. A solely nonlearning aid requires an explicit review/update of the earlier route and a linked L2 not-applicable rationale, retaining relevant L3/L4 measures. A combined solution retains nonlearning dependencies. Do not silently change a confirmed route, create a second evaluation plan, or discard prior draft work. Only e-learning components proceed through microlearning/course/mix and Storyline/Rise/both selection.
 
 The revised solution-choice/deliverables preview supersedes the earlier intervention screen that asked for deliverables before this decision. Screen wording and purpose/route-confirmation presentation remain open to visual review. The earlier wireframes remain design history, not an approved production implementation.
+
+## Repository and objective-screen checkpoint
+
+The user asked to proceed after the revised AI-supported solution-choice/deliverables screen and requested a repository checkpoint. Retain that corrected sequence as the current pattern. This does not turn example radio choices into project requirements or verify sample instructional content.
+
+The checkpoint includes the current planning documents, screen-review status, seven illustrative wireframes as editable fragments and standalone previews, and a manifest. The newly proposed learning-objectives screen covers a main objective, enabling-objective hierarchy, revised Bloom levels, L2 links, conditions/criteria, content/support needs, review status, stable IDs, and integrated coverage review. It awaits user review; the assessment-definition/alignment screen is next. The sample learning-aid branch does not limit the MVP to aid-only delivery. No production app, live AI, backend saving/sharing, or deployment is implemented.
+

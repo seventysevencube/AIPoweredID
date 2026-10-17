@@ -1,0 +1,257 @@
+<div id="aipid-analysis-wireframe" class="af-app" aria-label="Analysis workspace wireframe">
+  <header class="af-chrome">
+    <div class="af-brand"><i data-lucide="notebook-pen" aria-hidden="true"></i><span>AIPoweredID</span></div>
+    <span class="af-demo">Wireframe · Sample data</span>
+  </header>
+  <div class="af-projectbar">
+    <div><span class="af-small">Project</span><p class="af-project-title" data-project-title>Customer complaint escalation</p></div>
+    <ol class="af-stages" aria-label="Project stages"><li aria-current="step">Analysis</li><li>Design</li><li>Development</li></ol>
+  </div>
+  <div class="af-shell">
+    <nav class="af-sidebar" aria-label="Analysis sections">
+      <button class="af-button af-home-button cursor-interaction" type="button" data-action="home"><i data-lucide="arrow-left" aria-hidden="true"></i>Project home</button>
+      <p class="af-nav-title">Analysis</p>
+      <ol class="af-section-list">
+        <li><button class="af-section cursor-interaction" type="button" data-section="0" aria-current="step"><span class="af-number">1</span><span>Project context<span class="af-section-status">Current section</span></span></button></li>
+        <li><button class="af-section cursor-interaction" type="button" data-section="1"><span class="af-number">2</span><span>Evidence and causes<span class="af-section-status">Not started</span></span></button></li>
+        <li class="af-future"><span class="af-number">3</span><span>Audience and environment</span></li>
+        <li class="af-future"><span class="af-number">4</span><span>Stakeholders and constraints</span></li>
+        <li class="af-future"><span class="af-number">5</span><span>Evaluation planning</span></li>
+      </ol>
+      <p class="af-nav-note">This preview includes sections 1 and 2.</p>
+      <p class="af-review-label"><i data-lucide="file-check" aria-hidden="true"></i>Review Analysis brief</p>
+    </nav>
+    <main class="af-main" aria-label="Analysis form"></main>
+    <aside class="af-help" id="af-guidance" aria-label="Contextual guidance" hidden></aside>
+  </div>
+  <div class="af-secondary-view" hidden></div>
+  <footer class="af-footer"><span>Preview only · No live saving, file upload, or AI connection</span><span class="af-announce" role="status" aria-live="polite"></span></footer>
+</div>
+<style>
+  #aipid-analysis-wireframe {
+    color-scheme: light dark;
+    --af-bg: light-dark(#f5f5f4,#171717);
+    --af-paper: light-dark(#ffffff,#222222);
+    --af-ink: light-dark(#242424,#f2f2f0);
+    --af-soft: light-dark(#565656,#bdbdb9);
+    --af-line: light-dark(#d4d4d0,#50504c);
+    --af-inset: light-dark(#eeeee9,#30302d);
+    --af-button: light-dark(#30302d,#eeeeea);
+    --af-button-text: light-dark(#ffffff,#242424);
+    --af-gap: 24px;
+    background: var(--af-bg); color: var(--af-ink);
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size: 15px; line-height: 1.5; font-weight: 400;
+  }
+  #aipid-analysis-wireframe * {box-sizing:border-box;}
+  #aipid-analysis-wireframe [hidden] {display:none !important;}
+  #aipid-analysis-wireframe .af-chrome {display:flex;align-items:center;flex-wrap:wrap;gap:12px;padding:22px 112px 22px 28px;background:var(--af-paper);border-bottom:1px solid var(--af-line);}
+  #aipid-analysis-wireframe .af-brand {display:flex;align-items:center;gap:10px;font-weight:500;}
+  #aipid-analysis-wireframe .af-brand svg {width:20px;height:20px;}
+  #aipid-analysis-wireframe .af-demo {margin-left:auto;color:var(--af-soft);font-size:12px;}
+  #aipid-analysis-wireframe .af-projectbar {display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:17px 28px;background:var(--af-paper);border-bottom:1px solid var(--af-line);}
+  #aipid-analysis-wireframe .af-project-title {margin:1px 0 0;font-weight:500;overflow-wrap:anywhere;}
+  #aipid-analysis-wireframe .af-small {font-size:12px;color:var(--af-soft);}
+  #aipid-analysis-wireframe .af-stages {list-style:none;display:flex;flex-wrap:wrap;gap:18px;padding:0;margin:0;color:var(--af-soft);font-size:13px;}
+  #aipid-analysis-wireframe .af-stages [aria-current="step"] {font-weight:500;color:var(--af-ink);text-decoration:underline;text-underline-offset:6px;}
+  #aipid-analysis-wireframe .af-shell {display:grid;grid-template-columns:200px minmax(0,1fr);}
+  #aipid-analysis-wireframe .af-shell.af-with-help {grid-template-columns:200px minmax(0,1fr) 235px;}
+  #aipid-analysis-wireframe .af-sidebar {padding:23px 14px;border-right:1px solid var(--af-line);min-width:0;}
+  #aipid-analysis-wireframe .af-button {font:inherit;font-weight:500;color:var(--af-ink);background:var(--af-paper);border:1px solid var(--af-line);border-radius:6px;padding:9px 12px;min-height:42px;max-width:100%;display:inline-flex;align-items:center;justify-content:center;gap:7px;text-align:center;}
+  #aipid-analysis-wireframe .af-button svg {width:16px;height:16px;flex-shrink:0;}
+  #aipid-analysis-wireframe .af-button:hover {filter:brightness(.94);}
+  #aipid-analysis-wireframe .af-primary {background:var(--af-button);color:var(--af-button-text);border-color:var(--af-button);}
+  #aipid-analysis-wireframe .af-home-button {font-size:13px;background:transparent;}
+  #aipid-analysis-wireframe .af-nav-title {font-weight:500;margin:25px 10px 12px;}
+  #aipid-analysis-wireframe .af-section-list {list-style:none;padding:0;margin:0;display:grid;gap:6px;}
+  #aipid-analysis-wireframe .af-section {font:inherit;color:var(--af-ink);background:transparent;border:1px solid transparent;border-radius:6px;display:flex;align-items:flex-start;gap:10px;padding:12px 10px;width:100%;text-align:left;}
+  #aipid-analysis-wireframe .af-section[aria-current="step"] {background:var(--af-inset);border-color:var(--af-line);}
+  #aipid-analysis-wireframe .af-number {font-size:12px;min-width:15px;margin-top:2px;}
+  #aipid-analysis-wireframe .af-section-status {display:block;font-size:12px;color:var(--af-soft);margin-top:4px;}
+  #aipid-analysis-wireframe .af-future {padding:12px 10px;display:flex;gap:10px;color:var(--af-soft);font-size:13px;}
+  #aipid-analysis-wireframe .af-nav-note {font-size:12px;color:var(--af-soft);margin:19px 10px;}
+  #aipid-analysis-wireframe .af-review-label {border-top:1px solid var(--af-line);padding-top:20px;margin:18px 10px;display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--af-soft);}
+  #aipid-analysis-wireframe .af-review-label svg {width:16px;height:16px;flex-shrink:0;margin-top:2px;}
+  #aipid-analysis-wireframe .af-main {padding:28px;min-width:0;background:var(--af-paper);}
+  #aipid-analysis-wireframe .af-main-top {display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px;}
+  #aipid-analysis-wireframe .af-save {color:var(--af-soft);font-size:12px;}
+  #aipid-analysis-wireframe .af-guide-toggle {font-size:13px;}
+  #aipid-analysis-wireframe h1 {font-size:24px;line-height:1.35;font-weight:500;margin:4px 0 10px;}
+  #aipid-analysis-wireframe h2 {font-size:18px;line-height:1.4;font-weight:500;margin:0 0 12px;}
+  #aipid-analysis-wireframe p {margin:0;}
+  #aipid-analysis-wireframe .af-description {color:var(--af-soft);margin-bottom:26px;}
+  #aipid-analysis-wireframe .af-fields {display:grid;gap:var(--af-gap);}
+  #aipid-analysis-wireframe .af-field {min-width:0;}
+  #aipid-analysis-wireframe .af-label {display:block;font-weight:500;margin-bottom:8px;}
+  #aipid-analysis-wireframe input[type="text"],
+  #aipid-analysis-wireframe textarea {font:inherit;font-size:16px;line-height:1.5;background:var(--af-paper);color:var(--af-ink);border:1px solid var(--af-line);border-radius:5px;padding:10px 12px;width:100%;min-height:44px;}
+  #aipid-analysis-wireframe textarea {resize:vertical;display:block;}
+  #aipid-analysis-wireframe input[type="file"] {font:inherit;font-size:13px;max-width:100%;color:var(--af-ink);}
+  #aipid-analysis-wireframe .af-example {font-size:13px;margin-top:8px;color:var(--af-soft);}
+  #aipid-analysis-wireframe summary {width:max-content;max-width:100%;text-decoration:underline;text-underline-offset:3px;}
+  #aipid-analysis-wireframe .af-example p {padding:9px 0 0;}
+  #aipid-analysis-wireframe .af-actions {border-top:1px solid var(--af-line);margin-top:30px;padding-top:20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  #aipid-analysis-wireframe .af-actions-right {display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  #aipid-analysis-wireframe .af-help {background:var(--af-bg);padding:28px 20px;border-left:1px solid var(--af-line);min-width:0;}
+  #aipid-analysis-wireframe .af-help-heading {display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:18px;}
+  #aipid-analysis-wireframe .af-help-heading h2 {margin:0;}
+  #aipid-analysis-wireframe .af-help p {font-size:13px;margin-bottom:16px;}
+  #aipid-analysis-wireframe .af-help dl {margin:0;font-size:13px;}
+  #aipid-analysis-wireframe .af-help dt {font-weight:500;margin-top:17px;}
+  #aipid-analysis-wireframe .af-help dd {margin:5px 0 0;color:var(--af-soft);}
+  #aipid-analysis-wireframe .af-close {padding:5px 9px;min-height:34px;}
+  #aipid-analysis-wireframe .af-checkbox {display:flex;align-items:flex-start;gap:9px;font-size:14px;margin-top:9px;}
+  #aipid-analysis-wireframe .af-checkbox input {margin-top:5px;flex-shrink:0;}
+  #aipid-analysis-wireframe fieldset {padding:0;margin:0;border:0;min-width:0;}
+  #aipid-analysis-wireframe legend {font-weight:500;margin-bottom:2px;padding:0;}
+  #aipid-analysis-wireframe .af-checkbox-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px;}
+  #aipid-analysis-wireframe .af-hint {font-size:13px;color:var(--af-soft);margin-top:8px;}
+  #aipid-analysis-wireframe .af-paste-label {font-size:13px;font-weight:500;display:block;margin:17px 0 7px;}
+  #aipid-analysis-wireframe .af-footer {padding:15px 28px;color:var(--af-soft);font-size:12px;border-top:1px solid var(--af-line);}
+  #aipid-analysis-wireframe .af-announce {position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
+  #aipid-analysis-wireframe .af-secondary-view {padding:30px 28px;min-height:580px;}
+  #aipid-analysis-wireframe .af-project-card {background:var(--af-paper);border:1px solid var(--af-line);border-radius:8px;padding:24px;max-width:370px;margin-top:25px;display:grid;gap:16px;}
+  #aipid-analysis-wireframe .af-stage-tag {background:var(--af-inset);font-size:12px;padding:4px 8px;border-radius:4px;width:max-content;}
+  #aipid-analysis-wireframe .af-recap {background:var(--af-paper);border:1px solid var(--af-line);border-radius:8px;padding:24px;max-width:680px;margin-top:22px;}
+  #aipid-analysis-wireframe .af-recap p {margin-bottom:17px;}
+  @media(max-width:960px) {
+    #aipid-analysis-wireframe .af-shell.af-with-help {grid-template-columns:190px minmax(0,1fr);}
+    #aipid-analysis-wireframe .af-shell.af-with-help .af-help {grid-column:2;grid-row:2;border-left:0;border-top:1px solid var(--af-line);}
+    #aipid-analysis-wireframe .af-shell.af-with-help .af-sidebar {grid-row:1/3;}
+  }
+  @media(max-width:650px) {
+    #aipid-analysis-wireframe .af-shell,#aipid-analysis-wireframe .af-shell.af-with-help {grid-template-columns:minmax(0,1fr);}
+    #aipid-analysis-wireframe .af-sidebar {border-right:0;border-bottom:1px solid var(--af-line);padding:18px;}
+    #aipid-analysis-wireframe .af-section-list {grid-template-columns:repeat(2,minmax(0,1fr));}
+    #aipid-analysis-wireframe .af-nav-title {margin:18px 0 8px;}
+    #aipid-analysis-wireframe .af-nav-note {margin:12px 0 0;}
+    #aipid-analysis-wireframe .af-shell.af-with-help .af-sidebar {grid-row:auto;}
+    #aipid-analysis-wireframe .af-shell.af-with-help .af-help {grid-column:1;grid-row:auto;}
+    #aipid-analysis-wireframe .af-main {padding:24px 18px;}
+    #aipid-analysis-wireframe .af-chrome {padding:20px 100px 20px 18px;}
+    #aipid-analysis-wireframe .af-demo {margin-left:0;}
+    #aipid-analysis-wireframe .af-projectbar {padding:17px 18px;}
+    #aipid-analysis-wireframe .af-checkbox-grid {grid-template-columns:minmax(0,1fr);}
+    #aipid-analysis-wireframe .af-secondary-view,#aipid-analysis-wireframe .af-footer {padding-left:18px;padding-right:18px;}
+  }
+</style>
+<script>
+(() => {
+  const root=document.getElementById('aipid-analysis-wireframe');
+  const shell=root.querySelector('.af-shell');
+  const main=root.querySelector('.af-main');
+  const help=root.querySelector('.af-help');
+  const secondary=root.querySelector('.af-secondary-view');
+  const sections=['Project context and performance gap','Evidence and possible causes'];
+  const causes=['Knowledge or skills','Unclear expectations','Process or workflow','Tools or access','Time or resources','Incentives or competing priorities','Other','Not sure'];
+  const state={section:0,view:'analysis',helpOpen:false,gap:24,values:{projectName:'Customer complaint escalation',task:'Responding to customer complaints.',desired:'Resolve routine complaints independently and escalate cases that meet the approved criteria.',current:'Team members sometimes escalate routine complaints unnecessarily and miss cases requiring escalation.',reason:'Improve consistency in complaint handling and reduce avoidable escalations.',evidence:'',documentation:'',attempts:''},causes:[],evidenceUnknown:false,fileName:''};
+  const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  let saveTimer;
+  const icons=()=>{if(globalThis.lucide)globalThis.lucide.createIcons({attrs:{width:16,height:16}});};
+  const announce=text=>{root.querySelector('.af-announce').textContent=text;};
+  function persist(){
+    if(!window.openai||typeof window.openai.setWidgetState!=='function')return false;
+    const payload={modelContent:{screen:'Analysis form wireframe',section:sections[state.section],view:state.view,guidanceOpen:state.helpOpen,projectHomeLayout:'Project cards'},privateContent:state};
+    if(new TextEncoder().encode(JSON.stringify(payload)).length>14000)return false;
+    window.openai.setWidgetState(payload).catch(()=>{});return true;
+  }
+  function restore(saved){
+    const p=saved&&saved.privateContent;if(!p||typeof p!=='object')return;
+    if(p.section===0||p.section===1)state.section=p.section;
+    if(['analysis','home','paused'].includes(p.view))state.view=p.view;
+    if(typeof p.helpOpen==='boolean')state.helpOpen=p.helpOpen;
+    if(Number.isFinite(p.gap))state.gap=Math.max(16,Math.min(32,p.gap));
+    if(p.values&&typeof p.values==='object')for(const k of Object.keys(state.values))if(typeof p.values[k]==='string')state.values[k]=p.values[k].slice(0,1800);
+    if(Array.isArray(p.causes))state.causes=p.causes.filter(x=>causes.includes(x));
+    if(typeof p.evidenceUnknown==='boolean')state.evidenceUnknown=p.evidenceUnknown;
+    if(typeof p.fileName==='string')state.fileName=p.fileName.slice(0,160);
+  }
+  function setSaveLabel(text){const el=root.querySelector('[data-save-status]');if(el)el.textContent=text;}
+  function flush(){clearTimeout(saveTimer);const stored=persist();setSaveLabel(stored?'Preview · Saved':'Preview · Kept in this open view');}
+  function scheduleSave(){setSaveLabel('Preview · Saving…');clearTimeout(saveTimer);saveTimer=setTimeout(flush,1000);}
+  function example(text){return `<details class="af-example"><summary class="cursor-interaction">Show an example</summary><p>${esc(text)}</p></details>`;}
+  function field(key,label,rows,sample){return `<div class="af-field"><label class="af-label" for="af-${key}">${esc(label)}</label>${rows?`<textarea id="af-${key}" data-field="${key}" rows="${rows}" maxlength="1800">${esc(state.values[key])}</textarea>`:`<input id="af-${key}" type="text" data-field="${key}" maxlength="160" value="${esc(state.values[key])}">`}${sample?example(sample):''}</div>`;}
+  function contextFields(){return field('projectName','What would you like to call this project? A working title is fine.',0,'Customer complaint escalation')+field('task','What workplace task or responsibility does this project address?',2,'Responding to customer complaints.')+field('desired','What should people be able to do, and what does successful performance look like?',3,'Resolve routine complaints independently and escalate cases that meet defined criteria.')+field('current','What is happening now, and how does it differ from the desired performance?',3,'Employees escalate routine complaints unnecessarily and sometimes miss cases requiring escalation.')+field('reason','What prompted this project, and why does addressing it matter?',2,'Reduce avoidable escalations and improve consistency.');}
+  function evidenceFields(){return `<div class="af-field"><label class="af-label" for="af-evidence">What information supports your description of the performance gap?</label><textarea id="af-evidence" data-field="evidence" rows="3" maxlength="1800" ${state.evidenceUnknown?'disabled':''}>${esc(state.values.evidence)}</textarea><p class="af-hint">Examples: observations, work samples, stakeholder feedback, errors, or performance measures.</p><label class="af-checkbox"><input type="checkbox" data-evidence-unknown ${state.evidenceUnknown?'checked':''}><span>Evidence not yet available</span></label></div><div class="af-field"><label class="af-label" for="af-support-file">Add documentation of any supporting evidence if available</label><input id="af-support-file" type="file" accept=".docx,.pdf,.txt" aria-describedby="af-file-note"><p class="af-hint" id="af-file-note">${state.fileName?`${esc(state.fileName)} · Name only; no file uploaded in this preview.`:'Optional · Word, text-based PDF, or text. Scanned extraction is outside scope.'}</p><label class="af-paste-label" for="af-documentation">Or paste supporting text</label><textarea id="af-documentation" data-field="documentation" rows="3" maxlength="1800">${esc(state.values.documentation)}</textarea></div><fieldset class="af-field"><legend>What might be contributing to the gap?</legend><p class="af-hint">Select any that may apply. These are possible causes, not confirmed findings.</p><div class="af-checkbox-grid">${causes.map((cause,i)=>`<label class="af-checkbox"><input type="checkbox" data-cause="${i}" ${state.causes.includes(cause)?'checked':''}><span>${esc(cause)}</span></label>`).join('')}</div></fieldset>${field('attempts','What has already been tried, and what happened?',3,'For example, a team briefing was held, but its effect has not yet been checked. “Nothing yet” or “Not known” is also fine.')}`;}
+  function renderHelp(){
+    help.hidden=!state.helpOpen;shell.classList.toggle('af-with-help',state.helpOpen);
+    const toggle=main.querySelector('[data-action="guidance"]');if(toggle){toggle.setAttribute('aria-expanded',String(state.helpOpen));toggle.querySelector('span').textContent=state.helpOpen?'Hide guidance':'Show guidance';}
+    help.innerHTML=`<div class="af-help-heading"><h2>Guidance</h2><button class="af-button af-close cursor-interaction" type="button" data-action="guidance" aria-label="Close guidance"><i data-lucide="x" aria-hidden="true"></i></button></div>${state.section===0?'<p>Describe the performance need in your own words. You will decide on the solution during Design.</p><dl><dt>Task</dt><dd>The work people need to perform.</dd><dt>Desired performance</dt><dd>What successful work looks like.</dd><dt>Current performance</dt><dd>What is happening now, including what is different.</dd><dt>Keep uncertainty visible</dt><dd>Describe what you know. Supporting evidence comes in the next section.</dd></dl>':'<p>Separate observations and evidence from possible explanations.</p><dl><dt>Evidence</dt><dd>What supports the description of the gap.</dd><dt>Possible causes</dt><dd>Ideas to investigate; selecting an option does not establish its cause.</dd><dt>Supporting material</dt><dd>Existing documents or text can be added. No need to create evidence that is not available.</dd></dl>'}`;
+  }
+  function renderForm(){
+    main.innerHTML=`<div class="af-main-top"><span class="af-save" data-save-status role="status" aria-live="polite">Preview · Saved</span><button class="af-button af-guide-toggle cursor-interaction" type="button" data-action="guidance" aria-controls="af-guidance" aria-expanded="${state.helpOpen}"><i data-lucide="circle-help" aria-hidden="true"></i><span>${state.helpOpen?'Hide guidance':'Show guidance'}</span></button></div><span class="af-small">Analysis · Section ${state.section+1} of 5</span><h1>${sections[state.section]}</h1><p class="af-description">${state.section===0?'Start with the work people need to do and the gap you want to address.':'Add what is known and identify what still needs investigation.'}</p><div class="af-fields">${state.section===0?contextFields():evidenceFields()}</div><div class="af-actions"><button class="af-button cursor-interaction" type="button" data-action="pause"><i data-lucide="pause" aria-hidden="true"></i>Save and pause</button><div class="af-actions-right">${state.section===1?'<button class="af-button cursor-interaction" type="button" data-section="0">Back</button>':''}${state.section===0?'<button class="af-button af-primary cursor-interaction" type="button" data-section="1">Continue<i data-lucide="arrow-right" aria-hidden="true"></i></button>':'<span class="af-small">Audience screen follows in the next preview.</span>'}</div></div>`;
+    renderHelp();
+  }
+  function renderSecondary(){
+    const title=esc(state.values.projectName||'Untitled project');
+    secondary.innerHTML=state.view==='home'?`<h1>Your projects</h1><p class="af-description">Pick up where you left off.</p><article class="af-project-card"><span class="af-stage-tag">Analysis</span><h2>${title}</h2><p><span class="af-small">Next action</span><br>Continue ${esc(sections[state.section].toLowerCase())}</p><span class="af-small">Preview · Saved state</span><button class="af-button af-primary cursor-interaction" type="button" data-action="resume">Continue project<i data-lucide="arrow-right" aria-hidden="true"></i></button></article>`:`<h1>Your place is saved in this preview</h1><p class="af-description">Take a pause. Return whenever you are ready.</p><section class="af-recap" aria-label="Resume recap"><h2>${title}</h2><p>You were working on <span>${esc(sections[state.section].toLowerCase())}</span>.</p><p class="af-small">${state.section===0?'Next: refine the performance gap or continue to supporting evidence.':'Next: review the evidence and possible causes.'}</p><button class="af-button af-primary cursor-interaction" type="button" data-action="resume">Resume Analysis<i data-lucide="arrow-right" aria-hidden="true"></i></button></section>`;
+  }
+  function render(){
+    root.style.setProperty('--af-gap',`${state.gap}px`);
+    root.querySelector('[data-project-title]').textContent=state.values.projectName||'Untitled project';
+    root.querySelector('.af-projectbar').hidden=state.view==='home';
+    shell.hidden=state.view!=='analysis';secondary.hidden=state.view==='analysis';
+    if(state.view==='analysis')renderForm();else renderSecondary();
+    root.querySelectorAll('button[data-section]').forEach(button=>{
+      const selected=Number(button.dataset.section)===state.section;
+      if(button.classList.contains('af-section')){
+        if(selected)button.setAttribute('aria-current','step');else button.removeAttribute('aria-current');
+        button.querySelector('.af-section-status').textContent=selected?'Current section':Number(button.dataset.section)===0?'Draft':'Not started';
+      }
+    });icons();
+  }
+  function focusCurrent(){
+    const control=state.view==='analysis'?main.querySelector('input,textarea'):secondary.querySelector('button');
+    if(control)control.focus();
+  }
+  restore(window.openai&&window.openai.widgetState);render();
+  root.addEventListener('input',event=>{
+    const field=event.target.dataset.field;if(!field||!(field in state.values))return;
+    state.values[field]=event.target.value;
+    if(field==='projectName')root.querySelector('[data-project-title]').textContent=state.values.projectName||'Untitled project';
+    scheduleSave();
+  });
+  root.addEventListener('change',event=>{
+    const target=event.target;
+    if(target.hasAttribute('data-evidence-unknown')){state.evidenceUnknown=target.checked;const field=main.querySelector('#af-evidence');if(field)field.disabled=state.evidenceUnknown;flush();}
+    if(target.hasAttribute('data-cause')){
+      const cause=causes[Number(target.dataset.cause)];
+      if(cause==='Not sure')state.causes=target.checked?['Not sure']:[];
+      else{state.causes=state.causes.filter(c=>c!=='Not sure'&&c!==cause);if(target.checked)state.causes.push(cause);}
+      main.querySelectorAll('[data-cause]').forEach(c=>{c.checked=state.causes.includes(causes[Number(c.dataset.cause)]);});flush();
+    }
+    if(target.id==='af-support-file'){
+      state.fileName=target.files&&target.files[0]?target.files[0].name:'';
+      main.querySelector('#af-file-note').textContent=state.fileName?`${state.fileName} · Name only; no file uploaded in this preview.`:'Optional · Word, text-based PDF, or text. Scanned extraction is outside scope.';flush();
+    }
+  });
+  root.addEventListener('click',event=>{
+    const button=event.target.closest('button');if(!button||!root.contains(button))return;
+    if(button.hasAttribute('data-section')){
+      flush();state.section=Number(button.dataset.section);state.view='analysis';render();persist();announce(`${sections[state.section]} opened.`);focusCurrent();return;
+    }
+    const action=button.dataset.action;if(!action)return;
+    if(action==='guidance'){
+      const wasInHelp=help.contains(button);state.helpOpen=!state.helpOpen;renderHelp();icons();persist();
+      if(wasInHelp)main.querySelector('[data-action="guidance"]').focus();
+      announce(state.helpOpen?'Guidance opened.':'Guidance closed.');return;
+    }
+    flush();
+    if(action==='home')state.view='home';
+    if(action==='pause')state.view='paused';
+    if(action==='resume')state.view='analysis';
+    render();persist();announce(action==='pause'?'Paused. Resume is available.':action==='home'?'Project home opened.':`${sections[state.section]} resumed.`);focusCurrent();
+  });
+  window.addEventListener('openai:set_globals',event=>{
+    const saved=event.detail&&event.detail.globals&&event.detail.globals.widgetState;
+    if(!saved)return;
+    const active=document.activeElement;
+    if(root.contains(active)&&active.matches('input,textarea'))return;
+    restore(saved);render();
+  });
+  if(globalThis.Tweak){
+    const tweak=new Tweak({container:root,onChange:()=>{root.style.setProperty('--af-gap',`${state.gap}px`);persist();}});
+    tweak.addSlider(state,'gap',{label:'Space between questions',min:16,max:32,step:2,unit:'px'});
+  }
+})();
+</script>

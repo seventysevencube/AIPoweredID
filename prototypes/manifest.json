@@ -1,0 +1,90 @@
+{
+  "checkpoint": "2026-10-17",
+  "state": "Default sample content only; no interaction snapshots",
+  "files": [
+    {
+      "path": "fragments/analysis-brief-wireframe.html",
+      "kind": "editable fragment",
+      "bytes": 34693,
+      "sha256": "eb3def6a79285da6cbcaffec51a2d0fa5828100c011fa11ae60814fbff475168"
+    },
+    {
+      "path": "analysis-brief-wireframe.html",
+      "kind": "standalone preview",
+      "bytes": 119345,
+      "sha256": "fcf1c291f9da875ba2e36e645daff73fdd9953fa3625b5bc0381f7c680a2bc07"
+    },
+    {
+      "path": "fragments/analysis-form-wireframe.html",
+      "kind": "editable fragment",
+      "bytes": 26742,
+      "sha256": "d4ea8f61e1619cea53fd4a59ac95d0d17fae2dd7b593b261e5e9de056a82ed8b"
+    },
+    {
+      "path": "analysis-form-wireframe.html",
+      "kind": "standalone preview",
+      "bytes": 109815,
+      "sha256": "ea49284f50e77d3f79264b54e4d7c521203f49b11f4112fd38e94e7c38f86b56"
+    },
+    {
+      "path": "fragments/design-objectives-wireframe.html",
+      "kind": "editable fragment",
+      "bytes": 28697,
+      "sha256": "8df5f205e16605c324adf3192e427ac652b26581a50b4adbcd47c7f6d68dc7c7"
+    },
+    {
+      "path": "design-objectives-wireframe.html",
+      "kind": "standalone preview",
+      "bytes": 112742,
+      "sha256": "397e2c6bbca6163c4b8f091c31f7d32054b0690e5c21b991a98f0ce6abd6c054"
+    },
+    {
+      "path": "fragments/design-solution-choice-wireframe.html",
+      "kind": "editable fragment",
+      "bytes": 29059,
+      "sha256": "facb036fe8a2af76a1d2a05e02872a68b0c488362d7c82b606fdcda57265ed67"
+    },
+    {
+      "path": "design-solution-choice-wireframe.html",
+      "kind": "standalone preview",
+      "bytes": 113219,
+      "sha256": "a480468334302bbcb4c6d417b13fe86c9e50fd5e04f72ab3d083b588cc8d3b4b"
+    },
+    {
+      "path": "fragments/design-solution-wireframe.html",
+      "kind": "editable fragment",
+      "bytes": 30841,
+      "sha256": "a7a5572a3c07717f7a079040a557e5670e80a35543e114f2c36abd2b9fb8b983"
+    },
+    {
+      "path": "design-solution-wireframe.html",
+      "kind": "standalone preview",
+      "bytes": 115195,
+      "sha256": "45304d60401c375dfe4cbf3207e1b2de79afb547c5cd4688c10f327511b382e3"
+    },
+    {
+      "path": "fragments/design-structure-wireframe.html",
+      "kind": "editable fragment",
+      "bytes": 32806,
+      "sha256": "465be26342b5c7211777d45b4b000d3a26d57d37fbaa576b8ea29c118d9ec310"
+    },
+    {
+      "path": "design-structure-wireframe.html",
+      "kind": "standalone preview",
+      "bytes": 118293,
+      "sha256": "97dcb6dd4ccf651f2599011f1e8549b05bb78da1e3e4a6865b72f7bf464f7c3c"
+    },
+    {
+      "path": "fragments/project-home-wireframe.html",
+      "kind": "editable fragment",
+      "bytes": 19338,
+      "sha256": "3ccead74eb676dc6d766ef9038ba0ae0115a3e88630a0639c42dc373c5d7cf11"
+    },
+    {
+      "path": "project-home-wireframe.html",
+      "kind": "standalone preview",
+      "bytes": 100948,
+      "sha256": "5c0099f04614e7db97bd6cccc3dd32693f4c96b46db6f8c5416bd02f54082cd1"
+    }
+  ]
+}

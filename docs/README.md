@@ -14,6 +14,14 @@ Updated: October 17, 2026.
 - [Project setup and project home](notes/project-home-decisions.md)
 - [AI creation and quality process](ai/creation-and-quality.md)
 
+## Desktop review checkpoint
+
+- [October 17 design-review checkpoint](checkpoints/2026-10-17-design-review.md)
+- [Screen review status and precedence](ui/screen-review-status.md)
+- [Standalone wireframes and editable fragments](../prototypes/README.md)
+
+The checkpoint includes approved patterns, superseded alternatives, and the new objective-hierarchy proposal awaiting review. These are independent design prototypes with illustrative data, not a production application.
+
 ## History and remaining work
 
 - [Decision log](decision-log.md)
@@ -22,3 +30,4 @@ Updated: October 17, 2026.
 - [Earlier planning drafts](archive/README.md)
 
 These are planning notes and requirements derived from the conversation, not a verbatim chat transcript. The latest explicit user correction takes precedence over an earlier proposal. The consolidated requirements record the current agreement; detailed notes preserve question wording and implementation discussions. Archived drafts are historical only. A proposal inside a note is not automatically an approved implementation requirement.
+

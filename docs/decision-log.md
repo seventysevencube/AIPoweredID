@@ -38,3 +38,15 @@ Planning decisions through October 17, 2026. These are summarized decisions, not
 4. Archived earlier drafts, retained for history only.
 
 When a later decision affects upstream/downstream content or the prompt plan, update the linked current records rather than leaving contradictory active requirements.
+
+## Desktop review checkpoint — October 17, 2026
+
+- Project home: the user selected Project cards over rows.
+- Analysis form and Analysis brief: the user approved the entry/review/handoff patterns; saved edits, section review, and accepted handoff remain distinct.
+- Six Boxes: the user approved the separation of evidence review from response selection.
+- Solution choice: the user required an Analysis-based, AI-supported e-learning/performance-aid/both decision before deliverable confirmation. The revised sequence supersedes the earlier deliverable-first screen.
+- Output label: use “Written job aid / performance-support draft” instead of “Complete written learning-support draft”; produce complete written content.
+- Checkpoint: save the seven wireframes, current notes, review statuses, and next steps. Main/enabling-objective visual treatment is a new proposal awaiting review; assessments are the next screen.
+
+See the [checkpoint](checkpoints/2026-10-17-design-review.md) and [screen statuses](ui/screen-review-status.md). Prototype interactions do not approve sample findings or implement production behavior.
+
