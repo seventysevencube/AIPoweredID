@@ -4,7 +4,7 @@ Updated: October 17, 2026. Items below are unresolved details, not approved addi
 
 ## Next design work
 
-1. Review the guest-review interface and its proposed required display name and fixed-version/new-link behavior. Full-draft review/readiness is approved. Then specify PDF/PPTX document export layouts. See [screen review status](ui/screen-review-status.md).
+1. Specify PDF/PPTX export contents and layouts, including optional reviewer comments (proposed off by default). Guest-review screen and required-name/fixed-version behavior are approved for the MVP. See [screen review status](ui/screen-review-status.md).
 2. Walk through a representative five-minute workplace example, covering both Storyline and Rise treatment and a nonlearning/performance-support branch.
 3. Create reviewed examples of a Design skeleton, main/enabling-objective map, assessments, a Storyline screen, a Rise block sequence, and a complete written job aid.
 4. Specify PDF/PPTX templates, placement of long build notes and source/open-issue appendices, accessible document structure, and whether reviewer comments can be included optionally.
@@ -13,7 +13,7 @@ Updated: October 17, 2026. Items below are unresolved details, not approved addi
 ## Product and operational choices
 
 - Designer sign-in method and account lifecycle; project ownership/multiple projects are already agreed.
-- Guest display-name behavior, link version/update/revocation/expiry rules, and whether comment replies/resolution belong in the MVP. Only guest access and anchored comments are firmly selected; do not silently expand collaboration scope.
+- Guest link revocation/expiry and remaining lifecycle details; whether replies/resolution should be added later. Required unverified display names, fixed-version links, and new links for shared updates are now approved; do not expand collaboration scope by implication.
 - Default settings for the four AI assistance controls and final reflection UI. Break reminders are already off by default.
 - Exact supported upload extensions and limits, tables/embedded image treatment, extractable-text previews, and processing error handling. OCR remains excluded.
 - Exact supported Storyline/Rise feature/version references and feasible combined-tool handoffs. Native authoring project generation remains excluded.

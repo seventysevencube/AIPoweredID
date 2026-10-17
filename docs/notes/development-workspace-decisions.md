@@ -89,3 +89,16 @@ Only the earlier sample-workspace pattern is approved at this checkpoint. The fu
 
 The user confirmed the full-draft review pattern and the distinction between section review and Ready for handoff. Source/answer/practice/tool blockers remain independent of review flags. This approval does not verify fictional content, resolve example issues, select Storyline for a live project, or confirm production functionality. Guest review and document export layouts remain subsequent screen work.
 
+
+## Export contents and layout — next proposal, not yet approved
+
+Existing approvals remain PDF and editable PowerPoint exports from a selected saved structured version, without AI rewriting; labeled drafts are permitted, while Ready for handoff retains its agreed checks. Exact document templates have not been approved.
+
+Proposed next refinement:
+
+- PDF: a readable handoff document with learner-facing/written content, linked objectives and assessments, production/build/accessibility notes, and sources/open issues.
+- PowerPoint: an editable storyboard organized by screen, Rise block group, or written-aid section; use continuation slides when needed rather than squeezing all details onto one slide.
+- Both: preserve project/version/date/tool identification, draft/readiness and section-review status, source references, and unresolved issues. Do not infer readiness from export.
+- Reviewer comments: optional, off by default; if selected, include them in a separate appendix labeled with their original version and target, so older feedback is not mistaken for comments on changed content. This option/default and appendix presentation await user confirmation.
+
+Actual export layouts, handling long content, and accessible output verification will be reviewed subsequently. No new document generation or app build is part of recording this proposal.

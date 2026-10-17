@@ -2,7 +2,7 @@
 
 Updated: October 17, 2026
 
-Status: Guest access and anchored comments confirmed for the MVP; other details remain proposals where noted. No app development has started. Synced project sources remain read-only.
+Status: Guest access, anchored comments, required unverified display names, and fixed-version review links are approved for the MVP. Other lifecycle/thread details remain open. No app development has started. Synced project sources remain read-only.
 
 ## Already agreed
 
@@ -48,3 +48,16 @@ All link creation and posting in the wireframe are local illustrations. The rese
 
 The guest-review interface, required-name proposal, and fixed-version/new-link proposal await user review. Previously confirmed MVP requirements remain guest access without an account and comments anchored to specific content.
 
+
+## Guest-review MVP approval — latest decision
+
+The user accepted the guest-review approach for the MVP after reviewing both designer and guest views. This approves the screen pattern and the required, unverified display name plus fixed-version/new-link behavior presented in the proposal.
+
+- Guests need no account. A display name is required for posting and is shown beside comments; it is not verified identity.
+- Anyone with an active review link can view and comment on the selected shared snapshot. Reviewers cannot directly edit designer content or approve progression.
+- Comments attach to specific items and retain stable target and shared-version references. Designers see feedback with its original draft/version and target.
+- Existing links remain tied to the snapshot shared. Sharing an updated draft creates a new link; earlier comments retain their original version references.
+- The designer selects any supporting source material to include; raw uploads/private notes are not automatically shared. Reviewer comments do not automatically rewrite content or become accepted AI instructions.
+- Replies, resolution, expiry, revocation/lifecycle controls, and notifications are not added to the MVP by this approval. Their detailed scope remains open.
+
+This latest approval supersedes earlier statements that display-name and version-link behavior were undecided. It approves requirements/interface patterns, not actual sharing, persistence, or access-control implementation. No real links, reviewer invitations, or messages were created by the prototype.

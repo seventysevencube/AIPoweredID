@@ -17,7 +17,7 @@ These are illustrative, independent wireframes, not the application. Download a 
 | [Detailed Design-plan review](design-plan-review-wireframe.html) | Screen pattern and sample-choice explanations approved. |
 | [Development sample workspace](development-sample-wireframe.html) | Screen pattern approved. Written aid, Storyline, and Rise examples. |
 | [Full-draft review and readiness](development-review-wireframe.html) | Screen pattern approved. Storyline example; review completion remains separate from handoff readiness. Draft export summary only. |
-| [Guest review and anchored comments](guest-review-wireframe.html) | New proposal; awaiting review. Designer sharing and guest commenting views, fixed-version link and display-name proposals. No live link or external posting. |
+| [Guest review and anchored comments](guest-review-wireframe.html) | Screen pattern/MVP behavior approved: designer/guest views, required unverified display name, and fixed-version/new-link behavior. No live link or external posting. |
 
 The matching sources in [fragments](fragments/) preserve the editable in-conversation fragments. The files above add a standalone preview wrapper with preview styling, interactions, and fallback state handling. They are design artifacts, not a chosen production framework or technology stack. The wrapper does not verify browser accessibility or instructional correctness.
 

@@ -22,7 +22,7 @@ Planning decisions through October 17, 2026. These are summarized decisions, not
 | Performance support | Produce complete written drafts, not only specifications. |
 | Development sample | Generate the whole skeleton with a representative section populated; preserve the label “Generate Development sample”. “Preview draft section” was suggested but not adopted. |
 | Exports | PDF and editable PowerPoint. Allow labeled drafts and a reviewed “Ready for handoff” state; export saved content without an AI rewrite. |
-| Collaboration | Guest review without an account; comments anchored to specific sections/objectives/assessments/screens/blocks. Other detailed sharing features remain open. |
+| Collaboration | Guest review without an account; content-anchored comments; required unverified display names. Links pin a fixed draft version; sharing updates creates a new link and preserves earlier comment references. Other lifecycle/thread details remain open. |
 | AI preferences | Guidance depth, contribution, output detail, and resources are separate controls; reflection is optional. |
 | Breaks | Optional pause/resume and accessible break choices; reminders off by default. |
 | Saving | Autosave, recovery, truthful server-confirmed status, version/undo/conflict protection, and optional Save now. Saving does not equal acceptance or progression. |
@@ -50,3 +50,12 @@ When a later decision affects upstream/downstream content or the prompt plan, up
 
 See the [checkpoint](checkpoints/2026-10-17-design-review.md) and [screen statuses](ui/screen-review-status.md). Prototype interactions do not approve sample findings or implement production behavior.
 
+
+## Later screen approvals — October 17, 2026
+
+- Development sample workspace: pattern approved for Written aid, Storyline, and Rise examples; sample-treatment acceptance is separate from factual/source verification.
+- Full-draft review/readiness: pattern approved; section review does not resolve essential blockers or establish Ready for handoff.
+- Guest review: designer/guest pattern approved for the MVP, including required unverified display names and fixed-version/new-link behavior. Comments retain their original version/target; selected supporting material is explicit.
+- Current next decision: PDF/PPTX contents/templates and optional reviewer-comment inclusion. The proposed comment default is not yet approved.
+
+These later approvals supersede pending statuses in the earlier checkpoint. Current per-screen status is maintained in [screen review status](ui/screen-review-status.md).

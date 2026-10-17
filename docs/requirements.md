@@ -139,7 +139,9 @@ Export PDF and editable PowerPoint from the selected saved structured version wi
 
 ## 7. Guest review, preferences, and breaks
 
-Guest reviewers need no account and can comment on specific sections, objectives, assessments, screens, or blocks. Reviews are optional and comments do not directly edit content or approve stage progression. Names/identity handling, link lifecycle, and thread details remain open; see [sharing notes](notes/shared-review-decisions.md).
+Guest reviewers need no account and can comment on specific sections, objectives, assessments, screens, or blocks. Posting requires a display name, shown with the comment and explicitly unverified. Anyone with an active review link can view/comment on its selected snapshot. Reviews are optional and comments do not directly edit content or approve stage progression.
+
+Each review link stays tied to a fixed shared version. Sharing an updated draft creates a new link; earlier comments retain their original version and target references. Designers explicitly select supporting source material to include; raw uploads and private notes are not automatically shared. Comments do not automatically rewrite content or become accepted AI instructions. Revocation/expiry and thread/reply/resolution details remain open; see [sharing notes](notes/shared-review-decisions.md).
 
 Four project-level adjustable preferences: guidance depth, AI contribution, output detail, and additional resources. Preserve essential fields, factual/source rules, reviewed decisions, and human approval at all levels. Optional **Adjust AI assistance** reflection is skippable; controls remain available independently. Changes apply to future generation; revising accepted content is explicit and scoped.
 
