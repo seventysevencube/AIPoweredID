@@ -99,3 +99,8 @@ The user approved an in-app warning at $16 of the shared $20 monthly pilot AI bu
 ## Expected monthly completion volume — 0–1 project
 
 The user expects about zero to one complete project per month, in response to the question about total output across the five-designer pilot. Record this as the total pilot planning estimate, not a per-person allowance or a hard project cap. Drafting/revisions may consume AI in months with no completed project; the estimate does not prove that the workload fits the $20 budget. Next, select a representative source/example for an end-to-end walkthrough and subsequent quality/cost benchmarking.
+
+## Fictional complaint-routing walkthrough selected
+
+The user selected the fictional complaint-routing example rather than a real organizational project. A new reference packet and prefilled Analysis/brief have been prepared for designer review. Example selection does not approve the newly authored facts, evaluation measures, intervention route, or authoring tools. The next checkpoint is Analysis review followed by Six Boxes. See the [example index](examples/complaint-routing/README.md). No app/AI pipeline or actual source import has run.
+

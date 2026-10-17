@@ -4,7 +4,7 @@ Updated: October 17, 2026. Items below are unresolved details, not approved addi
 
 ## Next design work
 
-1. Select the representative project/source for an end-to-end walkthrough: the existing fictional complaint-routing example or a nonconfidential user-supplied project. Expected pilot completion volume is now approximately 0–1 total project/month across five designers; actual generation/revision/source volume still needs measurement. Retain the approved $20 budget and $16 warning/request-pause policy. See the [implementation brief](implementation-brief.md).
+1. Review the [fictional complaint-routing reference packet and Analysis](examples/complaint-routing/README.md). The user selected this example; newly authored facts/measures and the Analysis draft await review. Then use the accepted Analysis as input to Six Boxes. Retain the approved pilot size, budget, and spending controls.
 2. Walk through a representative five-minute workplace example, covering both Storyline and Rise treatment and a nonlearning/performance-support branch.
 3. Create reviewed examples of a Design skeleton, main/enabling-objective map, assessments, a Storyline screen, a Rise block sequence, and a complete written job aid.
 4. Review representative PDF/PPTX page/slide templates, long build notes, source/open-issue appendices, accessible document structure, and the optional comment appendix. Contents/organization and comments optional/off by default are approved.
@@ -34,6 +34,7 @@ Updated: October 17, 2026. Items below are unresolved details, not approved addi
 Implementation and evaluation execution remain later scope; evaluation planning stays included. Do not add generated media, OCR, native course files, verified reviewer accounts, or team coauthoring by implication. Unknown details do not authorize overwriting reviewed content or manufacturing missing facts.
 
 Saving these notes to GitHub is documentation work. Application development, deployment, and AI connections have not started.
+
 
 
 

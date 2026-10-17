@@ -110,3 +110,8 @@ Existing wireframes are independent, local design examples with fictional conten
 See [open decisions](open-decisions.md). Priorities include upload size/count limits and other import-error handling, reviewed reference content/export layouts, sign-in and approved-list implementation, remaining link lifecycle controls, retention/recovery policy, Storyline/Rise feasibility, AI/provider choices and budget enforcement, and production quality thresholds.
 
 Generated images/audio/video, OCR, native course files, direct reviewer editing, team coauthoring, and evaluation execution remain outside the approved MVP. Replies, resolution, and other collaboration additions are not included by implication.
+
+## Representative walkthrough checkpoint
+
+The user selected the [fictional complaint-routing example](examples/complaint-routing/README.md). Its authored source packet and proposed prefilled Analysis/brief are prepared for review; the content remains fictional and unapproved as an exercise baseline until reviewed. Use the accepted Analysis to seed Six Boxes before choosing interventions, then work through the remaining Design/Development/export examples. This is planning content, not a live pipeline test or proof of cost/accessibility/readiness.
+

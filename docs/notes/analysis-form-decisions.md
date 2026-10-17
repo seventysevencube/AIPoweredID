@@ -169,3 +169,10 @@ The user confirmed basic extraction from Word (.docx) and PowerPoint (.pptx) onl
 Imports use conventional extraction and deterministic checks only, with no AI calls. If extraction produces no usable text, show a warning and exclude that file from AI source content. Do not show an extraction summary or extracted-text preview, and do not require an import-review confirmation. The designer can continue with other sources or direct text entry; the warning is not a project-wide progression block.
 
 Use deterministic checks of parser output, not AI or semantic document assessment. Suggested warning: “No usable text could be extracted from this file. It will not be used as an AI source. Upload a Word or PowerPoint file with editable text, or paste the content.” This supersedes the proposed import summary/text-preview flow; it does not remove ordinary stage source/content review or change permitted research and export formats.
+
+## Fictional walkthrough selected; Analysis draft prepared
+
+The user selected the existing fictional complaint-routing example for the end-to-end walkthrough. The [reference packet](../examples/complaint-routing/sources.md) and [prefilled Analysis/brief](../examples/complaint-routing/analysis-walkthrough.md) are new proposed exercise content awaiting designer review. They preserve the two earlier fictional routing rules and add explicitly authored procedure/context/evidence details; those additions are not approved organizational facts.
+
+The draft separates the twenty-case audit from six-person observations, L3 routing accuracy from uncollected L2/L4 baselines, evidence from possible causes, and identified candidate L2 measures from final Design assessment items. It does not preselect an intervention or tool. Review this Analysis baseline before Six Boxes. The source packet is direct text; no DOCX/PPTX extraction, app AI generation, or live workflow has been tested by preparing it.
+

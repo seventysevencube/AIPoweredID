@@ -15,6 +15,10 @@ Updated: October 17, 2026.
 - [Project setup and project home](notes/project-home-decisions.md)
 - [AI creation and quality process](ai/creation-and-quality.md)
 
+## Representative walkthrough
+
+- [Fictional complaint-routing example](examples/complaint-routing/README.md) — selected example; source packet and prefilled Analysis/brief are proposed for review before Six Boxes.
+
 ## Desktop review checkpoint
 
 - [October 17 design-review checkpoint](checkpoints/2026-10-17-design-review.md)
@@ -31,4 +35,5 @@ The checkpoint is historical; subsequent objective, assessment, content/sequence
 - [Earlier planning drafts](archive/README.md)
 
 These are planning notes and requirements derived from the conversation, not a verbatim chat transcript. The latest explicit user correction takes precedence over an earlier proposal. The consolidated requirements record the current agreement; detailed notes preserve question wording and implementation discussions. Archived drafts are historical only. A proposal inside a note is not automatically an approved implementation requirement.
+
 
