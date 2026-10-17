@@ -153,3 +153,7 @@ Main review actions: “Save and return later,” “Share for comments,” and 
 - Progress uses completion/review labels, not a claim of instructional quality. Support keyboard operation, visible focus, zoom/reflow, and a logical reading order under the agreed accessibility target; desktop-only product scope does not remove those obligations.
 
 The user approved this desktop layout approach. Form entry and brief review are connected views. “Generate Analysis brief” is an explicit AI-generation action; ordinary navigation and saving do not generate content. Visual wireframes and implementation remain future work.
+
+## Wireframe review
+
+The user reviewed the Analysis form preview, including Project context/performance gap and Evidence/possible causes, with section navigation, optional guidance, and a preview autosave indicator, and said it looks good. Keep this layout pattern for the other Analysis sections. Next visual review: editable Analysis brief, sources/open issues, optional sharing, and handoff to the first Design performance-solution review. Wireframe sample data is illustrative and has no live backend or AI connection.
