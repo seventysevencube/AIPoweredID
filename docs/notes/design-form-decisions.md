@@ -324,4 +324,10 @@ The user approved the detailed Design-plan review pattern and the clarified Deve
 
 ## Source upload scope — latest refinement
 
-The user limited source-file imports to Word (.docx) and PowerPoint (.pptx) with basic text/structure extraction, including available speaker notes and useful source references. Direct text entry and project-wide provided/web/both choices remain available. PDF/TXT uploads, legacy conversion, OCR, image/diagram interpretation, and complex layout reconstruction are outside initial scope. Source coverage and accuracy still require review; extracting text does not verify the claims it contains. PDF/PPTX export requirements are unchanged. Size/count limits and detailed import preview/error handling remain open.
+The user limited source-file imports to Word (.docx) and PowerPoint (.pptx) with basic text/structure extraction, including available speaker notes and useful source references. Direct text entry and project-wide provided/web/both choices remain available. PDF/TXT uploads, legacy conversion, OCR, image/diagram interpretation, and complex layout reconstruction are outside initial scope. Source coverage and accuracy still require review; extracting text does not verify the claims it contains. PDF/PPTX export requirements are unchanged. Size/count limits and remaining processing-error details remain open.
+
+## Import-flow simplification — latest approved refinement
+
+Imports use conventional extraction and deterministic checks only, with no AI calls. If extraction produces no usable text, show a warning and exclude that file from AI source content. Do not show an extraction summary or extracted-text preview, and do not require an import-review confirmation. The designer can continue with other sources or direct text entry; the warning is not a project-wide progression block.
+
+Use deterministic checks of parser output, not AI or semantic document assessment. Suggested warning: “No usable text could be extracted from this file. It will not be used as an AI source. Upload a Word or PowerPoint file with editable text, or paste the content.” This supersedes the proposed import summary/text-preview flow; it does not remove ordinary stage source/content review or change permitted research and export formats.

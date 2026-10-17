@@ -29,3 +29,7 @@ Approvals concern patterns and the stated requirements. They do not verify sampl
 ## Upload-scope refinement after screen review
 
 The latest approved source-file scope is Word (.docx) and PowerPoint (.pptx), using basic extraction, including available speaker notes. Direct text entry remains. Earlier wireframe upload labels or accept filters showing PDF/TXT are superseded by this requirement and must be aligned during implementation; those independent design examples do not define the accepted production file types. PDF/PPTX exports remain supported. No source-import functionality has been implemented.
+
+## Import interaction refinement
+
+The latest user decision removes extraction summaries, extracted-text previews, and mandatory import review from the MVP. Use a non-AI warning when no usable text is extracted, and do not use that file as AI source content. This is a file-level warning, not a block on continuing the project with other sources. Any earlier import-preview proposal is superseded. Source import has not been implemented.

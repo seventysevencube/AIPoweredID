@@ -14,7 +14,7 @@ Planning decisions through October 17, 2026. These are summarized decisions, not
 | Objective hierarchy | Break main objectives into meaningful enabling objectives to identify required content/support comprehensively. Keep integrated main-objective assessment. |
 | Assessments | Define and identify assessments in Design; carry them into storyboards rather than inventing them in Development. |
 | Source scope | Ask source questions once project-wide; map content/source relationships per enabling objective without repeating the questionnaire. |
-| Uploads | Basic extraction from Word (.docx) and PowerPoint (.pptx) only, including available speaker notes. Direct text entry remains; PDF/TXT uploads, legacy conversion, OCR, visual interpretation, and complex layout reconstruction are outside initial scope. PDF/PPTX exports remain supported. |
+| Uploads | Basic non-AI extraction from .docx/.pptx, including available speaker notes. Deterministic warning if no usable text; that file is not used as an AI source. No extraction summary, text preview, or import-review gate. Direct text entry and PDF/PPTX exports remain supported. Other upload exclusions are unchanged. |
 | Supporting-material wording | “Add documentation of any supporting evidence if available”. |
 | Stakeholders | Add review availability and expected turnaround. |
 | Audience time | Remove the audience-time question from the stakeholder/constraints section. Five minutes remains a benchmark, not a universal cap. |
@@ -66,4 +66,8 @@ The user approved PDF handoff-document and editable PowerPoint storyboard organi
 
 ## Source import refinement — latest decision
 
-The user selected basic extraction and Word/PowerPoint uploads only. This replaces the earlier proposed Word/PDF/TXT/PPTX import set: the initial accepted file extensions are .docx and .pptx. Keep direct text entry and permitted web research. Basic extraction uses conventional parsers, with available PowerPoint speaker notes and useful source references; missing text stays visible. Size/count limits and detailed import preview/error handling remain open. PDF and editable PowerPoint exports are unaffected.
+The user selected basic extraction and Word/PowerPoint uploads only. This replaces the earlier proposed Word/PDF/TXT/PPTX import set: the initial accepted file extensions are .docx and .pptx. Keep direct text entry and permitted web research. Basic extraction uses conventional parsers, with available PowerPoint speaker notes and useful source references; missing text stays visible. Size/count limits and remaining processing-error details remain open; the later import-flow decision below settles summaries/previews. PDF and editable PowerPoint exports are unaffected.
+
+## Import flow simplification — latest decision
+
+The user required a warning when a file has no usable text, with no AI used for this check and no extraction summary or text preview. Use deterministic checks of conventional extraction results. A file with no extracted source text is excluded from AI context; the designer may continue using other sources or direct text entry. No mandatory import-review gate is introduced. This supersedes the proposed summary/preview flow and earlier notes leaving preview behavior open. Word/PowerPoint import scope and PDF/PowerPoint exports are unchanged.

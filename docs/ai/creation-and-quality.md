@@ -234,3 +234,7 @@ The user clarified that assessment design precedes content and instructional sup
 ## Source parsing scope refinement
 
 The approved initial file imports are Word (.docx) and PowerPoint (.pptx), using conventional basic text/structure extraction rather than an AI parsing call. Include available speaker notes and retain useful source references. Direct text entry and permitted web research remain available. Do not apply OCR, interpret images/diagrams, reconstruct complex layouts, or invent content when text is unavailable. No PDF/TXT upload or legacy format-conversion support is included initially. Extracted text is source material, not verified truth; preserve coverage/conflict/missing-content checks before generation. Document exports remain PDF/PPTX and reuse saved structured content.
+
+## Import checks are not AI tasks — approved refinement
+
+Source-file extraction and no-usable-text detection use conventional parsing and deterministic checks only. No AI call, AI summary, extracted-content summary, or text preview belongs in the import flow. If no usable text is extracted, warn and exclude the empty source from AI context, while allowing continued work with other sources/direct text entry. Do not add a mandatory import-review gate. Later stage generation and source coverage/accuracy checks remain in scope. A nonempty extraction is not proof of completeness, meaning, or factual correctness.

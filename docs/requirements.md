@@ -121,9 +121,13 @@ Accept Word (.docx) and PowerPoint (.pptx) uploads only. Direct pasted/typed sou
 
 Use conventional parsers for basic extraction of available editable text and basic structure. Include PowerPoint speaker notes when present and retain slide references; retain Word section/heading references where available. Read straightforward table text where possible without promising complex table/layout reconstruction.
 
-No OCR, image/diagram interpretation, or faithful layout recreation is included. Flag missing or insufficient extractable text for designer review rather than inventing content. Basic file parsing does not require an AI call; later AI tasks use the extracted source content under the agreed source/review rules.
+No OCR, image/diagram interpretation, or faithful layout recreation is included. Imports use conventional extraction and deterministic checks only, with no AI calls. If extraction produces no usable text, show a warning and exclude that file from AI source content. Do not show an extraction summary or extracted-text preview, and do not require an import-review confirmation. The designer can continue with other sources or direct text entry; the warning is not a project-wide progression block.
 
-PDF/TXT uploads and legacy .doc/.ppt conversion are outside this initial import scope. PDF and editable PowerPoint exports remain supported. File-size/count limits and detailed extraction-preview/error handling remain open.
+Use basic non-AI checks on the extracted text, such as checking for empty/whitespace-only content after cleanup. This does not assess meaning, completeness, factual accuracy, or source authority. Later AI tasks use available extracted source content under the agreed source/review rules.
+
+Suggested warning wording: “No usable text could be extracted from this file. It will not be used as an AI source. Upload a Word or PowerPoint file with editable text, or paste the content.”
+
+PDF/TXT uploads and legacy .doc/.ppt conversion are outside this initial import scope. PDF and editable PowerPoint exports remain supported. File-size/count limits and other processing-error details remain open. Extraction summaries and text previews are explicitly outside the import flow.
 
 ### Design output and handoff
 
