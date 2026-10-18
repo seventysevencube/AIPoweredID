@@ -497,18 +497,8 @@ input {
   font-size: 12px;
 }
 .answeroptions {
-  margin-top: 6px;
-}
-.answeroptions summary {
-  width: fit-content;
-  color: #355c4b;
-  font-size: 12px;
-  cursor: pointer;
-  padding: 5px 0;
-}
-.answeroptions fieldset {
+  margin: 6px 0 0;
   border: 0;
-  margin: 0;
   padding: 4px 0;
   display: flex;
   gap: 6px 18px;
@@ -765,13 +755,4 @@ input {
   .signin {
     padding: 24px;
   }
-}
-
-.continuehint {
-  border-left: 3px solid #8b6c28;
-  padding: 10px 14px;
-  background: #fff8e8;
-  color: #634a19;
-  font-size: 13px;
-  margin: 30px 0 0;
 }

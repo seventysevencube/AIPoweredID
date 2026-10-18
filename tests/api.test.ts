@@ -90,6 +90,60 @@ test("origin checks, code admission, secure cookies, strict save and current eli
     nativeCookie,
   );
   expect(created.status).toBe(201);
+  const readiness = async () =>
+    (
+      await (
+        await request(`/projects/${project_id}`, "GET", undefined, nativeCookie)
+      ).json()
+    ).ai_readiness;
+  const saveAnswers = async (
+    section: string,
+    revision: number,
+    answers: Record<string, { text: string; status: string }>,
+  ) => {
+    const result = await request(
+      `/projects/${project_id}/${section}`,
+      "PUT",
+      {
+        operation_id: randomUUID(),
+        base_revision: revision,
+        data: { answers, items: [] },
+      },
+      nativeCookie,
+    );
+    expect(result.status).toBe(200);
+  };
+  expect((await readiness()).ready).toBe(false);
+  const contextAnswers = Object.fromEntries(
+    ["task", "desired", "current"].map((field) => [
+      field,
+      { text: `Known ${field}`, status: "provided" },
+    ]),
+  );
+  await saveAnswers("context", 1, contextAnswers);
+  await saveAnswers("audience", 1, {
+    roles: { text: "Notes do not establish the audience", status: "unknown" },
+  });
+  expect(await readiness()).toEqual({
+    ready: false,
+    missing: [{ section: "audience", field: "roles" }],
+  });
+  await saveAnswers("audience", 2, {
+    roles: { text: "   ", status: "provided" },
+  });
+  expect((await readiness()).ready).toBe(false); // Unchecking unknown cannot bypass an empty answer.
+  await saveAnswers("audience", 3, {
+    roles: { text: "Field technicians", status: "provided" },
+  });
+  expect((await readiness()).ready).toBe(true); // Optional evaluation details remain unanswered.
+  await saveAnswers("context", 2, {
+    ...contextAnswers,
+    task: { text: "Hypothesis only", status: "unknown" },
+  });
+  expect(await readiness()).toEqual({
+    ready: false,
+    missing: [{ section: "context", field: "task" }],
+  });
   expect(
     (
       await request(

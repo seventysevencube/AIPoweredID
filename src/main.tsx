@@ -702,11 +702,7 @@ function Editor({
       : snapshot.records.context.data.answers.title?.text;
   const blocked = ["recovery", "conflict"].includes(state.status);
   const index = sections.indexOf(section);
-  const missingRequired = (questions[section] ?? []).filter((q) => {
-    const answer = state.data.answers[q.id];
-    return q.needed && (!answer?.text.trim() || answer.status !== "provided");
-  });
-  const cannotContinue = !ready || blocked || missingRequired.length > 0;
+  const cannotContinue = !ready;
   const outstanding = needed({
     ...snapshot.records,
     [section]: { ...record, data: state.data },
@@ -964,21 +960,6 @@ function Editor({
               ))}
             </fieldset>
           )}
-          {ready && missingRequired.length > 0 && (
-            <p
-              id="continue-requirements"
-              className="continuehint"
-              role="status"
-            >
-              Complete the{" "}
-              {missingRequired.length === 1
-                ? "field"
-                : `${missingRequired.length} fields`}{" "}
-              marked “Needed for Design” on this page to enable Continue. “Not
-              yet known” keeps a required answer incomplete. You can still save
-              or use the section links.
-            </p>
-          )}
           <div className="formfooter">
             <button
               disabled={index === 0}
@@ -993,11 +974,6 @@ function Editor({
               <button
                 className="primary"
                 disabled={cannotContinue}
-                aria-describedby={
-                  missingRequired.length > 0
-                    ? "continue-requirements"
-                    : undefined
-                }
                 onClick={() => {
                   if (!cannotContinue) void navigate(sections[index + 1]);
                 }}
@@ -1014,8 +990,9 @@ function Editor({
           </div>
           <div className="historybar">
             <span>
-              {outstanding} core items still needed for Design · saving remains
-              available
+              {outstanding > 0
+                ? `${outstanding} core ${outstanding === 1 ? "answer is" : "answers are"} still needed before sending Analysis to AI. You can keep editing and navigating.`
+                : "Core answers are entered. AI generation will be available in a later milestone."}
             </span>
             <button onClick={() => void controller.flush()}>Save now</button>
             <button
@@ -1189,32 +1166,27 @@ function Field({
         />
       )}
       {answerOptions.length > 0 && (
-        <details className="answeroptions">
-          <summary>
-            Answer options<span className="sr-only"> for {q.label}</span>
-          </summary>
-          <fieldset>
-            <legend className="sr-only">Information status: {q.label}</legend>
-            {answerOptions.map((status) => (
-              <label key={status}>
-                <input
-                  type="checkbox"
-                  checked={a.status === status}
-                  onChange={(e) => {
-                    onChange(
-                      { ...a, status: e.target.checked ? status : "provided" },
-                      true,
-                    );
-                    discrete?.();
-                  }}
-                />
-                {status === "unknown"
-                  ? "Not yet known"
-                  : "Not applicable — add a reason"}
-              </label>
-            ))}
-          </fieldset>
-        </details>
+        <fieldset className="answeroptions">
+          <legend className="sr-only">Information status: {q.label}</legend>
+          {answerOptions.map((status) => (
+            <label key={status}>
+              <input
+                type="checkbox"
+                checked={a.status === status}
+                onChange={(e) => {
+                  onChange(
+                    { ...a, status: e.target.checked ? status : "provided" },
+                    true,
+                  );
+                  discrete?.();
+                }}
+              />
+              {status === "unknown"
+                ? "Not yet known"
+                : "Not applicable — add a reason"}
+            </label>
+          ))}
+        </fieldset>
       )}
     </div>
   );

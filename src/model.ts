@@ -63,14 +63,24 @@ export type SaveResult = {
   operation_id: string;
 };
 export const emptyData = (): RecordData => ({ answers: {}, items: [] });
-export function needed(records: Partial<Record<Section, SavedRecord>>) {
-  return [
+// Recompute from the actual saved AI inputs; a cached readiness result cannot authorize generation.
+export function analysisAIReadiness(
+  records: Partial<Record<Section, SavedRecord>>,
+) {
+  const required = [
     ["context", "task"],
     ["context", "desired"],
     ["context", "current"],
     ["audience", "roles"],
-  ].filter(([s, k]) => {
-    const a = records[s as Section]?.data.answers[k];
-    return !a?.text.trim() || a.status !== "provided";
-  }).length;
+  ] as const;
+  const missing = required
+    .filter(([section, field]) => {
+      const answer = records[section]?.data.answers[field];
+      return !answer?.text.trim() || answer.status !== "provided";
+    })
+    .map(([section, field]) => ({ section, field }));
+  return { ready: missing.length === 0, missing };
+}
+export function needed(records: Partial<Record<Section, SavedRecord>>) {
+  return analysisAIReadiness(records).missing.length;
 }

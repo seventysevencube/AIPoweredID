@@ -56,7 +56,7 @@ test("private workspace, truthful saving, recovery, two-tab conflict, history an
     { exact: true },
   );
   const next = page.getByRole("button", { name: "Continue →", exact: true });
-  await expect(next).toBeDisabled();
+  await expect(next).toBeEnabled();
   await expect(
     page.getByRole("button", { name: "Save and return later", exact: true }),
   ).toBeEnabled();
@@ -71,18 +71,21 @@ test("private workspace, truthful saving, recovery, two-tab conflict, history an
   );
   await desired.fill("Complete all required checklist steps");
   await current.fill("   ");
-  await expect(next).toBeDisabled();
+  await expect(next).toBeEnabled();
   await current.fill("Some steps are missed");
   await expect(next).toBeEnabled();
   const taskField = page.locator(".field").filter({ has: task });
-  await taskField.locator("summary").click();
   await expect(page.getByText("Enter an answer", { exact: true })).toHaveCount(
     0,
   );
+  await expect(page.getByText("Answer options", { exact: true })).toHaveCount(
+    0,
+  );
+  await expect(taskField.locator("details")).toHaveCount(0);
   await taskField
     .getByRole("checkbox", { name: "Not yet known", exact: true })
     .check();
-  await expect(next).toBeDisabled();
+  await expect(next).toBeEnabled();
   await taskField
     .getByRole("checkbox", { name: "Not yet known", exact: true })
     .uncheck();
@@ -164,7 +167,7 @@ test("private workspace, truthful saving, recovery, two-tab conflict, history an
   await expect(
     page.getByRole("status").filter({ hasText: "All changes saved" }),
   ).toBeVisible();
-  await expect(next).toBeDisabled(); // Restoring revision 1 restored empty required answers.
+  await expect(next).toBeEnabled(); // Empty required answers do not block section navigation.
   await page
     .getByRole("link", { name: /Evidence and possible causes/ })
     .click();
@@ -175,7 +178,6 @@ test("private workspace, truthful saving, recovery, two-tab conflict, history an
       { exact: true },
     ),
   });
-  await evidence.locator("summary").click();
   await evidence
     .getByRole("checkbox", { name: "Not yet known", exact: true })
     .check();
@@ -187,7 +189,7 @@ test("private workspace, truthful saving, recovery, two-tab conflict, history an
       exact: true,
     }),
   ).toBeVisible();
-  await expect(next).toBeDisabled();
+  await expect(next).toBeEnabled();
   const roles = page.getByLabel(
     "Who needs to perform this task? Describe their roles or responsibilities.",
     { exact: true },
@@ -195,17 +197,15 @@ test("private workspace, truthful saving, recovery, two-tab conflict, history an
   await roles.fill("Maintenance technicians");
   await expect(next).toBeEnabled();
   const audience = page.locator(".field").filter({ has: roles });
-  await audience.locator("summary").click();
   await audience
     .getByRole("checkbox", { name: "Not yet known", exact: true })
     .check();
-  await expect(next).toBeDisabled();
+  await expect(next).toBeEnabled();
   await expect(
     page.getByRole("status").filter({ hasText: "All changes saved" }),
   ).toBeVisible();
   await page.reload();
-  await expect(next).toBeDisabled();
-  await audience.locator("summary").click();
+  await expect(next).toBeEnabled();
   await expect(
     audience.getByRole("checkbox", { name: "Not yet known", exact: true }),
   ).toBeChecked();

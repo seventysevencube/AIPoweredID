@@ -1,6 +1,6 @@
 import { createHmac, randomInt, randomUUID } from "node:crypto";
 import { z } from "zod";
-import { recordDataSchema, sections } from "../src/model";
+import { recordDataSchema, sections, analysisAIReadiness } from "../src/model";
 
 export type Rpc = (
   operation: string,
@@ -238,12 +238,14 @@ export function createHandler(d: Dependencies) {
           404,
         );
       const project_id = z.uuid().parse(m[1]);
-      if (!m[2] && req.method === "GET")
+      if (!m[2] && req.method === "GET") {
+        const project = await rpc("open", { project_id, ...actor });
         return response(
-          await rpc("open", { project_id, ...actor }),
+          { ...project, ai_readiness: analysisAIReadiness(project.records) },
           200,
           headers,
         );
+      }
       if (m[2] === "resume" && req.method === "POST") {
         const body = z
           .object({ section: z.enum(sections) })

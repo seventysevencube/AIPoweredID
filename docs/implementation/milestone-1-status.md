@@ -44,3 +44,8 @@ The designer requested removing unnecessary four-option status menus across the 
 ## Local UI refinement — Continue and unknown responses
 
 Continue now checks the current page's existing Needed-for-Design fields, excluding blank, whitespace-only, and unresolved-status answers. The same shared logic applies across Analysis, without adding requirements to optional pages or blocking saves, Back, or section links. The final page no longer claims Analysis entry is complete when core answers are missing. Readiness counts reflect current edits immediately. Answer options now use a Not yet known checkbox (plus not-applicable where relevant), with no Enter an answer choice; unchecking restores ordinary-answer status and preserves the text. Live service setup remains deferred.
+
+
+## Latest refinement — navigation and AI readiness
+
+The designer superseded the preceding page-level Continue gate. Continue and section links now allow incomplete/unknown Analysis; Continue waits only while the section loads; navigating preserves unresolved recovery/conflict drafts. Unknown/applicability checkboxes are visible directly below their answers. Text and statuses are preserved. A shared core-input readiness check drives the live issue count and is returned by the owner-authorized project endpoint from saved records. Core unknowns, blank answers, not-applicable values, and proposals keep readiness false; optional unknowns remain permitted. No AI action or provider connection exists in Milestone 1. The first AI generation integration must enforce this rule on the selected saved inputs before queueing and dispatch, alongside the approved cost, review, and handoff rules.

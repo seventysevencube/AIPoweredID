@@ -264,3 +264,8 @@ The user instructed: “Please also merge changes to main if we are ready. Lets 
 ## October 18, 2026 — Analysis Continue and uncertainty controls
 
 The designer requested disabling Continue when Needed-for-Design fields are incomplete and removing the redundant Enter an answer option. Continue checks the current page's required fields; saving and section navigation remain available. Unknown responses use a checkbox, and optional applicability controls preserve rationale/text. This is a navigation refinement, not a new stage acceptance or learning-measure confirmation action. See current requirements for the precise rule.
+
+
+## October 18, 2026 — Continue navigates; core answers gate AI
+
+The designer superseded the preceding Continue restriction: both Continue and section links allow moving through incomplete Analysis. Unknown checkboxes are directly visible, with no Answer options disclosure. Required/core answers instead gate project-content AI submission; unknown notes or empty answers cannot bypass it. This is the current rule. Milestone 1 computes readiness from saved owner-authorized records; actual AI queue/provider integration remains later work and must enforce the rule on the server.
