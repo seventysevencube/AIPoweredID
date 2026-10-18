@@ -19,7 +19,7 @@ Updated: October 17, 2026. Items below are unresolved details, not approved addi
 - Default settings for the four AI assistance controls and final reflection UI. Break reminders are already off by default.
 - Upload size/count limits, straightforward table-text behavior, and remaining processing errors. The no-usable-text case is settled: deterministic warning/exclusion, with no AI, summary, text preview, or import-review gate. Source formats are settled: .docx/.pptx only, using basic extraction. No OCR, image/diagram interpretation, or complex layout reconstruction; PDF/TXT uploads and legacy conversion are outside initial scope.
 - Exact supported Storyline/Rise feature/version references and feasible combined-tool handoffs. Native authoring project generation remains excluded.
-- Version retention, backup/recovery objectives, local draft retention, deletion, and actual autosave/recovery failure testing.
+- Version retention, backup/recovery objectives, local draft retention, remaining account-data deletion details, and actual autosave/recovery failure testing. The [owner-requested project deletion](requirements.md#owner-requested-project-deletion) process is approved: operator verification, review-link shutdown when deletion begins, and removal of project/uploads/versions/shared snapshots/comments from the active app within 30 days of verification. Backup copies and AI-provider retention remain separate decisions once services are chosen.
 - Handling of essential versus nonblocking open issues within agreed readiness rules; concrete validation messages and examples.
 - Exact sample size/selection rules for each deliverable. Do not set a universal screen count from the five-minute benchmark.
 

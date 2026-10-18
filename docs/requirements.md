@@ -223,7 +223,13 @@ These limits apply to designer sign-in, not account-free guest review. They do n
 
 ### Designer access removal
 
-Removing a designer's email from the approved list stops new designer sign-ins and ends their existing signed-in designer access. Deactivate active guest-review links belonging to that designer's projects as part of the removal. Their projects remain saved: removing access does not automatically delete their work. Retention and deletion remain separate policies to agree.
+Removing a designer's email from the approved list stops new designer sign-ins and ends their existing signed-in designer access. Deactivate active guest-review links belonging to that designer's projects as part of the removal. Their projects remain saved: removing access does not automatically delete their work. Deletion follows the separate owner-request process below.
+
+### Owner-requested project deletion
+
+For the pilot, the project owner asks the pilot operator to delete a project, and the operator verifies the request. Its review links stop working when deletion begins. Within 30 days of the verified request, remove the project, uploads, saved versions, shared snapshots, and comments from the active app.
+
+Backup copies and AI-provider retention require separate rules once those services are chosen. The active-app deletion deadline is not a promise that those copies disappear immediately. This policy does not delete projects automatically when designer access is removed, or require a self-service deletion dashboard. Other retention policies remain open.
 
 ## 9. AI process and next work
 

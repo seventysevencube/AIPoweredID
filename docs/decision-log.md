@@ -175,3 +175,11 @@ Updated: October 17, 2026.
 During the B4 discussion, the user explicitly approved removing designer access through the approved-email list: removing an email stops new sign-ins and ends that designer's existing signed-in access; their active project guest-review links also stop working. Projects remain saved, and removing access does not automatically delete work.
 
 The [current requirements](requirements.md#designer-access-removal) contain the canonical policy, superseding earlier statements that this access-removal behavior was undecided. Retention/deletion and other unapproved account-lifecycle details remain separate decisions. Prior decision-log entries remain intact; add this documentation fix to the existing shared PR. No real account, eligibility list, session, or review link is changed by this planning update.
+
+## Owner-requested project deletion — approved October 17, 2026
+
+Updated: October 17, 2026.
+
+During the B4 discussion, the user accepted a manual project-deletion process for the pilot: the owner asks the pilot operator, who verifies the request; review links stop working when deletion begins; and the project, uploads, saved versions, shared snapshots, and comments are removed from the active app within 30 days of the verified request. Removing designer access alone still keeps projects saved.
+
+The [current requirements](requirements.md#owner-requested-project-deletion) contain the canonical policy. Backup copies and AI-provider retention require separate rules once services are chosen; this approval does not promise their immediate deletion or settle other retention/account-data policies. Prior decision-log entries remain intact; include this documentation fix in the existing shared PR. No real project or stored data is deleted by this planning update.

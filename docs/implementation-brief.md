@@ -64,6 +64,8 @@ Support Word (.docx) and PowerPoint (.pptx) uploads using basic extraction of ed
 
 Target device recovery capture during typing, server saves about one second after a pause, at least every five seconds of continuous typing while connected, immediate discrete saves, and navigation flushes. Only server acknowledgement permits an all-changes-saved claim. Protect unsynced work, completed AI results, undo/history, and conflict recovery. Retention and failure recovery still require decisions and testing.
 
+Use the approved [owner-requested project deletion](requirements.md#owner-requested-project-deletion) process: the owner contacts the pilot operator, who verifies the request; review links stop when deletion begins; project content, uploads, saved versions, shared snapshots, and comments are removed from the active app within 30 days of verification. Backup copies and AI-provider retention remain separate open policies. Removing designer access alone does not delete projects.
+
 Desktop scope retains the WCAG 2.2 AA target. Validate keyboard access, focus, screen-reader operation, contrast, and zoom/reflow. Breaks and reflection remain optional; break reminders default off.
 
 ## Export requirements approved at this checkpoint
