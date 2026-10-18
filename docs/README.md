@@ -43,3 +43,13 @@ The latest explicit user decision always takes precedence. Record new decisions 
 
 
 
+
+## Implementation foundation — October 18, 2026
+
+- [Milestone 1 specification](implementation/milestone-1.md)
+- [Phased build plan](implementation/phased-build-plan.md)
+- [Operating costs and account context](implementation/operating-costs.md)
+- [AI provider strategy](implementation/ai-provider-strategy.md)
+- [Saved work and AI jobs](implementation/saved-work-and-ai-jobs.md)
+
+The user authorized Milestone 1 implementation and merging ready planning changes. The full audit in PR #1 remains contextual: merging its report preserves findings, not blanket approval of its recommendations. Other audit findings and the fictional walkthrough remain deferred.

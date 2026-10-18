@@ -305,3 +305,13 @@ Derive the output types from that choice: Detailed e-learning storyboard; **Writ
 
 A performance aid’s purpose determines its learning/nonlearning treatment. Confirm any required route/evaluation-plan change explicitly, retaining relevant workplace-performance and organizational-results measures and recording learning measures as not applicable only for a route with no learning component. Do not force aid-only work through e-learning format or tool questions, and do not force nonlearning aid work through learning objectives/assessments. Preserve previous versions and flag affected downstream content for review.
 
+
+## 10. Technical foundation and implementation authorization — October 18, 2026
+
+The user authorized Milestone 1 implementation and merging ready planning changes. Its scope is approved-email code sign-in, private designer projects/cards, manual Analysis entry, reliable autosave/recovery/conflicts, and version foundations. Follow the [milestone specification](implementation/milestone-1.md); technical mechanisms remain subject to verification and cannot weaken approved product behavior.
+
+Use existing Netlify Free hosting, with Supabase Auth/PostgreSQL/private Storage and Resend as the low-cost service foundation. The user's screenshot confirms Netlify's credit-based Free plan with 300 monthly credits; its snapshot balance is not a dedicated app allowance or future guarantee. Aim for minimal non-AI costs, using free allowances where feasible; $0 is a target rather than a fixed approved cap. The user accepts manually resuming an inactive service before scheduled demos and has existing domains available. Do not rely on a temporary Vercel Pro trial. The project region and exact domain remain setup choices. React/TypeScript/Vite is the proposed frontend implementation.
+
+OpenAI is the approved initial AI provider. Evaluate Luna first per task during phase-specific AI integration; use Sol where measured quality/cost results justify it. Do not automatically run both models on every output. Leave Jev out initially. Preserve stage-specific prompts/examples, structured output checks, source grounding, human review, the shared one-job queue and $20 budget reservations. Specific task/model assignments and measured costs remain to be validated. Milestone 1 does not call AI.
+
+Review of architecture/storage does not certify actual access policies, recovery, authentication, accessibility, or provider configuration. The exact five-failures-per-code rule must be enforced end to end; provider IP rate limits or a browser counter do not establish it. Existing B4 timing and deferred audit findings/walkthrough are unchanged. Real service configuration must use appropriate account access; never commit credentials.
