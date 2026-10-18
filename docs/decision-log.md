@@ -108,3 +108,18 @@ The user selected the fictional complaint-routing example rather than a real org
 ## Fictional walkthrough deferred
 
 The user requested skipping the fictional complaint-routing example for now. Retain the authored source packet and Analysis draft without approving their content or proceeding with the exercise. The next proposed planning step is a technical build plan for the approved MVP and clarification of the non-AI operating budget. The earlier requirement to revisit prompts/examples during phase-by-phase AI integration remains in place. Application implementation has not started.
+
+## Document authority — approved October 17, 2026
+
+Updated: October 17, 2026.
+
+While working through planning-audit blocker B1 one fix at a time, the user approved this document arrangement:
+
+- [Current requirements](requirements.md#document-authority) is the main source of current product rules.
+- Detailed notes preserve approved exact form questions, explanations, and the reasons behind decisions; they support the requirements rather than act as a second, equal source of product rules.
+- This decision log preserves the history of approvals and corrections. Keep earlier entries intact.
+- The latest explicit user decision always takes precedence. Record a new decision here and update the current requirements and affected supporting notes to reflect it. Mark superseded note instructions as historical; proposals and archived material do not become approved requirements.
+
+This entry supersedes the earlier Document precedence section's equal ranking of current requirements and approved detailed notes, and the opening description of both as operative wording. Those earlier statements remain as history. The current document-authority rule is also stated in the [planning index](README.md#document-authority) and current requirements so readers do not need to reconstruct it from past entries.
+
+This approval covers the document arrangement only. Individual contradiction fixes, other B1 cleanup, and the remaining audit recommendations have not been approved by it. No technical plan or application work is included.

@@ -34,6 +34,10 @@ The checkpoint is historical; subsequent objective, assessment, content/sequence
 - [Original project brief](archive/original-brief.md)
 - [Earlier planning drafts](archive/README.md)
 
-These are planning notes and requirements derived from the conversation, not a verbatim chat transcript. The latest explicit user correction takes precedence over an earlier proposal. The consolidated requirements record the current agreement; detailed notes preserve question wording and implementation discussions. Archived drafts are historical only. A proposal inside a note is not automatically an approved implementation requirement.
+## Document authority
+
+These are planning notes and requirements derived from the conversation, not a verbatim chat transcript. [Current requirements](requirements.md#document-authority) is the main source of current product rules. Detailed notes preserve approved exact form questions, explanations, and the reasons behind decisions; they support the requirements rather than act as a second, equal source of product rules. The [decision log](decision-log.md#document-authority--approved-october-17-2026) preserves the history of approvals and corrections.
+
+The latest explicit user decision always takes precedence. Record new decisions in the decision log and reflect them in the current requirements and affected supporting notes. Mark superseded note instructions as historical. Archived drafts are history only, and a proposal inside a note is not an approved implementation requirement. This arrangement is the first approved B1 fix; other audit recommendations and individual contradiction fixes remain subject to approval.
 
 

@@ -2,6 +2,14 @@
 
 Updated: October 17, 2026. Status: agreed product baseline; implementation choices and open details are listed separately.
 
+## Document authority
+
+This document is the main source of current product requirements. The linked detailed notes preserve approved exact form questions, explanations, and the reasons behind decisions; they support these requirements rather than act as a second, equal source of product rules. The [decision log](decision-log.md#document-authority--approved-october-17-2026) preserves the history of approvals and corrections.
+
+The latest explicit user decision always takes precedence. When a new decision changes a requirement, record it in the decision log and update this document and the affected supporting notes to reflect it. Mark superseded instructions in the notes as historical. A proposal in a note is not an approved requirement, and archived documents are history only.
+
+This document arrangement does not approve any other audit recommendation or change the product's scope. Reconciling the remaining contradictory passages is separate work requiring approval.
+
 ## 1. Purpose and scope
 
 Support novice and experienced instructional designers through Analysis, Design, and partial Development for workplace e-learning and performance support. Use one workflow with adjustable guidance. Target desktop use, with a WCAG 2.2 AA acceptance target including keyboard use, focus, screen-reader operation, and zoom/reflow.
