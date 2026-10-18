@@ -256,6 +256,15 @@ Use shared rules plus stage/task-specific prompts, approved project context, rel
 
 During each phase's AI integration, revisit prompts, add reviewed examples, test typical and difficult cases, and adjust the approach. Start with prompting/source grounding/evaluation rather than custom model training. Benchmark quality, unsupported claims, designer correction time, cost per accepted output, and latency. No provider/model or numerical quality threshold is selected yet.
 
+### AI-provider use of project content
+
+- Choose an AI service whose applicable terms and settings prevent using project content to train its models.
+- Send only the material needed for each requested task.
+- Before real pilot use, verify how long the selected service stores that material and explain its retention to designers.
+- Do not promise immediate deletion or zero storage unless those claims have been verified for the selected service and configuration.
+
+These are provider-selection requirements, not a provider choice or a claim about any service's current practices. The provider and its exact retention/deletion rules remain to be evaluated and agreed before real use.
+
 Next planned work: desktop wireframes and a representative end-to-end walkthrough, example storyboard/export templates, unresolved product/operational choices, and an implementation brief. App building has not started.
 
 ## Refinement: decide the solution before confirming deliverables

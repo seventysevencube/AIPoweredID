@@ -25,7 +25,7 @@ Updated: October 17, 2026. Items below are unresolved details, not approved addi
 
 ## AI integration work, revisited for every phase
 
-- Provider/model selection, API configuration, cost tracking, limits, and error handling.
+- Provider/model selection, API configuration, cost tracking, limits, and error handling. The [project-content handling requirements](requirements.md#ai-provider-use-of-project-content) are approved: no training use under the applicable terms/settings, task-needed material only, verified retention explained before real use, and no unverified immediate-deletion/zero-storage claim. Evaluate the selected service's exact retention/deletion rules before real pilot use.
 - Production prompt templates and output structures for individual tasks, including Six Boxes routing, the conditional L2 gate, Bloom/main/enabling objectives, assessment alignment, and source mapping.
 - Reviewed positive/negative examples, held-out test cases, rubrics, quality thresholds, bounded repairs, and recovery from refusal/truncation/failure.
 - Source retrieval/citation support checks and treatment of conflicting evidence or instructions embedded in reference documents.

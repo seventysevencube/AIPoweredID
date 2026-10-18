@@ -46,6 +46,7 @@ Examples show patterns rather than supplying project facts. Use a separate set o
 
 ## Shared rules for every generation
 
+- Apply the [AI-provider project-content rules](../requirements.md#ai-provider-use-of-project-content): applicable terms/settings must prevent training on project content; send only task-needed material. Verify and explain the selected service's retention before real pilot use, with no unverified zero-storage or immediate-deletion claim.
 - Preserve approved wording, objective/assessment IDs, criteria, tool choices, and scope except where a requested change explicitly authorizes a proposed revision. Show a diff for changes to accepted material.
 - Separate accepted designer decisions, source-supported facts, AI proposals, and unresolved questions in the stored records and review view.
 - Use verified source references supplied by the app. Never invent a citation, source passage, policy, statistic, or tool capability. A working URL alone does not establish that it supports a claim.

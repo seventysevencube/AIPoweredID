@@ -183,3 +183,11 @@ Updated: October 17, 2026.
 During the B4 discussion, the user accepted a manual project-deletion process for the pilot: the owner asks the pilot operator, who verifies the request; review links stop working when deletion begins; and the project, uploads, saved versions, shared snapshots, and comments are removed from the active app within 30 days of the verified request. Removing designer access alone still keeps projects saved.
 
 The [current requirements](requirements.md#owner-requested-project-deletion) contain the canonical policy. Backup copies and AI-provider retention require separate rules once services are chosen; this approval does not promise their immediate deletion or settle other retention/account-data policies. Prior decision-log entries remain intact; include this documentation fix in the existing shared PR. No real project or stored data is deleted by this planning update.
+
+## AI-provider use of project content — approved October 17, 2026
+
+Updated: October 17, 2026.
+
+During the B4 discussion, the user accepted these provider-selection requirements: choose a service whose applicable terms/settings prevent training on project content; send only material needed for each task; verify how long the service stores that material and explain it to designers before real pilot use; and avoid promises of immediate deletion or zero storage unless verified.
+
+The [current requirements](requirements.md#ai-provider-use-of-project-content) contain the canonical rule. This approval selects no provider and makes no claim about a service's current terms or configuration. The provider and exact retention/deletion rules remain to be evaluated and agreed before real use. Prior decision-log entries remain intact; include this documentation fix in the existing shared PR. No project content is sent to any provider by this planning update.

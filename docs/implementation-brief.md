@@ -82,6 +82,8 @@ Exact PDF/PPTX page/slide layouts, long-content examples, accessibility verifica
 
 Use shared guardrails plus focused stage/task prompts, the accepted context, permitted source passages, structured outputs, reviewed examples, and quality checks. Revisit and refine prompts/examples at each phase's AI connection.
 
+Apply the approved [AI-provider project-content rules](requirements.md#ai-provider-use-of-project-content): select applicable terms/settings that prevent training on project content; send only task-needed material; verify retention and explain it to designers before real pilot use. Make no unverified immediate-deletion or zero-storage promise. Provider selection and exact retention rules remain open.
+
 Explicit generation/revision actions initiate AI work. Typing, autosave, navigation, and document export do not. Bound repair attempts; preserve accepted work and completed results if generation fails. Show unsupported/conflicting facts and require explicit review of material upstream changes.
 
 The monthly pilot AI budget is approved at $20 total. Provider/model, actual usage/cost estimates, enforcement implementation, numerical quality thresholds, production prompts, and retrieval implementation remain undecided. The $16 warning/$20 pause policy is approved. Benchmark against the approximately five-minute, moderately interactive workplace reference; it is not a project duration limit.
