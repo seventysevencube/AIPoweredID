@@ -205,15 +205,14 @@ function Auth({ mode, onUser }: { mode: string; onUser: (u: User) => void }) {
   return (
     <main id="main" tabIndex={-1} className="login">
       <div className="loginintro">
-        <p className="eyebrow">From evidence to a learning plan</p>
+        <p className="eyebrow">Data-Driven AI-Powered Instructional Design</p>
         <h1>
-          A thoughtful place
-          <br />
-          to design learning.
+          Bringing the Human back into the loop of AI-Powered Instructional
+          Design
         </h1>
         <p>
-          Bring your expertise. Capture what matters, build on your decisions,
-          and return to your work whenever you’re ready.
+          Bring your expertise. Capture what matters. Design effective learning
+          experiences.
         </p>
         <div className="introsteps">
           <span>01 · Analysis</span>
