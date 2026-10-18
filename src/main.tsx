@@ -1067,27 +1067,15 @@ function Field({
           {q.help}
         </p>
       )}
-      <div className="answerstatus">
-        <label className="sr-only" htmlFor={id + "-status"}>
-          Information status: {q.label}
-        </label>
-        <select
-          id={id + "-status"}
-          value={a.status}
-          onChange={(e) => {
-            onChange(
-              { ...a, status: e.target.value as Answer["status"] },
-              true,
-            );
-            discrete?.();
-          }}
-        >
-          <option value="provided">Provided / draft</option>
-          <option value="proposed">Proposed — needs review</option>
-          <option value="unknown">Not yet known</option>
-          <option value="not_applicable">Not applicable — explain below</option>
-        </select>
-      </div>
+      {a.status !== "provided" && (
+        <p className="answerbadge" id={id + "-status-note"}>
+          {a.status === "unknown"
+            ? "Not yet known"
+            : a.status === "not_applicable"
+              ? "Not applicable — explain why in your answer."
+              : "Proposed — needs review"}
+        </p>
+      )}
       {q.id === "causes" && (
         <fieldset className="causes">
           <legend>Select any that may apply</legend>
@@ -1123,7 +1111,14 @@ function Field({
       {q.short ? (
         <input
           id={id}
-          aria-describedby={q.help ? id + "-help" : undefined}
+          aria-describedby={
+            [
+              q.help ? id + "-help" : "",
+              a.status !== "provided" ? id + "-status-note" : "",
+            ]
+              .filter(Boolean)
+              .join(" ") || undefined
+          }
           maxLength={q.id === "title" ? 300 : 150000}
           value={a.text}
           onChange={(e) => onChange({ ...a, text: e.target.value })}
@@ -1131,7 +1126,14 @@ function Field({
       ) : (
         <textarea
           id={id}
-          aria-describedby={q.help ? id + "-help" : undefined}
+          aria-describedby={
+            [
+              q.help ? id + "-help" : "",
+              a.status !== "provided" ? id + "-status-note" : "",
+            ]
+              .filter(Boolean)
+              .join(" ") || undefined
+          }
           rows={3}
           value={a.text}
           maxLength={150000}
@@ -1144,6 +1146,45 @@ function Field({
           }
           onChange={(e) => onChange({ ...a, text: e.target.value })}
         />
+      )}
+      {((q.answerOptions?.length ?? 0) > 0 || a.status !== "provided") && (
+        <details className="answeroptions">
+          <summary>
+            Answer options<span className="sr-only"> for {q.label}</span>
+          </summary>
+          <fieldset>
+            <legend className="sr-only">Information status: {q.label}</legend>
+            {(
+              [
+                "provided",
+                ...(q.answerOptions ?? []),
+                ...(a.status === "unknown" || a.status === "not_applicable"
+                  ? [a.status]
+                  : []),
+              ] as const
+            )
+              .filter((value, index, list) => list.indexOf(value) === index)
+              .map((status) => (
+                <label key={status}>
+                  <input
+                    type="radio"
+                    name={id + "-status"}
+                    value={status}
+                    checked={a.status === status}
+                    onChange={() => {
+                      onChange({ ...a, status }, true);
+                      discrete?.();
+                    }}
+                  />
+                  {status === "provided"
+                    ? "Enter an answer"
+                    : status === "unknown"
+                      ? "Not yet known"
+                      : "Not applicable — add a reason"}
+                </label>
+              ))}
+          </fieldset>
+        </details>
       )}
     </div>
   );
