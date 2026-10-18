@@ -2,7 +2,7 @@
 
 Updated: October 17, 2026
 
-Status: Autosave policy, target timing, visible save status, recovery protections, and verification approach agreed. Exact retention/backup policies and implementation remain to be specified. No app development has started. Synced project sources remain read-only.
+Status: Autosave policy, target timing, visible save status, recovery protections, verification approach, and owner-requested active-app project deletion are agreed. Other retention/backup policies and implementation remain to be specified. No app development has started. Synced project sources remain read-only.
 
 ## Confirmed requirement
 
@@ -45,3 +45,7 @@ Local storage, browser/device failure, cleared browser data, private browsing, a
 The user approved autosave timing targets (about one second after a typing pause, at least every five seconds of continuous typing while connected, and immediate discrete-change saves), server-confirmed status, device recovery, version/undo and conflict protections, interrupted-session testing, and optional “Save now.” Implementation must validate these targets; they are not measured guarantees or a promise of zero data loss. Exact retention and backup policies remain to be decided.
 
 Browser recovery limitations checked against primary documentation: https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event and https://developer.mozilla.org/en-US/docs/Web/API/Storage_API/Storage_quotas_and_eviction_criteria. Saving must be continuous during use rather than depending on a browser-close event, and device-only draft status must account for local storage limitations.
+
+## Owner-requested project deletion — approved
+
+Follow the canonical [owner-requested project deletion](../requirements.md#owner-requested-project-deletion) policy: the owner contacts the pilot operator, who verifies the request; review links stop when deletion begins; the project, uploads, saved versions, shared snapshots, and comments are removed from the active app within 30 days of verification. This is separate from removing pilot access, which keeps projects saved. Backup copies and AI-provider retention remain to be agreed once services are chosen; no immediate erasure promise for those copies follows from the active-app deadline.

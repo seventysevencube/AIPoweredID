@@ -1,10 +1,11 @@
 # Planning Documents
 
-Updated: October 17, 2026.
+Updated: October 18, 2026.
 
 ## Current agreement
 
 - [Consolidated requirements](requirements.md)
+- [Approved independently written performance-analysis and Evaluation planning questions/layouts](notes/independent-review-questions.md)
 - [MVP implementation brief](implementation-brief.md) — approved workflow and export requirements; proposed delivery order and open choices
 - [Analysis questions, output, layout, and handoff](notes/analysis-form-decisions.md)
 - [Design questions, objective hierarchy, assessments, content mapping, and handoff](notes/design-form-decisions.md)
@@ -34,6 +35,21 @@ The checkpoint is historical; subsequent objective, assessment, content/sequence
 - [Original project brief](archive/original-brief.md)
 - [Earlier planning drafts](archive/README.md)
 
-These are planning notes and requirements derived from the conversation, not a verbatim chat transcript. The latest explicit user correction takes precedence over an earlier proposal. The consolidated requirements record the current agreement; detailed notes preserve question wording and implementation discussions. Archived drafts are historical only. A proposal inside a note is not automatically an approved implementation requirement.
+## Document authority
+
+These are planning notes and requirements derived from the conversation, not a verbatim chat transcript. [Current requirements](requirements.md#document-authority) is the main source of current product rules. Detailed notes preserve approved exact form questions, explanations, and the reasons behind decisions; they support the requirements rather than act as a second, equal source of product rules. The [decision log](decision-log.md#document-authority--approved-october-17-2026) preserves the history of approvals and corrections.
+
+The latest explicit user decision always takes precedence. Record new decisions in the decision log and reflect them in the current requirements and affected supporting notes. Mark superseded note instructions as historical. Archived drafts are history only, and a proposal inside a note is not an approved implementation requirement. This arrangement is the first approved B1 fix; other audit recommendations and individual contradiction fixes remain subject to approval.
 
 
+
+
+## Implementation foundation — October 18, 2026
+
+- [Milestone 1 specification](implementation/milestone-1.md)
+- [Phased build plan](implementation/phased-build-plan.md)
+- [Operating costs and account context](implementation/operating-costs.md)
+- [AI provider strategy](implementation/ai-provider-strategy.md)
+- [Saved work and AI jobs](implementation/saved-work-and-ai-jobs.md)
+
+The user authorized Milestone 1 implementation and merging ready planning changes. The full audit in PR #1 remains contextual: merging its report preserves findings, not blanket approval of its recommendations. Other audit findings and the fictional walkthrough remain deferred.

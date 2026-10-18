@@ -2,17 +2,23 @@
 
 Updated: October 17, 2026
 
-Status: Guest access, anchored comments, required unverified display names, and fixed-version review links are approved for the MVP. Other lifecycle/thread details remain open. No app development has started. Synced project sources remain read-only.
+Status: Guest access, anchored comments, required unverified display names, fixed-version review links, revocation at any time, and automatic 14-day link expiry are approved for the MVP. Other lifecycle/thread details remain open. No app development has started. Synced project sources remain read-only.
 
 ## Already agreed
 
 - Optional peer comments on shared drafts at Analysis, Design, and partial Development.
 - Reviewers do not directly edit designer content or formally approve progression.
 - The designer creates a share link when desired. Recommendations to request peer feedback do not send invitations automatically.
-- Current source/data assumption: no confidential organizational material.
+- Apply the [permitted pilot material](../requirements.md#permitted-pilot-material) rule: public material, fictional examples, or employer-approved material with confidential and personal details removed. Identifiable employee/customer cases, passwords, and business secrets are excluded.
 - Reviewed versions and comments must remain traceable to the content they concern.
 - Confirmed MVP access: guest review without creating an account.
 - Confirmed MVP commenting: comments attached to specific sections, objectives, assessments, screens, or blocks.
+
+## Guest-link lifetime — approved
+
+Follow the canonical [guest-link lifetime](../requirements.md#guest-link-lifetime) rule: the designer can revoke a link at any time; each link expires 14 days after creation; a fresh link can provide more review time. Revocation/expiry ends access through that link while keeping the project and saved comments. Copies already downloaded cannot be recalled. Earlier statements below leaving revocation or expiry undecided are superseded by this approval; other lifecycle/thread proposals remain unapproved.
+
+Under the approved [designer access removal](../requirements.md#designer-access-removal) rule, removing a designer from the pilot also deactivates active review links belonging to their projects. The projects remain saved; deletion is a separate decision.
 
 ## Proposed access and content scope
 
@@ -20,7 +26,7 @@ Status: Guest access, anchored comments, required unverified display names, and 
 - For the MVP, guest reviewers can open a link and enter a display name before commenting, without creating an account. Display names are unverified and are not proof of identity.
 - Anyone possessing an active guest link can view the selected shared version. Make this access scope visible to the owner before link creation.
 - Share a selected version of the Analysis brief, Design plan, or Development draft. Let the owner select any supporting source material to include; do not automatically expose all project records or raw uploads.
-- Links are revocable. Optional expiry can be offered; no expiry default has been agreed.
+- Link lifetime is governed by the later approved [guest-link lifetime](../requirements.md#guest-link-lifetime) rule above, replacing the earlier optional-expiry proposal.
 
 ## Proposed comment behavior
 

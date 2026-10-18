@@ -1,13 +1,14 @@
 # Desktop screen review status
 
-Updated: October 17, 2026. See the [checkpoint](../checkpoints/2026-10-17-design-review.md) and [preview index](../../prototypes/README.md).
+Updated: October 18, 2026. See the [checkpoint](../checkpoints/2026-10-17-design-review.md) and [preview index](../../prototypes/README.md).
 
 | Screen | Review status | Notes |
 | --- | --- | --- |
 | Project home | Project cards selected | Row alternative retained as exploration history. |
 | Analysis form | Layout pattern approved | Preview covers the first two sections; detailed notes specify all sections. |
+| Evaluation planning within Analysis | Original questions and described desktop layout approved | Three left-navigation sections and editable measure cards; one expanded at a time, linked measures, explicit unknowns, contextual guidance, and AI proposals. Learning confirmation remains in Design when applicable. See [approved wording/layout](../notes/independent-review-questions.md#analysis-evaluation-planning). Replacement prototype not rendered or tested. |
 | Analysis brief | Review/handoff pattern approved | Saving, section review, and accepted baseline are distinct. |
-| Six Boxes | Review/response pattern approved | Evidence, hypotheses, and unresolved questions stay separate. |
+| Performance-analysis review (replacement for earlier Six Boxes screen) | Original questions and described two-step desktop layout approved | Review evidence, then consider explanations and choose a response. AI proposals, separate route confirmation, and conditional learning-measure confirmation. See [approved wording/layout](../notes/independent-review-questions.md#design-opening-performance-analysis). Replacement prototype not rendered or tested; old branded content remains historical. |
 | Earlier intervention/format/tools | Partly superseded | Format/tool interactions remain a proposal; deliverable-first opening and old label are superseded. |
 | Solution choice and deliverables | Required correction incorporated; proceeding | AI-supported approach choice precedes derived outputs. Current support-output label is Written job aid / performance-support draft. |
 | Main/enabling objectives | Objective-only pattern approved | Objective title clarified; this screen now covers only objectives/alignment. Content and support move to a separate subsequent Design step. Nonlearning aid work uses task/performance requirements. |
@@ -33,3 +34,4 @@ The latest approved source-file scope is Word (.docx) and PowerPoint (.pptx), us
 ## Import interaction refinement
 
 The latest user decision removes extraction summaries, extracted-text previews, and mandatory import review from the MVP. Use a non-AI warning when no usable text is extracted, and do not use that file as AI source content. This is a file-level warning, not a block on continuing the project with other sources. Any earlier import-preview proposal is superseded. Source import has not been implemented.
+

@@ -1,5 +1,7 @@
 # AIPoweredID
 
+Updated: October 17, 2026.
+
 An AI-assisted instructional-design workspace for workplace e-learning and performance support.
 
 **Status:** Requirements and experience-design planning. No application has been built in this repository. The agreed MVP covers **Analysis, Design, and partial Development**; Implementation and evaluation execution are later scope.
@@ -23,9 +25,9 @@ Each stage's designer-reviewed output becomes the input for an editable, prefill
 
 - Desktop experience with a WCAG 2.2 AA acceptance target.
 - Shared workflow for new and experienced designers, with adjustable guidance and AI contribution.
-- Analysis includes Kirkpatrick L2/L3/L4 evaluation planning.
-- Design begins with a Six Boxes performance-solution review; learning is not assumed.
-- L2 measures are mandatory before instructional Design proceeds; a nonlearning route uses a documented not-applicable rationale.
+- Analysis includes independently written evaluation planning for organizational results, workplace performance, and evidence of learning.
+- Design begins with an independently written performance-analysis review; learning is not assumed.
+- Learning measures are mandatory before instructional Design proceeds; a nonlearning route uses a documented not-applicable rationale.
 - E-learning can be microlearning, a course, or a mix; select Storyline, Rise, or both afterward.
 - Main and enabling objectives use revised Bloom's taxonomy for cognitive learning outcomes.
 - Assessments are defined in Design and carried into the storyboard.

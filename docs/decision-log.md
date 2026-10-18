@@ -108,3 +108,149 @@ The user selected the fictional complaint-routing example rather than a real org
 ## Fictional walkthrough deferred
 
 The user requested skipping the fictional complaint-routing example for now. Retain the authored source packet and Analysis draft without approving their content or proceeding with the exercise. The next proposed planning step is a technical build plan for the approved MVP and clarification of the non-AI operating budget. The earlier requirement to revisit prompts/examples during phase-by-phase AI integration remains in place. Application implementation has not started.
+
+## Document authority — approved October 17, 2026
+
+Updated: October 17, 2026.
+
+While working through planning-audit blocker B1 one fix at a time, the user approved this document arrangement:
+
+- [Current requirements](requirements.md#document-authority) is the main source of current product rules.
+- Detailed notes preserve approved exact form questions, explanations, and the reasons behind decisions; they support the requirements rather than act as a second, equal source of product rules.
+- This decision log preserves the history of approvals and corrections. Keep earlier entries intact.
+- The latest explicit user decision always takes precedence. Record a new decision here and update the current requirements and affected supporting notes to reflect it. Mark superseded note instructions as historical; proposals and archived material do not become approved requirements.
+
+This entry supersedes the earlier Document precedence section's equal ranking of current requirements and approved detailed notes, and the opening description of both as operative wording. Those earlier statements remain as history. The current document-authority rule is also stated in the [planning index](README.md#document-authority) and current requirements so readers do not need to reconstruct it from past entries.
+
+This approval covers the document arrangement only. Individual contradiction fixes, other B1 cleanup, and the remaining audit recommendations have not been approved by it. No technical plan or application work is included.
+
+## Review, handoff, and earlier-work changes — approved October 17, 2026
+
+Updated: October 17, 2026.
+
+During the B2 discussion, the user confirmed the distinction between saved edits, review of a specific version, and explicit acceptance of that version as the next stage's starting point. Saving must not automatically mark reviewed or accept a handoff. Unresolved questions may remain after review; existing progression and readiness rules still apply.
+
+The user approved the following behavior when earlier work changes: preserve existing later-stage content and the earlier version it was based on; mark affected sections Needs update with a reason; let the designer review and choose manual editing or an explicit AI revision; keep unaffected sections' review status; and preserve earlier shared versions and exports unchanged. The example discussed was changing the Analysis audience from experienced employees to new hires, potentially affecting Design objectives, explanations, and practice. Do not silently rewrite or automatically regenerate affected content.
+
+The [current requirements](requirements.md#saved-reviewed-and-accepted-for-the-next-stage) contain the canonical rules, with a linked summary in the implementation brief. The user requested adding these approved fixes to the same PR as the first B1 fix, then proceeding to discuss B3. Detailed dependency detection and other unresolved versioning cases are not approved by this entry. Earlier decision-log entries remain intact; no technical plan or application work is included.
+
+## Simple pilot AI spending protection — approved October 17, 2026
+
+Updated: October 17, 2026.
+
+During the B3 discussion, the user accepted reserving a request's maximum allowed cost before it starts and retaining the reservation when a failed or interrupted request's charge is uncertain. The user then requested simple logic and explicitly approved one shared AI queue: only one AI job runs at a time across the pilot; other requested jobs wait; reserve the maximum allowed job cost before starting; settle the confirmed charge and release unused money; pause further AI until the pilot operator checks an uncertain charge; and require an explicit rather than automatic retry of a failed job. Recover completed results without generating them again. Saved work, manual editing, review, and non-AI exports remain available throughout.
+
+The [current requirements](requirements.md#simple-shared-ai-queue-and-spending-protection) contain the canonical policy. All paid AI work within a job, including quality review, the existing bounded quality repair, and research, must fit within its allowance. The quality repair of newly generated content remains distinct from retrying a failed job. This preserves the approved $20 shared monthly cap and $16 warning without separate designer budgets or simultaneous AI-job accounting.
+
+This settles the queue, reservation, uncertain-charge, and explicit-retry behavior previously left open. Exact job allowances, monthly reset timing, provider/model selection, and implementation/validation remain open. Keep this fix in the same PR as the earlier approved blocker fixes. Prior decision-log entries remain intact; no live spending controls, technical plan, or application work are included.
+
+## Permitted pilot material — approved October 17, 2026
+
+Updated: October 17, 2026.
+
+During the B4 discussion, the user accepted the initial material boundary: allow public material, fictional examples, and employer-approved material with confidential and personal details removed. Exclude identifiable employee/customer cases, passwords, and business secrets. Explain this boundary briefly before designers paste or upload material.
+
+The [current requirements](requirements.md#permitted-pilot-material) state the canonical rule, clarifying the earlier no-confidential-organizational-material assumption. This approval does not require automatic sensitive-content detection or approve other privacy/security recommendations. Guest-link lifecycle, provider handling, retention/deletion, and other B4 details remain open. Prior decision-log entries remain intact; this is documentation work in the shared blocker-fix PR.
+
+## Guest-link revocation and expiry — approved October 17, 2026
+
+Updated: October 17, 2026.
+
+During the B4 discussion, the user accepted this simple guest-link policy: designers can revoke a review link at any time; links expire automatically after 14 days; and designers can create a fresh link when reviewers need more time. Expiry/revocation ends access through the link while keeping the project and saved comments. It cannot recall copies already downloaded. The fixed-version/new-link rule remains in effect.
+
+The [current requirements](requirements.md#guest-link-lifetime) contain the canonical policy. This approval supersedes earlier statements that revocation or expiry were undecided, including the optional-expiry proposal in the sharing notes. Other lifecycle implementation details, replies/resolution, provider handling, retention/deletion, and remaining B4 recommendations are not settled by this approval. Prior decision-log entries remain intact; record this documentation fix in the existing shared PR.
+
+## Designer sign-in code limits — approved October 17, 2026
+
+Updated: October 17, 2026.
+
+During the B4 discussion, the user approved these simple limits for designer email-code sign-in: codes expire after 10 minutes and work once; after five incorrect attempts require a fresh code; allow a resend at most once per minute, replacing the previous code; and keep entered work saved when a designer must sign in again. Apply resend limits to the same email address and preserve recoverable edits under the existing saving/recovery rules.
+
+The [current requirements](requirements.md#designer-sign-in-code-limits) contain the canonical policy. These limits settle the corresponding previously open code parameters without changing approved-email eligibility or adding sign-in to guest review. Provider choice, remaining session/account-lifecycle policies, and implementation/validation remain open. Earlier decision-log entries remain intact; include this documentation fix in the existing shared PR. No authentication implementation or real email sending is included.
+
+## Designer access removal — approved October 17, 2026
+
+Updated: October 17, 2026.
+
+During the B4 discussion, the user explicitly approved removing designer access through the approved-email list: removing an email stops new sign-ins and ends that designer's existing signed-in access; their active project guest-review links also stop working. Projects remain saved, and removing access does not automatically delete work.
+
+The [current requirements](requirements.md#designer-access-removal) contain the canonical policy, superseding earlier statements that this access-removal behavior was undecided. Retention/deletion and other unapproved account-lifecycle details remain separate decisions. Prior decision-log entries remain intact; add this documentation fix to the existing shared PR. No real account, eligibility list, session, or review link is changed by this planning update.
+
+## Owner-requested project deletion — approved October 17, 2026
+
+Updated: October 17, 2026.
+
+During the B4 discussion, the user accepted a manual project-deletion process for the pilot: the owner asks the pilot operator, who verifies the request; review links stop working when deletion begins; and the project, uploads, saved versions, shared snapshots, and comments are removed from the active app within 30 days of the verified request. Removing designer access alone still keeps projects saved.
+
+The [current requirements](requirements.md#owner-requested-project-deletion) contain the canonical policy. Backup copies and AI-provider retention require separate rules once services are chosen; this approval does not promise their immediate deletion or settle other retention/account-data policies. Prior decision-log entries remain intact; include this documentation fix in the existing shared PR. No real project or stored data is deleted by this planning update.
+
+## AI-provider use of project content — approved October 17, 2026
+
+Updated: October 17, 2026.
+
+During the B4 discussion, the user accepted these provider-selection requirements: choose a service whose applicable terms/settings prevent training on project content; send only material needed for each task; verify how long the service stores that material and explain it to designers before real pilot use; and avoid promises of immediate deletion or zero storage unless verified.
+
+The [current requirements](requirements.md#ai-provider-use-of-project-content) contain the canonical rule. This approval selects no provider and makes no claim about a service's current terms or configuration. The provider and exact retention/deletion rules remain to be evaluated and agreed before real use. Prior decision-log entries remain intact; include this documentation fix in the existing shared PR. No project content is sent to any provider by this planning update.
+
+## Pilot privacy notice and terms — approved October 17, 2026
+
+Updated: October 17, 2026.
+
+During the B4 discussion, the user explicitly approved requiring a clear privacy notice and short pilot terms before real users sign in. They must explain the operator and contact route, stored data and AI use, guest-link exposure, deletion requests and retention limits, permitted submissions, and users' responsibility to review AI output. Draft them once services and remaining retention details are known, then have final wording reviewed for the pilot's location and setup before real use.
+
+The [current requirements](requirements.md#pilot-privacy-notice-and-terms) contain the canonical requirement. This approval does not approve final legal/policy wording, choose services, settle retention details, or authorize a pilot launch. Earlier decision-log entries remain intact; include this documentation fix in the existing shared PR.
+
+## Pilot security safeguards — approved October 17, 2026
+
+Updated: October 17, 2026.
+
+During the B4 discussion, the user approved basic safeguards: designers access only their own projects; guests access only explicitly shared content; review links are difficult to guess and shared pages are excluded from search engines; comments display safely; uploaded files are processed without executing embedded code; and instructions hidden in documents, web text, or comments cannot override app rules or accepted designer decisions.
+
+The [current requirements](requirements.md#pilot-security-safeguards) contain the canonical rules. Make these required build checks before real pilot use, with the technical plan explaining implementation and tests and no new designer settings. This approval does not establish that controls are implemented or tested, settle the remaining privacy/security policies, or authorize application work or launch. Earlier decision-log entries remain intact; include this documentation fix in the existing shared PR.
+
+## Remaining B4 audit work deferred until production — approved October 17, 2026
+
+Updated: October 17, 2026.
+
+After reviewing the summary of remaining B4 items, the user stated that these findings should be addressed before production but are not required for the MVP, and asked to move to B5. Record the remaining detailed retention/deletion, backups/recovery, session/shared-device, guest-review, upload, service-assurance/security-verification, final-notice, and operating-procedure work as pre-production follow-up rather than MVP or technical-planning blockers.
+
+The [current requirements](requirements.md#b4-mvp-and-production-timing) contain this milestone change. It supersedes earlier pre-pilot deadlines for the deferred work, including final notices and detailed provider-retention assessment/disclosure. Keep already-approved basic material, access/code/link, deletion, AI-content, and security behavior in the MVP baseline. This changes timing without settling the deferred policies or claiming verification, authorizing production, or resolving unrelated audit findings. Preserve earlier decision-log entries and use the existing shared PR. No B5 resolution is approved by this decision.
+
+## B5 independent performance-analysis approach — approved October 17, 2026
+
+Updated: October 17, 2026.
+
+The user selected an independently written performance-analysis approach instead of incorporating Six Boxes and asked whether a disclaimer should say it is based on that model. Record the independent approach as approved; the disclaimer is a question, not approved product text. Develop original questions, explanations, and organization rather than copying or merely renaming the earlier branded six-category schema. Exact replacement wording and screen content remain to be drafted and reviewed.
+
+The [current requirements](requirements.md#4-design-performance-solution-decision-first) supersede the earlier Six Boxes integration requirement. Retain reviewed Analysis evidence, explicit route confirmation, learning/nonlearning/combined/investigation routes, and the conditional L2 gate. Mark earlier branded question/wireframe content as historical; do not advance the deferred walkthrough. Kirkpatrick, final attribution wording, and any legal-clearance conclusion remain separate and unresolved. Preserve earlier decision history and record this change in the existing shared PR. No prototype or application implementation is included.
+
+## B5 independent evaluation planning — approved October 17, 2026
+
+Updated: October 17, 2026.
+
+The user approved the independently written evaluation-planning approach proposed during the Kirkpatrick discussion. Keep planning for organizational results, workplace performance, and evidence of learning; write original questions and explanations; call the section Evaluation planning without presenting it as an official Kirkpatrick implementation; and preserve designer confirmation of learning measures before instructional Design proceeds on a learning route.
+
+The [current requirements](requirements.md#independently-written-evaluation-planning) supersede the earlier branded integration requirement. Preserve per-measure details, evidence links, permitted unknowns, the no-learning not-applicable rationale, and stable references in historical records. Evaluation execution remains outside the MVP. Earlier branded question wording and prototype/example labels are historical; exact independently written replacement questions and presentation still require drafting and review. This approves the product direction, not copied materials, a disclaimer, or a legal-clearance claim. Do not advance the deferred walkthrough or change prior decision-log entries. Include this documentation change in the same shared PR; no prototype or application implementation is included.
+
+## Other audit findings saved for later — October 17, 2026
+
+Updated: October 17, 2026.
+
+The user asked to save the other findings for later and asked how to send the updated information to the main agent. Preserve the full audit in PR #1 and the approved decisions in shared PR #2. Record the remaining findings as deferred, not resolved, approved, or authorization to implement them. The previously agreed B4 pre-production timing and approved MVP rules remain in effect; both independent replacement specifications still need original wording drafted and reviewed. The fictional walkthrough remains deferred.
+
+See [audit follow-up timing](open-decisions.md#audit-follow-up--deferred-at-the-users-request). Prepare a handoff the user can send to the main agent; this request does not authorize sending a message to another chat, merging a PR, or beginning application work. Preserve all earlier decision-log entries.
+
+
+## Independent replacement questions and described desktop layouts — approved October 18, 2026
+
+After the PR handoff review, the user approved each original replacement question group in sequence: Review the performance evidence; Consider possible explanations and choose a response; Organizational results; Workplace performance; and Evidence of learning. The user then approved the two-step performance-analysis desktop layout and the Evaluation planning workspace with three left-navigation sections and editable measure cards. Preserve the exact wording and supporting behavior in the [replacement specification](notes/independent-review-questions.md), with [current requirements](requirements.md) remaining the main product contract.
+
+Performance analysis reuses the accepted Analysis evidence, separates observations from hypotheses, shows support/conflicts/unknowns, and requires explicit route confirmation. Learning-measure confirmation follows only when applicable under the existing conditional gate. Evaluation planning retains per-measure details, links, permitted unknowns, organizational influences, opportunity to perform, and observable learning evidence. Saving/reviewing an incomplete plan does not bypass the instructional Design gate. Detailed objectives and assessments remain later Design work.
+
+These approvals complete the pending B5 question wording and described presentation review; they do not verify independent legal rights, endorse a branded model, approve other audit recommendations, or establish prototype/accessibility/AI-quality/production readiness. Historical branded content and record references remain preserved as history; the fictional walkthrough stays deferred. Production prompts, reference outputs, technical choices, and implementation remain future work. No PR merge, application build, deployment, or AI connection is authorized by these approvals.
+
+## Low-cost service foundation, model strategy, and Milestone 1 — October 18, 2026
+
+The user accepted the low-cost foundation and manually resuming idle services before demos. They have existing domains, Netlify Free (credit-based, 300 monthly credits), and a temporary Vercel Pro trial for another project; ongoing Vercel Pro spending is not assumed. Netlify/Supabase/Resend are the planning foundation, with implementation feasibility still to prove. OpenAI is the first provider; evaluate Luna first and use Sol only where quality/cost results justify it. Jev is outside the initial MVP.
+
+The user reviewed the milestone specification and then explicitly instructed: “Please also merge changes to main if we are ready. Lets start Milestone 1 implementation”. This authorizes implementation and merging reviewed ready changes. It does not adopt deferred audit recommendations, approve the fictional walkthrough, or verify service behavior. Preserve the current requirements and historical decision log. Implementation progress and outstanding live-configuration checks must be reported accurately.
