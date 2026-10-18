@@ -102,11 +102,17 @@ test("private workspace, truthful saving, recovery, two-tab conflict, history an
   await expect(
     page.getByRole("status").filter({ hasText: "Saved on this device" }),
   ).toBeVisible({ timeout: 20000 });
+  // Keep the write interrupted while reconnecting: otherwise the online handler
+  // can successfully sync before reload, leaving no draft that needs recovery.
+  await page.route("**/api/projects/*/context", (route) =>
+    route.request().method() === "PUT" ? route.abort() : route.continue(),
+  );
   await context.setOffline(false);
   await page.reload();
   await expect(
     page.getByRole("heading", { name: "Resume your recoverable draft?" }),
   ).toBeVisible();
+  await page.unroute("**/api/projects/*/context");
   await page.getByRole("button", { name: "Recover my draft and sync" }).click();
   await expect(
     page.getByRole("status").filter({ hasText: "All changes saved" }),
