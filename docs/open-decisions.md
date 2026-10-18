@@ -2,6 +2,10 @@
 
 Updated: October 17, 2026. Items below are unresolved details, not approved additions to MVP scope.
 
+## Audit follow-up — deferred at the user's request
+
+After recording the approved B1–B5 decisions in shared PR #2, the user asked to save the other findings for later. Retain the full audit in PR #1 and the unresolved items here; do not implement additional audit recommendations or resume their walkthrough without further instruction. Deferred findings are not resolved or approved by this change. The remaining B4 work retains its agreed pre-production timing, and already-approved MVP requirements remain in effect. Independently written performance-analysis and evaluation-planning replacement questions still need drafting and review; the selected directions do not approve final wording. The fictional example walkthrough remains deferred.
+
 ## Next design work
 
 1. Draft a technical build plan for the agreed MVP: application/data structure, sign-in and approved-email access, hosting/storage, AI connection, spending controls, and delivery order. Confirm the non-AI operating budget before recommending services. The user deferred the example walkthrough for now; it is not the current prerequisite for this planning step.

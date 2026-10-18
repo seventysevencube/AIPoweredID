@@ -231,3 +231,11 @@ Updated: October 17, 2026.
 The user approved the independently written evaluation-planning approach proposed during the Kirkpatrick discussion. Keep planning for organizational results, workplace performance, and evidence of learning; write original questions and explanations; call the section Evaluation planning without presenting it as an official Kirkpatrick implementation; and preserve designer confirmation of learning measures before instructional Design proceeds on a learning route.
 
 The [current requirements](requirements.md#independently-written-evaluation-planning) supersede the earlier branded integration requirement. Preserve per-measure details, evidence links, permitted unknowns, the no-learning not-applicable rationale, and stable references in historical records. Evaluation execution remains outside the MVP. Earlier branded question wording and prototype/example labels are historical; exact independently written replacement questions and presentation still require drafting and review. This approves the product direction, not copied materials, a disclaimer, or a legal-clearance claim. Do not advance the deferred walkthrough or change prior decision-log entries. Include this documentation change in the same shared PR; no prototype or application implementation is included.
+
+## Other audit findings saved for later — October 17, 2026
+
+Updated: October 17, 2026.
+
+The user asked to save the other findings for later and asked how to send the updated information to the main agent. Preserve the full audit in PR #1 and the approved decisions in shared PR #2. Record the remaining findings as deferred, not resolved, approved, or authorization to implement them. The previously agreed B4 pre-production timing and approved MVP rules remain in effect; both independent replacement specifications still need original wording drafted and reviewed. The fictional walkthrough remains deferred.
+
+See [audit follow-up timing](open-decisions.md#audit-follow-up--deferred-at-the-users-request). Prepare a handoff the user can send to the main agent; this request does not authorize sending a message to another chat, merging a PR, or beginning application work. Preserve all earlier decision-log entries.
