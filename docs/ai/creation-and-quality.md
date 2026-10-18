@@ -1,5 +1,7 @@
 # AI Creation and Quality Process
 
+Updated: October 17, 2026.
+
 Status: Agreed starting approach, subject to refinement and testing during AI integration in each phase. App development has not started. Specific prompt wording, examples, model choices, and quality thresholds remain to be developed and reviewed.
 
 ## Required review during each phase's AI integration
@@ -23,7 +25,7 @@ Start with prompt templates, examples, source grounding, and measured evaluation
 5. Generate structured content for the existing UI fields. Designer-facing forms remain stable templates; AI prefills them and suggests relevant follow-up questions.
 6. Run ordinary application checks for structure, ID references, required values or explicit gaps, and preservation of approved content.
 7. Run a focused AI quality review for alignment, source fidelity, clarity, and implementation feasibility. This is a review signal, not certification or human approval.
-8. If justified, permit one targeted automatic repair of newly generated content, then recheck. Do not silently repair accepted content. Bound retries and report remaining issues without an endless regeneration loop.
+8. If justified, permit one targeted automatic repair of newly generated content, then recheck, within the job's reserved cost allowance. Do not silently repair accepted content. Failed or interrupted jobs require an explicit retry under the shared queue and spending rules; do not automatically retry them. Report remaining issues without an endless regeneration loop.
 9. Show the draft, sources, changes, and unresolved issues for designer review. Only accepted content becomes the next stage's baseline. Preserve an accepted unknown as unknown.
 
 The amount of AI review should be measured against quality benefit and cost. A second review pass is not automatically more trustworthy because it uses another prompt.
@@ -249,7 +251,7 @@ The approved monthly AI budget is $20 total for the five-designer pilot, shared 
 
 Approved spending-control policy: show an in-app warning when total monthly pilot AI usage reaches $16 (80% of the $20 budget). Pause new AI requests that would exceed the $20 monthly pilot budget. Preserve saved work and keep manual editing, review, and non-AI exports available. This is a shared pilot limit, not a per-designer allowance.
 
-Budget accounting, treatment of pending/in-flight costs, reset timing, provider selection, and practical enforcement still require implementation and validation. These planning notes configure no live spending limit or provider account.
+Follow the canonical [simple shared AI queue and spending protection](../requirements.md#simple-shared-ai-queue-and-spending-protection). Only one AI job runs across the pilot at a time; other requested jobs wait. Reserve the job's maximum allowed cost before dispatch, including its review/repair/research calls, then settle the confirmed charge and release unused money. An uncertain charge remains reserved and pauses further AI requests until the pilot operator checks it. Recover completed results without regeneration; a failed job requires an explicit retry with a fresh budget check. Exact allowances, monthly reset timing, provider selection, and implementation remain open. No live controls are configured by these notes.
 
 Existing controls still apply: explicit AI actions, reuse parsed sources/context, targeted revisions, bounded repairs, preservation of accepted work, and document exports without an AI rewrite. Count actual AI operation costs consistently once provider billing and supporting services are selected. No automatic per-user $4 allocation or guaranteed generation count follows from the five-person/$20 planning figures.
 

@@ -210,7 +210,18 @@ The approved monthly AI budget is $20 total for the five-designer pilot, shared 
 
 Approved spending-control policy: show an in-app warning when total monthly pilot AI usage reaches $16 (80% of the $20 budget). Pause new AI requests that would exceed the $20 monthly pilot budget. Preserve saved work and keep manual editing, review, and non-AI exports available. This is a shared pilot limit, not a per-designer allowance.
 
-Budget accounting, treatment of pending/in-flight costs, reset timing, provider selection, and practical enforcement still require implementation and validation. These planning notes configure no live spending limit or provider account. No per-designer dollar allocation or generation quota is implied.
+### Simple shared AI queue and spending protection
+
+Keep pilot spending control simple, with one shared queue across all designers:
+
+1. Run only one AI job at a time across the pilot; other requested jobs wait.
+2. Before starting a job, reserve its maximum allowed cost against the shared $20 monthly budget. Start only when confirmed spending plus money already reserved plus the new allowance fits within $20. The allowance must cover any AI generation, review, repair, or research performed as part of that job; no additional paid call may bypass the allowance.
+3. After the job's actual charge is confirmed, record that charge and release any unused reservation.
+4. If a job fails or is interrupted and its charge is uncertain, keep its reservation, show **Cost confirmation pending**, and pause further AI requests until the pilot operator checks and confirms the charge. Recover any completed result without generating it again.
+5. Require an explicit retry of a failed job rather than automatically retrying it. A retry goes through the same queue and budget check. The existing single targeted quality repair of newly generated content is distinct from retrying a failed job and must fit within that job's reserved allowance.
+6. Keep saved work, manual editing, review, and non-AI exports available while AI requests wait or pause.
+
+No separate designer budgets or simultaneous AI-job accounting are required for this pilot. Exact job allowances, monthly reset timing, provider selection, and queue/accounting implementation still require decisions and validation; these planning notes configure no live spending limit or provider account. No per-designer dollar allocation or generation quota is implied.
 
 Use shared rules plus stage/task-specific prompts, approved project context, relevant source passages, examples, structured outputs, and quality checks. Only run the prompts required for the action. Use application validation, focused AI review, and designer judgment; bound repairs and never silently rewrite accepted content.
 

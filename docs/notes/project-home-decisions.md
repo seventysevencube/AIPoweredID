@@ -50,7 +50,7 @@ The approved monthly AI budget is $20 total for the five-designer pilot, shared 
 
 Approved spending-control policy: show an in-app warning when total monthly pilot AI usage reaches $16 (80% of the $20 budget). Pause new AI requests that would exceed the $20 monthly pilot budget. Preserve saved work and keep manual editing, review, and non-AI exports available. This is a shared pilot limit, not a per-designer allowance.
 
-The limit must not sign a designer out, discard edits, or block reading/exporting existing work. Budget accounting, treatment of pending/in-flight costs, reset timing, provider selection, and practical enforcement still require implementation and validation. These planning notes configure no live spending limit or provider account.
+The limit must not sign a designer out, discard edits, or block reading/exporting existing work. Follow the approved [simple shared AI queue and spending protection](../requirements.md#simple-shared-ai-queue-and-spending-protection): one AI job at a time, reserved maximum cost before starting, confirmed charges before releasing unused money, an operator check and AI pause for uncertain charges, and explicit budget-checked retries. Other requested jobs wait; manual editing, review, and non-AI exports stay available. Exact job allowances, monthly reset timing, provider selection, and implementation remain open. These planning notes configure no live spending limit or provider account.
 
 ## Expected completion volume — latest planning estimate
 
