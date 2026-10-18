@@ -151,3 +151,11 @@ Updated: October 17, 2026.
 During the B4 discussion, the user accepted the initial material boundary: allow public material, fictional examples, and employer-approved material with confidential and personal details removed. Exclude identifiable employee/customer cases, passwords, and business secrets. Explain this boundary briefly before designers paste or upload material.
 
 The [current requirements](requirements.md#permitted-pilot-material) state the canonical rule, clarifying the earlier no-confidential-organizational-material assumption. This approval does not require automatic sensitive-content detection or approve other privacy/security recommendations. Guest-link lifecycle, provider handling, retention/deletion, and other B4 details remain open. Prior decision-log entries remain intact; this is documentation work in the shared blocker-fix PR.
+
+## Guest-link revocation and expiry — approved October 17, 2026
+
+Updated: October 17, 2026.
+
+During the B4 discussion, the user accepted this simple guest-link policy: designers can revoke a review link at any time; links expire automatically after 14 days; and designers can create a fresh link when reviewers need more time. Expiry/revocation ends access through the link while keeping the project and saved comments. It cannot recall copies already downloaded. The fixed-version/new-link rule remains in effect.
+
+The [current requirements](requirements.md#guest-link-lifetime) contain the canonical policy. This approval supersedes earlier statements that revocation or expiry were undecided, including the optional-expiry proposal in the sharing notes. Other lifecycle implementation details, replies/resolution, provider handling, retention/deletion, and remaining B4 recommendations are not settled by this approval. Prior decision-log entries remain intact; record this documentation fix in the existing shared PR.
