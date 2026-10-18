@@ -58,7 +58,7 @@ export const questions: Partial<Record<Section, Question[]>> = {
       answerOptions: unknown,
       label:
         "What information supports your description of the performance gap?",
-      help: "Examples: observations, work samples, stakeholder feedback, errors, or performance measures. Evidence can remain not yet available.",
+      help: "Examples: observations, work samples, stakeholder feedback, errors, or performance measures.",
     },
     {
       id: "documentation",
@@ -68,13 +68,11 @@ export const questions: Partial<Record<Section, Question[]>> = {
     {
       id: "causes",
       label: "What might be contributing to the gap?",
-      help: "Possible explanations may include knowledge or skills; unclear expectations; process or workflow; tools or access; time or resources; incentives or competing priorities; other; or not sure. These are hypotheses, not established causes.",
     },
     {
       id: "tried",
       answerOptions: unknown,
       label: "What has already been tried, and what happened?",
-      help: "“Nothing yet” and “Not known” are valid answers.",
     },
   ],
   audience: [
@@ -114,7 +112,6 @@ export const questions: Partial<Record<Section, Question[]>> = {
       answerOptions: optional,
       label:
         "Are there differences between audience groups that may require different content or support?",
-      help: "Optional. Not known yet is available.",
     },
   ],
   stakeholders: [
@@ -127,7 +124,7 @@ export const questions: Partial<Record<Section, Question[]>> = {
       id: "resources",
       answerOptions: optional,
       label: "What budget, people, or production resources are available?",
-      help: "Approximate descriptions and “Not known yet” are welcome.",
+      help: "Include approximate resources or budget where available.",
     },
     {
       id: "constraints",
@@ -176,7 +173,6 @@ export const measureQuestions: Record<string, Question[]> = {
       id: "target",
       answerOptions: optional,
       label: "Desired result (target)",
-      help: "Unknown values can carry forward. Do not invent figures.",
     },
     {
       id: "influences",

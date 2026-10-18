@@ -269,3 +269,8 @@ The designer requested disabling Continue when Needed-for-Design fields are inco
 ## October 18, 2026 — Continue navigates; core answers gate AI
 
 The designer superseded the preceding Continue restriction: both Continue and section links allow moving through incomplete Analysis. Unknown checkboxes are directly visible, with no Answer options disclosure. Required/core answers instead gate project-content AI submission; unknown notes or empty answers cannot bypass it. This is the current rule. Milestone 1 computes readiness from saved owner-authorized records; actual AI queue/provider integration remains later work and must enforce the rule on the server.
+
+
+## October 18, 2026 — Evidence form simplification and count scope
+
+The designer requested removing the causes description and Not sure choice, enabling a one-line Other detail only with Other selected, and trimming repeated helper text about permissible unknown answers. Readiness remains project-wide: three core answers in Project context plus the audience description. The UI now states that scope and links the relevant sections; the navigation/AI-submission rules remain unchanged. Other notes are preserved when deselected without treating them as active explanations.

@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { api } from "./http";
 import {
   emptyData,
-  needed,
+  analysisAIReadiness,
   sections,
   type Answer,
   type Project,
@@ -14,6 +14,7 @@ import {
 } from "./model";
 import { SaveController } from "./save";
 import { recovery } from "./recovery";
+import { CausesField } from "./CausesField";
 import {
   labels,
   questions,
@@ -703,10 +704,18 @@ function Editor({
   const blocked = ["recovery", "conflict"].includes(state.status);
   const index = sections.indexOf(section);
   const cannotContinue = !ready;
-  const outstanding = needed({
+  const readiness = analysisAIReadiness({
     ...snapshot.records,
     [section]: { ...record, data: state.data },
   });
+  const outstanding = readiness.missing.length;
+  const missingSections = sections
+    .map((section) => ({
+      section,
+      count: readiness.missing.filter((field) => field.section === section)
+        .length,
+    }))
+    .filter((group) => group.count > 0);
   const status = !ready
     ? "Checking for recoverable edits…"
     : state.status === "saved"
@@ -791,7 +800,7 @@ function Editor({
           </div>
           <p className="sectionintro">
             {index < 4
-              ? "Capture what you know. Incomplete information can be saved and refined later."
+              ? "Capture the information that will guide the design."
               : "Plan how evidence would be gathered and used. Evaluation execution is outside this MVP."}
           </p>
           {guidance && (
@@ -799,8 +808,7 @@ function Editor({
               <h2>A useful starting point</h2>
               <p>
                 Use observable details and identify supporting sources. Keep
-                possible explanations separate from established evidence. “Not
-                yet known” is a valid response.
+                possible explanations separate from established evidence.
               </p>
               {section === "learning" && (
                 <p>
@@ -989,11 +997,30 @@ function Editor({
             )}
           </div>
           <div className="historybar">
-            <span>
-              {outstanding > 0
-                ? `${outstanding} core ${outstanding === 1 ? "answer is" : "answers are"} still needed before sending Analysis to AI. You can keep editing and navigating.`
-                : "Core answers are entered. AI generation will be available in a later milestone."}
-            </span>
+            <div className="analysisreadiness">
+              <p>
+                {outstanding > 0
+                  ? `Across all Analysis sections: ${outstanding} required ${outstanding === 1 ? "answer remains" : "answers remain"} before AI generation.`
+                  : "All required Analysis answers are entered."}
+              </p>
+              {missingSections.length > 0 && (
+                <ul>
+                  {missingSections.map((group) => (
+                    <li key={group.section}>
+                      <a
+                        href={`#/projects/${p.id}/${group.section}`}
+                        onClick={(event) => {
+                          event.preventDefault();
+                          void navigate(group.section);
+                        }}
+                      >
+                        {labels[group.section]}: {group.count} remaining
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
             <button onClick={() => void controller.flush()}>Save now</button>
             <button
               aria-expanded={versions !== null}
@@ -1076,6 +1103,17 @@ function Field({
         : []),
     ]),
   ];
+  if (q.id === "causes")
+    return (
+      <CausesField
+        label={q.label}
+        answer={a}
+        onChange={(answer) => {
+          onChange(answer, true);
+          discrete?.();
+        }}
+      />
+    );
   return (
     <div className="field">
       <label htmlFor={id}>{q.label}</label>
@@ -1093,38 +1131,6 @@ function Field({
               ? "Not applicable — explain why in your answer."
               : "Proposed — needs review"}
         </p>
-      )}
-      {q.id === "causes" && (
-        <fieldset className="causes">
-          <legend>Select any that may apply</legend>
-          {[
-            "Knowledge or skills",
-            "Unclear expectations",
-            "Process or workflow",
-            "Tools or access",
-            "Time or resources",
-            "Incentives or competing priorities",
-            "Other",
-            "Not sure",
-          ].map((choice) => (
-            <label className="checklabel" key={choice}>
-              <input
-                type="checkbox"
-                checked={a.text.split("\n").includes(choice)}
-                onChange={(e) => {
-                  const lines = a.text
-                    .split("\n")
-                    .filter(Boolean)
-                    .filter((line) => line !== choice);
-                  if (e.target.checked) lines.push(choice);
-                  onChange({ ...a, text: lines.join("\n") }, true);
-                  discrete?.();
-                }}
-              />
-              {choice}
-            </label>
-          ))}
-        </fieldset>
       )}
       {q.short ? (
         <input
@@ -1352,8 +1358,8 @@ function Measures({
     <>
       <p className="note">
         {section === "learning"
-          ? "These are measurement intentions. Detailed objectives and assessments come later in Design. Learning applicability can remain unresolved here."
-          : "Keep missing information visible as “Not yet known.” Add one card per indicator or measure."}
+          ? "These are measurement intentions. Detailed objectives and assessments come later in Design."
+          : "Add one card per indicator or measure."}
       </p>
       <Repeater
         data={data}
@@ -1466,4 +1472,7 @@ function Compare({ local, server }: { local: RecordData; server: RecordData }) {
     </div>
   );
 }
-createRoot(document.getElementById("root")!).render(<App />);
+const root = createRoot(document.getElementById("root")!);
+root.render(<App />);
+// Dispose the entry's root before a development-only module reload creates another.
+if (import.meta.hot) import.meta.hot.dispose(() => root.unmount());

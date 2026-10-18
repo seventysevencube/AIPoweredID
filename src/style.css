@@ -756,3 +756,42 @@ input {
     padding: 24px;
   }
 }
+
+.causesfield {
+  border: 0;
+  padding: 0;
+}
+.causesfield > legend {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+.causesfield > label {
+  font-weight: 600;
+  margin: 14px 0 8px;
+}
+.causechoices .checklabel {
+  min-height: 30px;
+  margin: 4px 0;
+}
+.causechoices input[type="checkbox"] {
+  min-height: 18px;
+}
+.causesfield input:disabled {
+  background: #edf1ed;
+  color: #53685e;
+}
+.analysisreadiness {
+  margin-right: auto;
+  flex: 1 1 380px;
+}
+.analysisreadiness p {
+  margin: 0;
+}
+.analysisreadiness ul {
+  margin: 6px 0 0;
+  padding-left: 18px;
+}
+.analysisreadiness li {
+  margin: 3px 0;
+}

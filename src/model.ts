@@ -12,6 +12,8 @@ export type Section = (typeof sections)[number];
 export const answerSchema = z
   .object({
     text: z.string().max(150000),
+    choices: z.array(z.string().max(300)).max(100).optional(),
+    other: z.string().max(150000).optional(),
     status: z.enum(["provided", "proposed", "unknown", "not_applicable"]),
   })
   .strict();

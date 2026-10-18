@@ -312,6 +312,12 @@ Derive the output types from that choice: Detailed e-learning storyboard; **Writ
 A performance aid’s purpose determines its learning/nonlearning treatment. Confirm any required route/evaluation-plan change explicitly, retaining relevant workplace-performance and organizational-results measures and recording learning measures as not applicable only for a route with no learning component. Do not force aid-only work through e-learning format or tool questions, and do not force nonlearning aid work through learning objectives/assessments. Preserve previous versions and flag affected downstream content for review.
 
 
+### Analysis form refinements — October 18, 2026
+
+- Possible causes use a checklist without **Not sure** or the repeated descriptive paragraph. The **Other contributing factor** field is one line and enabled only when **Other** is selected. Turning Other off preserves the text for later editing, but excludes it from the active answer. Earlier saved selections and notes remain readable; historical versions are preserved. Causes remain possible explanations, not established findings.
+- Remove repeated helper sentences saying that unavailable information or “Nothing yet”/“Not known” are valid answers. Retain substantive examples, source/access instructions, actual uncertainty controls, and the conditional learning-measure rule.
+- Readiness counts are explicitly **across all Analysis sections**, with a linked breakdown of remaining answers by section. The four core inputs are three in Project context and performance gap (task, desired performance, current performance) and one in Audience and work environment (roles/responsibilities). Evidence has no newly required fields. Counts do not block navigation; the AI-submission rule above remains in effect.
+
 ## 10. Technical foundation and implementation authorization — October 18, 2026
 
 The user authorized Milestone 1 implementation and merging ready planning changes. Its scope is approved-email code sign-in, private designer projects/cards, manual Analysis entry, reliable autosave/recovery/conflicts, and version foundations. Follow the [milestone specification](implementation/milestone-1.md); technical mechanisms remain subject to verification and cannot weaken approved product behavior.
