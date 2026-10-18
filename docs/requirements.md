@@ -221,6 +221,10 @@ Designers sign in, own/manage their projects, and can have multiple projects. Pr
 
 These limits apply to designer sign-in, not account-free guest review. They do not replace approved-email eligibility. Provider choice, remaining session/account-lifecycle policies, and implementation/validation remain open.
 
+### Designer access removal
+
+Removing a designer's email from the approved list stops new designer sign-ins and ends their existing signed-in designer access. Deactivate active guest-review links belonging to that designer's projects as part of the removal. Their projects remain saved: removing access does not automatically delete their work. Retention and deletion remain separate policies to agree.
+
 ## 9. AI process and next work
 
 The expected completion volume is approximately 0–1 complete project per month across the five-designer pilot, interpreting the user's answer to the question about total monthly pilot projects. This is a planning estimate, not a per-designer allowance or an enforced project limit. Ongoing drafts, revisions, AI review, and research can incur AI usage even when no project is completed. Generation frequency, source volume, concurrency, and actual cost per accepted output still require measurement.

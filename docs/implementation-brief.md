@@ -36,6 +36,8 @@ Manage pilot eligibility through a simple list of approved email addresses maint
 
 Apply the approved [designer sign-in code limits](requirements.md#designer-sign-in-code-limits): 10-minute expiry, single use, a fresh code after five incorrect attempts, and at most one resend per minute to the same email address, replacing the old code. Preserve recoverable work when sign-in is required again. These limits do not change approved-email eligibility or guest access.
 
+Under the approved [designer access removal](requirements.md#designer-access-removal) rule, removing an email from the pilot list stops new sign-ins and existing signed-in designer access, and deactivates that designer's project review links. Projects remain saved; deletion is a separate decision.
+
 The list's implementation/storage, authentication provider, remaining code/session handling, and account lifecycle details remain open. These planning decisions do not authorize sending real emails, creating accounts, or deploying the app.
 
 ## Content and state contracts

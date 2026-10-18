@@ -167,3 +167,11 @@ Updated: October 17, 2026.
 During the B4 discussion, the user approved these simple limits for designer email-code sign-in: codes expire after 10 minutes and work once; after five incorrect attempts require a fresh code; allow a resend at most once per minute, replacing the previous code; and keep entered work saved when a designer must sign in again. Apply resend limits to the same email address and preserve recoverable edits under the existing saving/recovery rules.
 
 The [current requirements](requirements.md#designer-sign-in-code-limits) contain the canonical policy. These limits settle the corresponding previously open code parameters without changing approved-email eligibility or adding sign-in to guest review. Provider choice, remaining session/account-lifecycle policies, and implementation/validation remain open. Earlier decision-log entries remain intact; include this documentation fix in the existing shared PR. No authentication implementation or real email sending is included.
+
+## Designer access removal — approved October 17, 2026
+
+Updated: October 17, 2026.
+
+During the B4 discussion, the user explicitly approved removing designer access through the approved-email list: removing an email stops new sign-ins and ends that designer's existing signed-in access; their active project guest-review links also stop working. Projects remain saved, and removing access does not automatically delete work.
+
+The [current requirements](requirements.md#designer-access-removal) contain the canonical policy, superseding earlier statements that this access-removal behavior was undecided. Retention/deletion and other unapproved account-lifecycle details remain separate decisions. Prior decision-log entries remain intact; add this documentation fix to the existing shared PR. No real account, eligibility list, session, or review link is changed by this planning update.

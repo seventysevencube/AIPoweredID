@@ -18,6 +18,8 @@ Status: Guest access, anchored comments, required unverified display names, fixe
 
 Follow the canonical [guest-link lifetime](../requirements.md#guest-link-lifetime) rule: the designer can revoke a link at any time; each link expires 14 days after creation; a fresh link can provide more review time. Revocation/expiry ends access through that link while keeping the project and saved comments. Copies already downloaded cannot be recalled. Earlier statements below leaving revocation or expiry undecided are superseded by this approval; other lifecycle/thread proposals remain unapproved.
 
+Under the approved [designer access removal](../requirements.md#designer-access-removal) rule, removing a designer from the pilot also deactivates active review links belonging to their projects. The projects remain saved; deletion is a separate decision.
+
 ## Proposed access and content scope
 
 - Invited project owners sign in with a one-time email code to manage saved projects and share links. Guest reviewers retain separate account-free access.

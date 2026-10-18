@@ -36,7 +36,7 @@ Guest review through shared links remains account-free and uses its separate unv
 
 Manage pilot eligibility through a simple list of approved email addresses maintained by the pilot operator. Only listed email addresses are eligible for designer sign-in, and a valid one-time email code is still required. No dedicated invitation-management dashboard is included in the MVP. Guest reviewers continue to use active shared review links without an account or membership on the pilot list.
 
-The operator manages the pilot list; a code request does not itself add someone to it. Exact list storage/maintenance implementation, authentication provider, remaining code/session parameters beyond the approved limits above, and account lifecycle/access-removal behavior remain open. This supersedes the earlier proposal status of the list. No actual list, addresses, accounts, or email service have been created or changed by the documentation work.
+The operator manages the pilot list; a code request does not itself add someone to it. The approved [designer access removal](../requirements.md#designer-access-removal) rule stops new sign-ins and existing signed-in designer access when the operator removes the email, and deactivates that designer's active project review links. Projects remain saved; access removal does not delete work. Exact list storage/maintenance implementation, authentication provider, remaining code/session parameters beyond the approved limits above, and other account lifecycle details remain open. This supersedes the earlier proposal status of the list. No actual list, addresses, accounts, or email service have been created or changed by the documentation work.
 
 ## Expected pilot size — approved planning assumption
 
