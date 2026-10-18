@@ -47,6 +47,18 @@ Initially allow public material, fictional examples, and employer-approved mater
 
 This clarifies the earlier no-confidential-organizational-material assumption. It is a permitted-use rule, not a claim that the app automatically detects or removes sensitive information. Remaining privacy and security policies are still to be agreed.
 
+### Pilot privacy notice and terms
+
+Before real pilot users sign in, provide a clear privacy notice and short pilot terms explaining:
+
+- Who operates the app and how to contact the operator.
+- What data is stored and what material is sent to AI.
+- What guest-review links expose.
+- How to request deletion and any retention limits.
+- What material users may submit and their responsibility to review AI output.
+
+Draft these documents once the services and remaining retention details are known. Have the final wording reviewed for the pilot's location and setup before real use. This establishes a pre-pilot requirement; it does not approve final policy wording or settle the remaining retention/service decisions.
+
 ## 2. Core stage-to-stage contract
 
 Each stage's designer-reviewed output becomes the input for the next stage and prefills an editable skeleton. Carry accepted decisions, objective/enabling-objective/assessment IDs, sources, constraints, and permitted unresolved questions forward. Designers do not manually transfer the same information between stages.

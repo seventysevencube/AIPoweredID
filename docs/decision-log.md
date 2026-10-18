@@ -191,3 +191,11 @@ Updated: October 17, 2026.
 During the B4 discussion, the user accepted these provider-selection requirements: choose a service whose applicable terms/settings prevent training on project content; send only material needed for each task; verify how long the service stores that material and explain it to designers before real pilot use; and avoid promises of immediate deletion or zero storage unless verified.
 
 The [current requirements](requirements.md#ai-provider-use-of-project-content) contain the canonical rule. This approval selects no provider and makes no claim about a service's current terms or configuration. The provider and exact retention/deletion rules remain to be evaluated and agreed before real use. Prior decision-log entries remain intact; include this documentation fix in the existing shared PR. No project content is sent to any provider by this planning update.
+
+## Pilot privacy notice and terms — approved October 17, 2026
+
+Updated: October 17, 2026.
+
+During the B4 discussion, the user explicitly approved requiring a clear privacy notice and short pilot terms before real users sign in. They must explain the operator and contact route, stored data and AI use, guest-link exposure, deletion requests and retention limits, permitted submissions, and users' responsibility to review AI output. Draft them once services and remaining retention details are known, then have final wording reviewed for the pilot's location and setup before real use.
+
+The [current requirements](requirements.md#pilot-privacy-notice-and-terms) contain the canonical requirement. This approval does not approve final legal/policy wording, choose services, settle retention details, or authorize a pilot launch. Earlier decision-log entries remain intact; include this documentation fix in the existing shared PR.

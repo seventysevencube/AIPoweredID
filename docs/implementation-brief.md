@@ -40,6 +40,8 @@ Under the approved [designer access removal](requirements.md#designer-access-rem
 
 The list's implementation/storage, authentication provider, remaining code/session handling, and account lifecycle details remain open. These planning decisions do not authorize sending real emails, creating accounts, or deploying the app.
 
+Before real users sign in, prepare the required [pilot privacy notice and terms](requirements.md#pilot-privacy-notice-and-terms). Explain the operator/contact, stored data and AI use, guest-link exposure, deletion/retention limits, permitted material, and responsibility to review AI output. Draft after services and remaining retention details are known, then have final wording reviewed for the pilot's location and setup before real use.
+
 ## Content and state contracts
 
 Preserve stable record IDs, accepted decisions, objective/enabling-objective/Bloom relationships, defined assessments, source references, content mappings, sequence placements, tool allocation, and open issues across stages.
