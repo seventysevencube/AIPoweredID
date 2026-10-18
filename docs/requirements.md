@@ -51,6 +51,23 @@ AI output remains a proposal until accepted. Distinguish designer decisions, sou
 
 Saving, accepting, marking reviewed, sharing, and advancing are distinct actions. AI calls occur through explicit generation/revision actions rather than typing, autosave, or ordinary navigation.
 
+### Saved, reviewed, and accepted for the next stage
+
+- **Saved:** the designer's edits are stored under the saving/recovery rules. Saving does not automatically mark content reviewed or accept it for the next stage.
+- **Reviewed:** the designer has checked this specific version. Unresolved questions may remain visible; review does not verify unknown facts or establish Ready for handoff.
+- **Accepted for the next stage:** the designer explicitly chooses a specific saved version as the starting point for the next stage. Preserve that version and its reference in the resulting stage content so the input can be identified later. The existing progression rules, including the conditional L2 gate and permitted incomplete handoffs, still apply.
+
+### Changes to earlier work
+
+When an earlier-stage input changes after later content has been created:
+
+1. Preserve the existing later-stage content and the earlier version it was based on.
+2. Mark affected later-stage sections **Needs update**, with a reason explaining the changed input. For example, changing the Analysis audience from experienced employees to new hires may affect objectives, explanations, and practice in Design.
+3. Let the designer review those sections and choose to edit them manually or explicitly request an AI revision. Do not silently rewrite or automatically regenerate them.
+4. Keep unaffected sections' review status. Earlier shared versions and exports remain as they were.
+
+These rules apply across the Analysis → Design → partial Development workflow. Detailed dependency detection and other versioning cases remain to be specified; this approval does not settle those additional audit recommendations.
+
 ## 3. Analysis
 
 The agreed questions are in [the Analysis notes](notes/analysis-form-decisions.md). Sections:

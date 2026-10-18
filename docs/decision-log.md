@@ -123,3 +123,13 @@ While working through planning-audit blocker B1 one fix at a time, the user appr
 This entry supersedes the earlier Document precedence section's equal ranking of current requirements and approved detailed notes, and the opening description of both as operative wording. Those earlier statements remain as history. The current document-authority rule is also stated in the [planning index](README.md#document-authority) and current requirements so readers do not need to reconstruct it from past entries.
 
 This approval covers the document arrangement only. Individual contradiction fixes, other B1 cleanup, and the remaining audit recommendations have not been approved by it. No technical plan or application work is included.
+
+## Review, handoff, and earlier-work changes — approved October 17, 2026
+
+Updated: October 17, 2026.
+
+During the B2 discussion, the user confirmed the distinction between saved edits, review of a specific version, and explicit acceptance of that version as the next stage's starting point. Saving must not automatically mark reviewed or accept a handoff. Unresolved questions may remain after review; existing progression and readiness rules still apply.
+
+The user approved the following behavior when earlier work changes: preserve existing later-stage content and the earlier version it was based on; mark affected sections Needs update with a reason; let the designer review and choose manual editing or an explicit AI revision; keep unaffected sections' review status; and preserve earlier shared versions and exports unchanged. The example discussed was changing the Analysis audience from experienced employees to new hires, potentially affecting Design objectives, explanations, and practice. Do not silently rewrite or automatically regenerate affected content.
+
+The [current requirements](requirements.md#saved-reviewed-and-accepted-for-the-next-stage) contain the canonical rules, with a linked summary in the implementation brief. The user requested adding these approved fixes to the same PR as the first B1 fix, then proceeding to discuss B3. Detailed dependency detection and other unresolved versioning cases are not approved by this entry. Earlier decision-log entries remain intact; no technical plan or application work is included.

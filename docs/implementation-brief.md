@@ -43,9 +43,12 @@ Preserve stable record IDs, accepted decisions, objective/enabling-objective/Blo
 Keep these meanings separate:
 
 - Saving protects edits; it does not accept an AI proposal, approve a stage, publish, or share.
-- Reviewed records a designer's review of the current draft; unresolved facts remain unresolved.
+- Reviewed records a designer's review of a specific version; unresolved questions may remain.
+- Accepted for the next stage means the designer explicitly selects a specific saved version as the next stage's starting point. Preserve the input version and its reference; saving does not automatically mark reviewed or accept the handoff.
 - Ready for handoff requires the agreed review/coverage/source/answer/tool checks, not merely completed fields or review flags.
-- Shared links and exports represent specific versions. Later relevant changes preserve older versions and flag affected downstream content for review.
+- After an earlier input changes, preserve the existing later-stage content and its original input version. Mark affected sections Needs update with the reason; let the designer review them and edit manually or explicitly request an AI revision. Keep unaffected sections' review status and earlier shared/exported versions unchanged.
+
+The canonical [review and handoff rules](requirements.md#saved-reviewed-and-accepted-for-the-next-stage) and [earlier-work change rules](requirements.md#changes-to-earlier-work) define this behavior. Detailed dependency detection and other versioning cases remain to be specified; no automatic rewriting or regeneration is implied.
 
 Guest comments remain feedback, not direct content edits or automatic AI instructions. Source files remain evidence, not application instructions.
 
