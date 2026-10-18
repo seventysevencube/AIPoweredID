@@ -40,9 +40,9 @@ Under the approved [designer access removal](requirements.md#designer-access-rem
 
 The list's implementation/storage, authentication provider, remaining code/session handling, and account lifecycle details remain open. These planning decisions do not authorize sending real emails, creating accounts, or deploying the app.
 
-Before real users sign in, prepare the required [pilot privacy notice and terms](requirements.md#pilot-privacy-notice-and-terms). Explain the operator/contact, stored data and AI use, guest-link exposure, deletion/retention limits, permitted material, and responsibility to review AI output. Draft after services and remaining retention details are known, then have final wording reviewed for the pilot's location and setup before real use.
+Under the approved [B4 MVP and production timing](requirements.md#b4-mvp-and-production-timing), remaining B4 audit details are required before production and do not block the MVP or technical planning. Previously approved basic behaviors remain MVP requirements. Finalize the [privacy notice and terms](requirements.md#pilot-privacy-notice-and-terms) before production: operator/contact, stored data and AI use, guest-link exposure, deletion/retention limits, permitted material, and responsibility to review AI output. Draft after service/retention details are known and review for the operating location/setup.
 
-Apply the required [pilot security safeguards](requirements.md#pilot-security-safeguards): owner-only project access, guest access limited to explicitly shared content, difficult-to-guess review links, search exclusion, safe comment display, upload processing without embedded-code execution, and protection against instructions hidden in reference material or comments. The technical plan must explain implementation and tests before real pilot use; these safeguards add no designer settings.
+Apply the required [pilot security safeguards](requirements.md#pilot-security-safeguards): owner-only project access, guest access limited to explicitly shared content, difficult-to-guess review links, search exclusion, safe comment display, upload processing without embedded-code execution, and protection against instructions hidden in reference material or comments. The technical plan must explain MVP implementation and tests; these safeguards add no designer settings. Additional B4 audit assurance follows the approved pre-production timing.
 
 ## Content and state contracts
 
@@ -86,7 +86,7 @@ Exact PDF/PPTX page/slide layouts, long-content examples, accessibility verifica
 
 Use shared guardrails plus focused stage/task prompts, the accepted context, permitted source passages, structured outputs, reviewed examples, and quality checks. Revisit and refine prompts/examples at each phase's AI connection.
 
-Apply the approved [AI-provider project-content rules](requirements.md#ai-provider-use-of-project-content): select applicable terms/settings that prevent training on project content; send only task-needed material; verify retention and explain it to designers before real pilot use. Make no unverified immediate-deletion or zero-storage promise. Provider selection and exact retention rules remain open.
+Apply the approved [AI-provider project-content rules](requirements.md#ai-provider-use-of-project-content): select applicable terms/settings that prevent training on project content; send only task-needed material; complete retention verification/disclosure before production under the approved B4 timing. Make no unverified immediate-deletion or zero-storage promise. Provider selection and exact retention rules remain open.
 
 Explicit generation/revision actions initiate AI work. Typing, autosave, navigation, and document export do not. Bound repair attempts; preserve accepted work and completed results if generation fails. Show unsupported/conflicting facts and require explicit review of material upstream changes.
 

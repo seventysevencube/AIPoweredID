@@ -47,9 +47,15 @@ Initially allow public material, fictional examples, and employer-approved mater
 
 This clarifies the earlier no-confidential-organizational-material assumption. It is a permitted-use rule, not a claim that the app automatically detects or removes sensitive information. Remaining privacy and security policies are still to be agreed.
 
+### B4 MVP and production timing
+
+The user deferred the remaining B4 audit work until before production; it is not a prerequisite for the MVP or its technical plan. This includes detailed retention/account-deletion policies, backups and recovery objectives, remaining session and guest-review policies, upload limits/error policies, service-specific privacy/security assurance, additional security verification, and final notices and operating procedures.
+
+Keep the already-approved material boundary, access/code/link rules, owner-requested project deletion, AI no-training/data-minimization rules, and basic security safeguards in the MVP baseline. Implementing those approved behaviors remains MVP work. The remaining audit detail is a pre-production follow-up, not a claim of completed verification. This timing supersedes earlier pre-pilot deadlines for the deferred work; it does not authorize production release or settle any outstanding policy.
+
 ### Pilot privacy notice and terms
 
-Before real pilot users sign in, provide a clear privacy notice and short pilot terms explaining:
+Before production, provide a clear privacy notice and short terms explaining:
 
 - Who operates the app and how to contact the operator.
 - What data is stored and what material is sent to AI.
@@ -57,7 +63,7 @@ Before real pilot users sign in, provide a clear privacy notice and short pilot 
 - How to request deletion and any retention limits.
 - What material users may submit and their responsibility to review AI output.
 
-Draft these documents once the services and remaining retention details are known. Have the final wording reviewed for the pilot's location and setup before real use. This establishes a pre-pilot requirement; it does not approve final policy wording or settle the remaining retention/service decisions.
+Draft these documents once the services and remaining retention details are known. Have the final wording reviewed for the operating location and setup before production. Under the approved B4 timing, finalization is not an MVP gate; final policy wording and the remaining retention/service decisions are still open.
 
 ### Pilot security safeguards
 
@@ -66,7 +72,7 @@ Draft these documents once the services and remaining retention details are know
 - Display guest comments safely, and process uploaded files without executing embedded code.
 - Instructions hidden in source documents, web text, or reviewer comments must not override app rules or accepted designer decisions.
 
-These are required build checks before real pilot use. The technical plan must explain how each safeguard will be implemented and tested; a written requirement or prompt alone does not establish that it works. No new designer settings are required. Exact implementation choices and remaining privacy/security policies stay open.
+These safeguards remain MVP requirements. The technical plan must explain how each safeguard will be implemented and tested; a written requirement or prompt alone does not establish that it works. No new designer settings are required. Additional B4 audit assurance and remaining privacy/security policies follow the MVP/production timing above.
 
 ## 2. Core stage-to-stage contract
 
@@ -281,10 +287,10 @@ During each phase's AI integration, revisit prompts, add reviewed examples, test
 
 - Choose an AI service whose applicable terms and settings prevent using project content to train its models.
 - Send only the material needed for each requested task.
-- Before real pilot use, verify how long the selected service stores that material and explain its retention to designers.
+- Before production, complete verification of how long the selected service stores that material and explain its retention to designers, under the approved B4 timing.
 - Do not promise immediate deletion or zero storage unless those claims have been verified for the selected service and configuration.
 
-These are provider-selection requirements, not a provider choice or a claim about any service's current practices. The provider and its exact retention/deletion rules remain to be evaluated and agreed before real use.
+These are provider-selection requirements, not a provider choice or a claim about any service's current practices. The no-training and task-needed-material rules remain in the MVP baseline; final retention/deletion assessment follows the approved pre-production timing.
 
 Next planned work: desktop wireframes and a representative end-to-end walkthrough, example storyboard/export templates, unresolved product/operational choices, and an implementation brief. App building has not started.
 

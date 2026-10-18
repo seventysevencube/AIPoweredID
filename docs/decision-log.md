@@ -207,3 +207,11 @@ Updated: October 17, 2026.
 During the B4 discussion, the user approved basic safeguards: designers access only their own projects; guests access only explicitly shared content; review links are difficult to guess and shared pages are excluded from search engines; comments display safely; uploaded files are processed without executing embedded code; and instructions hidden in documents, web text, or comments cannot override app rules or accepted designer decisions.
 
 The [current requirements](requirements.md#pilot-security-safeguards) contain the canonical rules. Make these required build checks before real pilot use, with the technical plan explaining implementation and tests and no new designer settings. This approval does not establish that controls are implemented or tested, settle the remaining privacy/security policies, or authorize application work or launch. Earlier decision-log entries remain intact; include this documentation fix in the existing shared PR.
+
+## Remaining B4 audit work deferred until production — approved October 17, 2026
+
+Updated: October 17, 2026.
+
+After reviewing the summary of remaining B4 items, the user stated that these findings should be addressed before production but are not required for the MVP, and asked to move to B5. Record the remaining detailed retention/deletion, backups/recovery, session/shared-device, guest-review, upload, service-assurance/security-verification, final-notice, and operating-procedure work as pre-production follow-up rather than MVP or technical-planning blockers.
+
+The [current requirements](requirements.md#b4-mvp-and-production-timing) contain this milestone change. It supersedes earlier pre-pilot deadlines for the deferred work, including final notices and detailed provider-retention assessment/disclosure. Keep already-approved basic material, access/code/link, deletion, AI-content, and security behavior in the MVP baseline. This changes timing without settling the deferred policies or claiming verification, authorizing production, or resolving unrelated audit findings. Preserve earlier decision-log entries and use the existing shared PR. No B5 resolution is approved by this decision.
