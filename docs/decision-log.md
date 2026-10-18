@@ -199,3 +199,11 @@ Updated: October 17, 2026.
 During the B4 discussion, the user explicitly approved requiring a clear privacy notice and short pilot terms before real users sign in. They must explain the operator and contact route, stored data and AI use, guest-link exposure, deletion requests and retention limits, permitted submissions, and users' responsibility to review AI output. Draft them once services and remaining retention details are known, then have final wording reviewed for the pilot's location and setup before real use.
 
 The [current requirements](requirements.md#pilot-privacy-notice-and-terms) contain the canonical requirement. This approval does not approve final legal/policy wording, choose services, settle retention details, or authorize a pilot launch. Earlier decision-log entries remain intact; include this documentation fix in the existing shared PR.
+
+## Pilot security safeguards — approved October 17, 2026
+
+Updated: October 17, 2026.
+
+During the B4 discussion, the user approved basic safeguards: designers access only their own projects; guests access only explicitly shared content; review links are difficult to guess and shared pages are excluded from search engines; comments display safely; uploaded files are processed without executing embedded code; and instructions hidden in documents, web text, or comments cannot override app rules or accepted designer decisions.
+
+The [current requirements](requirements.md#pilot-security-safeguards) contain the canonical rules. Make these required build checks before real pilot use, with the technical plan explaining implementation and tests and no new designer settings. This approval does not establish that controls are implemented or tested, settle the remaining privacy/security policies, or authorize application work or launch. Earlier decision-log entries remain intact; include this documentation fix in the existing shared PR.

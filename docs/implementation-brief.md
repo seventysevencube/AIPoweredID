@@ -42,6 +42,8 @@ The list's implementation/storage, authentication provider, remaining code/sessi
 
 Before real users sign in, prepare the required [pilot privacy notice and terms](requirements.md#pilot-privacy-notice-and-terms). Explain the operator/contact, stored data and AI use, guest-link exposure, deletion/retention limits, permitted material, and responsibility to review AI output. Draft after services and remaining retention details are known, then have final wording reviewed for the pilot's location and setup before real use.
 
+Apply the required [pilot security safeguards](requirements.md#pilot-security-safeguards): owner-only project access, guest access limited to explicitly shared content, difficult-to-guess review links, search exclusion, safe comment display, upload processing without embedded-code execution, and protection against instructions hidden in reference material or comments. The technical plan must explain implementation and tests before real pilot use; these safeguards add no designer settings.
+
 ## Content and state contracts
 
 Preserve stable record IDs, accepted decisions, objective/enabling-objective/Bloom relationships, defined assessments, source references, content mappings, sequence placements, tool allocation, and open issues across stages.

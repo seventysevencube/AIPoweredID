@@ -59,6 +59,15 @@ Before real pilot users sign in, provide a clear privacy notice and short pilot 
 
 Draft these documents once the services and remaining retention details are known. Have the final wording reviewed for the pilot's location and setup before real use. This establishes a pre-pilot requirement; it does not approve final policy wording or settle the remaining retention/service decisions.
 
+### Pilot security safeguards
+
+- Designers may access only their own projects. Guests may access only the content explicitly selected for their active shared review link.
+- Review links must be difficult to guess, and shared review pages must be excluded from search engines. Search exclusion does not replace access checks.
+- Display guest comments safely, and process uploaded files without executing embedded code.
+- Instructions hidden in source documents, web text, or reviewer comments must not override app rules or accepted designer decisions.
+
+These are required build checks before real pilot use. The technical plan must explain how each safeguard will be implemented and tested; a written requirement or prompt alone does not establish that it works. No new designer settings are required. Exact implementation choices and remaining privacy/security policies stay open.
+
 ## 2. Core stage-to-stage contract
 
 Each stage's designer-reviewed output becomes the input for the next stage and prefills an editable skeleton. Carry accepted decisions, objective/enabling-objective/assessment IDs, sources, constraints, and permitted unresolved questions forward. Designers do not manually transfer the same information between stages.
