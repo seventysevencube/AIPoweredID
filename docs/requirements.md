@@ -295,7 +295,7 @@ During each phase's AI integration, revisit prompts, add reviewed examples, test
 
 These are provider-selection requirements, not a provider choice or a claim about any service's current practices. The no-training and task-needed-material rules remain in the MVP baseline; final retention/deletion assessment follows the approved pre-production timing.
 
-Next planned work: desktop wireframes and a representative end-to-end walkthrough, example storyboard/export templates, unresolved product/operational choices, and an implementation brief. App building has not started.
+Historical next-work note: subsequent implementation authorization and technical direction are recorded in section 10 below. The fictional walkthrough remains deferred.
 
 ## Refinement: decide the solution before confirming deliverables
 
@@ -310,7 +310,7 @@ A performance aid’s purpose determines its learning/nonlearning treatment. Con
 
 The user authorized Milestone 1 implementation and merging ready planning changes. Its scope is approved-email code sign-in, private designer projects/cards, manual Analysis entry, reliable autosave/recovery/conflicts, and version foundations. Follow the [milestone specification](implementation/milestone-1.md); technical mechanisms remain subject to verification and cannot weaken approved product behavior.
 
-Use existing Netlify Free hosting, with Supabase Auth/PostgreSQL/private Storage and Resend as the low-cost service foundation. The user's screenshot confirms Netlify's credit-based Free plan with 300 monthly credits; its snapshot balance is not a dedicated app allowance or future guarantee. Aim for minimal non-AI costs, using free allowances where feasible; $0 is a target rather than a fixed approved cap. The user accepts manually resuming an inactive service before scheduled demos and has existing domains available. Do not rely on a temporary Vercel Pro trial. The project region and exact domain remain setup choices. React/TypeScript/Vite is the proposed frontend implementation.
+Use existing Netlify Free hosting, with Supabase Auth/PostgreSQL/private Storage and Resend as the low-cost service foundation. The user's screenshot confirms Netlify's credit-based Free plan with 300 monthly credits; its snapshot balance is not a dedicated app allowance or future guarantee. Aim for minimal non-AI costs, using free allowances where feasible; $0 is a target rather than a fixed approved cap. The user accepts manually resuming an inactive service before scheduled demos and has existing domains available. Do not rely on a temporary Vercel Pro trial. The project region and exact domain remain setup choices. React/TypeScript/Vite is the Milestone 1 frontend implementation.
 
 OpenAI is the approved initial AI provider. Evaluate Luna first per task during phase-specific AI integration; use Sol where measured quality/cost results justify it. Do not automatically run both models on every output. Leave Jev out initially. Preserve stage-specific prompts/examples, structured output checks, source grounding, human review, the shared one-job queue and $20 budget reservations. Specific task/model assignments and measured costs remain to be validated. Milestone 1 does not call AI.
 

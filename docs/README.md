@@ -53,3 +53,8 @@ The latest explicit user decision always takes precedence. Record new decisions 
 - [Saved work and AI jobs](implementation/saved-work-and-ai-jobs.md)
 
 The user authorized Milestone 1 implementation and merging ready planning changes. The full audit in PR #1 remains contextual: merging its report preserves findings, not blanket approval of its recommendations. Other audit findings and the fictional walkthrough remain deferred.
+
+## Milestone 1 implementation
+
+- [Implementation status and verification limits](implementation/milestone-1-status.md).
+- [Service setup and live verification](implementation/service-setup.md).

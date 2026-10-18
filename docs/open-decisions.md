@@ -6,7 +6,13 @@ Updated: October 18, 2026. Items below are unresolved details, not approved addi
 
 After recording the approved B1–B5 decisions in shared PR #2, the user asked to save the other findings for later. Retain the full audit in PR #1 and the unresolved items here; do not implement additional audit recommendations or resume their walkthrough without further instruction. Deferred findings are not resolved or approved by this change. The remaining B4 work retains its agreed pre-production timing, and already-approved MVP requirements remain in effect. The user has since reviewed and approved the independently written performance-analysis and Evaluation planning questions and described desktop layouts; see the [replacement specification](notes/independent-review-questions.md). This does not approve other deferred audit recommendations or verify replacement prototypes or production behavior. The fictional example walkthrough remains deferred.
 
-## Next design work
+## Current implementation checkpoint — October 18, 2026
+
+The user has authorized Milestone 1 and merging ready changes. Planning PRs #1 and #2 are merged. The selected direction is React/TypeScript/Vite on Netlify Free, with Supabase Auth/PostgreSQL/private Storage and Resend. Initial non-AI subscriptions should be minimized, aiming for $0 within free allowances; no numeric non-AI cap or guaranteed price is approved. OpenAI is the initial AI provider; test Luna first per task, with Sol only where demonstrated quality/cost justifies it. Jev is excluded initially.
+
+The [Milestone 1 status](implementation/milestone-1-status.md) records implemented behavior and verification limits. Actual service project/region/sender/origin configuration, live identity/delivery/refresh/persistence checks, and human accessibility review remain pending. AI integration follows only after the applicable workspace checks. Earlier planning-only statements below are historical; they do not revoke the user's implementation authorization.
+
+## Earlier next design work
 
 1. Draft a technical build plan for the agreed MVP: application/data structure, sign-in and approved-email access, hosting/storage, AI connection, spending controls, and delivery order. Confirm the non-AI operating budget before recommending services. The user deferred the example walkthrough for now; it is not the current prerequisite for this planning step.
 2. Deferred at the user's request: the fictional complaint-routing walkthrough and its source/Analysis review. Retain the draft and revisit examples during the agreed phase-by-phase AI integration/quality work.
@@ -22,7 +28,7 @@ The remaining B4 audit work is required before production, not as a gate for the
 
 ### Remaining choices
 
-- Hosting, storage, and sign-in email operating budget, separate from the approved $20/month AI budget. No non-AI budget or technical service is selected yet.
+- Confirm actual free-tier usage and service setup against the selected minimum-cost direction. Exact region, sender/domain, and hosting origin remain to be configured. No numeric non-AI cap is approved.
 - Draft and review the required [pilot privacy notice and terms](requirements.md#pilot-privacy-notice-and-terms) after services and remaining retention details are known, before production. Operator identity/contact, location/setup, exact disclosures, and final wording remain to be supplied or reviewed. Finalization is deferred from the MVP under the B4 timing above.
 - Implement the approved [pilot security safeguards](requirements.md#pilot-security-safeguards) in the MVP: project ownership and shared-content access, difficult-to-guess review links and search exclusion, safe comments/uploads, and resistance to instructions embedded in reference material. The technical plan must explain implementation and tests; additional B4 audit assurance and remaining session, abuse/moderation, upload, retention, service, and incident details follow the pre-production timing above.
 
@@ -55,7 +61,7 @@ The user approved independently written **Evaluation planning** covering organiz
 
 Implementation and evaluation execution remain later scope; evaluation planning stays included. Do not add generated media, OCR, native course files, verified reviewer accounts, or team coauthoring by implication. Unknown details do not authorize overwriting reviewed content or manufacturing missing facts.
 
-Saving these notes to GitHub is documentation work. Application development, deployment, and AI connections have not started.
+Milestone 1 application work is now authorized and in progress as recorded above. Deployment and AI connections have not been performed by this implementation.
 
 
 
