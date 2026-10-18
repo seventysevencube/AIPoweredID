@@ -702,6 +702,15 @@ function Editor({
       : snapshot.records.context.data.answers.title?.text;
   const blocked = ["recovery", "conflict"].includes(state.status);
   const index = sections.indexOf(section);
+  const missingRequired = (questions[section] ?? []).filter((q) => {
+    const answer = state.data.answers[q.id];
+    return q.needed && (!answer?.text.trim() || answer.status !== "provided");
+  });
+  const cannotContinue = !ready || blocked || missingRequired.length > 0;
+  const outstanding = needed({
+    ...snapshot.records,
+    [section]: { ...record, data: state.data },
+  });
   const status = !ready
     ? "Checking for recoverable edits…"
     : state.status === "saved"
@@ -955,6 +964,21 @@ function Editor({
               ))}
             </fieldset>
           )}
+          {ready && missingRequired.length > 0 && (
+            <p
+              id="continue-requirements"
+              className="continuehint"
+              role="status"
+            >
+              Complete the{" "}
+              {missingRequired.length === 1
+                ? "field"
+                : `${missingRequired.length} fields`}{" "}
+              marked “Needed for Design” on this page to enable Continue. “Not
+              yet known” keeps a required answer incomplete. You can still save
+              or use the section links.
+            </p>
+          )}
           <div className="formfooter">
             <button
               disabled={index === 0}
@@ -968,20 +992,30 @@ function Editor({
             {index < 6 ? (
               <button
                 className="primary"
-                onClick={() => void navigate(sections[index + 1])}
+                disabled={cannotContinue}
+                aria-describedby={
+                  missingRequired.length > 0
+                    ? "continue-requirements"
+                    : undefined
+                }
+                onClick={() => {
+                  if (!cannotContinue) void navigate(sections[index + 1]);
+                }}
               >
                 Continue →
               </button>
             ) : (
               <p className="hint">
-                Analysis entry complete. You can continue refining this draft.
+                {outstanding > 0
+                  ? `Analysis remains a draft. ${outstanding} core ${outstanding === 1 ? "answer is" : "answers are"} still needed for Design.`
+                  : "You can continue refining your Analysis draft."}
               </p>
             )}
           </div>
           <div className="historybar">
             <span>
-              {needed(snapshot.records)} core items still needed for Design ·
-              saving remains available
+              {outstanding} core items still needed for Design · saving remains
+              available
             </span>
             <button onClick={() => void controller.flush()}>Save now</button>
             <button
@@ -1057,6 +1091,14 @@ function Field({
 }) {
   const id = React.useId();
   const a = answer ?? { text: "", status: "provided" };
+  const answerOptions = [
+    ...new Set([
+      ...(q.answerOptions ?? []),
+      ...(a.status === "unknown" || a.status === "not_applicable"
+        ? [a.status]
+        : []),
+    ]),
+  ];
   return (
     <div className="field">
       <label htmlFor={id}>{q.label}</label>
@@ -1146,42 +1188,31 @@ function Field({
           onChange={(e) => onChange({ ...a, text: e.target.value })}
         />
       )}
-      {((q.answerOptions?.length ?? 0) > 0 || a.status !== "provided") && (
+      {answerOptions.length > 0 && (
         <details className="answeroptions">
           <summary>
             Answer options<span className="sr-only"> for {q.label}</span>
           </summary>
           <fieldset>
             <legend className="sr-only">Information status: {q.label}</legend>
-            {(
-              [
-                "provided",
-                ...(q.answerOptions ?? []),
-                ...(a.status === "unknown" || a.status === "not_applicable"
-                  ? [a.status]
-                  : []),
-              ] as const
-            )
-              .filter((value, index, list) => list.indexOf(value) === index)
-              .map((status) => (
-                <label key={status}>
-                  <input
-                    type="radio"
-                    name={id + "-status"}
-                    value={status}
-                    checked={a.status === status}
-                    onChange={() => {
-                      onChange({ ...a, status }, true);
-                      discrete?.();
-                    }}
-                  />
-                  {status === "provided"
-                    ? "Enter an answer"
-                    : status === "unknown"
-                      ? "Not yet known"
-                      : "Not applicable — add a reason"}
-                </label>
-              ))}
+            {answerOptions.map((status) => (
+              <label key={status}>
+                <input
+                  type="checkbox"
+                  checked={a.status === status}
+                  onChange={(e) => {
+                    onChange(
+                      { ...a, status: e.target.checked ? status : "provided" },
+                      true,
+                    );
+                    discrete?.();
+                  }}
+                />
+                {status === "unknown"
+                  ? "Not yet known"
+                  : "Not applicable — add a reason"}
+              </label>
+            ))}
           </fieldset>
         </details>
       )}

@@ -55,7 +55,38 @@ test("private workspace, truthful saving, recovery, two-tab conflict, history an
     "What workplace task or responsibility does this project address?",
     { exact: true },
   );
+  const next = page.getByRole("button", { name: "Continue →", exact: true });
+  await expect(next).toBeDisabled();
+  await expect(
+    page.getByRole("button", { name: "Save and return later", exact: true }),
+  ).toBeEnabled();
   await task.fill("Review an equipment checklist");
+  const desired = page.getByLabel(
+    "What should people be able to do, and what does successful performance look like?",
+    { exact: true },
+  );
+  const current = page.getByLabel(
+    "What is happening now, and how does it differ from the desired performance?",
+    { exact: true },
+  );
+  await desired.fill("Complete all required checklist steps");
+  await current.fill("   ");
+  await expect(next).toBeDisabled();
+  await current.fill("Some steps are missed");
+  await expect(next).toBeEnabled();
+  const taskField = page.locator(".field").filter({ has: task });
+  await taskField.locator("summary").click();
+  await expect(page.getByText("Enter an answer", { exact: true })).toHaveCount(
+    0,
+  );
+  await taskField
+    .getByRole("checkbox", { name: "Not yet known", exact: true })
+    .check();
+  await expect(next).toBeDisabled();
+  await taskField
+    .getByRole("checkbox", { name: "Not yet known", exact: true })
+    .uncheck();
+  await expect(next).toBeEnabled();
   await expect(
     page.getByRole("status").filter({ hasText: "All changes saved" }),
   ).toBeVisible();
@@ -127,6 +158,64 @@ test("private workspace, truthful saving, recovery, two-tab conflict, history an
   await expect(
     page.getByRole("status").filter({ hasText: "All changes saved" }),
   ).toBeVisible();
+  await expect(next).toBeDisabled(); // Restoring revision 1 restored empty required answers.
+  await page
+    .getByRole("link", { name: /Evidence and possible causes/ })
+    .click();
+  await expect(next).toBeEnabled();
+  const evidence = page.locator(".field").filter({
+    has: page.getByLabel(
+      "What information supports your description of the performance gap?",
+      { exact: true },
+    ),
+  });
+  await evidence.locator("summary").click();
+  await evidence
+    .getByRole("checkbox", { name: "Not yet known", exact: true })
+    .check();
+  await expect(next).toBeEnabled();
+  await next.click();
+  await expect(
+    page.getByRole("heading", {
+      name: "Audience and work environment",
+      exact: true,
+    }),
+  ).toBeVisible();
+  await expect(next).toBeDisabled();
+  const roles = page.getByLabel(
+    "Who needs to perform this task? Describe their roles or responsibilities.",
+    { exact: true },
+  );
+  await roles.fill("Maintenance technicians");
+  await expect(next).toBeEnabled();
+  const audience = page.locator(".field").filter({ has: roles });
+  await audience.locator("summary").click();
+  await audience
+    .getByRole("checkbox", { name: "Not yet known", exact: true })
+    .check();
+  await expect(next).toBeDisabled();
+  await expect(
+    page.getByRole("status").filter({ hasText: "All changes saved" }),
+  ).toBeVisible();
+  await page.reload();
+  await expect(next).toBeDisabled();
+  await audience.locator("summary").click();
+  await expect(
+    audience.getByRole("checkbox", { name: "Not yet known", exact: true }),
+  ).toBeChecked();
+  await audience
+    .getByRole("checkbox", { name: "Not yet known", exact: true })
+    .uncheck();
+  await next.click();
+  await expect(
+    page.getByRole("heading", {
+      name: "Stakeholders and project constraints",
+      exact: true,
+    }),
+  ).toBeVisible();
+  await expect(next).toBeEnabled();
+  await next.click();
+  await expect(next).toBeEnabled();
   await page.getByRole("link", { name: /Organizational results/ }).click();
   await page
     .getByRole("button", { name: "+ Add measure", exact: true })
@@ -185,6 +274,13 @@ test("private workspace, truthful saving, recovery, two-tab conflict, history an
       { exact: true },
     ),
   ).toHaveValue("Complete each checklist step");
+  await expect(next).toBeEnabled();
+  await next.click();
+  await expect(
+    page.getByRole("heading", { name: "Evidence of learning", exact: true }),
+  ).toBeVisible();
+  await expect(next).toHaveCount(0);
+  await expect(page.getByText(/Analysis remains a draft/)).toBeVisible();
   const peer = await browser.newContext();
   const peerPage = await peer.newPage();
   await signIn(peerPage, "peer@example.test");

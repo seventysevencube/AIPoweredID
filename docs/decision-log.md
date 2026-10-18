@@ -259,3 +259,8 @@ The user reviewed the milestone specification and then explicitly instructed: �
 ## October 18, 2026 — Milestone 1 implementation authorized
 
 The user instructed: “Please also merge changes to main if we are ready. Lets start Milestone 1 implementation.” The reviewed planning audit (PR #1) and approved baseline/implementation specification (PR #2) have been merged, without approving other audit recommendations or resuming the fictional walkthrough. Milestone 1 implementation now proceeds under the current requirements. The [implementation status](implementation/milestone-1-status.md) separates local test evidence from pending live Supabase/Resend/Netlify and human accessibility checks. No application deployment, DNS change, subscription purchase, or AI call is included in this checkpoint.
+
+
+## October 18, 2026 — Analysis Continue and uncertainty controls
+
+The designer requested disabling Continue when Needed-for-Design fields are incomplete and removing the redundant Enter an answer option. Continue checks the current page's required fields; saving and section navigation remain available. Unknown responses use a checkbox, and optional applicability controls preserve rationale/text. This is a navigation refinement, not a new stage acceptance or learning-measure confirmation action. See current requirements for the precise rule.

@@ -39,3 +39,8 @@ Detailed B4 policies/assurance keep their approved pre-production timing. Remain
 ## Local UI refinement — answer options
 
 The designer requested removing unnecessary four-option status menus across the forms. Direct-entry fields (project title, pasted evidence, possible-causes selection, stakeholder name/assignment, and scope exclusions) now use plain inputs. Relevant questions offer a collapsed **Answer options** control for explicit unknown or not-applicable responses, with applicability choices limited by question. Default draft labels are omitted. Existing unknown, not-applicable, and proposed values remain visible and are preserved until explicitly changed; this cleanup does not review or accept any content. Local browser checks cover keyboard operation, saved uncertainty/rationale responses after reload, and automated accessibility checks. Live Supabase/Resend setup remains deferred while local UI review continues.
+
+
+## Local UI refinement — Continue and unknown responses
+
+Continue now checks the current page's existing Needed-for-Design fields, excluding blank, whitespace-only, and unresolved-status answers. The same shared logic applies across Analysis, without adding requirements to optional pages or blocking saves, Back, or section links. The final page no longer claims Analysis entry is complete when core answers are missing. Readiness counts reflect current edits immediately. Answer options now use a Not yet known checkbox (plus not-applicable where relevant), with no Enter an answer choice; unchecking restores ordinary-answer status and preserves the text. Live service setup remains deferred.
