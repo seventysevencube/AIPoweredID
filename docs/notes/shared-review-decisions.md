@@ -9,7 +9,7 @@ Status: Guest access, anchored comments, required unverified display names, and 
 - Optional peer comments on shared drafts at Analysis, Design, and partial Development.
 - Reviewers do not directly edit designer content or formally approve progression.
 - The designer creates a share link when desired. Recommendations to request peer feedback do not send invitations automatically.
-- Current source/data assumption: no confidential organizational material.
+- Apply the [permitted pilot material](../requirements.md#permitted-pilot-material) rule: public material, fictional examples, or employer-approved material with confidential and personal details removed. Identifiable employee/customer cases, passwords, and business secrets are excluded.
 - Reviewed versions and comments must remain traceable to the content they concern.
 - Confirmed MVP access: guest review without creating an account.
 - Confirmed MVP commenting: comments attached to specific sections, objectives, assessments, screens, or blocks.

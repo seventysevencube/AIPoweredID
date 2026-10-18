@@ -143,3 +143,11 @@ During the B3 discussion, the user accepted reserving a request's maximum allowe
 The [current requirements](requirements.md#simple-shared-ai-queue-and-spending-protection) contain the canonical policy. All paid AI work within a job, including quality review, the existing bounded quality repair, and research, must fit within its allowance. The quality repair of newly generated content remains distinct from retrying a failed job. This preserves the approved $20 shared monthly cap and $16 warning without separate designer budgets or simultaneous AI-job accounting.
 
 This settles the queue, reservation, uncertain-charge, and explicit-retry behavior previously left open. Exact job allowances, monthly reset timing, provider/model selection, and implementation/validation remain open. Keep this fix in the same PR as the earlier approved blocker fixes. Prior decision-log entries remain intact; no live spending controls, technical plan, or application work are included.
+
+## Permitted pilot material — approved October 17, 2026
+
+Updated: October 17, 2026.
+
+During the B4 discussion, the user accepted the initial material boundary: allow public material, fictional examples, and employer-approved material with confidential and personal details removed. Exclude identifiable employee/customer cases, passwords, and business secrets. Explain this boundary briefly before designers paste or upload material.
+
+The [current requirements](requirements.md#permitted-pilot-material) state the canonical rule, clarifying the earlier no-confidential-organizational-material assumption. This approval does not require automatic sensitive-content detection or approve other privacy/security recommendations. Guest-link lifecycle, provider handling, retention/deletion, and other B4 details remain open. Prior decision-log entries remain intact; this is documentation work in the shared blocker-fix PR.

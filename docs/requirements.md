@@ -41,7 +41,11 @@ The reference project for testing quality and estimating cost is approximately f
 - Implementing recommended organizational or HR changes. Nonlearning recommendations can be documented and handed off.
 - Smaller-screen product layouts. The desktop scope does not remove accessibility requirements.
 
-Current data assumption: no confidential organizational material.
+### Permitted pilot material
+
+Initially allow public material, fictional examples, and employer-approved material with confidential and personal details removed. Exclude identifiable employee/customer cases, passwords, and business secrets. Explain this boundary briefly before designers paste or upload material. Employer approval alone does not permit confidential or identifiable material under this pilot policy.
+
+This clarifies the earlier no-confidential-organizational-material assumption. It is a permitted-use rule, not a claim that the app automatically detects or removes sensitive information. Remaining privacy and security policies are still to be agreed.
 
 ## 2. Core stage-to-stage contract
 
