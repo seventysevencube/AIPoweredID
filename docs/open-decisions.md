@@ -1,10 +1,10 @@
 # Open Decisions and Next Steps
 
-Updated: October 17, 2026. Items below are unresolved details, not approved additions to MVP scope.
+Updated: October 18, 2026. Items below are unresolved details, not approved additions to MVP scope.
 
 ## Audit follow-up — deferred at the user's request
 
-After recording the approved B1–B5 decisions in shared PR #2, the user asked to save the other findings for later. Retain the full audit in PR #1 and the unresolved items here; do not implement additional audit recommendations or resume their walkthrough without further instruction. Deferred findings are not resolved or approved by this change. The remaining B4 work retains its agreed pre-production timing, and already-approved MVP requirements remain in effect. Independently written performance-analysis and evaluation-planning replacement questions still need drafting and review; the selected directions do not approve final wording. The fictional example walkthrough remains deferred.
+After recording the approved B1–B5 decisions in shared PR #2, the user asked to save the other findings for later. Retain the full audit in PR #1 and the unresolved items here; do not implement additional audit recommendations or resume their walkthrough without further instruction. Deferred findings are not resolved or approved by this change. The remaining B4 work retains its agreed pre-production timing, and already-approved MVP requirements remain in effect. The user has since reviewed and approved the independently written performance-analysis and Evaluation planning questions and described desktop layouts; see the [replacement specification](notes/independent-review-questions.md). This does not approve other deferred audit recommendations or verify replacement prototypes or production behavior. The fictional example walkthrough remains deferred.
 
 ## Next design work
 
@@ -37,11 +37,11 @@ The remaining B4 audit work is required before production, not as a gate for the
 
 ## B5 performance-analysis replacement
 
-The user selected an independently written approach in place of Six Boxes. Draft and review original questions, explanations, organization, and replacement screen content before implementing that review; do not simply relabel the six-category specification. Earlier prototype content and deferred example references remain historical and are not the new specification. Attribution/disclaimer wording has not been approved, and this direction does not establish legal clearance. The user has also selected independently written evaluation planning, as specified below. See the [current requirements](requirements.md#4-design-performance-solution-decision-first).
+The user selected an independently written approach in place of Six Boxes and approved its original questions, explanations, organization, and described two-step desktop layout on October 18, 2026. That wording/presentation review is complete; follow the [approved specification](notes/independent-review-questions.md#design-opening-performance-analysis). Replacement prototypes, detailed interaction/accessibility verification, production prompts, and reference outputs remain future work; do not simply relabel the six-category specification. Earlier prototype content and deferred example references remain historical and are not the new specification. Attribution/disclaimer wording has not been approved, and this direction does not establish legal clearance. The user has also selected independently written evaluation planning, as specified below. See the [current requirements](requirements.md#4-design-performance-solution-decision-first).
 
 ## B5 evaluation-planning replacement
 
-The user approved independently written **Evaluation planning** covering organizational results, workplace performance, and evidence of learning instead of a branded Kirkpatrick implementation. Preserve the confirmed learning-measure gate, per-measure details, and Design links. Draft and review original questions/explanations; do not copy branded definitions, diagrams, or templates or imply official endorsement. Exact replacement wording/presentation remains pending, as does any final attribution wording; this is a product direction, not legal clearance. See the [current requirements](requirements.md#independently-written-evaluation-planning). Earlier level labels in examples/prototypes remain historical; preserve old record references without advancing the deferred walkthrough.
+The user approved independently written **Evaluation planning** covering organizational results, workplace performance, and evidence of learning instead of a branded Kirkpatrick implementation. Preserve the confirmed learning-measure gate, per-measure details, and Design links. Original questions/explanations and the described desktop presentation were approved on October 18, 2026; follow the [approved specification](notes/independent-review-questions.md#analysis-evaluation-planning). Replacement prototypes, detailed interaction/accessibility verification, production prompts, and reference outputs remain future work. Do not copy branded definitions, diagrams, or templates or imply official endorsement. Any final attribution wording remains undecided; product approval does not establish legal clearance. See the [current requirements](requirements.md#independently-written-evaluation-planning). Earlier level labels in examples/prototypes remain historical; preserve old record references without advancing the deferred walkthrough.
 
 ## AI integration work, revisited for every phase
 
@@ -56,6 +56,7 @@ The user approved independently written **Evaluation planning** covering organiz
 Implementation and evaluation execution remain later scope; evaluation planning stays included. Do not add generated media, OCR, native course files, verified reviewer accounts, or team coauthoring by implication. Unknown details do not authorize overwriting reviewed content or manufacturing missing facts.
 
 Saving these notes to GitHub is documentation work. Application development, deployment, and AI connections have not started.
+
 
 
 

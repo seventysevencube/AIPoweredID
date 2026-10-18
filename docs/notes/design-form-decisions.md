@@ -1,6 +1,6 @@
 # Design Skeleton — Section Decisions
 
-Updated: October 17, 2026
+Updated: October 18, 2026
 
 Status: Requirements discussion. No app development has started. Synced project sources remain read-only.
 
@@ -13,15 +13,15 @@ Status: Requirements discussion. No app development has started. Synced project 
 - The instructional designer chooses Storyline 360, Rise 360, or both during Design for e-learning projects, after choosing microlearning, a course, or a mix. The format/tool decisions are distinct.
 - Workplace e-learning and performance support are the supported use cases. Performance-support deliverables are complete written drafts.
 - Five minutes/moderately interactive is the reference project for costing and testing, not a mandatory project limit.
-- Independently written evaluation planning for organizational results, workplace performance, and evidence of learning is included; evaluation execution remains outside the MVP. Follow the [current evaluation-planning requirements](../requirements.md#independently-written-evaluation-planning). Exact replacement questions/explanations remain pending review; earlier level labels are historical shorthand, not required app labels.
+- Independently written evaluation planning for organizational results, workplace performance, and evidence of learning is included; evaluation execution remains outside the MVP. Follow the [current evaluation-planning requirements](../requirements.md#independently-written-evaluation-planning). Original replacement questions/explanations and the described presentation are approved in the [replacement specification](independent-review-questions.md); earlier level labels are historical shorthand, not required app labels.
 
 ## Current B5 direction — independently written performance analysis
 
-Updated: October 17, 2026.
+Updated: October 18, 2026.
 
-The user selected an independently written performance-analysis approach instead of incorporating Six Boxes. Follow the [current requirements](../requirements.md#4-design-performance-solution-decision-first): retain evidence review, explicit learning/nonlearning/combined/investigation routes, and the conditional learning-measure gate, but develop original questions, explanations, and organization. Exact replacement content/layout awaits drafting and review. Attribution/disclaimer wording remains undecided; this records a product direction, not legal clearance.
+The user selected an independently written performance-analysis approach instead of incorporating Six Boxes. Follow the [current requirements](../requirements.md#4-design-performance-solution-decision-first): retain evidence review, explicit learning/nonlearning/combined/investigation routes, and the conditional learning-measure gate, but develop original questions, explanations, and organization. The original replacement questions and described two-step desktop layout were approved on October 18, 2026; see the [replacement specification](independent-review-questions.md#design-opening-performance-analysis). Attribution/disclaimer wording remains undecided; this records a product direction, not legal clearance.
 
-The Six Boxes sequence, six-category question table, and branded wireframe approval below are historical for that model's content and organization. They must not be copied or treated as an approved replacement merely by changing labels. Other approved Design behaviors remain in effect. The deferred walkthrough remains deferred. The user also selected independently written evaluation planning; both replacement specifications still require drafting and review.
+The Six Boxes sequence, six-category question table, and branded wireframe approval below are historical for that model's content and organization. They must not be copied or treated as an approved replacement merely by changing labels. Other approved Design behaviors remain in effect. The deferred walkthrough remains deferred. The user also selected independently written evaluation planning; both replacement question specifications and described desktop presentation approaches are now approved. Replacement prototypes and application behavior remain unimplemented and unverified.
 
 ## Earlier revised sequence — historical Six Boxes specification
 
@@ -339,3 +339,4 @@ The user limited source-file imports to Word (.docx) and PowerPoint (.pptx) with
 Imports use conventional extraction and deterministic checks only, with no AI calls. If extraction produces no usable text, show a warning and exclude that file from AI source content. Do not show an extraction summary or extracted-text preview, and do not require an import-review confirmation. The designer can continue with other sources or direct text entry; the warning is not a project-wide progression block.
 
 Use deterministic checks of parser output, not AI or semantic document assessment. Suggested warning: “No usable text could be extracted from this file. It will not be used as an AI source. Upload a Word or PowerPoint file with editable text, or paste the content.” This supersedes the proposed import summary/text-preview flow; it does not remove ordinary stage source/content review or change permitted research and export formats.
+

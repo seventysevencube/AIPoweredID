@@ -1,6 +1,6 @@
 # MVP Implementation Brief
 
-Updated: October 17, 2026.
+Updated: October 18, 2026.
 
 Status: planning consolidation for review. The product requirements summarized here are approved; the suggested delivery order is a proposal. This document does not authorize application development, deployment, or AI connections.
 
@@ -10,7 +10,7 @@ Help workplace instructional designers move through Analysis, Design, and partia
 
 Deliver detailed Storyline/Rise storyboard specifications and complete written job-aid/performance-support drafts. Implementation and evaluation execution remain later scope. Evaluation planning is included.
 
-Use [current requirements](requirements.md) and the [detailed notes](README.md) for exact questions, exceptions, and decision precedence. The [screen review record](ui/screen-review-status.md) distinguishes approved patterns from pending layouts.
+Use [current requirements](requirements.md) and the [detailed notes](README.md) for exact questions, exceptions, and decision precedence. The [screen review record](ui/screen-review-status.md) distinguishes approved patterns from pending layouts. The independently written [performance-analysis and Evaluation planning questions and described desktop layouts](notes/independent-review-questions.md) were approved on October 18, 2026. These replace the historical branded content; replacement prototypes and application functionality have not been implemented or verified.
 
 ## Approved workflow
 
@@ -136,3 +136,4 @@ The user selected the [fictional complaint-routing example](examples/complaint-r
 ## Walkthrough deferred — latest steering
 
 The user asked to skip the fictional example for now and move to the next step. Preserve its source packet and Analysis draft as unreviewed planning content; do not progress its performance-analysis/Design stages or treat its assumptions as accepted. The next proposed work is the technical build plan, including hosting/storage/sign-in/AI choices and a phased implementation approach. Confirm the hosting/storage/sign-in-email budget separately from the $20 AI budget before recommending services. No actual app build, deployment, or AI connection is authorized by documenting this next step. Revisit instructional examples during each phase's AI integration as previously agreed.
+

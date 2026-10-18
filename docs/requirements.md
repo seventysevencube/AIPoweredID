@@ -1,6 +1,6 @@
 # Current MVP Requirements
 
-Updated: October 17, 2026. Status: agreed product baseline; implementation choices and open details are listed separately.
+Updated: October 18, 2026. Status: agreed product baseline; implementation choices and open details are listed separately.
 
 ## Document authority
 
@@ -101,7 +101,7 @@ These rules apply across the Analysis → Design → partial Development workflo
 
 ## 3. Analysis
 
-The agreed Analysis scope and question history are in [the Analysis notes](notes/analysis-form-decisions.md). Evaluation-planning questions require the independently written replacement described below. Sections:
+The agreed Analysis scope and question history are in [the Analysis notes](notes/analysis-form-decisions.md). Use the approved independently written [Evaluation planning questions and presentation](notes/independent-review-questions.md#analysis-evaluation-planning) described below. Sections:
 
 1. Project context and performance gap.
 2. Evidence and possible causes.
@@ -117,7 +117,9 @@ Core information for a useful Design draft is the task, desired/current performa
 
 ### Independently written evaluation planning
 
-Use **Evaluation planning** as the section name. The user selected an independently written approach in place of the branded Kirkpatrick implementation. Keep planning for organizational results, workplace performance, and evidence of learning, with the existing per-measure details and links into Design. Write original questions and explanations; do not copy branded definitions, diagrams, or templates or imply an official, certified, or endorsed implementation. Exact replacement wording remains to be drafted and reviewed; changing labels alone does not establish independent authorship.
+Use **Evaluation planning** as the section name. The user selected an independently written approach in place of the branded Kirkpatrick implementation. Keep planning for organizational results, workplace performance, and evidence of learning, with the existing per-measure details and links into Design. Write original questions and explanations; do not copy branded definitions, diagrams, or templates or imply an official, certified, or endorsed implementation. The independently written questions and described desktop presentation were approved on October 18, 2026; see the [exact question specification](notes/independent-review-questions.md#analysis-evaluation-planning). Changing labels alone does not establish independent authorship.
+
+Use one Evaluation planning workspace within Analysis, with Organizational results, Workplace performance, and Evidence of learning in the left navigation. Prefill existing information. Show editable measure cards with one expanded at a time and clear summaries for the others; retain question-specific criteria, influences, and dependencies. Show related-measure links, contextual guidance, explicit Not yet known values, and AI proposals. Incomplete plans can be saved and reviewed; this presentation does not bypass the conditional learning-measure gate. The described layout is approved, not a rendered or tested replacement prototype.
 
 Learning measures still require designer confirmation before instructional Design on a learning route. A route with no learning component records a not-applicable rationale; organizational-results and workplace-performance details may retain permitted unknowns. Evaluation execution remains outside the MVP. Historical L2/L3/L4 terminology corresponds to learning, workplace performance, and organizational results respectively; preserve stable references in prior records rather than renumbering or changing their meaning. Earlier branded questions, examples, and prototype labels are historical, not the replacement specification. No new disclaimer, permission, or legal-clearance claim is approved.
 
@@ -136,11 +138,11 @@ An editable Analysis brief synthesizes:
 
 ## 4. Design: performance-solution decision first
 
-Start with an independently written performance-analysis review using the reviewed Analysis evidence. The user selected this approach in place of the Six Boxes integration. Develop original questions, explanations, and organization; do not carry forward the branded six-category structure, copy its wording/diagrams/templates, or simply rename the existing model. Exact replacement questions and their presentation remain to be drafted and reviewed.
+Start with an independently written performance-analysis review using the reviewed Analysis evidence. The user selected this approach in place of the Six Boxes integration. Develop original questions, explanations, and organization; do not carry forward the branded six-category structure, copy its wording/diagrams/templates, or simply rename the existing model. The independently written questions and described two-step desktop presentation were approved on October 18, 2026; see the [exact question specification](notes/independent-review-questions.md#design-opening-performance-analysis).
 
 Show evidence, potential issues, and unanswered questions. Distinguish evidence from hypotheses; do not diagnose individual motivation or capacity from weak performance alone. Designer-reviewed routes remain learning, nonlearning response, a combination, or further investigation. Reuse the reviewed Analysis rather than requiring duplicate entry.
 
-Earlier Six Boxes specifications and wireframes are historical for their branded categories and wording, not the replacement specification. The evidence-review/route-confirmation interaction remains useful; the replacement content/layout must be reviewed. No “based on Six Boxes” disclaimer or other attribution wording is approved by the choice of an independent approach. That wording remains a separate question, and no permission or legal-clearance claim is made. Evaluation planning also follows the independently written approach specified above.
+Earlier Six Boxes specifications and wireframes are historical for their branded categories and wording, not the replacement specification. Use the approved two-step presentation: (1) Review evidence, with prefilled findings in the main area and supporting sources available beside them; (2) Consider explanations and choose a response, showing supporting evidence, conflicting evidence, and unknowns for each explanation, followed by the response choice. Mark AI suggestions as proposals. Confirm the route with a separate action, then show learning-measure confirmation when applicable. This is approval of the described layout, not replacement prototype or implementation verification. No “based on Six Boxes” disclaimer or other attribution wording is approved by the choice of an independent approach. That wording remains a separate question, and no permission or legal-clearance claim is made. Evaluation planning also follows the independently written approach specified above.
 
 After route confirmation, propose interventions and their rationale, contribution, limitations, and dependencies. Document nonlearning recommendations without forcing course production. A selected performance-support deliverable can proceed to a written draft without automatically becoming a learning intervention.
 
@@ -302,3 +304,4 @@ After the performance-analysis response decision, use the reviewed Analysis to s
 Derive the output types from that choice: Detailed e-learning storyboard; **Written job aid / performance-support draft**; or both. The latter label replaces “Complete written learning-support draft” and still means complete written content for the aid. Designers refine the scope after the solution decision. Keep this distinct from the performance-analysis learning/nonlearning decision and from later e-learning format/tool choices.
 
 A performance aid’s purpose determines its learning/nonlearning treatment. Confirm any required route/evaluation-plan change explicitly, retaining relevant workplace-performance and organizational-results measures and recording learning measures as not applicable only for a route with no learning component. Do not force aid-only work through e-learning format or tool questions, and do not force nonlearning aid work through learning objectives/assessments. Preserve previous versions and flag affected downstream content for review.
+

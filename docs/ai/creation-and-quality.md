@@ -1,6 +1,6 @@
 # AI Creation and Quality Process
 
-Updated: October 17, 2026.
+Updated: October 18, 2026.
 
 Status: Agreed starting approach, subject to refinement and testing during AI integration in each phase. App development has not started. Specific prompt wording, examples, model choices, and quality thresholds remain to be developed and reviewed.
 
@@ -76,7 +76,7 @@ Review: faithful to inputs; uncertainties visible; evaluation measures and their
 
 Input: the reviewed Analysis brief, selected evidence, relevant project-wide source settings, and designer preferences. Carry sources, decisions, IDs, and permitted unknowns forward.
 
-Use the independently written performance-analysis approach specified in the [current requirements](../requirements.md#4-design-performance-solution-decision-first). Replacement questions and organization must be drafted and reviewed before this task is enabled; do not reuse the earlier branded six-category schema. Show evidence, hypotheses, and questions, without diagnosing personal motivation/capacity from weak performance alone.
+Use the independently written performance-analysis approach specified in the [current requirements](../requirements.md#4-design-performance-solution-decision-first). Use the original questions and organization approved in the [replacement specification](../notes/independent-review-questions.md#design-opening-performance-analysis); production prompts, reference outputs, and behavior testing remain future work; do not reuse the earlier branded six-category schema. Show evidence, hypotheses, and questions, without diagnosing personal motivation/capacity from weak performance alone.
 
 The designer reviews a learning, nonlearning, combined, or further-investigation route before detailed instructional drafting. Entry to this review may occur with learning applicability unresolved. A confirmed learning route requires identified and designer-confirmed learning measures before instructional Design proceeds. No learning uses a documented not-applicable rationale; update the linked evaluation plan consistently.
 
@@ -128,7 +128,7 @@ Prompt emphasis: preserve unaffected accepted content and identifiers; do not tr
 
 Create the initial editable Design skeleton from the reviewed Analysis record and supplied evidence. Preserve its performance need, audience, evaluation-plan records, constraints, decisions, sources, and identifiers.
 
-Use the reviewed independently written performance-analysis specification to propose relevant evidence, potential issues, and unanswered questions. Exact replacement fields/questions remain pending; do not substitute the historical branded schema. Distinguish an evidenced issue from a hypothesis. Recommend a learning, nonlearning, combined, or further-investigation route with concise reasons. The designer reviews and confirms the route; do not assume a course is required.
+Use the reviewed independently written performance-analysis specification to propose relevant evidence, potential issues, and unanswered questions. Use the [approved original questions](../notes/independent-review-questions.md#design-opening-performance-analysis); do not substitute the historical branded schema. Distinguish an evidenced issue from a hypothesis. Recommend a learning, nonlearning, combined, or further-investigation route with concise reasons. The designer reviews and confirms the route; do not assume a course is required.
 
 For a confirmed learning route, identify any missing learning measures and request their review before proceeding with instructional Design. For a no-learning route, propose an explicit not-applicable rationale for learning measures. Do not invent measures to satisfy a field.
 
@@ -265,3 +265,4 @@ The user approved the $16 warning and the pause on new AI requests that would ex
 The expected completion volume is approximately 0–1 complete project per month across the five-designer pilot, interpreting the user's answer to the question about total monthly pilot projects. This is a planning estimate, not a per-designer allowance or an enforced project limit. Ongoing drafts, revisions, AI review, and research can incur AI usage even when no project is completed. Generation frequency, source volume, concurrency, and actual cost per accepted output still require measurement.
 
 Use the end-to-end representative example to reveal realistic sources, stage drafts, review/repair calls, and revisions before estimating costs or choosing a model. Keep completion counts distinct from AI request counts and retain explicit-generation, source-reuse, and approved spending controls. No price estimate or guarantee of $20 workload coverage follows from this completion estimate.
+

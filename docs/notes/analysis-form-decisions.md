@@ -1,10 +1,10 @@
 # Analysis Form — Section Decisions
 
-Updated: October 17, 2026
+Updated: October 18, 2026
 
 This working record continues the requirements discussion. Synced project sources are read-only and have not been changed. No app development has started.
 
-Current B5 correction: the user selected an [independently written performance-analysis review](../requirements.md#4-design-performance-solution-decision-first). References below to the earlier Six Boxes step are historical names/content and do not require that model. The reviewed-Analysis handoff, route confirmation, conditional L2 gate, and walkthrough deferral remain in effect. Replacement questions/layout still require review.
+Current B5 correction: the user selected an [independently written performance-analysis review](../requirements.md#4-design-performance-solution-decision-first). References below to the earlier Six Boxes step are historical names/content and do not require that model. The reviewed-Analysis handoff, route confirmation, conditional L2 gate, and walkthrough deferral remain in effect. Original replacement questions and the described desktop layouts were approved on October 18, 2026; see the [exact wording and presentation](independent-review-questions.md).
 
 ## Section 1: Project context and performance gap — agreed questions
 
@@ -54,9 +54,9 @@ Reuse relevant information already supplied rather than asking for duplicate ent
 
 ## Current Section 5 direction — independently written evaluation planning
 
-Updated: October 17, 2026.
+Updated: October 18, 2026.
 
-The user approved an independently written **Evaluation planning** section covering organizational results, workplace performance, and evidence of learning, instead of a branded Kirkpatrick implementation. Follow the [current requirements](../requirements.md#independently-written-evaluation-planning). Preserve measure details, links, permitted unknowns, and designer confirmation of learning measures before instructional Design. Original replacement questions/explanations await drafting and review; no copied branded definitions, diagrams, templates, or official-implementation claim is authorized.
+The user approved an independently written **Evaluation planning** section covering organizational results, workplace performance, and evidence of learning, instead of a branded Kirkpatrick implementation. Follow the [current requirements](../requirements.md#independently-written-evaluation-planning). Preserve measure details, links, permitted unknowns, and designer confirmation of learning measures before instructional Design. The independently written questions, explanations, and described desktop layout are approved in the [replacement specification](independent-review-questions.md#analysis-evaluation-planning); no copied branded definitions, diagrams, templates, or official-implementation claim is authorized.
 
 The earlier question groups below are retained as history and functional context, not as approved independently written replacement text. Later references to L2/L3/L4 are historical shorthand for learning, workplace performance, and organizational results, not required app labels. Preserve prior record IDs; do not advance the deferred walkthrough. Evaluation execution remains outside the MVP.
 
@@ -190,3 +190,4 @@ The draft separates the twenty-case audit from six-person observations, L3 routi
 ## Fictional walkthrough deferred — latest steering
 
 The user asked to skip the example for now. Retain the packet/Analysis draft as unreviewed content and do not treat the prior proposed checkpoint as accepted or advance the example into Six Boxes. The next proposed planning work is the technical build plan. This deferral does not alter the approved Analysis form, source-import behavior, handoff contract, or later phase-by-phase prompt/example review requirement.
+
