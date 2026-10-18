@@ -207,7 +207,7 @@ function Auth({ mode, onUser }: { mode: string; onUser: (u: User) => void }) {
       <div className="loginintro">
         <p className="eyebrow">Data-Driven AI-Powered Instructional Design</p>
         <h1>
-          Bringing the Human back into the loop of AI-Powered Instructional
+          Bringing the Human Back into the Loop of AI-Powered Instructional
           Design
         </h1>
         <p>
