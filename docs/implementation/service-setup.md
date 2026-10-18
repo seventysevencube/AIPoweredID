@@ -4,7 +4,7 @@ Status: code prepared; no live project, sender, domain, region, or deployment ha
 
 ## Configuration
 
-1. Select/create the app's Supabase project and region. Apply `supabase/migrations/202610180001_workspace.sql` using the operator's SQL editor or a migration connection. Apply it once to an empty application schema; do not rerun it over a populated schema. Future database changes need new migrations.
+1. Select/create the app's Supabase project and region. Apply the SQL files in `supabase/migrations/` in filename order using the operator's SQL editor or a migration connection. Apply each once; the initial workspace migration requires an empty application schema. For an existing workspace, apply only migrations not yet applied, including `202610180002_version_retention.sql` for the 10-version limit.
 2. Use the Supabase project URL and server-side secret/service-role key. Store these only in the backend environment as `SUPABASE_URL` and `SUPABASE_SECRET_KEY`. Application tables are in an unexposed `app` schema, have RLS enabled, and have no anonymous/authenticated grants or policies. Only the service role can execute `public.app_rpc`.
 3. Configure Resend and a verified sender from a domain the user chooses. Store `RESEND_API_KEY` and `EMAIL_FROM` as server-only environment values. App codes are sent directly through Resend; Supabase's default email sender is not the app-code delivery mechanism. This is a concrete implementation refinement from the planning document's proposed SMTP integration.
 4. Generate an independent cryptographically random `AUTH_CODE_SECRET` of at least 32 characters, and store it only server-side. It protects stored code digests. Rotating it invalidates outstanding challenges; it does not delete saved projects.

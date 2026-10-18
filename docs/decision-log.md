@@ -274,3 +274,7 @@ The designer superseded the preceding Continue restriction: both Continue and se
 ## October 18, 2026 — Evidence form simplification and count scope
 
 The designer requested removing the causes description and Not sure choice, enabling a one-line Other detail only with Other selected, and trimming repeated helper text about permissible unknown answers. Readiness remains project-wide: three core answers in Project context plus the audience description. The UI now states that scope and links the relevant sections; the navigation/AI-submission rules remain unchanged. Other notes are preserved when deselected without treating them as active explanations.
+
+## October 18, 2026 — Contextual guidance and bounded draft history
+
+The designer requested corresponding Guidance content for every section and storing only the last 10 versions. Apply the rolling limit per section, matching the existing history UI; saves and restores count toward it. Preserve exact versions referenced by reviews or accepted baselines under the existing handoff rule, separately from the latest-ten history shown to the designer. This supersedes unbounded ordinary draft-history wording. The database migration trims existing unreferenced history as well as future saves. Other deferred retention policies remain open.

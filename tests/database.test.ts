@@ -149,6 +149,92 @@ test("owner isolation, operation receipts, conflict and immutable history", asyn
     ).rows[0].revision,
   ).toBe(1);
 });
+test("retention keeps ten recent versions per section, protects references and preserves retry/restore behavior", async () => {
+  const project_id = randomUUID();
+  await call("create", {
+    project_id,
+    operation_id: randomUUID(),
+    title: "Retention",
+  });
+  const first = (await call("history", { project_id, section: "context" }))
+    .versions[0];
+  await store.db.query(
+    "insert into app.reviews(version_id,reviewer_id) values($1,$2)",
+    [first.id, actor.user_id],
+  );
+  const baseline = randomUUID();
+  await store.db.query(
+    "insert into app.baselines(id,project_id,stage,accepted_by) values($1,$2,'Analysis',$3)",
+    [baseline, project_id, actor.user_id],
+  );
+  let oldRequest: Record<string, unknown> = {};
+  let oldResult: any;
+  let pruned: string = "";
+  for (let base_revision = 1; base_revision < 15; base_revision++) {
+    const request = {
+      project_id,
+      section: "context",
+      operation_id: randomUUID(),
+      base_revision,
+      data: {
+        answers: {
+          title: { text: `Revision ${base_revision + 1}`, status: "provided" },
+        },
+        items: [],
+      },
+    };
+    const saved = await call("save", request);
+    const latest = (await call("history", { project_id, section: "context" }))
+      .versions[0];
+    if (base_revision === 1)
+      await store.db.query(
+        "insert into app.baseline_versions(baseline_id,version_id) values($1,$2)",
+        [baseline, latest.id],
+      );
+    if (base_revision === 2) {
+      oldRequest = request;
+      oldResult = saved;
+      pruned = latest.id;
+    }
+  }
+  const history = (await call("history", { project_id, section: "context" }))
+    .versions;
+  expect(history.map((v: any) => v.revision)).toEqual([
+    15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 2, 1,
+  ]);
+  expect(
+    (await call("history", { project_id, section: "audience" })).versions,
+  ).toHaveLength(1);
+  expect(await call("save", oldRequest)).toEqual(oldResult);
+  expect((await call("open", { project_id })).records.context.revision).toBe(
+    15,
+  );
+  expect(
+    (
+      await call("restore", {
+        project_id,
+        section: "context",
+        operation_id: randomUUID(),
+        base_revision: 15,
+        version_id: pruned,
+      })
+    ).error,
+  ).toBe("not_found");
+  const restored = await call("restore", {
+    project_id,
+    section: "context",
+    operation_id: randomUUID(),
+    base_revision: 15,
+    version_id: history[9].id,
+  });
+  expect(restored.record.revision).toBe(16);
+  expect(restored.record.data).toEqual(history[9].data);
+  expect(
+    (await call("history", { project_id, section: "context" })).versions.map(
+      (v: any) => v.revision,
+    ),
+  ).toEqual([16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 2, 1]);
+});
 test("native identity alone grants no access; removed pilot access revokes current admission", async () => {
   expect((await call("session", { session_id: randomUUID() })).error).toBe(
     "unauthorized",

@@ -258,12 +258,14 @@ export function createHandler(d: Dependencies) {
         );
       }
       const section = z.enum(sections).parse(m[2]);
-      if (m[3] === "history" && req.method === "GET")
+      if (m[3] === "history" && req.method === "GET") {
+        const history = await rpc("history", { section, project_id, ...actor });
         return response(
-          await rpc("history", { section, project_id, ...actor }),
+          { versions: history.versions.slice(0, 10) },
           200,
           headers,
         );
+      }
       if (m[3] === "restore" && req.method === "POST") {
         const body = restoreSchema.parse(await parseBody(req));
         return response(

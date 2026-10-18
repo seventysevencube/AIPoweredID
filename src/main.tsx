@@ -15,6 +15,7 @@ import {
 import { SaveController } from "./save";
 import { recovery } from "./recovery";
 import { CausesField } from "./CausesField";
+import { sectionGuidance } from "./guidance";
 import {
   labels,
   questions,
@@ -792,6 +793,7 @@ function Editor({
               </h1>
             </div>
             <button
+              aria-controls="section-guidance"
               aria-expanded={guidance}
               onClick={() => setGuidance(!guidance)}
             >
@@ -804,19 +806,21 @@ function Editor({
               : "Plan how evidence would be gathered and used. Evaluation execution is outside this MVP."}
           </p>
           {guidance && (
-            <aside className="guidance">
-              <h2>A useful starting point</h2>
+            <aside
+              className="guidance"
+              id="section-guidance"
+              aria-labelledby="guidance-title"
+            >
+              <h2 id="guidance-title">{sectionGuidance[section].title}</h2>
+              <ul>
+                {sectionGuidance[section].tips.map((tip) => (
+                  <li key={tip}>{tip}</li>
+                ))}
+              </ul>
               <p>
-                Use observable details and identify supporting sources. Keep
-                possible explanations separate from established evidence.
+                <strong>Illustrative example: </strong>
+                {sectionGuidance[section].example}
               </p>
-              {section === "learning" && (
-                <p>
-                  Learning measures may remain unresolved in Analysis. If a
-                  learning or combined route is chosen in Design, you must
-                  confirm them before instructional Design proceeds.
-                </p>
-              )}
             </aside>
           )}
           {notice && (
@@ -1038,8 +1042,8 @@ function Editor({
             <section className="history">
               <h2>Saved versions · {labels[section]}</h2>
               <p>
-                Restoring creates a new saved version and preserves this
-                history.
+                The latest 10 saved versions of this section are available here.
+                Restoring creates a new version and counts toward that limit.
               </p>
               {controller.dirty && (
                 <p className="note">

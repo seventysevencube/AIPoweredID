@@ -159,6 +159,39 @@ test("origin checks, code admission, secure cookies, strict save and current eli
       )
     ).status,
   ).toBe(400);
+  const protectedVersion = (
+    await db.rpc("history", {
+      project_id,
+      section: "context",
+      user_id: issued.user_id,
+      session_id: issued.session_id,
+    })
+  ).versions.at(-1);
+  await db.db.query(
+    "insert into app.reviews(version_id,reviewer_id) values($1,$2)",
+    [protectedVersion.id, issued.user_id],
+  );
+  for (let revision = 3; revision < 15; revision++)
+    await saveAnswers("context", revision, contextAnswers);
+  const history = await (
+    await request(
+      `/projects/${project_id}/context/history`,
+      "GET",
+      undefined,
+      nativeCookie,
+    )
+  ).json();
+  expect(history.versions).toHaveLength(10);
+  expect(history.versions.map((v: any) => v.revision)).toEqual([
+    15, 14, 13, 12, 11, 10, 9, 8, 7, 6,
+  ]);
+  expect(
+    (
+      await db.db.query("select id from app.versions where id=$1", [
+        protectedVersion.id,
+      ])
+    ).rows,
+  ).toHaveLength(1);
   await db.rpc("pilot_set", { email, active: false });
   expect(
     (await request("/projects", "GET", undefined, nativeCookie)).status,
