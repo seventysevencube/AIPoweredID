@@ -215,3 +215,11 @@ Updated: October 17, 2026.
 After reviewing the summary of remaining B4 items, the user stated that these findings should be addressed before production but are not required for the MVP, and asked to move to B5. Record the remaining detailed retention/deletion, backups/recovery, session/shared-device, guest-review, upload, service-assurance/security-verification, final-notice, and operating-procedure work as pre-production follow-up rather than MVP or technical-planning blockers.
 
 The [current requirements](requirements.md#b4-mvp-and-production-timing) contain this milestone change. It supersedes earlier pre-pilot deadlines for the deferred work, including final notices and detailed provider-retention assessment/disclosure. Keep already-approved basic material, access/code/link, deletion, AI-content, and security behavior in the MVP baseline. This changes timing without settling the deferred policies or claiming verification, authorizing production, or resolving unrelated audit findings. Preserve earlier decision-log entries and use the existing shared PR. No B5 resolution is approved by this decision.
+
+## B5 independent performance-analysis approach — approved October 17, 2026
+
+Updated: October 17, 2026.
+
+The user selected an independently written performance-analysis approach instead of incorporating Six Boxes and asked whether a disclaimer should say it is based on that model. Record the independent approach as approved; the disclaimer is a question, not approved product text. Develop original questions, explanations, and organization rather than copying or merely renaming the earlier branded six-category schema. Exact replacement wording and screen content remain to be drafted and reviewed.
+
+The [current requirements](requirements.md#4-design-performance-solution-decision-first) supersede the earlier Six Boxes integration requirement. Retain reviewed Analysis evidence, explicit route confirmation, learning/nonlearning/combined/investigation routes, and the conditional L2 gate. Mark earlier branded question/wireframe content as historical; do not advance the deferred walkthrough. Kirkpatrick, final attribution wording, and any legal-clearance conclusion remain separate and unresolved. Preserve earlier decision history and record this change in the existing shared PR. No prototype or application implementation is included.

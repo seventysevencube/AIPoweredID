@@ -15,7 +15,15 @@ Status: Requirements discussion. No app development has started. Synced project 
 - Five minutes/moderately interactive is the reference project for costing and testing, not a mandatory project limit.
 - Evaluation planning for Kirkpatrick L2/L3/L4 is included; evaluation execution remains outside the MVP.
 
-## Confirmed revised sequence
+## Current B5 direction — independently written performance analysis
+
+Updated: October 17, 2026.
+
+The user selected an independently written performance-analysis approach instead of incorporating Six Boxes. Follow the [current requirements](../requirements.md#4-design-performance-solution-decision-first): retain evidence review, explicit learning/nonlearning/combined/investigation routes, and the conditional L2 gate, but develop original questions, explanations, and organization. Exact replacement content/layout awaits drafting and review. Attribution/disclaimer wording remains undecided; this records a product direction, not legal clearance.
+
+The Six Boxes sequence, six-category question table, and branded wireframe approval below are historical for that model's content and organization. They must not be copied or treated as an approved replacement merely by changing labels. Other approved Design behaviors remain in effect. The deferred walkthrough remains deferred; Kirkpatrick is a separate pending B5 decision.
+
+## Earlier revised sequence — historical Six Boxes specification
 
 The user requires a Six Boxes performance-solution decision before recommending instructional solutions. The workflow must first establish whether learning, nonlearning interventions, or a combination is justified. This supersedes the proposal to open directly with an e-learning/performance-support recommendation.
 
@@ -27,7 +35,7 @@ The user requires a Six Boxes performance-solution decision before recommending 
 
 The user approved this revised sequence, Six Boxes review approach, route choices, e-learning format/tool options, and conditional L2 rule. More detailed form interactions and exact field wording continue to be refined section by section.
 
-## Section 1: Performance-solution decision — agreed approach and questions
+## Earlier Section 1 — historical Six Boxes questions, superseded
 
 Reuse Analysis information rather than asking the designer to re-enter it. For each influence, AI can prefill relevant evidence, a potential issue, a suggested response, and unanswered questions. Findings remain hypotheses until reviewed; do not infer personal motivation or capacity from weak performance alone.
 
@@ -153,7 +161,7 @@ Proposed fields and questions:
 3. Practice: How will learners practice before demonstrating achievement? Reuse the reviewed practice items; allow further proposals where coverage is missing.
 4. Sequence: In what order should the content and activities appear within each unit or module?
 5. Assessment placement: Where should the reviewed assessments appear in the sequence? Select by assessment ID rather than duplicating content.
-6. Workplace transfer: What support will help learners apply this on the job? Carry forward relevant Six Boxes dependencies and approved performance-support decisions; do not automatically expand the project deliverables.
+6. Workplace transfer: What support will help learners apply this on the job? Carry forward relevant performance-analysis dependencies and approved performance-support decisions; do not automatically expand the project deliverables.
 
 Output: an editable sequence map linking unit/module, main objective, enabling objective, instructional support, activity, existing practice/assessment IDs, and relevant workplace support. The designer can reorder, edit, add, or remove proposed activities. Show source/content gaps; do not invent final content before source mapping.
 
@@ -215,7 +223,7 @@ Consolidate the reviewed Design records into an editable detailed Design plan. D
 
 Agreed contents:
 
-1. Performance-solution decision: reviewed Six Boxes findings, evidence, selected learning/nonlearning/combined route, intervention rationale, and dependencies.
+1. Performance-solution decision: reviewed performance-analysis findings, evidence, selected learning/nonlearning/combined route, intervention rationale, and dependencies.
 2. Solution structure: selected deliverables, e-learning format (microlearning/course/mix), unit/module outline, tools (Storyline/Rise/both), and allocation/connection details where applicable.
 3. Objective hierarchy: main and enabling objectives, stable IDs, Bloom levels, conditions, success criteria, and L2 links for learning components; use task/performance requirements for nonlearning support components.
 4. Assessment plan and defined items/tasks: purpose, method, prompts, expected responses/rubrics, feedback, scoring, retries/remediation, and objective/L2 links.
@@ -246,7 +254,7 @@ Agreed primary actions: “Save and return later,” “Share for comments,” a
 
 The user agreed to retain the sample-first handoff after clarification. The readiness-check approach and review flow are retained; exact UI presentation remains future work. The proposed replacement label “Preview draft section” was not adopted.
 
-## Six Boxes desktop wireframe — approved
+## Earlier Six Boxes desktop wireframe — historical approval, content superseded
 
 The user approved the interactive performance-solution review screen and its separation of evidence review from the response decision. Preserve the six discoverable influence categories, carried-forward Analysis context, editable evidence status and findings, distinct reviewed status, and optional contextual sources/guidance. Confirm the chosen learning, nonlearning, combined, or further-investigation route explicitly. Learning routes require defined and confirmed linked L2 measures; nonlearning routes record the not-applicable rationale, and further investigation holds instructional drafting. Remaining evidence gaps carry forward. The wireframe contains illustrative content only; it does not implement saving, sharing, or AI generation. Next visual review: intervention recommendations followed by e-learning format, initial structure, and authoring-tool choices where applicable.
 
@@ -254,7 +262,7 @@ The user approved the interactive performance-solution review screen and its sep
 
 The user requested that “Complete written learning-support draft” be renamed **“Written job aid / performance-support draft.”** It remains a complete written draft, rather than a storyboard describing a future aid.
 
-Before asking which deliverables should be developed, include a distinct, AI-supported decision about **e-learning, a performance aid, or both**, based on the reviewed Analysis and Six Boxes findings. Keep further investigation available when the evidence is insufficient. This refines the intervention-review step; it does not replace the earlier decision about whether learning is needed.
+Before asking which deliverables should be developed, include a distinct, AI-supported decision about **e-learning, a performance aid, or both**, based on the reviewed Analysis and performance-analysis findings. Keep further investigation available when the evidence is insufficient. This refines the intervention-review step; it does not replace the earlier decision about whether learning is needed.
 
 The AI proposal should explain the evidence for developing knowledge/skills through practice and feedback, for providing accessible support during work, or for combining the two. Consider the actual task, audience knowledge, existing resources, workflow/access, risks, constraints, and evaluation needs. Distinguish observed evidence from hypotheses. Do not assume errors require e-learning, that any missing information requires a new aid, or that both is always best. Existing resources may already meet the support need.
 

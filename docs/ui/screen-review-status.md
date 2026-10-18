@@ -7,7 +7,7 @@ Updated: October 17, 2026. See the [checkpoint](../checkpoints/2026-10-17-design
 | Project home | Project cards selected | Row alternative retained as exploration history. |
 | Analysis form | Layout pattern approved | Preview covers the first two sections; detailed notes specify all sections. |
 | Analysis brief | Review/handoff pattern approved | Saving, section review, and accepted baseline are distinct. |
-| Six Boxes | Review/response pattern approved | Evidence, hypotheses, and unresolved questions stay separate. |
+| Performance-analysis review (replacement for earlier Six Boxes screen) | Independent approach selected; replacement questions/layout pending | Evidence/response interaction remains approved. The old branded categories, wording, and layout content are historical and must not be relabeled as the replacement. |
 | Earlier intervention/format/tools | Partly superseded | Format/tool interactions remain a proposal; deliverable-first opening and old label are superseded. |
 | Solution choice and deliverables | Required correction incorporated; proceeding | AI-supported approach choice precedes derived outputs. Current support-output label is Written job aid / performance-support draft. |
 | Main/enabling objectives | Objective-only pattern approved | Objective title clarified; this screen now covers only objectives/alignment. Content and support move to a separate subsequent Design step. Nonlearning aid work uses task/performance requirements. |

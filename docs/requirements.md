@@ -23,7 +23,7 @@ The reference project for testing quality and estimating cost is approximately f
 - Invitation-only designer accounts, one owner per project, and multiple saved projects per designer; no open public registration.
 - Analysis forms and an editable synthesized Analysis brief.
 - Full evaluation-planning questions to identify Kirkpatrick L2 learning, L3 behavior, and L4 results measures.
-- Six Boxes review to determine whether learning, nonlearning responses, a combination, or further investigation is appropriate.
+- Independently written performance-analysis review to determine whether learning, nonlearning responses, a combination, or further investigation is appropriate.
 - Microlearning, courses, or mixed e-learning; Storyline, Rise, or both selected during Design.
 - Main and enabling objectives, reviewed Bloom alignment, assessments, instructional support, sequencing, and content mapping.
 - Direct text entry and Word (.docx)/PowerPoint (.pptx) source uploads with basic extraction, plus permitted web research. File-size/count limits remain open.
@@ -130,16 +130,11 @@ An editable Analysis brief synthesizes:
 
 ## 4. Design: performance-solution decision first
 
-Start with a prefilled Six Boxes review using Analysis evidence:
+Start with an independently written performance-analysis review using the reviewed Analysis evidence. The user selected this approach in place of the Six Boxes integration. Develop original questions, explanations, and organization; do not carry forward the branded six-category structure, copy its wording/diagrams/templates, or simply rename the existing model. Exact replacement questions and their presentation remain to be drafted and reviewed.
 
-- Expectations and Feedback.
-- Tools and Resources.
-- Consequences and Incentives.
-- Skills and Knowledge.
-- Selection and Assignment — Capacity.
-- Motives and Preferences — Attitude.
+Show evidence, potential issues, and unanswered questions. Distinguish evidence from hypotheses; do not diagnose individual motivation or capacity from weak performance alone. Designer-reviewed routes remain learning, nonlearning response, a combination, or further investigation. Reuse the reviewed Analysis rather than requiring duplicate entry.
 
-Show evidence, potential issues, and unanswered questions. Treat these as interacting influences, not six mutually exclusive interventions or a diagnosis of individual motivation/capacity. Designer-reviewed routes: learning, nonlearning response, a combination, or further investigation.
+Earlier Six Boxes specifications and wireframes are historical for their branded categories and wording, not the replacement specification. The evidence-review/route-confirmation interaction remains useful; the replacement content/layout must be reviewed. No “based on Six Boxes” disclaimer or other attribution wording is approved by the choice of an independent approach. That wording remains a separate question, and no permission or legal-clearance claim is made. The Kirkpatrick part of B5 is still undecided.
 
 After route confirmation, propose interventions and their rationale, contribution, limitations, and dependencies. Document nonlearning recommendations without forcing course production. A selected performance-support deliverable can proceed to a written draft without automatically becoming a learning intervention.
 
@@ -296,8 +291,8 @@ Next planned work: desktop wireframes and a representative end-to-end walkthroug
 
 ## Refinement: decide the solution before confirming deliverables
 
-After the Six Boxes response decision, use the reviewed Analysis to support a designer-confirmed choice of e-learning, a performance aid, or both, before confirming output types. AI must explain its evidence, rationale, assumptions, alternatives, and unresolved questions. Insufficient evidence may lead to further investigation rather than forced drafting. Check whether existing resources already meet the need.
+After the performance-analysis response decision, use the reviewed Analysis to support a designer-confirmed choice of e-learning, a performance aid, or both, before confirming output types. AI must explain its evidence, rationale, assumptions, alternatives, and unresolved questions. Insufficient evidence may lead to further investigation rather than forced drafting. Check whether existing resources already meet the need.
 
-Derive the output types from that choice: Detailed e-learning storyboard; **Written job aid / performance-support draft**; or both. The latter label replaces “Complete written learning-support draft” and still means complete written content for the aid. Designers refine the scope after the solution decision. Keep this distinct from the Six Boxes learning/nonlearning decision and from later e-learning format/tool choices.
+Derive the output types from that choice: Detailed e-learning storyboard; **Written job aid / performance-support draft**; or both. The latter label replaces “Complete written learning-support draft” and still means complete written content for the aid. Designers refine the scope after the solution decision. Keep this distinct from the performance-analysis learning/nonlearning decision and from later e-learning format/tool choices.
 
 A performance aid’s purpose determines its learning/nonlearning treatment. Confirm any required route/evaluation-plan change explicitly, retaining relevant L3/L4 measures and recording L2 as not applicable only for a route with no learning component. Do not force aid-only work through e-learning format or tool questions, and do not force nonlearning aid work through learning objectives/assessments. Preserve previous versions and flag affected downstream content for review.

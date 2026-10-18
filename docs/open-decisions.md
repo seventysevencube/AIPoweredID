@@ -31,10 +31,14 @@ The remaining B4 audit work is required before production, not as a gate for the
 - Handling of essential versus nonblocking open issues within agreed readiness rules; concrete validation messages and examples.
 - Exact sample size/selection rules for each deliverable. Do not set a universal screen count from the five-minute benchmark.
 
+## B5 performance-analysis replacement
+
+The user selected an independently written approach in place of Six Boxes. Draft and review original questions, explanations, organization, and replacement screen content before implementing that review; do not simply relabel the six-category specification. Earlier prototype content and deferred example references remain historical and are not the new specification. Attribution/disclaimer wording has not been approved, and this direction does not establish legal clearance. The Kirkpatrick decision remains separate and open. See the [current requirements](requirements.md#4-design-performance-solution-decision-first).
+
 ## AI integration work, revisited for every phase
 
 - Provider/model selection, API configuration, cost tracking, limits, and error handling. The [project-content handling requirements](requirements.md#ai-provider-use-of-project-content) are approved: no training use under the applicable terms/settings, task-needed material only, and no unverified immediate-deletion/zero-storage claim. Complete the selected service's retention/deletion assessment and disclosure before production under the approved B4 timing; this detailed follow-up is not an MVP gate.
-- Production prompt templates and output structures for individual tasks, including Six Boxes routing, the conditional L2 gate, Bloom/main/enabling objectives, assessment alignment, and source mapping.
+- Production prompt templates and output structures for individual tasks, including independently written performance-analysis routing, the conditional L2 gate, Bloom/main/enabling objectives, assessment alignment, and source mapping.
 - Reviewed positive/negative examples, held-out test cases, rubrics, quality thresholds, bounded repairs, and recovery from refusal/truncation/failure.
 - Source retrieval/citation support checks and treatment of conflicting evidence or instructions embedded in reference documents.
 - Realistic cost benchmark covering source volume, revisions, retry/review calls, research, and full-draft size against the approved $20/month pilot AI budget. No workload cost estimate or output quota is approved.

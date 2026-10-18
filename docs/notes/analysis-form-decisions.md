@@ -4,6 +4,8 @@ Updated: October 17, 2026
 
 This working record continues the requirements discussion. Synced project sources are read-only and have not been changed. No app development has started.
 
+Current B5 correction: the user selected an [independently written performance-analysis review](../requirements.md#4-design-performance-solution-decision-first). References below to the earlier Six Boxes step are historical names/content and do not require that model. The reviewed-Analysis handoff, route confirmation, conditional L2 gate, and walkthrough deferral remain in effect. Replacement questions/layout still require review.
+
 ## Section 1: Project context and performance gap — agreed questions
 
 The user approved these five opening questions. The completion rules and desktop layout were subsequently agreed and are recorded below; detailed visual wireframes remain future work.
