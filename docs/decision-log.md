@@ -159,3 +159,11 @@ Updated: October 17, 2026.
 During the B4 discussion, the user accepted this simple guest-link policy: designers can revoke a review link at any time; links expire automatically after 14 days; and designers can create a fresh link when reviewers need more time. Expiry/revocation ends access through the link while keeping the project and saved comments. It cannot recall copies already downloaded. The fixed-version/new-link rule remains in effect.
 
 The [current requirements](requirements.md#guest-link-lifetime) contain the canonical policy. This approval supersedes earlier statements that revocation or expiry were undecided, including the optional-expiry proposal in the sharing notes. Other lifecycle implementation details, replies/resolution, provider handling, retention/deletion, and remaining B4 recommendations are not settled by this approval. Prior decision-log entries remain intact; record this documentation fix in the existing shared PR.
+
+## Designer sign-in code limits — approved October 17, 2026
+
+Updated: October 17, 2026.
+
+During the B4 discussion, the user approved these simple limits for designer email-code sign-in: codes expire after 10 minutes and work once; after five incorrect attempts require a fresh code; allow a resend at most once per minute, replacing the previous code; and keep entered work saved when a designer must sign in again. Apply resend limits to the same email address and preserve recoverable edits under the existing saving/recovery rules.
+
+The [current requirements](requirements.md#designer-sign-in-code-limits) contain the canonical policy. These limits settle the corresponding previously open code parameters without changing approved-email eligibility or adding sign-in to guest review. Provider choice, remaining session/account-lifecycle policies, and implementation/validation remain open. Earlier decision-log entries remain intact; include this documentation fix in the existing shared PR. No authentication implementation or real email sending is included.

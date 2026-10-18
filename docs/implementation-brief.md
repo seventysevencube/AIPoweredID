@@ -34,7 +34,9 @@ Invited designers sign in using a one-time code sent to their invited email addr
 
 Manage pilot eligibility through a simple list of approved email addresses maintained by the pilot operator. Only listed email addresses are eligible for designer sign-in, and a valid one-time email code is still required. No dedicated invitation-management dashboard is included in the MVP. Guest reviewers continue to use active shared review links without an account or membership on the pilot list.
 
-The list's implementation/storage, authentication provider, code/session handling, and remaining account lifecycle details remain open. These planning decisions do not authorize sending real emails, creating accounts, or deploying the app.
+Apply the approved [designer sign-in code limits](requirements.md#designer-sign-in-code-limits): 10-minute expiry, single use, a fresh code after five incorrect attempts, and at most one resend per minute to the same email address, replacing the old code. Preserve recoverable work when sign-in is required again. These limits do not change approved-email eligibility or guest access.
+
+The list's implementation/storage, authentication provider, remaining code/session handling, and account lifecycle details remain open. These planning decisions do not authorize sending real emails, creating accounts, or deploying the app.
 
 ## Content and state contracts
 

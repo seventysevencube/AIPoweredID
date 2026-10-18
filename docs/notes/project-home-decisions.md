@@ -30,13 +30,13 @@ The subsequent user decision below selects the designer sign-in method. Invitati
 
 Invited designers sign in using a one-time code sent to their invited email address. They enter their email, request the code, enter it to complete sign-in, and reach their saved projects. No password creation or password-reset flow is required for this selected method. Requesting a code does not grant pilot eligibility or open public registration; the invitation-only access rule still applies.
 
-Guest review through shared links remains account-free and uses its separate unverified display-name behavior. Provider selection, code/session parameters, invite administration, and lifecycle details remain open. A simple approved-email list is proposed as the next pilot-management decision; no invitation-management dashboard is approved by implication. No authentication implementation or real email sending has started.
+Guest review through shared links remains account-free and uses its separate unverified display-name behavior. The [designer sign-in code limits](../requirements.md#designer-sign-in-code-limits) now specify 10-minute expiry, single use, a fresh code after five incorrect attempts, and at most one resend per minute to the same email address, replacing the old code. Preserve recoverable work when sign-in is needed again. Provider selection, remaining code/session parameters, invite administration, and lifecycle details remain open. A simple approved-email list is proposed as the next pilot-management decision; no invitation-management dashboard is approved by implication. No authentication implementation or real email sending has started.
 
 ## Approved-email list — latest approved pilot-access method
 
 Manage pilot eligibility through a simple list of approved email addresses maintained by the pilot operator. Only listed email addresses are eligible for designer sign-in, and a valid one-time email code is still required. No dedicated invitation-management dashboard is included in the MVP. Guest reviewers continue to use active shared review links without an account or membership on the pilot list.
 
-The operator manages the pilot list; a code request does not itself add someone to it. Exact list storage/maintenance implementation, authentication provider, code/session parameters, and account lifecycle/access-removal behavior remain open. This supersedes the earlier proposal status of the list. No actual list, addresses, accounts, or email service have been created or changed by the documentation work.
+The operator manages the pilot list; a code request does not itself add someone to it. Exact list storage/maintenance implementation, authentication provider, remaining code/session parameters beyond the approved limits above, and account lifecycle/access-removal behavior remain open. This supersedes the earlier proposal status of the list. No actual list, addresses, accounts, or email service have been created or changed by the documentation work.
 
 ## Expected pilot size — approved planning assumption
 
