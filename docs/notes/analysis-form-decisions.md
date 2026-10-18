@@ -52,27 +52,35 @@ Describe access needs without requesting individual medical information. Audienc
 
 Reuse relevant information already supplied rather than asking for duplicate entry. Completion rules are recorded in the agreed required/optional section below. The user approved Section 4 with stakeholder-review availability included and the audience-time question removed.
 
-## Section 5: Evaluation planning — agreed
+## Current Section 5 direction — independently written evaluation planning
+
+Updated: October 17, 2026.
+
+The user approved an independently written **Evaluation planning** section covering organizational results, workplace performance, and evidence of learning, instead of a branded Kirkpatrick implementation. Follow the [current requirements](../requirements.md#independently-written-evaluation-planning). Preserve measure details, links, permitted unknowns, and designer confirmation of learning measures before instructional Design. Original replacement questions/explanations await drafting and review; no copied branded definitions, diagrams, templates, or official-implementation claim is authorized.
+
+The earlier question groups below are retained as history and functional context, not as approved independently written replacement text. Later references to L2/L3/L4 are historical shorthand for learning, workplace performance, and organizational results, not required app labels. Preserve prior record IDs; do not advance the deferred walkthrough. Evaluation execution remains outside the MVP.
+
+## Earlier Section 5 — historical Kirkpatrick-based specification
 
 Confirmed scope clarification: the user wants full evaluation-planning questions in Analysis to identify Kirkpatrick L2, L3, and L4 measures. Capturing and carrying forward the plan is in scope; administering evaluation, collecting results, analyzing results, and operating an Evaluation module remain outside the MVP. This clarification supersedes the earlier proposal for a limited success-indicator section.
 
 Agreed sequence: L4 results → L3 workplace behavior → L2 learning. Reuse relevant earlier answers and supporting documentation; do not require duplicate entry. The user approved the questions and per-measure details below.
 
-### Level 4 — Results
+### Earlier Level 4 — Results (historical question wording)
 
 1. What organizational or business result should this project contribute to? Prefill relevant earlier desired-performance and reason-for-request responses.
 2. Which indicators would show progress toward that result, including early indicators and longer-term outcomes where relevant?
 3. What current baseline and target exist for each indicator? Allow unknown and distinguish proposed targets from agreed targets.
 4. What other changes or factors could affect these results, and how could their influence be considered when interpreting findings? Do not assume a change in results proves training caused it.
 
-### Level 3 — Behavior
+### Earlier Level 3 — Behavior (historical question wording)
 
 1. What specific actions should people perform on the job to contribute to those results?
 2. What would correct and consistent performance look like, and what evidence could show it is happening?
 3. What support, reinforcement, or accountability will help sustain those actions?
 4. What workplace barriers or lack of opportunity could prevent people from applying what they learn?
 
-### Level 2 — Learning
+### Earlier Level 2 — Learning (historical question wording)
 
 1. What knowledge and skills must people gain to perform those workplace actions? Where relevant, what attitudes, confidence, or commitment should also be measured?
 2. What evidence would demonstrate that learning, such as a scenario response, demonstration, work product, or knowledge check?

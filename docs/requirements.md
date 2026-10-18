@@ -22,7 +22,7 @@ The reference project for testing quality and estimating cost is approximately f
 
 - Invitation-only designer accounts, one owner per project, and multiple saved projects per designer; no open public registration.
 - Analysis forms and an editable synthesized Analysis brief.
-- Full evaluation-planning questions to identify Kirkpatrick L2 learning, L3 behavior, and L4 results measures.
+- Independently written evaluation planning for organizational results, workplace performance, and evidence of learning.
 - Independently written performance-analysis review to determine whether learning, nonlearning responses, a combination, or further investigation is appropriate.
 - Microlearning, courses, or mixed e-learning; Storyline, Rise, or both selected during Design.
 - Main and enabling objectives, reviewed Bloom alignment, assessments, instructional support, sequencing, and content mapping.
@@ -86,7 +86,7 @@ Saving, accepting, marking reviewed, sharing, and advancing are distinct actions
 
 - **Saved:** the designer's edits are stored under the saving/recovery rules. Saving does not automatically mark content reviewed or accept it for the next stage.
 - **Reviewed:** the designer has checked this specific version. Unresolved questions may remain visible; review does not verify unknown facts or establish Ready for handoff.
-- **Accepted for the next stage:** the designer explicitly chooses a specific saved version as the starting point for the next stage. Preserve that version and its reference in the resulting stage content so the input can be identified later. The existing progression rules, including the conditional L2 gate and permitted incomplete handoffs, still apply.
+- **Accepted for the next stage:** the designer explicitly chooses a specific saved version as the starting point for the next stage. Preserve that version and its reference in the resulting stage content so the input can be identified later. The existing progression rules, including the conditional learning-measure gate and permitted incomplete handoffs, still apply.
 
 ### Changes to earlier work
 
@@ -101,19 +101,25 @@ These rules apply across the Analysis → Design → partial Development workflo
 
 ## 3. Analysis
 
-The agreed questions are in [the Analysis notes](notes/analysis-form-decisions.md). Sections:
+The agreed Analysis scope and question history are in [the Analysis notes](notes/analysis-form-decisions.md). Evaluation-planning questions require the independently written replacement described below. Sections:
 
 1. Project context and performance gap.
 2. Evidence and possible causes.
 3. Audience and work environment.
 4. Stakeholders and project constraints, including review availability and turnaround.
-5. Evaluation planning: L4 results → L3 workplace behaviors → L2 learning measures.
+5. Evaluation planning: organizational results → workplace performance → learning measures.
 
 Use the exact supporting-material prompt: **“Add documentation of any supporting evidence if available”**. Supporting documents are optional. Do not reintroduce the audience-time question removed from the stakeholder/constraints section.
 
 Capture evaluation measures, baseline/target where known, data source/method, responsibility, timing/frequency, and intended use of findings. Reuse prior desired-performance and source information. Evaluation planning is included even though evaluation execution is excluded.
 
 Core information for a useful Design draft is the task, desired/current performance, and audience. A working title can be supplied or suggested. Saving incomplete work is always allowed. Permitted gaps are summarized before handoff and can remain in an explicitly incomplete draft.
+
+### Independently written evaluation planning
+
+Use **Evaluation planning** as the section name. The user selected an independently written approach in place of the branded Kirkpatrick implementation. Keep planning for organizational results, workplace performance, and evidence of learning, with the existing per-measure details and links into Design. Write original questions and explanations; do not copy branded definitions, diagrams, or templates or imply an official, certified, or endorsed implementation. Exact replacement wording remains to be drafted and reviewed; changing labels alone does not establish independent authorship.
+
+Learning measures still require designer confirmation before instructional Design on a learning route. A route with no learning component records a not-applicable rationale; organizational-results and workplace-performance details may retain permitted unknowns. Evaluation execution remains outside the MVP. Historical L2/L3/L4 terminology corresponds to learning, workplace performance, and organizational results respectively; preserve stable references in prior records rather than renumbering or changing their meaning. Earlier branded questions, examples, and prototype labels are historical, not the replacement specification. No new disclaimer, permission, or legal-clearance claim is approved.
 
 ### Analysis output
 
@@ -134,13 +140,13 @@ Start with an independently written performance-analysis review using the review
 
 Show evidence, potential issues, and unanswered questions. Distinguish evidence from hypotheses; do not diagnose individual motivation or capacity from weak performance alone. Designer-reviewed routes remain learning, nonlearning response, a combination, or further investigation. Reuse the reviewed Analysis rather than requiring duplicate entry.
 
-Earlier Six Boxes specifications and wireframes are historical for their branded categories and wording, not the replacement specification. The evidence-review/route-confirmation interaction remains useful; the replacement content/layout must be reviewed. No “based on Six Boxes” disclaimer or other attribution wording is approved by the choice of an independent approach. That wording remains a separate question, and no permission or legal-clearance claim is made. The Kirkpatrick part of B5 is still undecided.
+Earlier Six Boxes specifications and wireframes are historical for their branded categories and wording, not the replacement specification. The evidence-review/route-confirmation interaction remains useful; the replacement content/layout must be reviewed. No “based on Six Boxes” disclaimer or other attribution wording is approved by the choice of an independent approach. That wording remains a separate question, and no permission or legal-clearance claim is made. Evaluation planning also follows the independently written approach specified above.
 
 After route confirmation, propose interventions and their rationale, contribution, limitations, and dependencies. Document nonlearning recommendations without forcing course production. A selected performance-support deliverable can proceed to a written draft without automatically becoming a learning intervention.
 
-### Conditional L2 gate
+### Conditional learning-measure gate
 
-Entry into the initial performance-solution review can occur while L2 applicability is unresolved. Once learning is confirmed, L2 measures must be identified and designer-confirmed before instructional Design proceeds; **Not known yet** cannot bypass this requirement. If no learning component exists, use **Not applicable — no learning intervention**, with rationale. Retain relevant L3/L4 planning. Reflect confirmed changes in the linked evaluation-plan record rather than making a separate inconsistent plan.
+Entry into the initial performance-solution review can occur while learning applicability is unresolved. Once learning is confirmed, learning measures must be identified and designer-confirmed before instructional Design proceeds; **Not known yet** cannot bypass this requirement. If no learning component exists, use **Not applicable — no learning intervention**, with rationale. Retain relevant workplace-performance and organizational-results planning. Reflect confirmed changes in the linked evaluation-plan record rather than making a separate inconsistent plan.
 
 ### E-learning format and tools
 
@@ -150,11 +156,11 @@ Choose microlearning, a course, or a mix; review what each unit/module addresses
 
 Current form order: main/enabling objectives → assessments → content and instructional support → sequence → detailed Design plan. The objective step covers objectives/alignment only; content/support planning is a separate later step.
 
-AI proposes editable main objectives using revised Bloom's taxonomy for cognitive outcomes: Remember, Understand, Apply, Analyze, Evaluate, Create. Show a proposed level for review, based on actual task demand rather than only the verb. Capture observable performance, conditions/resources, success criteria, L2 linkage, and unit/module placement.
+AI proposes editable main objectives using revised Bloom's taxonomy for cognitive outcomes: Remember, Understand, Apply, Analyze, Evaluate, Create. Show a proposed level for review, based on actual task demand rather than only the verb. Capture observable performance, conditions/resources, success criteria, learning-measure linkage, and unit/module placement.
 
 Break each main objective into meaningful enabling objectives. Map each to its contribution, essential content, sources, instructional support, practice/feedback, evidence, and sequence. Preserve stable main/child IDs and reviewed Bloom levels. Avoid arbitrary counts or trivial fragmentation. Assess integrated main-objective performance as well as component coverage.
 
-Define assessments during Design: linked objectives/L2 measures, purpose, method, actual prompt/task, options where relevant, expected response/rubric, feedback, scoring, retries/remediation, and completion rules. Not every enabling objective needs a separate scored question; evidence can be shared with explicit mapping. Confidence and commitment measures do not substitute for demonstrated cognitive/skill achievement.
+Define assessments during Design: linked objectives/learning measures, purpose, method, actual prompt/task, options where relevant, expected response/rubric, feedback, scoring, retries/remediation, and completion rules. Not every enabling objective needs a separate scored question; evidence can be shared with explicit mapping. Confidence and commitment measures do not substitute for demonstrated cognitive/skill achievement.
 
 Sequence explanation/examples, practice, assessment, and workplace support. Reuse existing reviewed assessment/practice records rather than duplicating or silently modifying them.
 
@@ -184,7 +190,7 @@ PDF/TXT uploads and legacy .doc/.ppt conversion are outside this initial import 
 
 The reviewed detailed Design plan includes the solution decision, structure/tools, objective hierarchy, defined assessments, learning sequence, content map, evaluation alignment, and open issues. Omit irrelevant learning sections for nonlearning-only routes.
 
-Review solution/deliverables, relevant L2/objectives/Bloom alignment, assessments, structure/tools, and content readiness. Peer review and reflection remain optional. Select **Generate Development sample** from a reviewed version.
+Review solution/deliverables, relevant learning-measure/objective/Bloom alignment, assessments, structure/tools, and content readiness. Peer review and reflection remain optional. Select **Generate Development sample** from a reviewed version.
 
 ## 5. Partial Development
 
@@ -200,7 +206,7 @@ The full draft retains IDs, objective/enabling-objective/source/assessment relat
 
 Export drafts at any point with clear Draft status and visible unresolved issues. **Ready for handoff** is a designer-confirmed state: required review and coverage checks complete, reviewed assessments preserved, tool instructions feasible, and essential accuracy/source/implementation issues resolved.
 
-Clearly specified media placeholders, permitted L3/L4 unknowns, and acknowledged nonblocking dependencies may remain visible. Later relevant changes mark affected sections as needing update. Prior exports remain snapshots of their stated version.
+Clearly specified media placeholders, permitted workplace-performance and organizational-results unknowns, and acknowledged nonblocking dependencies may remain visible. Later relevant changes mark affected sections as needing update. Prior exports remain snapshots of their stated version.
 
 Export PDF and editable PowerPoint from the selected saved structured version without an AI rewrite. PDF is a readable handoff document with complete content, assessment details, production/build/accessibility notes, sources, and outstanding issues. Editable PowerPoint is organized by screen, Rise block group, or written-aid section, using continuation slides as needed instead of squeezing detail into unreadable slides.
 
@@ -295,4 +301,4 @@ After the performance-analysis response decision, use the reviewed Analysis to s
 
 Derive the output types from that choice: Detailed e-learning storyboard; **Written job aid / performance-support draft**; or both. The latter label replaces “Complete written learning-support draft” and still means complete written content for the aid. Designers refine the scope after the solution decision. Keep this distinct from the performance-analysis learning/nonlearning decision and from later e-learning format/tool choices.
 
-A performance aid’s purpose determines its learning/nonlearning treatment. Confirm any required route/evaluation-plan change explicitly, retaining relevant L3/L4 measures and recording L2 as not applicable only for a route with no learning component. Do not force aid-only work through e-learning format or tool questions, and do not force nonlearning aid work through learning objectives/assessments. Preserve previous versions and flag affected downstream content for review.
+A performance aid’s purpose determines its learning/nonlearning treatment. Confirm any required route/evaluation-plan change explicitly, retaining relevant workplace-performance and organizational-results measures and recording learning measures as not applicable only for a route with no learning component. Do not force aid-only work through e-learning format or tool questions, and do not force nonlearning aid work through learning objectives/assessments. Preserve previous versions and flag affected downstream content for review.

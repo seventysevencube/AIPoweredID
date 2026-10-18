@@ -15,8 +15,8 @@ Use [current requirements](requirements.md) and the [detailed notes](README.md) 
 ## Approved workflow
 
 1. **Project home:** designer-owned projects, card layout, visible save/progress information, and resume at the saved location.
-2. **Analysis:** performance gap/evidence, audience/work context, stakeholders/constraints including review availability, and L4/L3/L2 planning. Review the Analysis brief. Intervention recommendations belong in Design.
-3. **Performance solution:** use an independently written performance-analysis review of evidence/hypotheses to confirm learning, nonlearning, both, or investigation. Confirm L2 before instructional Design; documented N/A applies only to a route with no learning component.
+2. **Analysis:** performance gap/evidence, audience/work context, stakeholders/constraints including review availability, and planning for organizational results, workplace performance, and evidence of learning. Review the Analysis brief. Intervention recommendations belong in Design.
+3. **Performance solution:** use an independently written performance-analysis review of evidence/hypotheses to confirm learning, nonlearning, both, or investigation. Confirm learning measures before instructional Design; documented N/A applies only to a route with no learning component.
 4. **Solution and structure:** choose e-learning, performance aid, both, or investigation before deriving deliverables. For e-learning, choose microlearning/course/mix, then Storyline/Rise/both and component allocation.
 5. **Instructional Design:** main and enabling objectives using reviewed Bloom alignment → assessments/practice → content and instructional support → sequence → detailed Design plan. Keep the objective step focused on objectives/alignment; project-wide source settings are not repeated per objective. Nonlearning work uses appropriate task/performance requirements.
 6. **Development sample:** show the full skeleton plus a representative section. Edit directly or request scoped changes. Sample-treatment acceptance is separate from factual verification. Missing facts remain visible; structural samples are not complete factual drafts.

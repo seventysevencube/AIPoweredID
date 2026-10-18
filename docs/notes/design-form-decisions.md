@@ -8,20 +8,20 @@ Status: Requirements discussion. No app development has started. Synced project 
 
 - Reviewed Analysis becomes the input for an editable, prefilled Design skeleton, preserving accepted decisions, sources, IDs, constraints, and permitted gaps.
 - Recommended intervention belongs in Design, not the Analysis brief.
-- L2 evaluation measures must be defined and designer-confirmed before instructional Design proceeds, after the initial Six Boxes performance-solution review. Initial entry to that review can occur while applicability is unresolved. A route with no learning component records L2 as not applicable with a rationale.
+- learning measures must be defined and designer-confirmed before instructional Design proceeds, after the initial independently written performance-analysis review. Initial entry to that review can occur while applicability is unresolved. A route with no learning component records learning measures as not applicable with a rationale.
 - Objectives and detailed assessments are defined and reviewed during Design, then carried into Development.
 - The instructional designer chooses Storyline 360, Rise 360, or both during Design for e-learning projects, after choosing microlearning, a course, or a mix. The format/tool decisions are distinct.
 - Workplace e-learning and performance support are the supported use cases. Performance-support deliverables are complete written drafts.
 - Five minutes/moderately interactive is the reference project for costing and testing, not a mandatory project limit.
-- Evaluation planning for Kirkpatrick L2/L3/L4 is included; evaluation execution remains outside the MVP.
+- Independently written evaluation planning for organizational results, workplace performance, and evidence of learning is included; evaluation execution remains outside the MVP. Follow the [current evaluation-planning requirements](../requirements.md#independently-written-evaluation-planning). Exact replacement questions/explanations remain pending review; earlier level labels are historical shorthand, not required app labels.
 
 ## Current B5 direction — independently written performance analysis
 
 Updated: October 17, 2026.
 
-The user selected an independently written performance-analysis approach instead of incorporating Six Boxes. Follow the [current requirements](../requirements.md#4-design-performance-solution-decision-first): retain evidence review, explicit learning/nonlearning/combined/investigation routes, and the conditional L2 gate, but develop original questions, explanations, and organization. Exact replacement content/layout awaits drafting and review. Attribution/disclaimer wording remains undecided; this records a product direction, not legal clearance.
+The user selected an independently written performance-analysis approach instead of incorporating Six Boxes. Follow the [current requirements](../requirements.md#4-design-performance-solution-decision-first): retain evidence review, explicit learning/nonlearning/combined/investigation routes, and the conditional learning-measure gate, but develop original questions, explanations, and organization. Exact replacement content/layout awaits drafting and review. Attribution/disclaimer wording remains undecided; this records a product direction, not legal clearance.
 
-The Six Boxes sequence, six-category question table, and branded wireframe approval below are historical for that model's content and organization. They must not be copied or treated as an approved replacement merely by changing labels. Other approved Design behaviors remain in effect. The deferred walkthrough remains deferred; Kirkpatrick is a separate pending B5 decision.
+The Six Boxes sequence, six-category question table, and branded wireframe approval below are historical for that model's content and organization. They must not be copied or treated as an approved replacement merely by changing labels. Other approved Design behaviors remain in effect. The deferred walkthrough remains deferred. The user also selected independently written evaluation planning; both replacement specifications still require drafting and review.
 
 ## Earlier revised sequence — historical Six Boxes specification
 
@@ -77,15 +77,15 @@ Proposed routing: retain nonlearning recommendations, rationale, dependencies, a
 
 Use tool-specific storyboard structures per component and preserve approved objectives and assessment links when the format or tool changes.
 
-## Confirmed conditional L2 gate
+## Confirmed conditional learning-measure gate
 
-This supersedes the earlier universal L2-before-Design rule. The first-in-Design Six Boxes decision can establish that no learning is needed.
+This supersedes the earlier universal requirement to confirm learning measures before any Design activity. The initial performance-analysis decision can establish that no learning is needed.
 
-Agreed resolution: allow entry into the initial performance-solution review with L2 unresolved when applicability has not yet been established. If learning is needed (alone or with other responses), require identified, designer-confirmed L2 measures before proceeding into instructional Design. If there is no learning component, record L2 as “Not applicable — no learning intervention” with rationale, rather than inventing measures. Keep relevant L3/L4 planning. There is no general “Not known yet” bypass for the instructional branch. Learning needs identified here feed back into the linked Analysis evaluation-plan record; they do not become an untracked second plan.
+Agreed resolution: allow entry into the initial performance-solution review with learning measures unresolved when applicability has not yet been established. If learning is needed (alone or with other responses), require identified, designer-confirmed learning measures before proceeding into instructional Design. If there is no learning component, record learning measures as “Not applicable — no learning intervention” with rationale, rather than inventing measures. Keep relevant workplace-performance and organizational-results planning. There is no general “Not known yet” bypass for the instructional branch. Learning needs identified here feed back into the linked Analysis evaluation-plan record; they do not become an untracked second plan.
 
 ## E-learning section — agreed field wording
 
-After a learning route and its L2 measures are confirmed:
+After a learning route and its learning measures are confirmed:
 
 - Recommended format (AI-prefilled): microlearning, a course, or a mix, with a short rationale.
 - Designer selection: “How should this e-learning be structured?” Options: microlearning, a course, or a mix.
@@ -100,27 +100,27 @@ Format and tool choices are distinct; do not hardwire microlearning to Rise or c
 
 Applies to confirmed learning components. Performance-support-only work without learning outcomes uses task/performance requirements rather than being forced through course-objective fields. A combined solution retains nonlearning dependencies.
 
-AI uses the reviewed performance needs, confirmed L2 measures, audience, and initial unit/module outline to propose editable learning objectives. Carry forward relevant facts; do not require duplicate entry. For each objective, show:
+AI uses the reviewed performance needs, confirmed learning measures, audience, and initial unit/module outline to propose editable learning objectives. Carry forward relevant facts; do not require duplicate entry. For each objective, show:
 
 1. What should the learner be able to do after this unit or course?
 2. Under what conditions, or using which tools or resources, should they be able to do it?
 3. What standard or criteria would demonstrate successful performance?
-4. Which L2 learning measure does this objective support? Prefill the mapping for review.
+4. Which learning measure does this objective support? Prefill the mapping for review.
 5. Which unit or module should address this objective? Prefill the mapping for review.
 
-Automatically assign stable objective IDs. Give short explanations/examples on request. Preserve links to the underlying workplace behavior and intended result. Proposed wording or performance standards must remain clearly labeled; AI must not invent an organizational requirement or silently change a confirmed L2 measure.
+Automatically assign stable objective IDs. Give short explanations/examples on request. Preserve links to the underlying workplace behavior and intended result. Proposed wording or performance standards must remain clearly labeled; AI must not invent an organizational requirement or silently change a confirmed learning-measure.
 
-The designer can edit, add, remove, or combine objective proposals. If that changes coverage of a confirmed L2 measure or other linked content, flag the change for review. Detailed assessment tasks/items are defined in the subsequent Design section using the reviewed objectives and L2 measures. The user approved Section 4 and required objectives to use Bloom's taxonomy.
+The designer can edit, add, remove, or combine objective proposals. If that changes coverage of a confirmed learning-measure or other linked content, flag the change for review. Detailed assessment tasks/items are defined in the subsequent Design section using the reviewed objectives and learning measures. The user approved Section 4 and required objectives to use Bloom's taxonomy.
 
 ### Confirmed Bloom's requirement and application
 
 - Use revised Bloom's taxonomy for cognitive learning objectives: Remember, Understand, Apply, Analyze, Evaluate, Create.
 - Draft objectives using observable action verbs, the actual intended task/content, relevant conditions, and success criteria. Conditions and criteria come from the agreed objective-writing structure; Bloom's supplies cognitive-process alignment rather than a complete objective template by itself.
 - Show a proposed Bloom level per objective for designer review. Provide a short reason on request; select a level based on the actual cognitive demand, not the verb alone.
-- Select the level needed by the workplace performance and confirmed L2 measure. Do not force every course to cover all six levels or automatically prefer the highest level.
+- Select the level needed by the workplace performance and confirmed learning-measure. Do not force every course to cover all six levels or automatically prefer the highest level.
 - Assessments and activities must match the intended cognitive demand; a recall-only item does not demonstrate an objective requiring application or judgment. Preserve the reviewed Bloom level with the objective ID through content mapping and storyboard handoff.
 - Tag and explain measurable objectives; do not write vague learner-facing objectives such as “understand the procedure” without observable evidence of learning.
-- L2 confidence, attitude, and commitment measures remain distinct from demonstrated cognitive/skill achievement. Do not force a cognitive taxonomy label to stand in for evidence of those measures.
+- learning measures confidence, attitude, and commitment measures remain distinct from demonstrated cognitive/skill achievement. Do not force a cognitive taxonomy label to stand in for evidence of those measures.
 - During AI integration for Design, include Bloom-aligned example objectives and mismatch cases in prompts and quality checks, as part of the already agreed iterative review process.
 
 References checked: https://celt.iastate.edu/prepare-and-teach/design-your-course/blooms-taxonomy/ and https://www.uvm.edu/ctl/blooms-taxonomy. Exact UI presentation of the Bloom level and help text remains to be refined.
@@ -129,11 +129,11 @@ The user subsequently confirmed this Bloom's requirement and alignment approach 
 
 ## Section 5: Assessments and practice — agreed
 
-AI proposes an editable assessment plan and draft tasks/items using reviewed objectives, their Bloom levels, confirmed L2 measures, selected source material, and the chosen e-learning structure/tools. Define assessments during Design and carry reviewed records into the storyboard. Do not default every objective to a multiple-choice item or assume an arbitrary one-item-per-objective rule.
+AI proposes an editable assessment plan and draft tasks/items using reviewed objectives, their Bloom levels, confirmed learning measures, selected source material, and the chosen e-learning structure/tools. Define assessments during Design and carry reviewed records into the storyboard. Do not default every objective to a multiple-choice item or assume an arbitrary one-item-per-objective rule.
 
 For each assessment/task, proposed fields and questions:
 
-1. Objective alignment: Which learning objective(s) and L2 measure does this assessment address? Prefill the links; show the reviewed Bloom level for each objective.
+1. Objective alignment: Which learning objective(s) and learning-measure does this assessment address? Prefill the links; show the reviewed Bloom level for each objective.
 2. Purpose: Is this formative practice, a scored assessment, or another form of learning evidence? Keep these distinct; practice and assessment can be separate linked items.
 3. Method: What type of question, scenario, demonstration, or work product will provide suitable evidence?
 4. Task/item: What exactly will the learner be asked to do? Include the scenario/prompt, instructions, and response options where relevant.
@@ -142,9 +142,9 @@ For each assessment/task, proposed fields and questions:
 7. Scoring: What scoring or success criteria apply? Show only applicable fields; proposals are not approved organizational standards.
 8. Attempts and completion: What retry, remediation, and completion rules are needed? Keep item-level rules distinct from course-level completion settings.
 
-AI prefills proposals with source references. The designer can accept, edit, replace, add, or remove draft items. Maintain stable assessment IDs and objective/L2 links. Flag objective coverage gaps, source uncertainty, answer/feedback inconsistencies, mismatched cognitive demand, and tool feasibility issues. An external demonstration requiring observation should not be silently recast as a recall quiz merely to fit the tool.
+AI prefills proposals with source references. The designer can accept, edit, replace, add, or remove draft items. Maintain stable assessment IDs and objective/learning-measure links. Flag objective coverage gaps, source uncertainty, answer/feedback inconsistencies, mismatched cognitive demand, and tool feasibility issues. An external demonstration requiring observation should not be silently recast as a recall quiz merely to fit the tool.
 
-The alignment matrix will summarize objectives, Bloom levels, L2 measures, and assessment evidence. Placement in the sequence and activity mapping will be refined in the following learning-activities/sequence section. Detailed storyboard placement and implementation instructions are added in Development without silently changing approved assessment intent or criteria.
+The alignment matrix will summarize objectives, Bloom levels, learning measures, and assessment evidence. Placement in the sequence and activity mapping will be refined in the following learning-activities/sequence section. Detailed storyboard placement and implementation instructions are added in Development without silently changing approved assessment intent or criteria.
 
 The user approved the Section 5 questions, fields, and review behavior.
 
@@ -171,7 +171,7 @@ If changes affect reviewed objectives or assessments, flag them for review and u
 
 ### Enabling-objective mapping — agreed
 
-For each main objective, AI proposes the prerequisite knowledge, component skills, decisions, and task steps learners need, based on the reviewed audience and performance context. Convert these into measurable enabling objectives using revised Bloom's taxonomy where appropriate. Assign stable child IDs linked to the main objective, for example LO-1 → EO-1.1. Preserve the main objective's L2/assessment relationships.
+For each main objective, AI proposes the prerequisite knowledge, component skills, decisions, and task steps learners need, based on the reviewed audience and performance context. Convert these into measurable enabling objectives using revised Bloom's taxonomy where appropriate. Assign stable child IDs linked to the main objective, for example LO-1 → EO-1.1. Preserve the main objective's learning measures/assessment relationships.
 
 For each enabling objective, proposed fields:
 
@@ -225,11 +225,11 @@ Agreed contents:
 
 1. Performance-solution decision: reviewed performance-analysis findings, evidence, selected learning/nonlearning/combined route, intervention rationale, and dependencies.
 2. Solution structure: selected deliverables, e-learning format (microlearning/course/mix), unit/module outline, tools (Storyline/Rise/both), and allocation/connection details where applicable.
-3. Objective hierarchy: main and enabling objectives, stable IDs, Bloom levels, conditions, success criteria, and L2 links for learning components; use task/performance requirements for nonlearning support components.
-4. Assessment plan and defined items/tasks: purpose, method, prompts, expected responses/rubrics, feedback, scoring, retries/remediation, and objective/L2 links.
+3. Objective hierarchy: main and enabling objectives, stable IDs, Bloom levels, conditions, success criteria, and learning-measure links for learning components; use task/performance requirements for nonlearning support components.
+4. Assessment plan and defined items/tasks: purpose, method, prompts, expected responses/rubrics, feedback, scoring, retries/remediation, and objective/learning-measure links.
 5. Learning sequence: instructional support, activities, practice and assessment placement, and workplace-transfer support/dependencies.
 6. Content map: reviewed content/source relationships per enabling objective or support task, project-wide source settings, proposed asset locations, and coverage status.
-7. Evaluation alignment: retained L4/L3/L2 plan, links to Design objectives and evidence, ownership/timing as known, and permitted unknowns or applicability rationales. No evaluation execution.
+7. Evaluation alignment: retained organizational-results, workplace-performance, and learning-evidence plan, links to Design objectives and evidence, ownership/timing as known, and permitted unknowns or applicability rationales. No evaluation execution.
 8. Open issues: content/source gaps, unresolved assumptions, missing assets, decisions needing confirmation, and implications for the next stage.
 
 The designer reviews/refines the assembled plan, can optionally share for comments or reflect on AI preferences, and requests the next-stage skeleton from a reviewed version. Use the reviewed version to seed a tool-specific storyboard or complete written performance-support draft. Start with an outline/sample before full generation under the agreed cost controls. The readiness and sample-review approach is recorded in the agreed handoff section below; detailed output layout remains future work.
@@ -241,12 +241,12 @@ For a nonlearning-only route, omit irrelevant learning/objective/assessment sect
 Proposed prerequisites before generating a Development sample, adapted to the selected route:
 
 1. Confirm the solution route, selected deliverable(s), and relevant learning/nonlearning scope.
-2. For learning components, confirm the L2 measures, main/enabling objective hierarchy, and Bloom-level alignment.
+2. For learning components, confirm the learning measures, main/enabling objective hierarchy, and Bloom-level alignment.
 3. Review assessment definitions and their objective coverage. A separate scored item for every enabling objective is not required. Do not carry an unverified answer as a confirmed correct answer.
 4. For e-learning, confirm the initial microlearning/course/mix structure and tool selection/allocation. Known unresolvable tool incompatibilities need a reviewed alternative before producing corresponding build instructions.
 5. Review content-map coverage and explicitly acknowledge unresolved source, content, asset, or specification gaps that will carry forward as visible placeholders. Do not invent missing facts.
 
-Permit missing final media assets, unknown L3/L4 details, and other already permitted gaps to carry forward with visible status and implications. A sample can be visibly incomplete; passing these prerequisites is not a declaration that every fact, asset, or build detail is complete. Unsupported factual claims, unresolved source conflicts, and uncertain assessment answers cannot be presented as verified. If an essential dependency prevents a useful sample, request the needed decision rather than silently choosing it.
+Permit missing final media assets, unknown workplace-performance and organizational-results details, and other already permitted gaps to carry forward with visible status and implications. A sample can be visibly incomplete; passing these prerequisites is not a declaration that every fact, asset, or build detail is complete. Unsupported factual claims, unresolved source conflicts, and uncertain assessment answers cannot be presented as verified. If an essential dependency prevents a useful sample, request the needed decision rather than silently choosing it.
 
 Review experience: edit sections of the Design plan, view source and coverage issues, optionally create a link for peer comments, and optionally reflect on AI-output preferences. Neither peer review nor reflection is a mandatory gate. Preserve the reviewed input version used for generation.
 
@@ -268,7 +268,7 @@ The AI proposal should explain the evidence for developing knowledge/skills thro
 
 The designer reviews, accepts, edits, or overrides the proposal before output types are confirmed. The proposed UI derives deliverable types from that confirmed decision and lets the designer refine their scope, rather than asking the same solution choice again through independent output checkboxes: e-learning produces a Detailed e-learning storyboard; a performance aid produces a Written job aid / performance-support draft; both produces both. Further investigation holds drafting.
 
-Keep the response route and evaluation plan consistent. A performance aid may support learning, workplace performance, or both; its purpose determines whether learning objectives and L2 measures apply. A solely nonlearning aid requires an explicit review/update of the earlier route and a linked L2 not-applicable rationale, retaining relevant L3/L4 measures. A combined solution retains nonlearning dependencies. Do not silently change a confirmed route, create a second evaluation plan, or discard prior draft work. Only e-learning components proceed through microlearning/course/mix and Storyline/Rise/both selection.
+Keep the response route and evaluation plan consistent. A performance aid may support learning, workplace performance, or both; its purpose determines whether learning objectives and learning measures apply. A solely nonlearning aid requires an explicit review/update of the earlier route and a linked learning measures not-applicable rationale, retaining relevant workplace-performance and organizational-results measures. A combined solution retains nonlearning dependencies. Do not silently change a confirmed route, create a second evaluation plan, or discard prior draft work. Only e-learning components proceed through microlearning/course/mix and Storyline/Rise/both selection.
 
 The revised solution-choice/deliverables preview supersedes the earlier intervention screen that asked for deliverables before this decision. Screen wording and purpose/route-confirmation presentation remain open to visual review. The earlier wireframes remain design history, not an approved production implementation.
 
@@ -276,14 +276,14 @@ The revised solution-choice/deliverables preview supersedes the earlier interven
 
 The user asked to proceed after the revised AI-supported solution-choice/deliverables screen and requested a repository checkpoint. Retain that corrected sequence as the current pattern. This does not turn example radio choices into project requirements or verify sample instructional content.
 
-The checkpoint includes the current planning documents, screen-review status, seven illustrative wireframes as editable fragments and standalone previews, and a manifest. The newly proposed learning-objectives screen covers a main objective, enabling-objective hierarchy, revised Bloom levels, L2 links, conditions/criteria, content/support needs, review status, stable IDs, and integrated coverage review. It awaits user review; the assessment-definition/alignment screen is next. The sample learning-aid branch does not limit the MVP to aid-only delivery. No production app, live AI, backend saving/sharing, or deployment is implemented.
+The checkpoint includes the current planning documents, screen-review status, seven illustrative wireframes as editable fragments and standalone previews, and a manifest. The newly proposed learning-objectives screen covers a main objective, enabling-objective hierarchy, revised Bloom levels, learning-measure links, conditions/criteria, content/support needs, review status, stable IDs, and integrated coverage review. It awaits user review; the assessment-definition/alignment screen is next. The sample learning-aid branch does not limit the MVP to aid-only delivery. No production app, live AI, backend saving/sharing, or deployment is implemented.
 
 
 ## Objective screen scope — refined after checkpoint
 
 The user asked what “Short label for navigation” meant and requested that content and instructional support move to a subsequent step. Rename the field **Objective title** and explain that it is a brief sidebar title (for example, “Classify the complaint”), separate from the complete measurable objective. It is not an additional learning objective or a substitute for the statement.
 
-Keep the current Design screen focused on main and enabling learning objectives, their hierarchy/contribution, revised Bloom levels, conditions/resources, success criteria, L2 links, and objective review/alignment. Move essential-content and instructional-support fields into a separate **Content and instructional support** step after objective review, still within Design. The reviewed hierarchy becomes its input; preserve stable IDs and existing deferred notes. Source settings remain project-wide. Detailed assessments are still defined and aligned during Design and retain evidence of the integrated main performance. This supersedes the first objective preview’s embedded content/support fields and its direct assessment-planning handoff. The revised objective screen still awaits visual review.
+Keep the current Design screen focused on main and enabling learning objectives, their hierarchy/contribution, revised Bloom levels, conditions/resources, success criteria, learning-measure links, and objective review/alignment. Move essential-content and instructional-support fields into a separate **Content and instructional support** step after objective review, still within Design. The reviewed hierarchy becomes its input; preserve stable IDs and existing deferred notes. Source settings remain project-wide. Detailed assessments are still defined and aligned during Design and retain evidence of the integrated main performance. This supersedes the first objective preview’s embedded content/support fields and its direct assessment-planning handoff. The revised objective screen still awaits visual review.
 
 ## Confirmed Design order — assessments before content
 
@@ -293,7 +293,7 @@ The user clarified that assessments must come before content. The current sequen
 
 The user approved the revised objectives-only screen and the sequence **main/enabling objectives → assessments → content and instructional support**. Retain “Objective title” as the brief sidebar name, separate from the full objective statement. Content/support fields stay outside objective review.
 
-The next assessment-definition/alignment wireframe is a proposal awaiting review. It separates alignment/purpose/method, exact task and expected performance, feedback/scoring/attempts, and an objective–assessment matrix. It includes distinct sample assessment and formative-practice records with stable IDs, linked objective/Bloom/L2 context, conditional scoring/options fields, response collection/review, separate item-review status, and visible coverage/source gaps. The worked exercise rules and cases are explicitly fictional; a reviewed example is not a verified organizational answer. The preview uses a written learning-aid branch and does not assume automated grading, course completion, or a specific authoring tool. Objectives and assessment records become inputs to the later content/support step; draft progression preserves unresolved flags and does not establish final readiness.
+The next assessment-definition/alignment wireframe is a proposal awaiting review. It separates alignment/purpose/method, exact task and expected performance, feedback/scoring/attempts, and an objective–assessment matrix. It includes distinct sample assessment and formative-practice records with stable IDs, linked objective/Bloom/learning measures context, conditional scoring/options fields, response collection/review, separate item-review status, and visible coverage/source gaps. The worked exercise rules and cases are explicitly fictional; a reviewed example is not a verified organizational answer. The preview uses a written learning-aid branch and does not assume automated grading, course completion, or a specific authoring tool. Objectives and assessment records become inputs to the later content/support step; draft progression preserves unresolved flags and does not establish final readiness.
 
 ## Assessment item labels — clarified
 
