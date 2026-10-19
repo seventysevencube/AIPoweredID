@@ -1,6 +1,6 @@
 # Milestone 1 implementation status
 
-Updated October 19, 2026. **Foundation implemented and tested locally; full milestone completion awaits live-service verification and human interaction review.** The user authorized starting Milestone 1 and merging ready changes. Planning PRs #1 and #2 are merged into `main`; the audit remains reference material, without blanket approval of its recommendations.
+Updated October 19, 2026. **Foundation implemented and deployed on main. Initial live sign-in, saving, reload, history/restore, and offline conflict checks passed; remaining live edge cases and human interaction acceptance are listed in the deployment record.** The user authorized starting Milestone 1 and merging ready changes. Planning PRs #1 and #2 are merged into `main`; the audit remains reference material, without blanket approval of its recommendations.
 
 ## Implemented
 
@@ -24,7 +24,7 @@ The local service explicitly uses fictional identities and an inbox stub. Tests 
 
 ## Before declaring Milestone 1 complete
 
-Follow the [service setup and live verification guide](service-setup.md): choose the Supabase project/region, verified email sender, and test hosting origin; securely configure settings; apply the migration; and run the actual auth/refresh/removal/ownership/save/recovery checks on those services. Complete human keyboard and assistive-technology review for delivered flows.
+Supabase setup, the verified sender, production-only secret configuration, and main-branch Netlify deployment are complete. Successful real sign-in, server-confirmed autosave/reload, version restoration, and offline conflict recovery are verified. Follow the [deployment record](netlify-deployment-2026-10-19.md) and [service guide](service-setup.md) for remaining multi-user ownership/access-removal, native refresh/sign-out, and live edge-case checks. Complete human keyboard and assistive-technology review for delivered flows.
 
 Detailed B4 policies/assurance keep their approved pre-production timing. Remaining AI integration, file imports, stage review/acceptance UI, dependency flags, guest comments, exports, and later-stage screens remain in the phased plan. The fictional complaint-routing walkthrough and other audit findings stay deferred.
 
@@ -78,3 +78,7 @@ The user explicitly requested merging the implementation branch and deploying `m
 ## Main merged and initial Netlify deployment
 
 PR #3 is merged into `main` after successful GitHub checks, and the first Netlify deployment from `main` is serving the app page. The initial backend correctly reported setup_required before configuration. The user has now completed the private production-only settings import; deployment with those settings and hosted connection checks are next. See the [deployment record](netlify-deployment-2026-10-19.md) for verification, credential-transfer limitations, and remaining acceptance checks. No live sign-in email has been sent.
+
+The configured production deployment now reports connected. Unsigned-in requests are denied, untrusted mutation origins are blocked, and a no-email unapproved-address probe reached the hosted database. The first approved pilot was added and one live sign-in request completed successfully; inbox delivery and authenticated workspace checks await the user entering the code in the app. The deployment record documents the narrow public-value scan exception and preserves all actual credentials as secrets.
+
+The user completed live sign-in. A clearly labeled fictional technical project verified automatic saving/reload, history/restoration into a new version, clean-tab synchronization, offline draft retention, explicit conflict resolution against a newer server copy, and persistence after resolution. Network emulation and the extra tab were cleaned up. This is bounded technical acceptance evidence, not the deferred instructional walkthrough or full milestone completion.
