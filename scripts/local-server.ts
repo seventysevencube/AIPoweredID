@@ -23,6 +23,7 @@ for (const email of [
   "sources@example.test",
   "develop@example.test",
   "share@example.test",
+  "pause@example.test",
 ])
   await rpc("pilot_set", { email, active: true });
 const sessions = new Map<string, Identity>();

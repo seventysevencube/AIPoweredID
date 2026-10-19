@@ -4,6 +4,7 @@ import {
   sampleOf,
   treatmentAccepted,
 } from "../../src/development-model";
+import { preferencesFor } from "../../src/preferences-model";
 import {
   isDevelopment,
   isRevision,
@@ -74,6 +75,7 @@ export async function workflowInput(
   return {
     revision: solution.revision,
     data: { answers: {}, items: [] },
+    preferences: preferencesFor(data.records.preferences?.data),
     sources: {
       settings: visible(data.records.sources?.data)?.answers ?? {},
       materials: budgeted(

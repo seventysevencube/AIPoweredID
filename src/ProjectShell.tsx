@@ -16,6 +16,7 @@ import {
   type SectionStatus,
 } from "./dependencies";
 import type { RecordData } from "./model";
+import { nextStep } from "./preferences-model";
 
 export type Snapshot = {
   records: Record<string, SavedRecord>;
@@ -217,6 +218,7 @@ export function ProjectShell({
     : snapshot;
   const title =
     snapshot.records.context.data.answers.title?.text || "Untitled project";
+  const next = nextStep(current);
   const link = (target: Page | "context", label: React.ReactNode) => (
     <a
       href={`#/projects/${id}/${target}`}
@@ -285,6 +287,18 @@ export function ProjectShell({
             ))}
           </nav>
           <div className="nextstage">
+            <p className="eyebrow">Next step</p>
+            <p>
+              <a
+                href={`#/projects/${id}/${next.page}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate(next.page);
+                }}
+              >
+                {next.text}
+              </a>
+            </p>
             <p className="eyebrow">You direct the design</p>
             <p>
               AI proposes. You review, refine, and choose what moves forward.

@@ -577,3 +577,59 @@ test("Development needs a reviewed Design, and later sections need the accepted 
     ),
   ).toThrow();
 });
+
+test("preferences shape AI requests with safe defaults; reflection answers stay private", async () => {
+  const { preferencesFor, nextStep } = await import("../src/preferences-model");
+  expect(preferencesFor(undefined)).toEqual({
+    guidance: "standard",
+    contribution: "balanced",
+    detail: "standard",
+    resources: "none",
+  });
+  const text = (t: string) => ({ text: t, status: "provided" as const });
+  const data: any = {
+    accepted_revision: 2,
+    records: {
+      "analysis-brief": {
+        revision: 2,
+        data: { answers: { gap: text("Gap") }, items: [] },
+      },
+      "design-solution": { revision: 1, data: { answers: {}, items: [] } },
+      preferences: {
+        revision: 2,
+        data: {
+          answers: {
+            detail: text("concise"),
+            contribution: text("draft"),
+            reflect_fix: text("Private note about my client"),
+          },
+          items: [],
+        },
+      },
+    },
+  };
+  const input: any = await workflowInput(
+    async () => data,
+    {},
+    randomUUID(),
+    "solution",
+  );
+  expect(input.preferences).toEqual({
+    guidance: "standard",
+    contribution: "draft",
+    detail: "concise",
+    resources: "none",
+  });
+  expect(JSON.stringify(input)).not.toContain("Private note");
+  // The recap names the next useful step without generating anything.
+  expect(
+    nextStep({
+      records: {
+        "analysis-brief": { revision: 1, data: { answers: {}, items: [] } },
+      },
+    } as any).page,
+  ).toBe("analysis-brief");
+  expect(nextStep(data).text).toBe(
+    "Choose the response you will pursue on Performance solution.",
+  );
+});

@@ -22,6 +22,7 @@ import {
 import { SourcesPage } from "./Sources";
 import { DevelopmentPage } from "./Development";
 import { SharingPage } from "./Sharing";
+import { PreferencesPage } from "./Preferences";
 import {
   ProjectShell,
   RecordNotices,
@@ -96,6 +97,15 @@ export function Workflow({
   if (section === "development")
     return (
       <DevelopmentPage
+        key={id + section}
+        {...{ id, userId, snapshot }}
+        onSnapshot={setSnapshot}
+        onNavigate={go}
+      />
+    );
+  if (section === "preferences")
+    return (
+      <PreferencesPage
         key={id + section}
         {...{ id, userId, snapshot }}
         onSnapshot={setSnapshot}

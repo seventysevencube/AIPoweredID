@@ -27,6 +27,7 @@ import {
 import { Workflow } from "./Workflow";
 import { GuestReview } from "./Review";
 import { PrintView } from "./PrintView";
+import { BreakReminder } from "./Breaks";
 import { workflowSections, projectSections } from "./workflow-model";
 import type { Page } from "./ProjectShell";
 import "./style.css";
@@ -127,6 +128,9 @@ function App() {
           Local development · fictional accounts · no real email or live
           Supabase connection
         </div>
+      )}
+      {user && projectId && !loading && (
+        <BreakReminder key={projectId[1]} project={projectId[1]} />
       )}
       {loading ? (
         <main id="main" tabIndex={-1} className="center">

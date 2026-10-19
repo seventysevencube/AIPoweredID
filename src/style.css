@@ -1195,3 +1195,40 @@ input {
 .checks li {
   margin: 6px 0;
 }
+.breakreminder {
+  background: #fff8e8;
+  border-bottom: 1px solid #e8cf98;
+  padding: 12px 24px;
+}
+.breakreminder h2 {
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+.breakreminder p {
+  margin-bottom: 0;
+}
+.breakreminder .buttonrow {
+  margin: 8px 0 0;
+}
+.pauseview {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  background: rgba(32, 58, 57, 0.55);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+.pausecard {
+  background: #fff;
+  border-radius: 12px;
+  max-width: 520px;
+  width: 100%;
+  padding: 28px;
+}
+@media print {
+  .breakreminder,
+  .pauseview {
+    display: none !important;
+  }
+}
