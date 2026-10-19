@@ -326,10 +326,13 @@ export function createHandler(d: Dependencies) {
             const wi = d.workflowRpc
               ? await workflowInput(d.workflowRpc, actor, project_id, task)
               : undefined;
-            const access =
-              d.ai.policy.provider === "openai"
-                ? { ...d.ai, policy: livePolicy(task) }
-                : d.ai;
+            const access = {
+              ...d.ai,
+              policy:
+                d.ai.policy.provider === "openai"
+                  ? livePolicy(task)
+                  : { ...d.ai.policy, task },
+            };
             result = await enqueueAnalysis(access, actor, project_id, body, wi);
             if (!result.error) await d.dispatchAI?.();
           } else if (jobRoute[2] && req.method === "GET")

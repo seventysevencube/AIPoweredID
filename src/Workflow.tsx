@@ -21,6 +21,17 @@ type Snapshot = {
   accepted_revision?: number;
   jobs: { id: string; state: string; task: AITask }[];
 };
+const failureText: Record<string, string> = {
+  pipeline_failed:
+    "The AI service did not return a draft that passed the app's checks.",
+  reconciled_explicit_retry_required:
+    "The charge for the earlier attempt was confirmed.",
+  access_or_period_unavailable:
+    "The monthly AI budget period or account access was not available.",
+  access_unavailable: "Account access changed before the draft finished.",
+  access_or_input_unavailable:
+    "The saved inputs or account access changed before AI started.",
+};
 const message = (e: unknown) =>
   e instanceof Error ? e.message : "Please try again.";
 export function Workflow({
@@ -194,23 +205,37 @@ function WorkflowEditor({
     const expected_revisions = Object.fromEntries(
       sections.map((s) => [s, current.records[s].revision]),
     );
-    const intentKey = `ai-intent:${userId}:${id}:${task}:${JSON.stringify(expected_revisions)}:${current.records["design-solution"].revision}:${current.accepted_revision ?? 0}:${job?.state === "failed" ? job.id : "initial"}`;
-    let requestId = crypto.randomUUID();
-    try {
-      const prior = localStorage.getItem(intentKey);
-      if (prior) requestId = prior as typeof requestId;
-      else localStorage.setItem(intentKey, requestId);
-    } catch {}
-    const pending = await api(base + "/ai-jobs", "POST", {
-      request_id: requestId,
-      expected_revisions,
-      task,
-      ...(job?.state === "failed" && !job.inputs_changed && job.task === task
-        ? { retry_of: job.id }
-        : {}),
-    });
+    // A repeated click replays the same request; a new attempt after a failure gets its own.
+    const previous = current.jobs.find((j) => j.task === task);
+    const retrying =
+      !!previous && ["failed", "cancelled"].includes(previous.state);
+    const submit = (attempt: string, retry_of?: string) => {
+      const intentKey = `ai-intent:${userId}:${id}:${task}:${JSON.stringify(expected_revisions)}:${current.records["design-solution"].revision}:${current.accepted_revision ?? 0}:${attempt}`;
+      let requestId = crypto.randomUUID();
+      try {
+        const prior = localStorage.getItem(intentKey);
+        if (prior) requestId = prior as typeof requestId;
+        else localStorage.setItem(intentKey, requestId);
+      } catch {}
+      return api(base + "/ai-jobs", "POST", {
+        request_id: requestId,
+        expected_revisions,
+        task,
+        ...(retry_of ? { retry_of } : {}),
+      });
+    };
+    let pending;
+    // An unchanged retry reuses completed steps; changed inputs need a fresh job.
+    if (retrying && previous?.state === "failed")
+      try {
+        pending = await submit(`retry:${previous.id}`, previous.id);
+      } catch (e) {
+        if ((e as { error?: string }).error !== "invalid_retry") throw e;
+      }
+    pending ??= await submit(retrying ? `fresh:${previous!.id}` : "initial");
     await refresh();
-    setJob({ id: pending.job_id, state: pending.state });
+    if (task === relevant)
+      setJob({ id: pending.job_id, state: pending.state, task });
   }
   async function apply() {
     if (!job) return;
@@ -226,7 +251,9 @@ function WorkflowEditor({
   }
   const blocked =
     !ready || ["conflict", "recovery", "signin"].includes(state.status);
-  const hasDraft = Object.keys(data.answers).some((k) => !k.startsWith("_"));
+  const hasDraft =
+    Object.keys(data.answers).some((k) => !k.startsWith("_")) ||
+    data.items.length > 0;
   const accepted =
     snapshot.accepted_revision === snapshot.records["analysis-brief"].revision;
   const learning = snapshot.records.learning;
@@ -254,6 +281,16 @@ function WorkflowEditor({
           snapshot.records["design-solution"].data.answers.learning_revision
             ?.text !== String(learning.revision) ||
           !measures.length)));
+  const failed = !!job && ["failed", "cancelled"].includes(job.state);
+  const designFailed = ["failed", "cancelled"].includes(
+    snapshot.jobs.find((j) => j.task === "design")?.state ?? "",
+  );
+  const canGenerate =
+    section === "analysis-brief"
+      ? coreReady
+      : section === "design-solution"
+        ? accepted
+        : !designGated;
   const title =
     snapshot.records.context.data.answers.title?.text || "Untitled project";
   return (
@@ -401,8 +438,30 @@ function WorkflowEditor({
                       ? "AI draft is ready for your review."
                       : job.state === "cost_pending"
                         ? "AI is paused while a charge is checked. Your saved work is safe."
-                        : "AI did not complete this draft. Your saved work is preserved."}
+                        : "AI could not finish this draft. Nothing was changed, and your saved work is safe."}
               </p>
+              {job.state === "cost_pending" && (
+                <p className="hint">
+                  The pilot operator confirms the charge before AI continues.
+                  You can keep editing in the meantime.
+                </p>
+              )}
+              {failed && (
+                <>
+                  <p className="hint">
+                    {failureText[job.failure ?? ""] ??
+                      "The AI service did not return a usable draft."}{" "}
+                    Trying again uses the shared AI budget.
+                  </p>
+                  <button
+                    className="primary"
+                    disabled={busy || blocked || !canGenerate}
+                    onClick={() => void act(() => generate(relevant))}
+                  >
+                    {busy ? "Preparing…" : "Try again"}
+                  </button>
+                </>
+              )}
               {job.inputs_changed && (
                 <p className="note">
                   Analysis changed since this job started. Review its earlier
@@ -431,7 +490,7 @@ function WorkflowEditor({
                   Open the AI draft
                 </button>
               )}
-              {job.state === "queued" && (
+              {["queued", "running"].includes(job.state) && (
                 <button
                   disabled={busy}
                   onClick={() =>
@@ -457,34 +516,41 @@ function WorkflowEditor({
                   ? "Four core answers must be complete. Optional unknowns are preserved as open questions."
                   : section === "design-solution"
                     ? "Accept the Analysis brief, then ask AI to help assess learning and other performance responses."
-                    : "Confirm the performance solution and learning measures, then generate the Design skeleton."}
+                    : "Confirm the performance solution and learning measures, then generate the Design skeleton from the Performance solution page."}
               </p>
-              <button
-                className="primary"
-                disabled={
-                  busy ||
-                  blocked ||
-                  (section === "analysis-brief" && !coreReady) ||
-                  (!!job &&
-                    ["queued", "running", "cost_pending"].includes(
-                      job.state,
-                    )) ||
-                  (section !== "analysis-brief" && !accepted) ||
-                  (section !== "analysis-brief" &&
-                    section !== "design-solution")
-                }
-                onClick={() => void act(() => generate(relevant))}
-              >
-                {busy
-                  ? "Preparing…"
-                  : section === "analysis-brief"
-                    ? job?.state === "failed"
-                      ? "Retry Analysis brief"
-                      : "Generate Analysis brief"
-                    : section === "design-solution"
-                      ? "Suggest performance solution"
-                      : "Generate from Performance solution"}
-              </button>
+              {section !== "analysis-brief" && section !== "design-solution"
+                ? !job && (
+                    <a
+                      href={`#/projects/${id}/design-solution`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        void navigate("design-solution");
+                      }}
+                    >
+                      Go to Performance solution →
+                    </a>
+                  )
+                : !failed && (
+                    <button
+                      className="primary"
+                      disabled={
+                        busy ||
+                        blocked ||
+                        !canGenerate ||
+                        (!!job &&
+                          ["queued", "running", "cost_pending"].includes(
+                            job.state,
+                          ))
+                      }
+                      onClick={() => void act(() => generate(relevant))}
+                    >
+                      {busy
+                        ? "Preparing…"
+                        : section === "analysis-brief"
+                          ? "Generate Analysis brief"
+                          : "Suggest performance solution"}
+                    </button>
+                  )}
             </section>
           )}
           {designGated && (
@@ -495,7 +561,7 @@ function WorkflowEditor({
           <fieldset
             className="workflowfields"
             aria-label={workflowLabels[section] + " draft"}
-            disabled={blocked || designGated}
+            disabled={blocked || designGated || busy}
           >
             {workflowFields[section].map(([key, label]) => {
               if (section === "design-solution") {
@@ -769,8 +835,16 @@ function WorkflowEditor({
                   })
                 }
               >
-                Generate Design skeleton
+                {designFailed
+                  ? "Try the Design skeleton again"
+                  : "Generate Design skeleton"}
               </button>
+              {designFailed && (
+                <p className="hint">
+                  The last Design skeleton attempt did not finish. Nothing was
+                  changed. Trying again uses the shared AI budget.
+                </p>
+              )}
             </section>
           )}
           <div className="formfooter">
