@@ -10,6 +10,13 @@ export const workflowSections = [
   "design-plan",
 ] as const;
 export type WorkflowSection = (typeof workflowSections)[number];
+// Project-level records: source settings, AI preferences and the Development draft.
+export const projectSections = [
+  "sources",
+  "preferences",
+  "development",
+] as const;
+export type ProjectSection = (typeof projectSections)[number];
 export const briefFields = [
   ["gap", "Project and performance gap"],
   ["evidence", "Evidence and possible causes"],

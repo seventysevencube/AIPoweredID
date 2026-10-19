@@ -1,7 +1,12 @@
 import { createHmac, randomInt, randomUUID } from "node:crypto";
 import { z } from "zod";
 import { recordDataSchema, sections, analysisAIReadiness } from "../src/model";
-import { aiTasks, workflowSections } from "../src/workflow-model";
+import {
+  aiTasks,
+  projectSections,
+  workflowSections,
+} from "../src/workflow-model";
+import { hasUsableText } from "../src/extract";
 import { livePolicy } from "./ai/openai";
 import { outputRecords, workflowInput } from "./ai/workflow";
 import { enqueueAnalysis, type QueueAccess } from "./ai/queue";
@@ -33,6 +38,8 @@ export type Dependencies = {
   openSignup?: boolean;
   ai?: QueueAccess;
   workflowRpc?: Rpc;
+  sourceRpc?: Rpc;
+  reviewRpc?: Rpc;
   dispatchAI?: () => Promise<void>;
 };
 const emailSchema = z
@@ -46,6 +53,19 @@ const saveSchema = z
     operation_id: z.uuid(),
     base_revision: z.number().int().positive(),
     data: recordDataSchema,
+  })
+  .strict();
+// Extraction happens in the browser; the server re-checks limits and usable text.
+const sourceSchema = z
+  .object({
+    source_id: z.uuid(),
+    name: z.string().trim().min(1).max(200),
+    kind: z.enum(["docx", "pptx", "text"]),
+    content: z.string().max(200_000),
+    refs: z
+      .array(z.object({ label: z.string().max(200) }).strict())
+      .max(500)
+      .default([]),
   })
   .strict();
 const restoreSchema = z
@@ -95,9 +115,21 @@ const errorMessages: Record<string, string> = {
     "The shared AI budget cannot cover this request. You can keep editing.",
   ai_cost_pending:
     "Cost confirmation pending. AI requests are paused; you can keep editing.",
+  too_many_sources:
+    "A project can hold up to 20 sources. Remove one before adding another.",
   invalid_retry:
     "This job cannot be retried with these inputs. Review the saved result and current Analysis.",
 };
+// Refusals the designer can act on, as opposed to service outages.
+const requestErrors = new Set([
+  "review_required",
+  "solution_required",
+  "learning_measures_required",
+  "draft_exists",
+  "too_many_sources",
+  "too_many_links",
+  "too_many_comments",
+]);
 export function digest(secret: string, id: string, code: string) {
   return createHmac("sha256", secret).update(`${id}:${code}`).digest("hex");
 }
@@ -339,6 +371,7 @@ export function createHandler(d: Dependencies) {
                   project_id,
                   task,
                   request,
+                  d.sourceRpc,
                 )
               : undefined;
             const access = {
@@ -388,6 +421,33 @@ export function createHandler(d: Dependencies) {
           headers,
         );
       }
+      const sourceRoute = path.match(
+        /^\/api\/projects\/([^/]+)\/source-files(?:\/([^/]+))?$/,
+      );
+      if (sourceRoute) {
+        if (!d.sourceRpc) throw Error("not_found");
+        const project_id = z.uuid().parse(sourceRoute[1]);
+        let result;
+        if (!sourceRoute[2] && req.method === "GET")
+          result = await d.sourceRpc("list", { ...actor, project_id });
+        else if (!sourceRoute[2] && req.method === "POST") {
+          const body = sourceSchema.parse(await parseBody(req));
+          result = await d.sourceRpc("add", {
+            ...actor,
+            project_id,
+            ...body,
+            usable: hasUsableText(body.content),
+          });
+        } else if (sourceRoute[2] && req.method === "DELETE")
+          result = await d.sourceRpc("remove", {
+            ...actor,
+            project_id,
+            source_id: z.uuid().parse(sourceRoute[2]),
+          });
+        else throw Error("not_found");
+        if (result.error) throw Error(result.error);
+        return response(result, 200, headers);
+      }
       const m = path.match(
         /^\/api\/projects\/([^/]+)(?:\/([^/]+)(?:\/(history|restore))?)?$/,
       );
@@ -416,7 +476,9 @@ export function createHandler(d: Dependencies) {
           headers,
         );
       }
-      const section = z.enum([...sections, ...workflowSections]).parse(m[2]);
+      const section = z
+        .enum([...sections, ...workflowSections, ...projectSections])
+        .parse(m[2]);
       if (m[3] === "history" && req.method === "GET") {
         const history = await rpc("history", { section, project_id, ...actor });
         return response(
@@ -466,7 +528,7 @@ export function createHandler(d: Dependencies) {
                   code === "ai_cost_pending" ||
                   code === "invalid_retry"
                 ? 409
-                : code === "ai_inputs_incomplete"
+                : code === "ai_inputs_incomplete" || requestErrors.has(code)
                   ? 422
                   : code === "ai_budget_exceeded"
                     ? 429

@@ -55,7 +55,9 @@ export function providers(
       return data;
     };
   const aiRpc = otherRpc("ai_rpc"),
-    workflowRpc = otherRpc("workflow_rpc");
+    workflowRpc = otherRpc("workflow_rpc"),
+    sourceRpc = otherRpc("source_rpc"),
+    reviewRpc = otherRpc("review_rpc");
   const provider: IdentityProvider = {
     async issue(email) {
       // Native provider tokens never go into the email. Only the application challenge is sent.
@@ -126,6 +128,8 @@ export function providers(
   return {
     rpc,
     workflowRpc,
+    sourceRpc,
+    reviewRpc,
     ...(environment.OPENAI_API_KEY
       ? {
           ai: { rpc: aiRpc, policy: livePolicy("analysis") },

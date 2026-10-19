@@ -935,3 +935,55 @@ input {
   border-top: 1px solid #e0e8e2;
   padding-top: 0.75rem;
 }
+.sourcelist {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 1.5rem;
+}
+.sourcelist li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  padding: 12px 0;
+  border-top: 1px solid #dde6df;
+}
+.sourcelist li > .hint:not(:first-child) {
+  flex-basis: 100%;
+  margin: 0;
+}
+.sourcename {
+  font-weight: 650;
+}
+.sourcekind {
+  color: #53685e;
+  font-size: 13px;
+}
+.editor > .note {
+  margin-bottom: 1.5rem;
+}
+.sourcestatus {
+  font-size: 12px;
+  font-weight: 650;
+  border-radius: 5px;
+  padding: 2px 8px;
+  background: #e3f1e7;
+  color: #1f5a37;
+}
+.sourcestatus.warn {
+  background: #fff2d6;
+  color: #64430b;
+}
+.sourcelist li > button,
+.sourcelist li > .buttonrow {
+  margin: 0 0 0 auto;
+}
+.editor input[type="file"],
+.editor input:not([type]) {
+  display: block;
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #739487;
+  border-radius: 6px;
+  background: white;
+}

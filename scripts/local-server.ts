@@ -11,7 +11,7 @@ import { runNextSimulation, simulationPolicy } from "../server/ai/queue";
 import { fixtureProvider } from "./local-fixture-ai";
 import { createHandler, type Identity } from "../server/api";
 await mkdir(".local-data", { recursive: true });
-const { rpc, aiRpc, workflowRpc } = await localDatabase(
+const { rpc, aiRpc, workflowRpc, sourceRpc, reviewRpc } = await localDatabase(
   process.env.LOCAL_BROWSER_TEST === "1" ? undefined : ".local-data/workspace",
 );
 for (const email of [
@@ -20,6 +20,7 @@ for (const email of [
   "tabs@example.test",
   "design@example.test",
   "flow@example.test",
+  "sources@example.test",
 ])
   await rpc("pilot_set", { email, active: true });
 const sessions = new Map<string, Identity>();
@@ -48,6 +49,8 @@ if (process.env.OPENAI_API_KEY || fixtureAI) {
 const handler = createHandler({
   rpc,
   workflowRpc,
+  sourceRpc,
+  reviewRpc,
   ...(fixtureAI
     ? {
         ai: { rpc: aiRpc, policy: simulationPolicy },

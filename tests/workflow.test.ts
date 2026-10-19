@@ -4,7 +4,7 @@ import { sections } from "../src/model";
 import { livePolicy } from "../server/ai/openai";
 import { openAIProvider } from "../server/ai/openai";
 import { workflowFields, validateOutput } from "../src/workflow-model";
-import { workflowInput, outputRecords } from "../server/ai/workflow";
+import { workflowInput, outputRecords, budgeted } from "../server/ai/workflow";
 import { localDatabase } from "../scripts/local-db";
 import { randomUUID } from "node:crypto";
 const draft = {
@@ -369,4 +369,50 @@ test("revision tasks rework exactly one section with the same gates and the desi
   );
   expect(solution.design).toEqual({});
   expect(solution.designer_request).toBeUndefined();
+});
+
+test("source text shares a fixed allowance; short sources stay whole, long ones are marked cut", async () => {
+  const list = [
+    { name: "Long", kind: "docx", content: "L".repeat(50_000), refs: [] },
+    { name: "Short", kind: "text", content: "S".repeat(1_000), refs: [] },
+    { name: "Mid", kind: "pptx", content: "M".repeat(20_000), refs: [] },
+  ];
+  const out = budgeted(list, 30_000);
+  expect(out.map((s) => s.name)).toEqual(["Long", "Short", "Mid"]);
+  expect(out[1]).toMatchObject({ text: "S".repeat(1_000) });
+  expect(out[1]).not.toHaveProperty("truncated");
+  expect(out.reduce((n, s) => n + s.text.length, 0)).toBeLessThanOrEqual(
+    30_000,
+  );
+  expect(out[0].truncated).toBe(true);
+  expect(out[2].truncated).toBe(true);
+  const data: any = {
+    accepted_revision: 2,
+    records: {
+      "analysis-brief": { revision: 2 },
+      "design-solution": { revision: 1, data: { answers: {}, items: [] } },
+      sources: {
+        revision: 3,
+        data: {
+          answers: { precedence: { text: "Guide wins" }, _x: { text: "" } },
+          items: [],
+        },
+      },
+    },
+  };
+  const input: any = await workflowInput(
+    async () => data,
+    {},
+    randomUUID(),
+    "solution",
+    "",
+    async () => ({ sources: [list[1]] }),
+  );
+  expect(input.sources.settings).toEqual({
+    precedence: { text: "Guide wins" },
+  });
+  expect(input.sources.materials[0]).toMatchObject({
+    name: "Short",
+    kind: "text",
+  });
 });

@@ -25,7 +25,8 @@ import {
   type Question,
 } from "./questions";
 import { Workflow } from "./Workflow";
-import { workflowSections, type WorkflowSection } from "./workflow-model";
+import { workflowSections, projectSections } from "./workflow-model";
+import type { Page } from "./ProjectShell";
 import "./style.css";
 type User = { id: string; email: string };
 const date = (value: string) =>
@@ -33,6 +34,7 @@ const date = (value: string) =>
     dateStyle: "medium",
     timeStyle: "short",
   });
+const pages: string[] = [...workflowSections, ...projectSections, "sharing"];
 function route() {
   return location.hash.slice(1) || "/projects";
 }
@@ -138,13 +140,12 @@ function App() {
         </main>
       ) : !user ? (
         <Auth mode={mode} openSignup={openSignup} onUser={setUser} />
-      ) : projectId &&
-        workflowSections.includes(projectId[2] as WorkflowSection) ? (
+      ) : projectId && pages.includes(projectId[2] as Page) ? (
         <Workflow
           key={user.id + projectId[1] + projectId[2]}
           id={projectId[1]}
           userId={user.id}
-          section={projectId[2] as WorkflowSection}
+          section={projectId[2] as Page}
         />
       ) : projectId ? (
         <Workspace
