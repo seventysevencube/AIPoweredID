@@ -39,6 +39,7 @@ test("guest review: a fixed copy, unverified names, comments back to the designe
   });
   await page.goto(`/#/projects/${id}/sharing`);
   await page
+    .getByRole("group", { name: "What to share" })
     .getByRole("checkbox", { name: "Analysis brief", exact: true })
     .check();
   await page

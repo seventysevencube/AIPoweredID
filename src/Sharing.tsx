@@ -42,7 +42,9 @@ const hasContent = (snapshot: Snapshot, s: string) => {
 
 export function SharingPage({
   id,
+  userId,
   snapshot,
+  onSnapshot,
   onNavigate,
 }: {
   id: string;
@@ -290,7 +292,13 @@ export function SharingPage({
           )
         )}
       </section>
-      <Exports id={id} snapshot={snapshot} links={links ?? []} />
+      <Exports
+        id={id}
+        userId={userId}
+        snapshot={snapshot}
+        onSnapshot={onSnapshot}
+        links={links ?? []}
+      />
     </ProjectShell>
   );
 }

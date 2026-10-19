@@ -1131,3 +1131,67 @@ input {
 .links p {
   margin-bottom: 4px;
 }
+.printview {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+  background: #fff;
+}
+.printview .meta {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 4px 16px;
+  margin: 1rem 0 2rem;
+}
+.printview .meta dt {
+  font-weight: 650;
+}
+.printview .meta dd {
+  margin: 0;
+}
+.printpart {
+  border-top: 2px solid #c5d9cc;
+  padding-top: 1rem;
+  margin-top: 2rem;
+}
+.printitem {
+  border-top: 1px solid #dde6df;
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+}
+.printitem h4 {
+  margin: 0.75rem 0 0.25rem;
+}
+@media print {
+  .topbar,
+  .devbanner,
+  .skip,
+  .noprint {
+    display: none !important;
+  }
+  :root,
+  body {
+    background: #fff;
+  }
+  .printview {
+    padding: 0;
+    max-width: none;
+  }
+  .printpart h2,
+  .printitem h3,
+  .printitem h4 {
+    break-after: avoid-page;
+  }
+}
+.exports {
+  border-top: 1px solid #c5d9cc;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+}
+.checks {
+  list-style: none;
+  padding: 0;
+}
+.checks li {
+  margin: 6px 0;
+}

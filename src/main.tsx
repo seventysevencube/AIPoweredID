@@ -26,6 +26,7 @@ import {
 } from "./questions";
 import { Workflow } from "./Workflow";
 import { GuestReview } from "./Review";
+import { PrintView } from "./PrintView";
 import { workflowSections, projectSections } from "./workflow-model";
 import type { Page } from "./ProjectShell";
 import "./style.css";
@@ -90,6 +91,7 @@ function App() {
   }
   const projectId = path.match(/^\/projects\/([a-f0-9-]+)(?:\/([^/]+))?$/);
   const review = path.match(/^\/review\/([A-Za-z0-9_-]{43})$/);
+  const print = path.match(/^\/projects\/([a-f0-9-]+)\/print(?:\?(.*))?$/);
   return (
     <>
       <a
@@ -144,6 +146,8 @@ function App() {
         <GuestReview token={review[1]} />
       ) : !user ? (
         <Auth mode={mode} openSignup={openSignup} onUser={setUser} />
+      ) : print ? (
+        <PrintView key={path} id={print[1]} query={print[2] ?? ""} />
       ) : projectId && pages.includes(projectId[2] as Page) ? (
         <Workflow
           key={user.id + projectId[1] + projectId[2]}
