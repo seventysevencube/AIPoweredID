@@ -25,6 +25,7 @@ import {
   type Question,
 } from "./questions";
 import { Workflow } from "./Workflow";
+import { GuestReview } from "./Review";
 import { workflowSections, projectSections } from "./workflow-model";
 import type { Page } from "./ProjectShell";
 import "./style.css";
@@ -88,6 +89,7 @@ function App() {
     }
   }
   const projectId = path.match(/^\/projects\/([a-f0-9-]+)(?:\/([^/]+))?$/);
+  const review = path.match(/^\/review\/([A-Za-z0-9_-]{43})$/);
   return (
     <>
       <a
@@ -138,6 +140,8 @@ function App() {
           </p>
           <button onClick={() => void initialize()}>Try again</button>
         </main>
+      ) : review ? (
+        <GuestReview token={review[1]} />
       ) : !user ? (
         <Auth mode={mode} openSignup={openSignup} onUser={setUser} />
       ) : projectId && pages.includes(projectId[2] as Page) ? (

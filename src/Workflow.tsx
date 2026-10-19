@@ -21,6 +21,7 @@ import {
 } from "./workflow-model";
 import { SourcesPage } from "./Sources";
 import { DevelopmentPage } from "./Development";
+import { SharingPage } from "./Sharing";
 import {
   ProjectShell,
   RecordNotices,
@@ -95,6 +96,15 @@ export function Workflow({
   if (section === "development")
     return (
       <DevelopmentPage
+        key={id + section}
+        {...{ id, userId, snapshot }}
+        onSnapshot={setSnapshot}
+        onNavigate={go}
+      />
+    );
+  if (section === "sharing")
+    return (
+      <SharingPage
         key={id + section}
         {...{ id, userId, snapshot }}
         onSnapshot={setSnapshot}
