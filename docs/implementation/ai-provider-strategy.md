@@ -1,3 +1,5 @@
+> Current implementation update, October 19, 2026: the user subsequently authorized real AI integration for the demo. See [demo status](demo-ai-status-2026-10-19.md) for implemented scope, actual checks and remaining work. Earlier planning-only statements below describe their drafting context.
+
 > Planning record prepared October 18, 2026. The user subsequently authorized Milestone 1 implementation and merging ready planning changes. Earlier planning-only/local-publication statements below describe the record when drafted; use the current requirements and decision log for present authority. No service verification is implied.
 
 # AI provider strategy — planning proposal

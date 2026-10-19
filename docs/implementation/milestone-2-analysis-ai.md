@@ -1,3 +1,5 @@
+> Current implementation update, October 19, 2026: the user subsequently authorized real AI integration for the demo. See [demo status](demo-ai-status-2026-10-19.md) for implemented scope, actual checks and remaining work. Earlier planning-only statements below describe their drafting context.
+
 # Milestone 2 — Analysis and the first AI connection
 
 Prepared October 19, 2026. Working draft for the phase-specific review agreed in [AI creation and quality](../ai/creation-and-quality.md). Existing requirements remain authoritative. The user requested moving on and deferred the second-account live privacy test. This artifact prepares the next phase; it makes no paid API call, chooses no new model or price, and does not declare outstanding Milestone 1 checks passed.

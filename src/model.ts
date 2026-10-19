@@ -41,7 +41,7 @@ export type Answer = z.infer<typeof answerSchema>;
 export type RecordData = z.infer<typeof recordDataSchema>;
 export type SavedRecord = {
   project_id: string;
-  section: Section;
+  section: string;
   revision: number;
   data: RecordData;
 };

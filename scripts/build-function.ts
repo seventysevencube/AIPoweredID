@@ -64,3 +64,16 @@ if (smoke.status !== 0)
 console.log(
   "Hosted backend bundled for Node 22; configured/unconfigured startup verified without network; fictional local service excluded.",
 );
+
+await build({
+  entryPoints: ["netlify/functions/ai-worker-background.mts"],
+  outfile: ".netlify/verification/ai-worker-background.mjs",
+  bundle: true,
+  platform: "node",
+  target: "node22",
+  format: "esm",
+  banner: {
+    js: "import { createRequire } from 'node:module'; const require=createRequire(import.meta.url);",
+  },
+});
+console.log("Private AI background worker bundled for Node 22.");

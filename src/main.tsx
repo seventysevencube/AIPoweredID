@@ -24,6 +24,8 @@ import {
   collectionQuestions,
   type Question,
 } from "./questions";
+import { Workflow } from "./Workflow";
+import { workflowSections, type WorkflowSection } from "./workflow-model";
 import "./style.css";
 type User = { id: string; email: string };
 const date = (value: string) =>
@@ -134,6 +136,14 @@ function App() {
         </main>
       ) : !user ? (
         <Auth mode={mode} onUser={setUser} />
+      ) : projectId &&
+        workflowSections.includes(projectId[2] as WorkflowSection) ? (
+        <Workflow
+          key={user.id + projectId[1] + projectId[2]}
+          id={projectId[1]}
+          userId={user.id}
+          section={projectId[2] as WorkflowSection}
+        />
       ) : projectId ? (
         <Workspace
           key={user.id + projectId[1]}
@@ -222,7 +232,7 @@ function Auth({ mode, onUser }: { mode: string; onUser: (u: User) => void }) {
           <span>03 · Development</span>
         </div>
         <p className="subtle">
-          Milestone 1 includes your private workspace and manual Analysis.
+          Your private workspace for Analysis and AI-assisted Design.
         </p>
       </div>
       <section className="signin">
@@ -508,17 +518,23 @@ function Projects({ user, onExpired }: { user: User; onExpired: () => void }) {
                 <p>
                   Continue with
                   <br />
-                  <strong>{labels[p.current_section] ?? labels.context}</strong>
+                  <strong>
+                    {p.stage === "Design"
+                      ? "Performance solution"
+                      : (labels[p.current_section] ?? labels.context)}
+                  </strong>
                 </p>
                 <p>
-                  {typeof p.outstanding === "number"
-                    ? `${p.outstanding} core ${p.outstanding === 1 ? "item" : "items"} still needed for Design`
-                    : "Review your outstanding Analysis information"}
+                  {p.stage === "Design"
+                    ? "Review and refine your Design draft"
+                    : typeof p.outstanding === "number"
+                      ? `${p.outstanding} core ${p.outstanding === 1 ? "item" : "items"} still needed for Design`
+                      : "Review your outstanding Analysis information"}
                 </p>
               </div>
               <a
                 className="button primary"
-                href={`#/projects/${p.id}/${p.current_section}`}
+                href={`#/projects/${p.id}/${p.stage === "Design" ? "design-solution" : p.current_section}`}
               >
                 Continue project <span aria-hidden="true">→</span>
               </a>
@@ -771,10 +787,27 @@ function Editor({
             ))}
           </nav>
           <div className="nextstage">
-            <p className="eyebrow">Coming next</p>
-            <p>Design → Development</p>
+            <p className="eyebrow">Synthesize and design</p>
+            <a
+              href={`#/projects/${p.id}/analysis-brief`}
+              onClick={(e) => {
+                e.preventDefault();
+                void controller.flush().then(() => {
+                  if (controller.dirty || controller.state.status !== "saved") {
+                    setNotice(
+                      "Synchronize your changes before opening the AI brief.",
+                    );
+                    return;
+                  }
+                  go(`/projects/${p.id}/analysis-brief`);
+                });
+              }}
+            >
+              Review Analysis brief →
+            </a>
             <p className="hint">
-              Stage generation will be added in later milestones.
+              Generate a starting point, review it, and carry your decisions
+              into Design.
             </p>
           </div>
         </aside>
