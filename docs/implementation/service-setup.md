@@ -18,7 +18,16 @@ October 19 update: the user supplied the [AIPoweredID Supabase project](https://
    npm run pilot -- remove designer@example.com
    ```
 
-   Removal revokes application admissions immediately and blocks subsequent protected requests, retaining project content. Guest links do not exist in Milestone 1; their later implementation must check owner eligibility too.
+   Removal revokes application admissions immediately and blocks subsequent protected requests, retaining project content. It also turns off that designer's guest review links (migration 5).
+
+   For a verified owner request to delete a project:
+
+   ```sh
+   npm run project -- list designer@example.com
+   npm run project -- delete <project-id> designer@example.com
+   ```
+
+   Its review links stop first; the project, records, versions, sources, comments and stored request copies are removed from the active app. Backups and AI-provider retention follow their own rules.
 7. Build using `npm ci` and `npm run build`. Netlify configuration serves the client and a standard Request/Response function. Deploy only to an agreed test site when hosting setup is authorized; no DNS change is necessary for that test. The development inbox and identity adapter are excluded from deployed functions.
 
 Never put secrets in a `VITE_` variable, a repository file, a PR, or a chat message. `.env.example` contains names only. Netlify environment scopes must include function runtime settings, not merely build settings.

@@ -192,7 +192,7 @@ Use basic non-AI checks on the extracted text, such as checking for empty/whites
 
 Suggested warning wording: “No usable text could be extracted from this file. It will not be used as an AI source. Upload a Word or PowerPoint file with editable text, or paste the content.”
 
-PDF/TXT uploads and legacy .doc/.ppt conversion are outside this initial import scope. PDF and editable PowerPoint exports remain supported. File-size/count limits and other processing-error details remain open. Extraction summaries and text previews are explicitly outside the import flow.
+PDF/TXT uploads and legacy .doc/.ppt conversion are outside this initial import scope. PDF and editable PowerPoint exports remain supported. Implementation defaults, pending confirmation: 10 MB per file, 20 sources per project, and the first 100,000 characters of each file ([decision log](decision-log.md#october-19-2026--remaining-mvp-build)). Other processing-error details remain open. Web research is not yet connected; until it is, AI uses only the sources the designer adds. Extraction summaries and text previews are explicitly outside the import flow.
 
 ### Design output and handoff
 

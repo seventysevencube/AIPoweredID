@@ -4,6 +4,8 @@ Updated October 19, 2026 (America/Chicago). Read this before continuing work.
 
 ## Current state
 
+**October 19, 2026, later:** the remaining MVP items were built on branch `claude/practical-johnson-6qqee5`; see the [MVP completion status](docs/implementation/mvp-completion-2026-10-19.md). Before that branch is merged, migration 5 must be applied to the live Supabase project (production deploys from `main`). The notes below describe the earlier demo release and remain accurate for it.
+
 The demo implementation is merged to `main` through [PR #4](https://github.com/seventysevencube/AIPoweredID/pull/4), application release commit `55447cbc7cbf2fd01d2283ab4e14d9ecfc56d598`.
 
 - Live app: https://aipoweredid-demo.netlify.app/
@@ -36,6 +38,8 @@ Per-section generation/regeneration, complete acceptance/impact marking, source 
 A separate local operator smoke-test ledger at `.local-data/ai-connection-check` remains paused after an uncertain 45-second timeout. Do not reset it or claim the cost was reconciled. The production flow subsequently passed using the longer processing window. Current calls allow 120 seconds under a 180-second lease; unknown costs retain reservations and pause paid work. Broad queue administration/reconciliation and reliable scheduled wake-up remain deferred.
 
 ## Architecture and key files
+
+Added with the MVP completion work: shared page frame and autosave hook `src/ProjectShell.tsx`; Needs update rules `src/dependencies.ts`; AI request helper `src/ai-requests.ts`; Sources `src/Sources.tsx` and extraction `src/extract.ts`; Development `src/Development.tsx` and rules `src/development-model.ts`; guest review `src/Sharing.tsx` (owner) and `src/Review.tsx` (guest); exports `src/Exports.tsx`, `src/export-model.ts`, `src/pptx.ts`, `src/PrintView.tsx`; preferences and breaks `src/Preferences.tsx`, `src/Breaks.tsx`, `src/preferences-model.ts`; migration `supabase/migrations/202610190005_mvp_completion.sql`; operator script `scripts/project.ts`; local fictional AI stand-in for browser tests `scripts/local-fixture-ai.ts`. File names must stay unique ignoring letter case (a test enforces it).
 
 - React + TypeScript + Vite UI: `src/main.tsx`, `src/Workflow.tsx`, templates/contracts in `src/workflow-model.ts`.
 - Autosave/recovery: `src/save.ts`, `src/recovery.ts`; preserve conflict and device-recovery behavior.

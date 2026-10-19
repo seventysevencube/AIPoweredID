@@ -4,7 +4,7 @@ An instructional-design workspace for workplace e-learning and performance suppo
 
 **October 19, 2026:** planning PRs #1 and #2 are merged. Milestone 1 implementation includes project cards, manual Analysis, private backend operations, version history, and browser recovery. Local integration/browser checks pass. The database setup and [basic live access checks](docs/implementation/live-verification-2026-10-19.md) are complete. **Live Supabase authentication, Resend delivery, and hosted persistence have not yet been verified.** See the [implementation status](docs/implementation/milestone-1-status.md).
 
-The full MVP covers Analysis, Design, and partial Development. Explicitly accepted output versions seed the next stage's editable skeleton; saving, review, and acceptance are separate. Later AI, imports, sharing, and exports are not functioning actions in this first milestone.
+The full MVP covers Analysis, Design, and partial Development. Explicitly accepted output versions seed the next stage's editable skeleton; saving, review, and acceptance are separate. As of the [MVP completion work](docs/implementation/mvp-completion-2026-10-19.md), the app also includes AI-assisted Analysis briefs, Design and Development with retries, Needs update flags and section revisions, Word/PowerPoint sources, guest review links, PowerPoint and PDF exports, AI preferences and break reminders.
 
 ## Run the local development workspace
 
