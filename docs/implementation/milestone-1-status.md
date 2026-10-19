@@ -74,3 +74,7 @@ Resend now reports `auth.77cube.dev` and all three required records Verified. A 
 ## Approved merge and deployment — October 19
 
 The user explicitly requested merging the implementation branch and deploying `main` to the existing Netlify Free team, using `https://aipoweredid-demo.netlify.app`. Repository access is now available. The user approved private backend storage of the existing service credentials. Merge/deployment work does not close the remaining hosted authentication, delivery, persistence, and human accessibility acceptance checks.
+
+## Main merged and initial Netlify deployment
+
+PR #3 is merged into `main` after successful GitHub checks, and the first Netlify deployment from `main` is serving the app page. The initial backend correctly reported setup_required before configuration. The user has now completed the private production-only settings import; deployment with those settings and hosted connection checks are next. See the [deployment record](netlify-deployment-2026-10-19.md) for verification, credential-transfer limitations, and remaining acceptance checks. No live sign-in email has been sent.
