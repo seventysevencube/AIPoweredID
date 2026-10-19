@@ -44,22 +44,39 @@ export async function workflowInput(
   return {
     revision: solution.revision,
     data: { answers: {}, items: [] },
-    brief: data.accepted_data,
+    brief: visible(data.accepted_data),
     brief_revision: data.accepted_revision,
-    solution: solution.data,
+    solution: visible(solution.data),
   };
+}
+// App bookkeeping (keys starting with "_") is never sent to AI.
+function visible(data: any) {
+  return (
+    data && {
+      ...data,
+      answers: Object.fromEntries(
+        Object.entries(data.answers ?? {}).filter(([k]) => !k.startsWith("_")),
+      ),
+    }
+  );
 }
 export function outputRecords(value: unknown, task: AITask) {
   return validateOutput(value, task).sections.map((s) => ({
     key: s.key,
     data: {
       answers: Object.fromEntries(
-        s.fields.map((f) => [f.key, { text: f.text, status: "proposed" }]),
+        s.fields.map((f) => [
+          f.key,
+          { text: f.text, status: "proposed" as const },
+        ]),
       ),
       items: s.items.map((row) => ({
         id: randomUUID(),
         answers: Object.fromEntries(
-          row.fields.map((f) => [f.key, { text: f.text, status: "proposed" }]),
+          row.fields.map((f) => [
+            f.key,
+            { text: f.text, status: "proposed" as const },
+          ]),
         ),
       })),
     },

@@ -420,6 +420,51 @@ input {
   font-weight: 700;
   box-shadow: inset 3px 0 #185d4d;
 }
+.navitem {
+  margin-bottom: 5px;
+}
+.sidebar nav .navitem a {
+  margin-bottom: 0;
+}
+.navstatus,
+.sectionstatus {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 650;
+  border-radius: 5px;
+  padding: 2px 8px;
+  background: #eef1ef;
+  color: #41574a;
+}
+.navstatus {
+  margin: 2px 0 4px 42px;
+}
+.navstatus.needs-update,
+.sectionstatus.needs-update {
+  background: #fff2d6;
+  color: #64430b;
+}
+.navstatus.reviewed,
+.sectionstatus.reviewed {
+  background: #e3f1e7;
+  color: #1f5a37;
+}
+.sectionstatus {
+  margin: -4px 0 16px;
+}
+.needsupdate {
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  background: #fff8e8;
+  border: 1px solid #e8cf98;
+  border-radius: 12px;
+}
+.needsupdate h2 {
+  color: #64430b;
+}
+.needsupdate li {
+  margin: 4px 0;
+}
 .navnumber {
   font-size: 11px;
   line-height: 19px;
@@ -713,7 +758,8 @@ input {
     display: flex;
     flex-wrap: wrap;
   }
-  .sidebar nav a {
+  .sidebar nav > a,
+  .sidebar nav .navitem {
     max-width: 46%;
   }
   .navgroup,

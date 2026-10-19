@@ -16,10 +16,23 @@ import {
   type WorkflowSection,
   type AITask,
 } from "./workflow-model";
+import {
+  markReviewed,
+  sectionStatus,
+  staleReasons,
+  statusLabels,
+  type SectionStatus,
+} from "./dependencies";
 type Snapshot = {
   records: Record<string, SavedRecord>;
   accepted_revision?: number;
   jobs: { id: string; state: string; task: AITask }[];
+};
+const statusIcons: Record<SectionStatus, string> = {
+  empty: "○",
+  draft: "✎",
+  reviewed: "✓",
+  "needs-update": "!",
 };
 const failureText: Record<string, string> = {
   pipeline_failed:
@@ -237,6 +250,16 @@ function WorkflowEditor({
     if (task === relevant)
       setJob({ id: pending.job_id, state: pending.state, task });
   }
+  // Reviewing records the exact content and the inputs it was checked against.
+  async function review() {
+    await saved();
+    const current = await refresh();
+    controller.edit(
+      markReviewed(section, controller.state.data, current),
+      true,
+    );
+    await controller.flush();
+  }
   async function apply() {
     if (!job) return;
     await saved();
@@ -281,7 +304,20 @@ function WorkflowEditor({
           snapshot.records["design-solution"].data.answers.learning_revision
             ?.text !== String(learning.revision) ||
           !measures.length)));
+  // Statuses read this page's live draft, not the last periodic refresh.
+  const live = {
+    ...snapshot,
+    records: {
+      ...snapshot.records,
+      [section]: { ...snapshot.records[section], data },
+    },
+  };
+  const statusOf = (s: WorkflowSection) =>
+    sectionStatus(s, live.records[s].data, live);
+  const status = statusOf(section);
+  const reasons = staleReasons(section, data, live);
   const failed = !!job && ["failed", "cancelled"].includes(job.state);
+  const opened = !!job && data.answers._job?.text === job.id;
   const designFailed = ["failed", "cancelled"].includes(
     snapshot.jobs.find((j) => j.task === "design")?.state ?? "",
   );
@@ -328,20 +364,30 @@ function WorkflowEditor({
             >
               ← Analysis inputs
             </a>
-            {workflowSections.map((s, i) => (
-              <a
-                key={s}
-                href={`#/projects/${id}/${s}`}
-                aria-current={s === section ? "page" : undefined}
-                onClick={(e) => {
-                  e.preventDefault();
-                  void navigate(s);
-                }}
-              >
-                <span className="navnumber">{i + 1}</span>
-                {workflowLabels[s]}
-              </a>
-            ))}
+            {workflowSections.map((s, i) => {
+              const st = statusOf(s);
+              return (
+                <div className="navitem" key={s}>
+                  <a
+                    href={`#/projects/${id}/${s}`}
+                    aria-current={s === section ? "page" : undefined}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      void navigate(s);
+                    }}
+                  >
+                    <span className="navnumber">{i + 1}</span>
+                    {workflowLabels[s]}
+                  </a>
+                  {(st === "needs-update" || st === "reviewed") && (
+                    <span className={"navstatus " + st}>
+                      <span aria-hidden="true">{statusIcons[st]}</span>{" "}
+                      {statusLabels[st]}
+                    </span>
+                  )}
+                </div>
+              );
+            })}
           </nav>
           <div className="nextstage">
             <p className="eyebrow">You direct the design</p>
@@ -364,6 +410,12 @@ function WorkflowEditor({
               : "Design your response"}
           </p>
           <h1>{workflowLabels[section]}</h1>
+          {section !== "analysis-brief" && (
+            <p className={"sectionstatus " + status}>
+              <span aria-hidden="true">{statusIcons[status]}</span>{" "}
+              {statusLabels[status]}
+            </p>
+          )}
           <p className="sectionintro">
             {section === "analysis-brief"
               ? "Turn your saved Analysis into a starting point. Review it before you accept a version for Design."
@@ -420,6 +472,31 @@ function WorkflowEditor({
               </button>
             </div>
           )}
+          {reasons.length > 0 && (
+            <section className="needsupdate" aria-labelledby="needsupdate">
+              <h2 id="needsupdate">
+                <span aria-hidden="true">{statusIcons["needs-update"]}</span>{" "}
+                Needs update
+              </h2>
+              <p>This draft was built from inputs that have since changed:</p>
+              <ul>
+                {reasons.map((r) => (
+                  <li key={r}>{r}</li>
+                ))}
+              </ul>
+              <p className="hint">
+                Review it and edit anything that no longer fits. Nothing is
+                rewritten automatically, and earlier versions stay in version
+                history.
+              </p>
+              <button
+                disabled={busy || blocked}
+                onClick={() => void act(review)}
+              >
+                Mark as reviewed and up to date
+              </button>
+            </section>
+          )}
           {snapshot.accepted_revision && !accepted && (
             <p className="note">
               The Analysis brief changed after acceptance. Existing Design work
@@ -435,7 +512,9 @@ function WorkflowEditor({
                   : job.state === "running"
                     ? "AI is drafting and checking your result…"
                     : job.state === "completed"
-                      ? "AI draft is ready for your review."
+                      ? opened
+                        ? "This draft started from an AI proposal. Review and edit it before relying on it."
+                        : "AI draft is ready for your review."
                       : job.state === "cost_pending"
                         ? "AI is paused while a charge is checked. Your saved work is safe."
                         : "AI could not finish this draft. Nothing was changed, and your saved work is safe."}
@@ -462,13 +541,13 @@ function WorkflowEditor({
                   </button>
                 </>
               )}
-              {job.inputs_changed && (
+              {job.inputs_changed && !opened && (
                 <p className="note">
-                  Analysis changed since this job started. Review its earlier
-                  inputs before using the result.
+                  Earlier inputs changed since this job started. Review them
+                  before using the result.
                 </p>
               )}
-              {job.state === "completed" && hasDraft && (
+              {job.state === "completed" && hasDraft && !opened && (
                 <details>
                   <summary>View retained AI result</summary>
                   {job.result?.sections?.map((s: any) => (
@@ -857,6 +936,14 @@ function WorkflowEditor({
             >
               Save now
             </button>
+            {section !== "analysis-brief" && status === "draft" && (
+              <button
+                disabled={busy || blocked}
+                onClick={() => void act(review)}
+              >
+                Mark as reviewed
+              </button>
+            )}
             <button
               onClick={() =>
                 void act(async () => {

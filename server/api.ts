@@ -5,6 +5,7 @@ import { aiTasks, workflowSections } from "../src/workflow-model";
 import { livePolicy } from "./ai/openai";
 import { outputRecords, workflowInput } from "./ai/workflow";
 import { enqueueAnalysis, type QueueAccess } from "./ai/queue";
+import { withBasis } from "../src/dependencies";
 
 export type Rpc = (
   operation: string,
@@ -286,12 +287,18 @@ export function createHandler(d: Dependencies) {
           if (saved.error) throw Error(saved.error);
           if (saved.job.state !== "completed") throw Error("invalid_request");
           const task = z.enum(aiTasks).parse(saved.job.task);
+          const current = await d.workflowRpc("open", { ...actor, project_id });
+          if (current.error) throw Error(current.error);
           result = await d.workflowRpc("apply", {
             ...actor,
             project_id,
             ...body,
             task,
-            sections: outputRecords(saved.job.result, task),
+            sections: withBasis(
+              outputRecords(saved.job.result, task),
+              current,
+              saved.job.input_manifest ?? {},
+            ),
           });
         } else if (action === "wake" && req.method === "POST") {
           const owned = await rpc("open", { ...actor, project_id });

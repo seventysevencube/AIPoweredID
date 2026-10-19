@@ -139,6 +139,39 @@ test("a failed AI step can be tried again at every stage, through to Design", as
   await expect(
     page.getByRole("heading", { name: "EO-1.1", exact: true }),
   ).toBeVisible();
+  // Review status and Needs update: a later Performance solution change flags objectives only.
+  const status = page.locator(".sectionstatus");
+  await expect(status).toHaveText(/Draft/);
+  await page
+    .getByRole("button", { name: "Mark as reviewed", exact: true })
+    .click();
+  await expect(status).toHaveText(/Reviewed/);
+  await expect(page.locator(".navstatus.reviewed")).toHaveCount(1);
+  await page
+    .getByRole("link", { name: "2 Performance solution", exact: true })
+    .click();
+  await page
+    .getByLabel("Rationale, dependencies, and decisions still to review", {
+      exact: true,
+    })
+    .fill("The team lead now reviews routing weekly.");
+  await page.getByRole("button", { name: "Save now", exact: true }).click();
+  await expect(
+    page.getByRole("status").filter({ hasText: "All changes saved" }),
+  ).toBeVisible();
+  // Objectives and the Design plan depend on the solution; the others do not.
+  await expect(page.locator(".navstatus.needs-update")).toHaveCount(2);
+  await expect(
+    page.locator(".navitem", { hasText: "Design plan" }).locator(".navstatus"),
+  ).toHaveText(/Needs update/);
+  await page
+    .getByRole("link", { name: "3 Learning objectives", exact: true })
+    .click();
+  await expect(
+    page.getByRole("heading", { name: "Needs update", exact: true }),
+  ).toBeVisible();
+  await expect(page.getByText("Performance solution changed.")).toBeVisible();
+  await page.screenshot({ path: "test-results/needs-update.png" });
   expect(
     (
       await new AxeBuilder({ page })
@@ -146,4 +179,16 @@ test("a failed AI step can be tried again at every stage, through to Design", as
         .analyze()
     ).violations,
   ).toEqual([]);
+  await page
+    .getByRole("button", {
+      name: "Mark as reviewed and up to date",
+      exact: true,
+    })
+    .click();
+  await expect(status).toHaveText(/Reviewed/);
+  await expect(page.locator(".navstatus.needs-update")).toHaveCount(1);
+  await page
+    .getByRole("link", { name: "4 Assessments and alignment", exact: true })
+    .click();
+  await expect(page.locator(".sectionstatus")).toHaveText(/Draft/);
 });
