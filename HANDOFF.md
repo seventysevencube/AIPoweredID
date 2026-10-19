@@ -54,6 +54,7 @@ If changing the app's AI provider, inspect all of the transport, policy schema, 
 - Netlify dashboard: https://app.netlify.com/projects/aipoweredid-demo/overview
 - Resend sending domain: `auth.77cube.dev`; sender `AIPoweredID <signin@auth.77cube.dev>`. Domain verification completed. Porkbun DNS was configured by the user; preserve existing Zoho email DNS.
 - First approved live pilot email: `seventysevencube@gmail.com`. No additional pilot account or test email is authorized by this handoff alone.
+- Open demo sign-up (user request, October 19, 2026): setting the Netlify environment variable `OPEN_SIGNUP=on` lets any email self-register with a one-time code. It is off unless that exact value is set. Do not mark it as a secret value, or Netlify's secret scan will flag the word "on". Registrations add emails to the approved list, and they stay after the setting is turned off. See [requirements](docs/requirements.md#open-demo-sign-up--october-19-2026).
 - Migrations 1–4 were applied through Supabase SQL Editor. Do not reapply them or assume a Supabase CLI migration-history ledger exists. Any further schema change needs a deliberate incremental migration and appropriate approval.
 - Production AI budget period was explicitly opened for October 1–November 1, 2026 UTC. It does not automatically reset. Do not silently open a new period or release uncertain reservations.
 

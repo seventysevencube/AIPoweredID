@@ -28,6 +28,8 @@ export type Dependencies = {
   secret: string;
   origin: string;
   local?: boolean;
+  // Demo self-registration: any email that verifies a code gets a private workspace.
+  openSignup?: boolean;
   ai?: QueueAccess;
   workflowRpc?: Rpc;
   dispatchAI?: () => Promise<void>;
@@ -175,22 +177,33 @@ export function createHandler(d: Dependencies) {
         return r;
       };
       if (path === "/api/setup" && req.method === "GET")
-        return response({ ready: true, mode: d.local ? "local" : "connected" });
+        return response({
+          ready: true,
+          mode: d.local ? "local" : "connected",
+          open_signup: !!d.openSignup,
+        });
       if (path === "/api/auth/request-code" && req.method === "POST") {
         const { email } = emailSchema.parse(await parseBody(req));
         const id = randomUUID();
         const code = String(randomInt(1000000)).padStart(6, "0");
-        const r = await d.rpc("request_code", {
+        const challenge = {
           email,
           challenge_id: id,
           digest: digest(d.secret, id, code),
-        });
+        };
+        let r = await d.rpc("request_code", challenge);
+        if (r.error === "not_eligible" && d.openSignup) {
+          // Self-registration adds the email to the access list; the code still proves ownership.
+          await rpc("pilot_set", { email, active: true });
+          r = await d.rpc("request_code", challenge);
+        }
         if (r.error && r.error !== "not_eligible") throw new Error(r.error);
         if (!r.error) await d.sendCode(email, code);
         return response({
           challenge_id: id,
-          message:
-            "If this email is approved, a sign-in code has been sent. Codes expire after 10 minutes.",
+          message: d.openSignup
+            ? "A sign-in code has been sent to this email. Codes expire after 10 minutes."
+            : "If this email is approved, a sign-in code has been sent. Codes expire after 10 minutes.",
         });
       }
       if (path === "/api/auth/verify-code" && req.method === "POST") {

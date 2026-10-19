@@ -143,6 +143,7 @@ export function providers(
         }
       : {}),
     identity: provider,
+    openSignup: environment.OPEN_SIGNUP === "on",
     secret: env.AUTH_CODE_SECRET,
     origin: env.APP_ORIGIN,
     async sendCode(email: string, code: string) {

@@ -20,7 +20,7 @@ The reference project for testing quality and estimating cost is approximately f
 
 ### In scope
 
-- Invitation-only designer accounts, one owner per project, and multiple saved projects per designer; no open public registration.
+- Invitation-only designer accounts, one owner per project, and multiple saved projects per designer; no open public registration by default. An optional demo setting allows email-code self-registration (see [Open demo sign-up](#open-demo-sign-up--october-19-2026)).
 - Analysis forms and an editable synthesized Analysis brief.
 - Independently written evaluation planning for organizational results, workplace performance, and evidence of learning.
 - Independently written performance-analysis review to determine whether learning, nonlearning responses, a combination, or further investigation is appropriate.
@@ -256,6 +256,12 @@ Designers sign in, own/manage their projects, and can have multiple projects. Pr
 - Preserve entered work under the saving/recovery rules when a designer needs to sign in again; reauthentication must not discard recoverable edits.
 
 These limits apply to designer sign-in, not account-free guest review. They do not replace approved-email eligibility. Provider choice, remaining session/account-lifecycle policies, and implementation/validation remain open.
+
+### Open demo sign-up — October 19, 2026
+
+For demos, the operator can turn on open sign-up with the server setting `OPEN_SIGNUP=on`. Anyone can then enter an email, receive a one-time code, and get a private workspace. The code limits above still apply, and the code still proves the person controls that email. Without the setting, sign-in stays limited to the approved list.
+
+While open sign-up is on, each new email is added to the approved list when it requests a code. Removing an email does not keep that person out, because they can request a new code. Turning the setting off stops new sign-ups. Emails that registered while it was on stay approved until the operator removes them (`npm run pilot -- remove <email>`). All accounts share the same $20 monthly AI budget and its protections.
 
 ### Designer access removal
 

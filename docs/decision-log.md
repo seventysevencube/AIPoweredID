@@ -300,3 +300,7 @@ After successful first-pilot sign-in, autosave/reload, history/restoration, and 
 ## October 19, 2026 — demo priority and real AI setup
 
 The user requested a demo-ready real AI Analysis → Design flow within approximately one hour, tabling broader queue work. Preserve the $20 cap and required-input/learning-confirmation gates. The user privately supplied an OpenAI key locally and in Netlify Production, and explicitly approved applying the private AI/workflow database setup to the existing Supabase project. The release is a vertical demo slice, not completion of all remaining MVP milestones. See [demo implementation status](implementation/demo-ai-status-2026-10-19.md).
+
+## October 19, 2026 — Open demo sign-up
+
+For a live demo, the user asked that people be able to register by receiving a one-time code at their email address. This is an optional server setting, `OPEN_SIGNUP=on`. When it is on, an email not on the approved list is added at code request, and sign-in still requires the emailed code under the existing limits (10-minute expiry, single use, five wrong attempts, one resend per minute). When it is off or missing, the invitation-only list applies as before. New accounts share the existing $20 monthly AI budget. This is a demo access choice. It does not settle the remaining account-lifecycle, retention or B4 policies. See [requirements](requirements.md#open-demo-sign-up--october-19-2026).

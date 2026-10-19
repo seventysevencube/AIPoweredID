@@ -56,6 +56,7 @@ const handler = createHandler({
     : {}),
   origin: "http://127.0.0.1:5173",
   local: true,
+  openSignup: process.env.OPEN_SIGNUP === "on",
   secret: "local-development-only-do-not-use-in-production",
   identity: {
     async issue(email) {
