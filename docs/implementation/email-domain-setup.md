@@ -12,7 +12,7 @@ The Porkbun DNS screen showed eleven existing records and Porkbun authoritative 
 
 Preserve those records and all other existing website/verification records. No `auth` sending records appeared in the inspected list. Do not replace root MX, edit root SPF, change nameservers, enable Resend incoming mail, or use bulk DNS templates for this setup.
 
-## Generated Resend records — DNS added, provider verification pending
+## Generated Resend records — DNS added and provider verified
 
 The user directed use of the other Chrome window, already signed in to Resend. In that session, `auth.77cube.dev` was added in North Virginia (`us-east-1`), using the default `send` Return-Path. [Resend's domain page](https://resend.com/domains/44998004-8846-4f6d-8bc0-d1e237d7cfa7) generated the following three required records. Sending is enabled in the domain setup; receiving remains off. The user added all three records and confirmed Done. A subsequent Porkbun inspection showed 14 records, with the three exact new values and the original Zoho/website records preserved. Read-only public DNS lookups also returned the expected TXT and both CNAME values. The agent made no Porkbun DNS changes.
 
@@ -30,8 +30,8 @@ p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCd2P/Wxm1cCA96m1py++wwOZgZq66VtDsyVchVX8
 
 Resend displays TTL Auto; use Porkbun's existing 600-second default. Porkbun appends `.77cube.dev` to the Host field, so enter only the relative Host listed above. These are the CNAME records actually generated for this domain, not generic example SPF/MX settings. No priority applies to these three records. The optional DMARC row is not part of this change; do not alter root-domain mail policy while setting up this subdomain.
 
-Resend's **I've already added the records** action was invoked after those checks. Its current observed status is **Pending / Checking DNS**, with DKIM and `rsend.auth` Pending and `send.auth` Not Started. Public visibility is not the same as Resend verification or successful delivery; do not mark this verified or change the correct records merely because the provider is still processing them.
+Resend's **I've already added the records** action was invoked after those checks. The provider subsequently showed **Verified** for the domain and all three required records on October 19. Domain verification is complete; actual email delivery remains untested.
 
-The API-key form was inspected with name `AIPoweredID sign-in emails` and permission **Sending access**. While the domain is pending, its domain selector currently offers only All domains. No key has been created. Prefer selecting `auth.77cube.dev` once available, and have the user create the credential and enter it privately as `RESEND_API_KEY`. Store the key only in the ignored server settings file; never place it in these notes or chat. Final credential creation remains a user action.
+The API-key form is prepared with name `AIPoweredID sign-in emails`, permission **Sending access**, and domain **auth.77cube.dev**. The user subsequently confirmed completion and privately saved `RESEND_API_KEY`. The local format-only configuration check now reports only the hosted origin missing; no sending request has been made, so credential validity and delivery remain unverified. Store the key only in ignored server settings or the approved backend secret store; never place it in these notes or chat.
 
 References: [Resend domain setup](https://resend.com/docs/add-a-domain), [Porkbun DNS editing](https://kb.porkbun.com/article/68-how-to-edit-dns-records).

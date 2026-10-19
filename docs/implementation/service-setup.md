@@ -2,7 +2,7 @@
 
 Status: the two database migrations are applied to the user's Supabase project, basic live schema/access checks passed, and the private server credential passed a read-only application-RPC connection check. Real authentication, email delivery, and hosted app persistence remain pending; the local preview still uses fictional accounts.
 
-October 19 update: the user supplied the [AIPoweredID Supabase project](https://supabase.com/dashboard/project/eefozbgaobaymadewdhu) in East US (North Virginia) and explicitly approved applying the two application migrations. Both completed successfully. Live checks found ten tables with RLS enabled, no direct browser-role access, backend-only RPC permission, an enabled retention trigger, and denial of an unadmitted session. See the [verification record](live-verification-2026-10-19.md) for exact evidence and limits. Resend onboarding is now visible; its sender domain, sending key, and hosted test origin remain unconfigured. Do not rerun the initial migration on this project.
+October 19 update: the user supplied the [AIPoweredID Supabase project](https://supabase.com/dashboard/project/eefozbgaobaymadewdhu) in East US (North Virginia) and explicitly approved applying the two application migrations. Both completed successfully. Live checks found ten tables with RLS enabled, no direct browser-role access, backend-only RPC permission, an enabled retention trigger, and denial of an unadmitted session. See the [verification record](live-verification-2026-10-19.md) for exact evidence and limits. Resend has verified the selected sending domain; the user saved the sending key privately and the approved sender is configured. The approved test origin is `https://aipoweredid-demo.netlify.app`; hosting and live acceptance remain pending. Do not rerun the initial migration on this project.
 
 ## Configuration
 
@@ -25,9 +25,9 @@ Never put secrets in a `VITE_` variable, a repository file, a PR, or a chat mess
 
 ## Local connection preparation
 
-The user selected `77cube.dev` with Porkbun DNS. The Resend entry for `auth.77cube.dev` is created, with sending enabled and receiving off. The user added all three generated records; Porkbun and public-DNS checks confirmed their values and preserved existing Zoho records. Resend verification was started and currently shows Pending / Checking DNS. See the [email-domain setup record](email-domain-setup.md). The sender is planned as `AIPoweredID <signin@auth.77cube.dev>`. The Resend API key and hosted origin still require configuration.
+The user selected `77cube.dev` with Porkbun DNS. The Resend entry for `auth.77cube.dev` is created, with sending enabled and receiving off. The user added all three generated records; Porkbun and public-DNS checks confirmed their values and preserved existing Zoho records. Resend now shows Verified for the domain and all three required records. See the [email-domain setup record](email-domain-setup.md). The sender is planned as `AIPoweredID <signin@auth.77cube.dev>`. The Resend key and approved sender are now saved privately; the approved test origin is configured locally, and actual email delivery remains untested.
 
-An ignored `.env.local` can hold server settings for operator checks. Enter real keys there privately rather than in chat. The prepared local file uses the supplied Supabase URL and an independently generated server secret; actual service keys, sender, and hosted origin still need entry. Never commit this file, and do not assume operator commands automatically load it.
+An ignored `.env.local` can hold server settings for operator checks. Enter real keys there privately rather than in chat. The prepared local file uses the supplied Supabase URL and an independently generated server secret; the Supabase key has passed its read-only connection check, the user has privately saved the Resend key, and the approved sender is configured. All six settings are prepared locally for the approved test origin; format checks do not validate the Resend credential against the provider or prove delivery. Never commit this file, and do not assume operator commands automatically load it.
 
 ```sh
 npm run setup:check -- .env.local
@@ -71,3 +71,9 @@ No live check above is marked passed by local PGlite or fictional-identity tests
 - [Supabase Admin link generation](https://supabase.com/docs/reference/javascript/auth-admin-generatelink) and [OTP verification](https://supabase.com/docs/reference/javascript/auth-verifyotp).
 - [Supabase rate limits](https://supabase.com/docs/guides/auth/rate-limits) and [session identifiers](https://supabase.com/docs/guides/auth/sessions).
 - [Netlify Request/Response functions](https://docs.netlify.com/build/functions/get-started/).
+
+## Hosting readiness — October 19
+
+Read-only inspection confirmed access to the existing Seventy Seven Cube Netlify team. Its project list does not include AIPoweredID, and the checkout has no linked Netlify site. The repository already specifies Node 22, the Vite build/publish settings, API function routing, and response security headers. No site was created or deployed. Agree on a temporary test site, configure its exact HTTPS origin and server-only settings, and then perform the hosted verification above. Email-domain verification does not establish hosted app or email-delivery acceptance.
+
+The user completed GitHub verification and saved the selected-repository permission update. Netlify now lists AIPoweredID, and its import screen confirms the test site name is available. The user explicitly authorized merging the implementation branch and deploying `main`, rather than hosting the feature branch, and approved storing the existing Supabase/Resend keys and sign-in protection secret as private backend settings in this Netlify project. No deployment is claimed complete by this preparation.
