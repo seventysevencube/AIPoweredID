@@ -1,6 +1,6 @@
 # Milestone 1 service setup and live verification
 
-Status: the two database migrations are applied to the user's Supabase project and basic live schema/access checks passed. Actual app connection, authentication, email delivery, and hosting remain pending.
+Status: the two database migrations are applied to the user's Supabase project, basic live schema/access checks passed, and the private server credential passed a read-only application-RPC connection check. Real authentication, email delivery, and hosted app persistence remain pending; the local preview still uses fictional accounts.
 
 October 19 update: the user supplied the [AIPoweredID Supabase project](https://supabase.com/dashboard/project/eefozbgaobaymadewdhu) in East US (North Virginia) and explicitly approved applying the two application migrations. Both completed successfully. Live checks found ten tables with RLS enabled, no direct browser-role access, backend-only RPC permission, an enabled retention trigger, and denial of an unadmitted session. See the [verification record](live-verification-2026-10-19.md) for exact evidence and limits. Resend onboarding is now visible; its sender domain, sending key, and hosted test origin remain unconfigured. Do not rerun the initial migration on this project.
 
