@@ -25,6 +25,8 @@ Never put secrets in a `VITE_` variable, a repository file, a PR, or a chat mess
 
 ## Local connection preparation
 
+The user selected `77cube.dev` with Porkbun DNS. The Resend entry for `auth.77cube.dev` is created, with sending enabled and receiving off. Its three generated records and protected Zoho settings are in the [email-domain setup record](email-domain-setup.md); DNS entry and verification remain pending. The sender is planned as `AIPoweredID <signin@auth.77cube.dev>`. The Resend API key and hosted origin still require configuration.
+
 An ignored `.env.local` can hold server settings for operator checks. Enter real keys there privately rather than in chat. The prepared local file uses the supplied Supabase URL and an independently generated server secret; actual service keys, sender, and hosted origin still need entry. Never commit this file, and do not assume operator commands automatically load it.
 
 ```sh
