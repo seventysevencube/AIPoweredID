@@ -115,6 +115,10 @@ const errorMessages: Record<string, string> = {
     "The shared AI budget cannot cover this request. You can keep editing.",
   ai_cost_pending:
     "Cost confirmation pending. AI requests are paused; you can keep editing.",
+  design_review_required:
+    "Review each Design page, including the Design plan, and mark it reviewed before generating Development.",
+  treatment_required:
+    "Accept the sample's treatment before generating other sections.",
   too_many_sources:
     "A project can hold up to 20 sources. Remove one before adding another.",
   invalid_retry:
@@ -127,6 +131,8 @@ const requestErrors = new Set([
   "learning_measures_required",
   "draft_exists",
   "too_many_sources",
+  "design_review_required",
+  "treatment_required",
   "too_many_links",
   "too_many_comments",
 ]);
@@ -360,10 +366,11 @@ export function createHandler(d: Dependencies) {
         else if (jobRoute) {
           const project_id = z.uuid().parse(jobRoute[1]);
           if (!jobRoute[2] && req.method === "POST") {
-            const { note, ...body } = await parseBody(req);
+            const { note, target, ...body } = await parseBody(req);
             const task = z.enum(aiTasks).parse(body.task ?? "analysis");
             // The designer's optional revision request travels inside the workflow input.
             const request = z.string().max(2000).optional().parse(note);
+            const item = z.uuid().optional().parse(target);
             const wi = d.workflowRpc
               ? await workflowInput(
                   d.workflowRpc,
@@ -372,6 +379,7 @@ export function createHandler(d: Dependencies) {
                   task,
                   request,
                   d.sourceRpc,
+                  item,
                 )
               : undefined;
             const access = {

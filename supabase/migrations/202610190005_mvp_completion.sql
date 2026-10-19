@@ -46,7 +46,8 @@ end $$;
 create trigger revoke_links_on_access_removal after update on app.pilot_access
 for each row execute function app.revoke_links_on_access_removal();
 
--- Same as migration 4, plus the Sources, Preferences and Development records.
+-- Same as migration 4, plus the Sources, Preferences and Development records, and each
+-- recent job's Development target so a page can show which section it is drafting.
 create or replace function public.workflow_rpc(operation text,payload jsonb) returns jsonb
 language plpgsql security definer set search_path='' as $$
 declare actor uuid; admitted jsonb; pr app.projects%rowtype; rec app.records%rowtype;
@@ -99,7 +100,7 @@ begin
  select jsonb_object_agg(r.section,to_jsonb(r)) into result from app.records r where r.project_id=pr.id;
  return jsonb_build_object('records',result,'accepted_revision',(select v.revision from app.versions v where v.id=accepted.version_id),
   'accepted_data',(select v.data from app.versions v where v.id=accepted.version_id),
-  'jobs',coalesce((select jsonb_agg(x) from (select id,state,policy->>'task' as task,created_at,failure from app.ai_jobs where project_id=pr.id and owner_id=actor order by created_at desc limit 30) x),'[]'::jsonb));
+  'jobs',coalesce((select jsonb_agg(x) from (select id,state,policy->>'task' as task,created_at,failure,input_snapshot#>>'{workflow,target_item}' as target from app.ai_jobs where project_id=pr.id and owner_id=actor order by created_at desc limit 60) x),'[]'::jsonb));
 end $$;
 
 -- Owner-only source operations. Text is returned only to the backend for AI input.

@@ -1,77 +1,10 @@
-import { test, expect, type Page } from "@playwright/test";
+import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { randomUUID } from "node:crypto";
+import { preparedProject, retryAfterFailure, signIn } from "./helpers";
 
 // Uses the local fictional AI stand-in: no network, provider account or charge.
 // "[fail once]" makes each task's first attempt fail, exercising Try again.
-const origin = { Origin: "http://127.0.0.1:5173" };
-async function signIn(page: Page, email: string) {
-  await page.goto("/");
-  await page.getByLabel("Email address", { exact: true }).fill(email);
-  await page.getByRole("button", { name: "Send code", exact: true }).click();
-  const inbox = await (await page.request.get("/api/local-inbox")).json();
-  await page
-    .getByLabel("Sign-in code", { exact: true })
-    .fill(inbox[email].code);
-  await page.getByRole("button", { name: "Sign in", exact: true }).click();
-  await expect(
-    page.getByRole("heading", { name: "Projects", exact: true }),
-  ).toBeVisible();
-}
-async function put(page: Page, id: string, section: string, data: unknown) {
-  const r = await page.request.put(`/api/projects/${id}/${section}`, {
-    headers: origin,
-    data: { operation_id: randomUUID(), base_revision: 1, data },
-  });
-  expect(r.status()).toBe(200);
-}
-const provided = (text: string) => ({ text, status: "provided" });
-async function retryAfterFailure(page: Page) {
-  await expect(
-    page.getByText("AI could not finish this draft.", { exact: false }),
-  ).toBeVisible({ timeout: 15000 });
-  await page.getByRole("button", { name: "Try again", exact: true }).click();
-  await page
-    .getByRole("button", { name: "Open the AI draft", exact: true })
-    .click({ timeout: 15000 });
-}
-export async function preparedProject(page: Page, title: string) {
-  const id = randomUUID();
-  expect(
-    (
-      await page.request.post("/api/projects", {
-        headers: origin,
-        data: { project_id: id, operation_id: randomUUID(), title },
-      })
-    ).status(),
-  ).toBe(201);
-  await put(page, id, "context", {
-    answers: {
-      title: provided(title),
-      task: provided("Route a customer complaint to the right team"),
-      desired: provided("Every complaint routed correctly within one day"),
-      current: provided("About a third are routed to the wrong team"),
-    },
-    items: [],
-  });
-  await put(page, id, "audience", {
-    answers: { roles: provided("New customer service agents") },
-    items: [],
-  });
-  await put(page, id, "learning", {
-    answers: {},
-    items: [
-      {
-        id: randomUUID(),
-        answers: {
-          indicator: provided("Route five practice complaints correctly"),
-        },
-      },
-    ],
-  });
-  return id;
-}
-
 test("a failed AI step can be tried again at every stage, through to Design", async ({
   page,
 }) => {

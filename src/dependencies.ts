@@ -2,8 +2,10 @@ import { sections, type RecordData } from "./model";
 import { workflowLabels, type WorkflowSection } from "./workflow-model";
 
 // What each stage draft was built from. "brief" is the accepted Analysis brief version.
-type Dependency = "brief" | WorkflowSection | (typeof sections)[number];
-export const dependencies: Record<WorkflowSection, readonly Dependency[]> = {
+type Dependency =
+  "brief" | "sources" | WorkflowSection | (typeof sections)[number];
+export type Tracked = WorkflowSection | "development";
+export const dependencies: Record<Tracked, readonly Dependency[]> = {
   "analysis-brief": sections,
   "design-solution": ["brief"],
   "design-objectives": ["brief", "design-solution", "learning"],
@@ -20,6 +22,16 @@ export const dependencies: Record<WorkflowSection, readonly Dependency[]> = {
     "design-assessments",
     "design-content",
     "design-sequence",
+  ],
+  development: [
+    "brief",
+    "design-solution",
+    "design-objectives",
+    "design-assessments",
+    "design-content",
+    "design-sequence",
+    "design-plan",
+    "sources",
   ],
 };
 const analysisLabels: Record<string, string> = {
@@ -47,12 +59,14 @@ function stable(value: unknown): string {
   return JSON.stringify(value);
 }
 // Change detection only (not security): a short, stable digest of designer-visible content.
+const shown = (answers: RecordData["answers"]) =>
+  Object.fromEntries(
+    Object.entries(answers).filter(([k]) => !k.startsWith("_")),
+  );
 export function fingerprint(data: RecordData) {
   const visible = {
-    answers: Object.fromEntries(
-      Object.entries(data.answers).filter(([k]) => !k.startsWith("_")),
-    ),
-    items: data.items,
+    answers: shown(data.answers),
+    items: data.items.map((i) => ({ ...i, answers: shown(i.answers) })),
   };
   return digest(stable(visible));
 }
@@ -79,7 +93,7 @@ export function digest(text: string) {
 // The current state of a section's inputs. With a job manifest, an input that changed
 // after the job read it is recorded as outdated so the new draft is flagged at once.
 export function basisFor(
-  section: WorkflowSection,
+  section: Tracked,
   snapshot: Snapshot,
   manifest?: Manifest,
 ) {
@@ -115,7 +129,7 @@ function readJSON(text: string | undefined) {
   }
 }
 export function staleReasons(
-  section: WorkflowSection,
+  section: Tracked,
   data: RecordData,
   snapshot: Snapshot,
 ) {
@@ -127,14 +141,16 @@ export function staleReasons(
     .map((dep) =>
       dep === "brief"
         ? "A different version of the Analysis brief was accepted for Design."
-        : dep in workflowLabels
-          ? `${workflowLabels[dep as WorkflowSection]} changed.`
-          : `Analysis answers changed: ${analysisLabels[dep]}.`,
+        : dep === "sources"
+          ? "The project's source rules changed."
+          : dep in workflowLabels
+            ? `${workflowLabels[dep as WorkflowSection]} changed.`
+            : `Analysis answers changed: ${analysisLabels[dep]}.`,
     );
 }
 export type SectionStatus = "empty" | "draft" | "reviewed" | "needs-update";
 export function sectionStatus(
-  section: WorkflowSection,
+  section: Tracked,
   data: RecordData,
   snapshot: Snapshot,
 ): SectionStatus {
@@ -156,7 +172,7 @@ export const statusLabels: Record<SectionStatus, string> = {
 };
 // Mark the current content reviewed against its current inputs.
 export function markReviewed(
-  section: WorkflowSection,
+  section: Tracked,
   data: RecordData,
   snapshot: Snapshot,
 ): RecordData {
@@ -173,7 +189,7 @@ export function markReviewed(
   };
 }
 // Applied AI drafts record what they were built from; sections applied together see each other.
-export function withBasis<T extends { key: WorkflowSection; data: RecordData }>(
+export function withBasis<T extends { key: Tracked; data: RecordData }>(
   applied: T[],
   snapshot: Snapshot,
   manifest: Manifest,

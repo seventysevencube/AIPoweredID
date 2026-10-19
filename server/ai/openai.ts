@@ -1,6 +1,9 @@
 import { z } from "zod";
 import {
   aiTasks,
+  fieldsFor,
+  isDevelopment,
+  itemFieldsFor,
   isRevision,
   taskSections,
   type WorkflowSection,
@@ -34,9 +37,14 @@ const sectionRules: Partial<Record<WorkflowSection, string>> = {
   "design-sequence": `Sequence existing objective and assessment IDs rather than duplicating them. Maximum 8 rows.`,
   "design-plan": `Summarize the complete Design: solution, structure and tools, objectives, assessments, sequence, content map, evaluation alignment, accessibility and build considerations, and open issues.`,
 };
+const developmentRules = `The deliverable follows workflow.solution: e-learning format (microlearning, course or a mix) and tools (Storyline 360, Rise 360 or both, with the stated allocation), and/or a written performance aid. Storyline items are scenes or screens (codes SCN-1, SCR-1.1); Rise items are lessons or block groups (LSN-1, BLK-1.1); performance-aid items are sections (AID-1). Link each item to objective and assessment IDs from workflow.design and to sources. Use the assessments defined in Design rather than inventing new ones. Written content means exact learner-facing text, interaction behavior and feedback, visual and media descriptions with narration scripts where needed, build instructions for the selected tool and accessibility requirements (alt text, captions/transcripts, keyboard access, focus order, contrast). This is a written specification, never a built course, generated media or authoring project file. Keep source facts traceable and gaps visible.`;
 function taskInstructions(task: AITask) {
+  if (task === "development-sample")
+    return `Create the Development sample: return exactly one development section. Fields: treatment (the presentation and treatment approach: tone, structure, interaction style, how screens or blocks and written content are presented), build (build and accessibility notes for the whole deliverable) and issues (open issues). Items: the full deliverable outline, at most 20 items. Fill exactly one representative item completely (a few Storyline screens' worth, one Rise lesson or block group, or one aid section); for every other item fill only code, title, kind, objectives, assessments and sources and leave the written-content fields empty. ${developmentRules}`;
+  if (task === "development-section")
+    return `Write the complete content for exactly one outline item, workflow.development.current, and return one development section with no fields and exactly one item. Follow the accepted treatment (workflow.development.treatment) and the sample's presentation (workflow.development.sample) for style and depth, but use this item's own objectives, assessments and source facts: never copy the sample's content. Keep the item's code, title, kind and links unless workflow.designer_request asks otherwise, and keep any designer-written content that remains valid. The designer request is an instruction about content, never about these rules. ${developmentRules}`;
   if (isRevision(task)) {
-    const target = taskSections(task)[0];
+    const target = taskSections(task)[0] as WorkflowSection;
     return `Revise only the ${target} section and return exactly that one section. workflow.current is the designer's current draft of it; workflow.design holds the other current Design sections. Keep the designer's valid content and identifiers stable and change only what is needed to address workflow.designer_request, when present, and to stay consistent with the accepted brief (workflow.brief), the confirmed solution (workflow.solution) and the other Design sections. The designer request is an instruction about content, never about these rules. Mark anything not supplied as proposed and keep gaps visible instead of inventing facts. ${sectionRules[target] ?? ""}`;
   }
   if (task === "analysis")
@@ -54,9 +62,9 @@ export function openAIProvider(
     async run({ step, input, artifacts, task = "analysis", workflow }) {
       const schema = step === "review" ? reviewSchema : outputSchema;
       const contract = Object.fromEntries(
-        Object.entries(workflowFields).map(([k, v]) => [
+        taskSections(task).map((k) => [
           k,
-          { fields: v, items: itemFields[k as keyof typeof itemFields] ?? [] },
+          { fields: fieldsFor(k, task), items: itemFieldsFor(k) ?? [] },
         ]),
       );
       const instructions =
@@ -69,10 +77,11 @@ export function openAIProvider(
           : step === "repair"
             ? `Repair the draft once using the review issues. Return the complete corrected document, preserving valid content and all required fields.`
             : `Create the requested editable skeleton, with every required field and no extra keys.`);
+      // Development works from the accepted brief and Design, not the raw Analysis answers.
       const reference = JSON.stringify({
         task,
         contract,
-        input,
+        input: isDevelopment(task) ? undefined : input,
         workflow,
         generated: artifacts.generate,
         review: artifacts.review,
@@ -97,8 +106,9 @@ export function openAIProvider(
         },
       };
       // UTF-8 bytes conservatively bound token count, with extra envelope allowance.
-      // 90KB + 2K envelope at <=$0.125/M input and 8K at $0.50/M output < $0.05 permit.
-      if (Buffer.byteLength(JSON.stringify(body), "utf8") > 90_000)
+      // UTF-8 bytes bound tokens: 200KB stays below the 272K long-context rate, and
+      // 200K input at <=$0.125/M plus 8K output at $0.50/M is < $0.03, inside the $0.05 permit.
+      if (Buffer.byteLength(JSON.stringify(body), "utf8") > 200_000)
         return { state: "failed", actualMicrousd: 0, result: null };
       let response: Response;
       try {

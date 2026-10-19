@@ -901,7 +901,8 @@ input {
   padding: 0;
   margin: 0;
 }
-.workflowcard textarea[rows="1"] {
+.workflowcard textarea[rows="1"],
+.devsection textarea[rows="1"] {
   min-height: 2.75rem;
   height: 2.75rem;
 }
@@ -986,4 +987,79 @@ input {
   border: 1px solid #739487;
   border-radius: 6px;
   background: white;
+}
+.devworkspace {
+  display: grid;
+  grid-template-columns: minmax(200px, 280px) minmax(0, 1fr);
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+  align-items: start;
+}
+.outline {
+  background: #fff;
+  border: 1px solid #c5d9cc;
+  border-radius: 12px;
+  padding: 1rem;
+}
+.outline h2 {
+  font-size: 1rem;
+}
+.outline ol {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+.outlineitem {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 6px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.outlineitem[aria-current] {
+  background: #dceade;
+  border-color: #185d4d;
+  box-shadow: inset 3px 0 #185d4d;
+}
+.outlinecode {
+  font-weight: 700;
+}
+.itemstatus {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 650;
+  border-radius: 5px;
+  padding: 2px 8px;
+  margin-top: 4px;
+  background: #eef1ef;
+  color: #41574a;
+}
+.outlineitem .itemstatus {
+  display: block;
+  width: fit-content;
+}
+.itemstatus.reviewed {
+  background: #e3f1e7;
+  color: #1f5a37;
+}
+.itemstatus.drafting {
+  background: #e8edf8;
+  color: #2c4170;
+}
+.devsection {
+  background: #fff;
+  border: 1px solid #c5d9cc;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+}
+.fulldraft {
+  border-top: 1px solid #c5d9cc;
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+@media (max-width: 900px) {
+  .devworkspace {
+    grid-template-columns: 1fr;
+  }
 }

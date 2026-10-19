@@ -21,7 +21,13 @@ export type Snapshot = {
   records: Record<string, SavedRecord>;
   accepted_revision?: number;
   accepted_data?: RecordData;
-  jobs: { id: string; state: string; task: AITask; failure?: string }[];
+  jobs: {
+    id: string;
+    state: string;
+    task: AITask;
+    failure?: string;
+    target?: string | null;
+  }[];
 };
 // Every project page beyond the Analysis forms.
 export type Page = WorkflowSection | ProjectSection | "sharing";

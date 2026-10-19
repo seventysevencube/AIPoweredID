@@ -20,6 +20,7 @@ import {
   solutionDecisions,
 } from "./workflow-model";
 import { SourcesPage } from "./Sources";
+import { DevelopmentPage } from "./Development";
 import {
   ProjectShell,
   RecordNotices,
@@ -91,6 +92,15 @@ export function Workflow({
   const go = async (target: string) => {
     location.hash = `/projects/${id}/${target}`;
   };
+  if (section === "development")
+    return (
+      <DevelopmentPage
+        key={id + section}
+        {...{ id, userId, snapshot }}
+        onSnapshot={setSnapshot}
+        onNavigate={go}
+      />
+    );
   if (section === "sources")
     return (
       <SourcesPage

@@ -416,3 +416,164 @@ test("source text shares a fixed allowance; short sources stay whole, long ones 
     kind: "text",
   });
 });
+
+test("Development needs a reviewed Design, and later sections need the accepted sample treatment", async () => {
+  const { markReviewed } = await import("../src/dependencies");
+  const { treatmentPrint } = await import("../src/development-model");
+  const text = (t: string) => ({ text: t, status: "provided" as const });
+  const records: any = {
+    "analysis-brief": {
+      revision: 2,
+      data: { answers: { gap: text("Gap") }, items: [] },
+    },
+    "design-solution": {
+      revision: 1,
+      data: {
+        answers: { route: text("nonlearning"), rationale: text("Fix tools") },
+        items: [],
+      },
+    },
+    learning: { revision: 1, data: { answers: {}, items: [] } },
+    sources: { revision: 1, data: { answers: {}, items: [] } },
+  };
+  for (const s of [
+    "design-objectives",
+    "design-assessments",
+    "design-content",
+    "design-sequence",
+  ])
+    records[s] = { revision: 1, data: { answers: {}, items: [] } };
+  records["design-plan"] = {
+    revision: 1,
+    data: { answers: { summary: text("Plan") }, items: [] },
+  };
+  const sampleId = randomUUID(),
+    otherId = randomUUID();
+  records.development = {
+    revision: 1,
+    data: {
+      answers: { treatment: text("Friendly"), _sample: text(sampleId) },
+      items: [
+        {
+          id: sampleId,
+          answers: { code: text("AID-1"), content: text("Steps") },
+        },
+        {
+          id: otherId,
+          answers: { code: text("AID-2"), title: text("Checklist") },
+        },
+      ],
+    },
+  };
+  const data: any = { accepted_revision: 2, records };
+  const rpc = async () => data;
+  await expect(
+    workflowInput(rpc, {}, randomUUID(), "development-sample"),
+  ).rejects.toThrow("design_review_required");
+  for (const s of ["design-solution", "design-plan"])
+    records[s].data = markReviewed(s as any, records[s].data, data);
+  const sample: any = await workflowInput(
+    rpc,
+    {},
+    randomUUID(),
+    "development-sample",
+  );
+  expect(Object.keys(sample.design)).toContain("design-plan");
+  await expect(
+    workflowInput(
+      rpc,
+      {},
+      randomUUID(),
+      "development-section",
+      "",
+      undefined,
+      otherId,
+    ),
+  ).rejects.toThrow("treatment_required");
+  // The sample itself can be reworked before acceptance.
+  expect(
+    await workflowInput(
+      rpc,
+      {},
+      randomUUID(),
+      "development-section",
+      "Shorter",
+      undefined,
+      sampleId,
+    ),
+  ).toMatchObject({ designer_request: "Shorter", target_item: sampleId });
+  records.development.data.answers._treatment_accepted = text(
+    treatmentPrint(records.development.data),
+  );
+  const section: any = await workflowInput(
+    rpc,
+    {},
+    randomUUID(),
+    "development-section",
+    "",
+    undefined,
+    otherId,
+  );
+  expect(section.development.sample).toEqual({
+    code: text("AID-1"),
+    content: text("Steps"),
+  });
+  expect(section.development.current).toEqual({
+    code: text("AID-2"),
+    title: text("Checklist"),
+  });
+  expect(section.development.outline).toHaveLength(2);
+  // Editing the sample after acceptance requires a fresh acceptance.
+  records.development.data.items[0].answers.content = text("Different steps");
+  await expect(
+    workflowInput(
+      rpc,
+      {},
+      randomUUID(),
+      "development-section",
+      "",
+      undefined,
+      otherId,
+    ),
+  ).rejects.toThrow("treatment_required");
+  await expect(
+    workflowInput(
+      rpc,
+      {},
+      randomUUID(),
+      "development-section",
+      "",
+      undefined,
+      randomUUID(),
+    ),
+  ).rejects.toThrow("invalid_request");
+  // Output checks: a section request returns exactly one item and no record fields.
+  const item = {
+    fields: [
+      "code",
+      "title",
+      "kind",
+      "objectives",
+      "assessments",
+      "sources",
+      "content",
+      "interaction",
+      "media",
+      "build",
+      "accessibility",
+      "issues",
+    ].map((key) => ({ key, text: key })),
+  };
+  expect(
+    validateOutput(
+      { sections: [{ key: "development", fields: [], items: [item] }] },
+      "development-section",
+    ).sections[0].items,
+  ).toHaveLength(1);
+  expect(() =>
+    validateOutput(
+      { sections: [{ key: "development", fields: [], items: [item, item] }] },
+      "development-section",
+    ),
+  ).toThrow();
+});

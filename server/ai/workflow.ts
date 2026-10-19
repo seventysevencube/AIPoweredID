@@ -1,5 +1,11 @@
 import { type Rpc } from "../api";
 import {
+  designReadiness,
+  sampleOf,
+  treatmentAccepted,
+} from "../../src/development-model";
+import {
+  isDevelopment,
   isRevision,
   proposalData,
   taskSections,
@@ -14,6 +20,7 @@ export async function workflowInput(
   task: AITask,
   note = "",
   sourceRpc?: Rpc,
+  targetItem?: string,
 ) {
   const data = await rpc("open", { ...actor, project_id: projectId });
   if (data.error) throw Error(data.error);
@@ -23,7 +30,11 @@ export async function workflowInput(
     throw Error("review_required");
   const solution = data.records["design-solution"];
   const target = taskSections(task)[0];
-  if (task === "design" || (isRevision(task) && target !== "design-solution")) {
+  if (
+    task === "design" ||
+    isDevelopment(task) ||
+    (isRevision(task) && target !== "design-solution")
+  ) {
     const a = solution.data.answers;
     const route = a.route?.text;
     if (!["learning", "combined", "nonlearning"].includes(route))
@@ -50,6 +61,12 @@ export async function workflowInput(
         throw Error("solution_required");
     } else if (!a.rationale?.text.trim()) throw Error("solution_required");
   }
+  const development = isDevelopment(task)
+    ? {
+        ...developmentInput(data, task, targetItem),
+        ...(note.trim() ? { designer_request: note.trim() } : {}),
+      }
+    : {};
   const sources = sourceRpc
     ? await sourceRpc("texts", { ...actor, project_id: projectId })
     : { sources: [] };
@@ -59,8 +76,12 @@ export async function workflowInput(
     data: { answers: {}, items: [] },
     sources: {
       settings: visible(data.records.sources?.data)?.answers ?? {},
-      materials: budgeted(sources.sources),
+      materials: budgeted(
+        sources.sources,
+        isDevelopment(task) ? 20_000 : 30_000,
+      ),
     },
+    ...development,
     brief: visible(data.accepted_data),
     brief_revision: data.accepted_revision,
     solution: visible(solution.data),
@@ -77,6 +98,40 @@ export async function workflowInput(
           ...(note.trim() ? { designer_request: note.trim() } : {}),
         }
       : {}),
+  };
+}
+// Development starts from reviewed Design; sections after the sample need its accepted treatment.
+function developmentInput(data: any, task: AITask, targetItem?: string) {
+  if (!designReadiness(data).ready) throw Error("design_review_required");
+  const dev = data.records.development?.data ?? { answers: {}, items: [] };
+  const design = Object.fromEntries(
+    workflowSections.slice(2).map((s) => [s, visible(data.records[s].data)]),
+  );
+  if (task === "development-sample") return { design };
+  const item = dev.items.find((i: any) => i.id === targetItem);
+  if (!item) throw Error("invalid_request");
+  const sample = sampleOf(dev);
+  if (item.id !== sample?.id && !treatmentAccepted(dev))
+    throw Error("treatment_required");
+  const shown = (answers: any) =>
+    Object.fromEntries(
+      Object.entries(answers).filter(([k]) => !k.startsWith("_")),
+    );
+  return {
+    design,
+    target_item: item.id,
+    development: {
+      treatment: visible(dev).answers,
+      outline: dev.items.map((i: any) =>
+        Object.fromEntries(
+          ["code", "title", "kind"].map((k) => [k, i.answers[k]?.text ?? ""]),
+        ),
+      ),
+      ...(sample && sample.id !== item.id
+        ? { sample: shown(sample.answers) }
+        : {}),
+      current: shown(item.answers),
+    },
   };
 }
 // Source text shares a fixed allowance so every request stays within the transport cap.
