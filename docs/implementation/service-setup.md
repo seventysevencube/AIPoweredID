@@ -1,8 +1,8 @@
 # Milestone 1 service setup and live verification
 
-Status: code prepared; no live project, sender, domain, region, or deployment has been configured or verified by this implementation.
+Status: the two database migrations are applied to the user's Supabase project and basic live schema/access checks passed. Actual app connection, authentication, email delivery, and hosting remain pending.
 
-October 19 update: the user supplied the [AIPoweredID Supabase project](https://supabase.com/dashboard/project/eefozbgaobaymadewdhu). Read-only dashboard inspection showed Healthy status, East US (North Virginia), no `app` schema, and no public tables. The two application migrations still need applying; the project’s existence does not establish app connectivity. Resend is not yet ready, and the sender domain and hosted test origin remain unselected.
+October 19 update: the user supplied the [AIPoweredID Supabase project](https://supabase.com/dashboard/project/eefozbgaobaymadewdhu) in East US (North Virginia) and explicitly approved applying the two application migrations. Both completed successfully. Live checks found ten tables with RLS enabled, no direct browser-role access, backend-only RPC permission, an enabled retention trigger, and denial of an unadmitted session. See the [verification record](live-verification-2026-10-19.md) for exact evidence and limits. Resend onboarding is now visible; its sender domain, sending key, and hosted test origin remain unconfigured. Do not rerun the initial migration on this project.
 
 ## Configuration
 
