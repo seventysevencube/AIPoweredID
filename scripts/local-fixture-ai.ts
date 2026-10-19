@@ -3,22 +3,13 @@
 import {
   workflowFields,
   itemFields,
+  isRevision,
+  taskSections,
   type AITask,
   type WorkflowSection,
 } from "../src/workflow-model";
 import type { SimulatedProvider } from "../server/ai/queue";
 
-const outputs: Record<AITask, WorkflowSection[]> = {
-  analysis: ["analysis-brief"],
-  solution: ["design-solution"],
-  design: [
-    "design-objectives",
-    "design-assessments",
-    "design-content",
-    "design-sequence",
-    "design-plan",
-  ],
-};
 const itemText = (section: WorkflowSection, key: string, n: number) =>
   section === "design-objectives" && key === "code"
     ? n === 0
@@ -34,9 +25,12 @@ const itemText = (section: WorkflowSection, key: string, n: number) =>
           ? `AS-${n + 1}`
           : `Fictional test draft ${key} ${n + 1}.`;
 
-export function fixtureOutput(task: AITask) {
+export function fixtureOutput(task: AITask, request = "") {
+  const prefix = isRevision(task)
+    ? `Fictional revision (${request || "no request"})`
+    : "Fictional test draft";
   return {
-    sections: outputs[task].map((key) => ({
+    sections: taskSections(task).map((key) => ({
       key,
       fields: workflowFields[key].map(([field]) => ({
         key: field,
@@ -48,7 +42,7 @@ export function fixtureOutput(task: AITask) {
           "learning_measures",
         ].includes(field)
           ? ""
-          : `Fictional test draft for ${field}. Not created by AI.`,
+          : `${prefix} for ${field}. Not created by AI.`,
       })),
       items: (itemFields[key] ? [0, 1] : []).map((n) => ({
         fields: itemFields[key]!.map(([field]) => ({
@@ -65,7 +59,7 @@ export function fixtureProvider(): SimulatedProvider {
   const failed = new Set<string>();
   return {
     kind: "simulated",
-    async run({ step, input, task = "analysis" }) {
+    async run({ step, input, task = "analysis", workflow }) {
       const title = String(
         (input as any).context?.data?.answers?.title?.text ?? "",
       );
@@ -84,7 +78,10 @@ export function fixtureProvider(): SimulatedProvider {
         result:
           step === "review"
             ? { needs_repair: false, issues: [] }
-            : fixtureOutput(task),
+            : fixtureOutput(
+                task,
+                String((workflow as any)?.designer_request ?? ""),
+              ),
       };
     },
   };

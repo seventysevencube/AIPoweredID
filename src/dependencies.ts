@@ -54,7 +54,9 @@ export function fingerprint(data: RecordData) {
     ),
     items: data.items,
   };
-  const text = stable(visible);
+  return digest(stable(visible));
+}
+export function digest(text: string) {
   let h1 = 0xdeadbeef,
     h2 = 0x41c6ce57;
   for (let i = 0; i < text.length; i++) {

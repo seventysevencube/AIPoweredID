@@ -328,10 +328,18 @@ export function createHandler(d: Dependencies) {
         else if (jobRoute) {
           const project_id = z.uuid().parse(jobRoute[1]);
           if (!jobRoute[2] && req.method === "POST") {
-            const body = await parseBody(req);
+            const { note, ...body } = await parseBody(req);
             const task = z.enum(aiTasks).parse(body.task ?? "analysis");
+            // The designer's optional revision request travels inside the workflow input.
+            const request = z.string().max(2000).optional().parse(note);
             const wi = d.workflowRpc
-              ? await workflowInput(d.workflowRpc, actor, project_id, task)
+              ? await workflowInput(
+                  d.workflowRpc,
+                  actor,
+                  project_id,
+                  task,
+                  request,
+                )
               : undefined;
             const access = {
               ...d.ai,

@@ -1,4 +1,5 @@
 import { z } from "zod";
+import type { RecordData } from "./model";
 export const workflowSections = [
   "analysis-brief",
   "design-solution",
@@ -92,8 +93,44 @@ export const itemFields: Partial<
     ["duration", "Proposed duration"],
   ],
 };
-export const aiTasks = ["analysis", "solution", "design"] as const;
+// Revision tasks rework one section from its current draft; the rest create first drafts.
+export const reviseTasks = [
+  "revise-design-solution",
+  "revise-design-objectives",
+  "revise-design-assessments",
+  "revise-design-content",
+  "revise-design-sequence",
+  "revise-design-plan",
+] as const;
+export const aiTasks = [
+  "analysis",
+  "solution",
+  "design",
+  ...reviseTasks,
+] as const;
 export type AITask = (typeof aiTasks)[number];
+export type ReviseTask = (typeof reviseTasks)[number];
+export const isRevision = (task: string): task is ReviseTask =>
+  (reviseTasks as readonly string[]).includes(task);
+export function taskSections(task: AITask): WorkflowSection[] {
+  if (isRevision(task))
+    return [task.slice("revise-".length) as WorkflowSection];
+  return task === "analysis"
+    ? ["analysis-brief"]
+    : task === "solution"
+      ? ["design-solution"]
+      : workflowSections.slice(2);
+}
+// Designer decisions on the Performance solution are never replaced by an AI proposal.
+export const solutionDecisions = [
+  "route",
+  "deliverable",
+  "format",
+  "tools",
+  "allocation",
+  "measures_confirmed",
+  "learning_revision",
+];
 const answer = z.object({ key: z.string(), text: z.string() }).strict();
 export const outputSchema = z
   .object({
@@ -111,12 +148,7 @@ export const outputSchema = z
 export type AIOutput = z.infer<typeof outputSchema>;
 export function validateOutput(value: unknown, task: AITask): AIOutput {
   const output = outputSchema.parse(value);
-  const keys =
-    task === "analysis"
-      ? ["analysis-brief"]
-      : task === "solution"
-        ? ["design-solution"]
-        : workflowSections.slice(2);
+  const keys: string[] = taskSections(task);
   if (
     output.sections.length !== keys.length ||
     new Set(output.sections.map((s) => s.key)).size !== keys.length ||
@@ -145,4 +177,27 @@ export function validateOutput(value: unknown, task: AITask): AIOutput {
         throw Error("invalid_ai_output");
   }
   return output;
+}
+
+// One validated AI section as an editable draft: every value stays a proposal.
+export function proposalData(
+  section: AIOutput["sections"][number],
+): RecordData {
+  return {
+    answers: Object.fromEntries(
+      section.fields.map((f) => [
+        f.key,
+        { text: f.text, status: "proposed" as const },
+      ]),
+    ),
+    items: section.items.map((row) => ({
+      id: crypto.randomUUID(),
+      answers: Object.fromEntries(
+        row.fields.map((f) => [
+          f.key,
+          { text: f.text, status: "proposed" as const },
+        ]),
+      ),
+    })),
+  };
 }

@@ -1,11 +1,18 @@
-import { randomUUID } from "node:crypto";
 import { type Rpc } from "../api";
-import { validateOutput, type AITask } from "../../src/workflow-model";
+import {
+  isRevision,
+  proposalData,
+  taskSections,
+  validateOutput,
+  workflowSections,
+  type AITask,
+} from "../../src/workflow-model";
 export async function workflowInput(
   rpc: Rpc,
   actor: Record<string, string>,
   projectId: string,
   task: AITask,
+  note = "",
 ) {
   const data = await rpc("open", { ...actor, project_id: projectId });
   if (data.error) throw Error(data.error);
@@ -14,7 +21,8 @@ export async function workflowInput(
   if (data.records["analysis-brief"].revision !== data.accepted_revision)
     throw Error("review_required");
   const solution = data.records["design-solution"];
-  if (task === "design") {
+  const target = taskSections(task)[0];
+  if (task === "design" || (isRevision(task) && target !== "design-solution")) {
     const a = solution.data.answers;
     const route = a.route?.text;
     if (!["learning", "combined", "nonlearning"].includes(route))
@@ -47,38 +55,35 @@ export async function workflowInput(
     brief: visible(data.accepted_data),
     brief_revision: data.accepted_revision,
     solution: visible(solution.data),
+    ...(isRevision(task)
+      ? {
+          target,
+          current: visible(data.records[target].data),
+          design: Object.fromEntries(
+            workflowSections
+              .slice(2)
+              .filter((s) => s !== target && target !== "design-solution")
+              .map((s) => [s, visible(data.records[s].data)]),
+          ),
+          ...(note.trim() ? { designer_request: note.trim() } : {}),
+        }
+      : {}),
   };
 }
-// App bookkeeping (keys starting with "_") is never sent to AI.
+// App bookkeeping (keys starting with "_") and record IDs are never sent to AI.
 function visible(data: any) {
   return (
     data && {
-      ...data,
       answers: Object.fromEntries(
         Object.entries(data.answers ?? {}).filter(([k]) => !k.startsWith("_")),
       ),
+      items: (data.items ?? []).map((i: any) => i.answers),
     }
   );
 }
 export function outputRecords(value: unknown, task: AITask) {
   return validateOutput(value, task).sections.map((s) => ({
     key: s.key,
-    data: {
-      answers: Object.fromEntries(
-        s.fields.map((f) => [
-          f.key,
-          { text: f.text, status: "proposed" as const },
-        ]),
-      ),
-      items: s.items.map((row) => ({
-        id: randomUUID(),
-        answers: Object.fromEntries(
-          row.fields.map((f) => [
-            f.key,
-            { text: f.text, status: "proposed" as const },
-          ]),
-        ),
-      })),
-    },
+    data: proposalData(s),
   }));
 }

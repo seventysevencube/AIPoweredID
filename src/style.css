@@ -905,3 +905,33 @@ input {
   min-height: 2.75rem;
   height: 2.75rem;
 }
+.revise {
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  border: 1px solid #c5d9cc;
+  border-radius: 12px;
+  background: #fff;
+}
+.revise summary {
+  font-weight: 650;
+  cursor: pointer;
+}
+.revise[open] summary {
+  margin-bottom: 1rem;
+}
+.proposal {
+  background: #fff;
+  border: 1px solid #c5d9cc;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+}
+.proposal summary {
+  font-weight: 650;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+.proposalitem {
+  border-top: 1px solid #e0e8e2;
+  padding-top: 0.75rem;
+}

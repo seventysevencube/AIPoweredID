@@ -15,9 +15,14 @@ import {
   itemFields,
   type WorkflowSection,
   type AITask,
+  isRevision,
+  proposalData,
+  solutionDecisions,
 } from "./workflow-model";
 import {
+  digest,
   markReviewed,
+  withBasis,
   sectionStatus,
   staleReasons,
   statusLabels,
@@ -111,7 +116,9 @@ function WorkflowEditor({
     [reviewed, setReviewed] = useState(false),
     [job, setJob] = useState<any>(null),
     [history, setHistory] = useState<any[] | null>(null),
-    [budget, setBudget] = useState<any>(null);
+    [budget, setBudget] = useState<any>(null),
+    [note, setNote] = useState(""),
+    [dismissed, setDismissed] = useState("");
   const [controller] = useState(
     () =>
       new SaveController(
@@ -171,7 +178,12 @@ function WorkflowEditor({
   const coreReady = analysisAIReadiness(
     Object.fromEntries(sections.map((s) => [s, snapshot.records[s]])),
   ).ready;
-  const latest = snapshot.jobs.find((j) => j.task === relevant);
+  const revision =
+    section === "analysis-brief" ? null : (`revise-${section}` as AITask);
+  // The page follows its newest first-draft or revision job.
+  const latest = snapshot.jobs.find(
+    (j) => j.task === relevant || j.task === revision,
+  );
   useEffect(() => {
     if (!latest) return;
     let active = true;
@@ -212,7 +224,8 @@ function WorkflowEditor({
     await controller.flush();
     location.hash = `/projects/${id}/${target}`;
   }
-  async function generate(task: AITask) {
+  // fresh: always a new attempt (revisions, or a new brief from unchanged Analysis).
+  async function generate(task: AITask, fresh = false, note = "") {
     await saved();
     const current = await refresh();
     const expected_revisions = Object.fromEntries(
@@ -235,6 +248,7 @@ function WorkflowEditor({
         expected_revisions,
         task,
         ...(retry_of ? { retry_of } : {}),
+        ...(note.trim() ? { note: note.trim() } : {}),
       });
     };
     let pending;
@@ -245,10 +259,46 @@ function WorkflowEditor({
       } catch (e) {
         if ((e as { error?: string }).error !== "invalid_retry") throw e;
       }
-    pending ??= await submit(retrying ? `fresh:${previous!.id}` : "initial");
+    pending ??= await submit(
+      retrying
+        ? `fresh:${previous!.id}`
+        : fresh
+          ? `after:${previous?.id ?? "none"}:${digest(note.trim())}`
+          : "initial",
+    );
     await refresh();
-    if (task === relevant)
+    if (task === relevant || task === revision)
       setJob({ id: pending.job_id, state: pending.state, task });
+  }
+  // Using a proposal replaces the draft through an ordinary save; history keeps the earlier version.
+  async function useProposal() {
+    if (!job?.result) return;
+    await saved();
+    const current = await refresh();
+    const output = job.result.sections.find(
+      (s: { key: string }) => s.key === section,
+    );
+    const proposed = proposalData(output);
+    if (section === "design-solution")
+      for (const key of solutionDecisions) {
+        const kept = controller.state.data.answers[key];
+        if (kept) proposed.answers[key] = kept;
+        else delete proposed.answers[key];
+      }
+    const [next] = withBasis(
+      [{ key: section, data: proposed }],
+      current,
+      job.input_manifest ?? {},
+    );
+    next.data.answers._job = { text: job.id, status: "provided" };
+    controller.edit(next.data, true);
+    await controller.flush();
+  }
+  function dismiss() {
+    try {
+      localStorage.setItem(`ai-dismissed:${job.id}`, "1");
+    } catch {}
+    setDismissed(job.id);
   }
   // Reviewing records the exact content and the inputs it was checked against.
   async function review() {
@@ -318,6 +368,19 @@ function WorkflowEditor({
   const reasons = staleReasons(section, data, live);
   const failed = !!job && ["failed", "cancelled"].includes(job.state);
   const opened = !!job && data.answers._job?.text === job.id;
+  let wasDismissed = dismissed === job?.id;
+  try {
+    wasDismissed ||= !!job && !!localStorage.getItem(`ai-dismissed:${job.id}`);
+  } catch {}
+  // A completed result for this page that is not yet in the draft is offered as a proposal.
+  const proposal =
+    job?.state === "completed" &&
+    !opened &&
+    !wasDismissed &&
+    (hasDraft || isRevision(job.task)) &&
+    job.result?.sections?.find((s: { key: string }) => s.key === section);
+  const active =
+    !!job && ["queued", "running", "cost_pending"].includes(job.state);
   const designFailed = ["failed", "cancelled"].includes(
     snapshot.jobs.find((j) => j.task === "design")?.state ?? "",
   );
@@ -504,7 +567,7 @@ function WorkflowEditor({
               Design.
             </p>
           )}
-          {job && (
+          {job && !(job.state === "completed" && wasDismissed) && (
             <section className="ai-result">
               <p role="status">
                 {job.state === "queued"
@@ -514,7 +577,9 @@ function WorkflowEditor({
                     : job.state === "completed"
                       ? opened
                         ? "This draft started from an AI proposal. Review and edit it before relying on it."
-                        : "AI draft is ready for your review."
+                        : proposal
+                          ? "An AI proposal is ready. Your draft has not changed."
+                          : "AI draft is ready for your review."
                       : job.state === "cost_pending"
                         ? "AI is paused while a charge is checked. Your saved work is safe."
                         : "AI could not finish this draft. Nothing was changed, and your saved work is safe."}
@@ -535,40 +600,97 @@ function WorkflowEditor({
                   <button
                     className="primary"
                     disabled={busy || blocked || !canGenerate}
-                    onClick={() => void act(() => generate(relevant))}
+                    onClick={() =>
+                      void act(() =>
+                        generate(job.task, isRevision(job.task), note),
+                      )
+                    }
                   >
                     {busy ? "Preparing…" : "Try again"}
                   </button>
                 </>
               )}
-              {job.inputs_changed && !opened && (
+              {job.inputs_changed && !opened && job.state === "completed" && (
                 <p className="note">
                   Earlier inputs changed since this job started. Review them
                   before using the result.
                 </p>
               )}
-              {job.state === "completed" && hasDraft && !opened && (
-                <details>
-                  <summary>View retained AI result</summary>
-                  {job.result?.sections?.map((s: any) => (
-                    <section key={s.key}>
-                      <h3>{workflowLabels[s.key as WorkflowSection]}</h3>
-                      {s.fields.map((f: any) => (
-                        <p key={f.key}>{f.text}</p>
+              {proposal && (
+                <>
+                  <details className="proposal" open>
+                    <summary>Review the proposal</summary>
+                    {proposal.fields
+                      .filter(
+                        (f: { key: string; text: string }) =>
+                          f.text.trim() && !solutionDecisions.includes(f.key),
+                      )
+                      .map((f: { key: string; text: string }) => (
+                        <div key={f.key}>
+                          <h3>
+                            {workflowFields[section].find(
+                              ([k]) => k === f.key,
+                            )?.[1] ?? f.key}
+                          </h3>
+                          <p>{f.text}</p>
+                        </div>
                       ))}
-                    </section>
-                  ))}
-                </details>
+                    {proposal.items.map(
+                      (
+                        row: { fields: { key: string; text: string }[] },
+                        n: number,
+                      ) => (
+                        <div className="proposalitem" key={n}>
+                          {row.fields
+                            .filter((f) => f.text.trim())
+                            .map((f) => (
+                              <p key={f.key}>
+                                <strong>
+                                  {itemFields[section]?.find(
+                                    ([k]) => k === f.key,
+                                  )?.[1] ?? f.key}
+                                  :
+                                </strong>{" "}
+                                {f.text}
+                              </p>
+                            ))}
+                        </div>
+                      ),
+                    )}
+                  </details>
+                  <div className="buttonrow">
+                    <button
+                      className="primary"
+                      disabled={busy || blocked}
+                      onClick={() => void act(useProposal)}
+                    >
+                      Use this proposal
+                    </button>
+                    <button disabled={busy} onClick={dismiss}>
+                      Keep my current draft
+                    </button>
+                  </div>
+                  <p className="hint">
+                    Using it replaces this section's draft. Your current version
+                    stays in version history
+                    {section === "design-solution"
+                      ? ", and your solution choices are kept"
+                      : ""}
+                    .
+                  </p>
+                </>
               )}
-              {job.state === "completed" && !hasDraft && (
-                <button
-                  className="primary"
-                  disabled={busy || blocked}
-                  onClick={() => void act(apply)}
-                >
-                  Open the AI draft
-                </button>
-              )}
+              {job.state === "completed" &&
+                !hasDraft &&
+                !isRevision(job.task) && (
+                  <button
+                    className="primary"
+                    disabled={busy || blocked}
+                    onClick={() => void act(apply)}
+                  >
+                    Open the AI draft
+                  </button>
+                )}
               {["queued", "running"].includes(job.state) && (
                 <button
                   disabled={busy}
@@ -582,6 +704,56 @@ function WorkflowEditor({
                 </button>
               )}
             </section>
+          )}
+          {hasDraft && (
+            <details className="revise">
+              <summary>
+                {section === "analysis-brief"
+                  ? "Ask AI for a new brief from your current Analysis"
+                  : "Ask AI to revise this section"}
+              </summary>
+              {section === "analysis-brief" ? (
+                <p className="hint">
+                  AI drafts a new brief from your saved Analysis answers. It is
+                  shown as a proposal; your brief stays as it is until you
+                  choose to use it.
+                </p>
+              ) : (
+                <div className="question">
+                  <label htmlFor="revision-request">
+                    What should change? (optional)
+                  </label>
+                  <textarea
+                    id="revision-request"
+                    rows={3}
+                    maxLength={2000}
+                    value={note}
+                    onChange={(e) => setNote(e.target.value)}
+                  />
+                  <p className="hint">
+                    AI reworks only this section, keeping it consistent with the
+                    accepted brief, your solution choices and the other Design
+                    sections. The result is a proposal; your draft stays as it
+                    is until you choose to use it.
+                  </p>
+                </div>
+              )}
+              <button
+                disabled={busy || blocked || !canGenerate || active}
+                onClick={() =>
+                  void act(() =>
+                    revision
+                      ? generate(revision, true, note)
+                      : generate("analysis", true),
+                  )
+                }
+              >
+                {section === "analysis-brief"
+                  ? "Request a new brief"
+                  : "Request AI revision"}
+              </button>
+              <p className="hint">Each request uses the shared AI budget.</p>
+            </details>
           )}
           {!hasDraft && (
             <section className="emptyworkflow">
@@ -971,7 +1143,7 @@ function WorkflowEditor({
             )}
           </div>
           {history && (
-            <section>
+            <section className="history">
               <h2>Latest 10 versions</h2>
               {history.map((v) => (
                 <details key={v.id}>

@@ -187,8 +187,92 @@ test("a failed AI step can be tried again at every stage, through to Design", as
     .click();
   await expect(status).toHaveText(/Reviewed/);
   await expect(page.locator(".navstatus.needs-update")).toHaveCount(1);
+  // Ask AI to revise one section; the proposal changes nothing until it is used.
+  const overview = page.getByLabel("Objective overview and coverage gaps", {
+    exact: true,
+  });
+  await page
+    .getByText("Ask AI to revise this section", { exact: true })
+    .click();
+  await page
+    .getByLabel("What should change? (optional)", { exact: true })
+    .fill("Add a safety objective");
+  await page
+    .getByRole("button", { name: "Request AI revision", exact: true })
+    .click();
+  // The fail-once project also fails the first revision; Try again keeps the request.
+  await page
+    .getByRole("button", { name: "Try again", exact: true })
+    .click({ timeout: 15000 });
+  await expect(
+    page.getByText("An AI proposal is ready. Your draft has not changed."),
+  ).toBeVisible({ timeout: 15000 });
+  await expect(overview).toHaveValue(/Fictional test draft/);
+  await expect(
+    page.getByText("Fictional revision (Add a safety objective) for overview", {
+      exact: false,
+    }),
+  ).toBeVisible();
+  await page
+    .getByRole("button", { name: "Use this proposal", exact: true })
+    .click();
+  await expect(overview).toHaveValue(
+    /Fictional revision \(Add a safety objective\)/,
+  );
+  await expect(
+    page.getByRole("status").filter({ hasText: "All changes saved" }),
+  ).toBeVisible();
+  await expect(status).toHaveText(/Draft/);
+  await page
+    .getByRole("button", { name: "Version history", exact: true })
+    .click();
+  // The earlier draft is still in version history.
+  await expect(
+    page.getByText("Fictional test draft for overview").first(),
+  ).toBeAttached();
+  expect(
+    (
+      await new AxeBuilder({ page })
+        .withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"])
+        .analyze()
+    ).violations,
+  ).toEqual([]);
+  // Keeping the current draft dismisses a proposal without changing anything.
   await page
     .getByRole("link", { name: "4 Assessments and alignment", exact: true })
     .click();
-  await expect(page.locator(".sectionstatus")).toHaveText(/Draft/);
+  // Assessments depend on the objectives that were just replaced.
+  await expect(page.locator(".sectionstatus")).toHaveText(/Needs update/);
+  await expect(page.getByText("Learning objectives changed.")).toBeVisible();
+  await page
+    .getByText("Ask AI to revise this section", { exact: true })
+    .click();
+  await page
+    .getByRole("button", { name: "Request AI revision", exact: true })
+    .click();
+  await page
+    .getByRole("button", { name: "Try again", exact: true })
+    .click({ timeout: 15000 });
+  await page
+    .getByRole("button", { name: "Keep my current draft", exact: true })
+    .click({ timeout: 15000 });
+  await expect(
+    page.getByLabel(
+      "Assessment approach, completion rules, and alignment gaps",
+      {
+        exact: true,
+      },
+    ),
+  ).toHaveValue(/Fictional test draft/);
+  await expect(page.getByText("An AI proposal is ready.")).toHaveCount(0);
+  await page.reload();
+  await expect(
+    page.getByLabel(
+      "Assessment approach, completion rules, and alignment gaps",
+      {
+        exact: true,
+      },
+    ),
+  ).toBeVisible();
+  await expect(page.getByText("An AI proposal is ready.")).toHaveCount(0);
 });

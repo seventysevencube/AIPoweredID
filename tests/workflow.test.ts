@@ -301,3 +301,72 @@ test("workflow initializes privately; acceptance pins exact version; AI apply ne
     await d.db.close();
   }
 });
+
+test("revision tasks rework exactly one section with the same gates and the designer's request", async () => {
+  const one = {
+    sections: [
+      {
+        key: "design-objectives",
+        fields: workflowFields["design-objectives"].map(([key]) => ({
+          key,
+          text: "Revised",
+        })),
+        items: [],
+      },
+    ],
+  };
+  expect(validateOutput(one, "revise-design-objectives").sections).toHaveLength(
+    1,
+  );
+  expect(() => validateOutput(one, "revise-design-plan")).toThrow();
+  const record = (answers: any, items: any[] = []) => ({
+    revision: 1,
+    data: { answers, items },
+  });
+  const data: any = {
+    accepted_revision: 2,
+    accepted_data: { answers: { gap: { text: "Gap" }, _job: { text: "x" } } },
+    records: {
+      "analysis-brief": { revision: 2 },
+      "design-solution": record({ route: { text: "learning" } }),
+      "design-objectives": record(
+        { overview: { text: "LO-1" }, _basis: { text: "{}" } },
+        [{ id: randomUUID(), answers: { code: { text: "LO-1" } } }],
+      ),
+      "design-assessments": record({ overview: { text: "AS-1" } }),
+      "design-content": record({}),
+      "design-sequence": record({}),
+      "design-plan": record({}),
+      learning: { revision: 4, data: { items: [] } },
+    },
+  };
+  const rpc = async () => data;
+  await expect(
+    workflowInput(rpc, {}, randomUUID(), "revise-design-objectives"),
+  ).rejects.toThrow("learning_measures_required");
+  data.records["design-solution"].data.answers.route = { text: "nonlearning" };
+  data.records["design-solution"].data.answers.rationale = {
+    text: "Fix tools",
+  };
+  const input: any = await workflowInput(
+    rpc,
+    {},
+    randomUUID(),
+    "revise-design-objectives",
+    "  Add a safety objective ",
+  );
+  expect(input.target).toBe("design-objectives");
+  expect(input.designer_request).toBe("Add a safety objective");
+  expect(input.current.answers).toEqual({ overview: { text: "LO-1" } });
+  expect(input.current.items).toEqual([{ code: { text: "LO-1" } }]);
+  expect(Object.keys(input.design)).not.toContain("design-objectives");
+  expect(input.brief.answers._job).toBeUndefined();
+  const solution: any = await workflowInput(
+    rpc,
+    {},
+    randomUUID(),
+    "revise-design-solution",
+  );
+  expect(solution.design).toEqual({});
+  expect(solution.designer_request).toBeUndefined();
+});
