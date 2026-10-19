@@ -82,3 +82,7 @@ PR #3 is merged into `main` after successful GitHub checks, and the first Netlif
 The configured production deployment now reports connected. Unsigned-in requests are denied, untrusted mutation origins are blocked, and a no-email unapproved-address probe reached the hosted database. The first approved pilot was added and one live sign-in request completed successfully; inbox delivery and authenticated workspace checks await the user entering the code in the app. The deployment record documents the narrow public-value scan exception and preserves all actual credentials as secrets.
 
 The user completed live sign-in. A clearly labeled fictional technical project verified automatic saving/reload, history/restoration into a new version, clean-tab synchronization, offline draft retention, explicit conflict resolution against a newer server copy, and persistence after resolution. Network emulation and the extra tab were cleaned up. This is bounded technical acceptance evidence, not the deferred instructional walkthrough or full milestone completion.
+
+## User-directed deferral
+
+The user deferred the second-account live privacy test and requested the next step. Record it as pending/deferred, not passed. Preparation for Milestone 2 can proceed; no second pilot account or additional email is authorized by this deferral. See the [Analysis AI draft](milestone-2-analysis-ai.md) for the next reviewable artifact.
