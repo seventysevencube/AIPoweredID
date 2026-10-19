@@ -30,11 +30,15 @@ npm run format:check
 
 The unit/integration suite runs the actual SQL migration in PGlite. Browser tests use the local HTTP backend and durable browser storage. These tests do **not** establish live Supabase/Resend/Netlify behavior or complete WCAG conformance. GitHub Actions runs the same suites without cloud credentials or AI requests.
 
+`npm run check` also bundles the real hosted backend for Node 22 and verifies configured/unconfigured startup without network calls. Provider-contract tests run the installed Supabase SDK against simulated HTTP responses; they cover sign-in issuance/verification/refresh and failures, separately from live acceptance.
+
 ## Connect real services
 
 See the [service setup and verification guide](docs/implementation/service-setup.md). Server settings are listed in `.env.example`; keep actual values out of Git and chat. With settings missing, the deployed API returns a setup error and never substitutes fictional authentication or local storage.
 
 No AI key is needed in Milestone 1. There are no AI calls during editing, saving, navigation, or recovery. No subscription purchase, deployment, domain change, source upload, or real invitation has been performed by implementing this foundation.
+
+Use `npm run setup:check -- .env.local` for redacted configuration validation and `npm run setup:database -- .env.local` for a read-only application-RPC connection check once Supabase settings and migrations are ready. The second needs no Resend settings. See the setup guide for the exact checks and limits; neither command replaces live sign-in/persistence verification.
 
 ## Planning baseline
 

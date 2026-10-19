@@ -9,10 +9,13 @@
     "build": "tsc --noEmit && vite build",
     "test": "vitest run",
     "test:browser": "playwright test",
-    "check": "npm test && npm run build",
+    "check": "npm test && npm run build && npm run build:function",
     "pilot": "tsx scripts/pilot.ts",
     "format": "prettier --write src server scripts tests netlify *.ts *.json",
-    "format:check": "prettier --check src server scripts tests netlify *.ts *.json"
+    "format:check": "prettier --check src server scripts tests netlify *.ts *.json",
+    "build:function": "node --import tsx scripts/build-function.ts",
+    "setup:check": "node --import tsx scripts/check-config.ts",
+    "setup:database": "node --import tsx scripts/check-database.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.118.0",
@@ -30,6 +33,7 @@
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",
     "concurrently": "^10.0.6",
+    "esbuild": "0.28.2",
     "prettier": "^3.9.10",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2",

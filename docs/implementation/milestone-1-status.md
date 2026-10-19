@@ -1,6 +1,6 @@
 # Milestone 1 implementation status
 
-October 18, 2026. **Foundation implemented and tested locally; full milestone completion awaits live-service verification and human interaction review.** The user authorized starting Milestone 1 and merging ready changes. Planning PRs #1 and #2 are merged into `main`; the audit remains reference material, without blanket approval of its recommendations.
+Updated October 19, 2026. **Foundation implemented and tested locally; full milestone completion awaits live-service verification and human interaction review.** The user authorized starting Milestone 1 and merging ready changes. Planning PRs #1 and #2 are merged into `main`; the audit remains reference material, without blanket approval of its recommendations.
 
 ## Implemented
 
@@ -58,3 +58,11 @@ The designer requested a shorter possible-causes question: the repeated descript
 ## Contextual guidance and version retention
 
 All seven Analysis sections now provide distinct guidance and an illustrative example. Evidence of learning retains the conditional learning-measure confirmation gate. The second SQL migration trims ordinary versions to the latest ten per section on upgrade and after every inserted version, while excluding review/baseline references from deletion. The authenticated history endpoint returns only the latest ten; restoring creates a new saved version in that window. Receipts remain unchanged for idempotent retries and do not recreate a pruned version. This is version-history retention, not a complete project-data deletion policy. The local database applies the new migration without resetting projects; live Supabase setup remains deferred.
+
+## Technical connection preparation — October 19
+
+The user requested completing technical work before a full flow review. Provider-contract tests now exercise the installed Supabase SDK with deterministic HTTP responses for native identity issuance, remote verification, refresh, invalid/mismatched identities, server RPCs, and Resend success/failure. They are simulated-service evidence, not live certification. A temporary verification outage now returns a retryable service error without clearing cookies or admitting access; invalid sessions still require reauthentication. Server configuration checks report setting names without exposing values.
+
+The real backend is reproducibly bundled and startup-tested in `npm run check`/CI, including missing settings, configured setup, denial of an unauthenticated development-inbox request, and exclusion of the fictional local service from the bundle. Operator commands validate settings or make a read-only Supabase admission-denial check independently of email setup.
+
+The user’s Supabase project exists and its dashboard reports Healthy in North Virginia; read-only inspection found no application schema. Application SQL, privileged local settings, Resend/sender setup, hosted origin, deployment, and all live acceptance checks remain pending. An ignored private settings file is prepared locally; no keys are stored in Git or chat. No complete fictional walkthrough, paid AI call, account purchase, DNS change, or application deployment is included in this preparation.

@@ -278,3 +278,7 @@ The designer requested removing the causes description and Not sure choice, enab
 ## October 18, 2026 — Contextual guidance and bounded draft history
 
 The designer requested corresponding Guidance content for every section and storing only the last 10 versions. Apply the rolling limit per section, matching the existing history UI; saves and restores count toward it. Preserve exact versions referenced by reviews or accepted baselines under the existing handoff rule, separately from the latest-ten history shown to the designer. This supersedes unbounded ordinary draft-history wording. The database migration trims existing unreferenced history as well as future saves. Other deferred retention policies remain open.
+
+## October 19, 2026 — Complete technical preparation before flow review
+
+The user requested completing the technical side as far as possible before reviewing the full flow. Continue the current milestone’s service-adapter, configuration, deployment-build, and persistence verification first. The user confirmed Supabase is ready and supplied the AIPoweredID project dashboard; Resend is not ready. Read-only project inspection is not application setup or live verification. Preserve later-milestone boundaries, the existing human review/acceptance rules, the deferred fictional walkthrough, and the approved B4 timing. Actual sender/domain, privileged settings, live SQL application, and hosted verification remain separate concrete setup steps.

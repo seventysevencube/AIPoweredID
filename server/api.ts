@@ -64,6 +64,8 @@ const errorMessages: Record<string, string> = {
     "The email provider did not confirm sending. Wait one minute, then request a new code.",
   identity_unavailable:
     "Sign-in could not be completed. Request a fresh code and try again.",
+  session_unavailable:
+    "The sign-in service is temporarily unavailable. Please retry. Your session has not been cleared.",
 };
 export function digest(secret: string, id: string, code: string) {
   return createHmac("sha256", secret).update(`${id}:${code}`).digest("hex");
@@ -189,7 +191,11 @@ export function createHandler(d: Dependencies) {
           cookie.aid_access ?? "",
           cookie.aid_refresh ?? "",
         );
-      } catch {
+      } catch (error) {
+        // A provider outage is not evidence that the session is invalid.
+        // Keep cookies so a later retry can verify or refresh the same session.
+        if (!(error instanceof Error) || error.message !== "unauthorized")
+          throw Error("session_unavailable");
         return response(
           { error: "unauthorized", message: errorMessages.unauthorized },
           401,

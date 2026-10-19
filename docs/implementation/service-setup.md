@@ -2,6 +2,8 @@
 
 Status: code prepared; no live project, sender, domain, region, or deployment has been configured or verified by this implementation.
 
+October 19 update: the user supplied the [AIPoweredID Supabase project](https://supabase.com/dashboard/project/eefozbgaobaymadewdhu). Read-only dashboard inspection showed Healthy status, East US (North Virginia), no `app` schema, and no public tables. The two application migrations still need applying; the project’s existence does not establish app connectivity. Resend is not yet ready, and the sender domain and hosted test origin remain unselected.
+
 ## Configuration
 
 1. Select/create the app's Supabase project and region. Apply the SQL files in `supabase/migrations/` in filename order using the operator's SQL editor or a migration connection. Apply each once; the initial workspace migration requires an empty application schema. For an existing workspace, apply only migrations not yet applied, including `202610180002_version_retention.sql` for the 10-version limit.
@@ -20,6 +22,21 @@ Status: code prepared; no live project, sender, domain, region, or deployment ha
 7. Build using `npm ci` and `npm run build`. Netlify configuration serves the client and a standard Request/Response function. Deploy only to an agreed test site when hosting setup is authorized; no DNS change is necessary for that test. The development inbox and identity adapter are excluded from deployed functions.
 
 Never put secrets in a `VITE_` variable, a repository file, a PR, or a chat message. `.env.example` contains names only. Netlify environment scopes must include function runtime settings, not merely build settings.
+
+## Local connection preparation
+
+An ignored `.env.local` can hold server settings for operator checks. Enter real keys there privately rather than in chat. The prepared local file uses the supplied Supabase URL and an independently generated server secret; actual service keys, sender, and hosted origin still need entry. Never commit this file, and do not assume operator commands automatically load it.
+
+```sh
+npm run setup:check -- .env.local
+npm run setup:database -- .env.local
+```
+
+The first command checks all six setting formats without contacting services or printing values. It requires HTTPS origin/project URLs without paths, query strings, credentials, or fragments; a 32-character minimum server secret; nonempty keys; and a valid sender address (with optional display name). It does not prove keys are privileged/valid or a domain is verified.
+
+The second requires only the two Supabase settings, so it can run before Resend is ready. It makes a bounded, read-only application-RPC request using random unadmitted identifiers and expects an authorization denial. It creates no user, email, project, or admitted session. Passing establishes reachability of the initial RPC and its admission check, not the full migration state, real authentication, ownership isolation, or deployed routing. Provider failure details and credentials are not printed. Apply both migrations and retain the live verification steps below.
+
+The local fictional preview continues to use `npm run dev:local`; adding server settings does not silently connect it to real accounts. `npm run build:function` bundles and smoke-checks the real backend entry for Node 22, without a deployment or live network calls. It is included in `npm run check` and therefore CI.
 
 ## Authentication mechanism to verify
 
