@@ -205,3 +205,77 @@ test("unknown email receives generic response without sending a code", async () 
   expect(r.status).toBe(200);
   expect(code).toBe("unchanged");
 });
+test("open sign-up admits a new email only after its code verifies", async () => {
+  const sent = new Map<string, string>();
+  const sessions = new Map<string, Identity>();
+  const open = createHandler({
+    rpc: db.rpc,
+    origin: "https://workspace.test",
+    secret: "test-secret-at-least-thirty-two-characters",
+    openSignup: true,
+    sendCode: async (mail, value) => {
+      sent.set(mail, value);
+    },
+    identity: {
+      issue: async (mail) => {
+        const value = {
+          email: mail,
+          user_id: randomUUID(),
+          session_id: randomUUID(),
+          access: randomUUID(),
+          refresh: "refresh",
+        };
+        sessions.set(value.access, value);
+        return value;
+      },
+      verify: async (access) => {
+        const s = sessions.get(access);
+        if (!s) throw Error("unauthorized");
+        return s;
+      },
+    },
+  });
+  const call = (path: string, method = "GET", body?: unknown, cookie = "") =>
+    open(
+      new Request("https://workspace.test/api" + path, {
+        method,
+        headers: {
+          origin: "https://workspace.test",
+          cookie,
+          ...(body ? { "content-type": "application/json" } : {}),
+        },
+        ...(body ? { body: JSON.stringify(body) } : {}),
+      }),
+    );
+  expect((await (await call("/setup")).json()).open_signup).toBe(true);
+  const newcomer = "Newcomer@Example.test";
+  const requested = await call("/auth/request-code", "POST", {
+    email: newcomer,
+  });
+  expect(requested.status).toBe(200);
+  const { challenge_id, message } = await requested.json();
+  expect(message).toContain("has been sent");
+  const value = sent.get("newcomer@example.test")!;
+  expect(value).toMatch(/^\d{6}$/);
+  // The one-minute resend limit still applies to a newly registered email.
+  expect(
+    (await call("/auth/request-code", "POST", { email: newcomer })).status,
+  ).toBe(429);
+  const wrong = value === "000000" ? "111111" : "000000";
+  expect(
+    (await call("/auth/verify-code", "POST", { challenge_id, code: wrong }))
+      .status,
+  ).toBe(400);
+  const login = await call("/auth/verify-code", "POST", {
+    challenge_id,
+    code: value,
+  });
+  expect(login.status).toBe(200);
+  const user = (await login.json()).user;
+  expect(user.email).toBe("newcomer@example.test");
+  const cookie = "aid_access=" + sessions.values().next().value!.access;
+  const projects = await call("/projects", "GET", undefined, cookie);
+  expect(projects.status).toBe(200);
+  // A new account starts with an empty, private project list.
+  expect((await projects.json()).projects).toEqual([]);
+});

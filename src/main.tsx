@@ -47,6 +47,7 @@ function errorText(e: unknown) {
 function App() {
   const [user, setUser] = useState<User | null>(null),
     [mode, setMode] = useState(""),
+    [openSignup, setOpenSignup] = useState(false),
     [loading, setLoading] = useState(true),
     [error, setError] = useState(""),
     [path, setPath] = useState(route());
@@ -61,6 +62,7 @@ function App() {
     try {
       const setup = await api("/setup");
       setMode(setup.mode);
+      setOpenSignup(!!setup.open_signup);
       try {
         setUser((await api("/auth/session")).user);
       } catch (e) {
@@ -135,7 +137,7 @@ function App() {
           <button onClick={() => void initialize()}>Try again</button>
         </main>
       ) : !user ? (
-        <Auth mode={mode} onUser={setUser} />
+        <Auth mode={mode} openSignup={openSignup} onUser={setUser} />
       ) : projectId &&
         workflowSections.includes(projectId[2] as WorkflowSection) ? (
         <Workflow
@@ -162,7 +164,15 @@ function App() {
     </>
   );
 }
-function Auth({ mode, onUser }: { mode: string; onUser: (u: User) => void }) {
+function Auth({
+  mode,
+  openSignup,
+  onUser,
+}: {
+  mode: string;
+  openSignup: boolean;
+  onUser: (u: User) => void;
+}) {
   const [email, setEmail] = useState(""),
     [code, setCode] = useState(""),
     [id, setId] = useState(""),
@@ -236,18 +246,23 @@ function Auth({ mode, onUser }: { mode: string; onUser: (u: User) => void }) {
         </p>
       </div>
       <section className="signin">
-        <p className="eyebrow">Invitation-only pilot</p>
+        <p className="eyebrow">
+          {openSignup ? "Pilot workspace" : "Invitation-only pilot"}
+        </p>
         <h2>{id ? "Check your email" : "Welcome to your workspace"}</h2>
         <p>
           {id
             ? `Enter the six-digit code sent to ${email}.`
-            : "Use your approved email to receive a one-time sign-in code."}
+            : openSignup
+              ? "Sign in or create your workspace. Enter your email to receive a one-time code. No password needed."
+              : "Use your approved email to receive a one-time sign-in code."}
         </p>
         {mode === "local" && (
           <p className="note">
-            For this local build, use <strong>designer@example.test</strong> or{" "}
-            <strong>peer@example.test</strong>. Codes appear in the local inbox
-            below.
+            {openSignup
+              ? "For this local build, any email works."
+              : "For this local build, use designer@example.test or peer@example.test."}{" "}
+            Codes appear in the local inbox below.
           </p>
         )}
         <form
