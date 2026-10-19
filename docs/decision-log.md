@@ -254,3 +254,41 @@ These approvals complete the pending B5 question wording and described presentat
 The user accepted the low-cost foundation and manually resuming idle services before demos. They have existing domains, Netlify Free (credit-based, 300 monthly credits), and a temporary Vercel Pro trial for another project; ongoing Vercel Pro spending is not assumed. Netlify/Supabase/Resend are the planning foundation, with implementation feasibility still to prove. OpenAI is the first provider; evaluate Luna first and use Sol only where quality/cost results justify it. Jev is outside the initial MVP.
 
 The user reviewed the milestone specification and then explicitly instructed: “Please also merge changes to main if we are ready. Lets start Milestone 1 implementation”. This authorizes implementation and merging reviewed ready changes. It does not adopt deferred audit recommendations, approve the fictional walkthrough, or verify service behavior. Preserve the current requirements and historical decision log. Implementation progress and outstanding live-configuration checks must be reported accurately.
+
+
+## October 18, 2026 — Milestone 1 implementation authorized
+
+The user instructed: “Please also merge changes to main if we are ready. Lets start Milestone 1 implementation.” The reviewed planning audit (PR #1) and approved baseline/implementation specification (PR #2) have been merged, without approving other audit recommendations or resuming the fictional walkthrough. Milestone 1 implementation now proceeds under the current requirements. The [implementation status](implementation/milestone-1-status.md) separates local test evidence from pending live Supabase/Resend/Netlify and human accessibility checks. No application deployment, DNS change, subscription purchase, or AI call is included in this checkpoint.
+
+
+## October 18, 2026 — Analysis Continue and uncertainty controls
+
+The designer requested disabling Continue when Needed-for-Design fields are incomplete and removing the redundant Enter an answer option. Continue checks the current page's required fields; saving and section navigation remain available. Unknown responses use a checkbox, and optional applicability controls preserve rationale/text. This is a navigation refinement, not a new stage acceptance or learning-measure confirmation action. See current requirements for the precise rule.
+
+
+## October 18, 2026 — Continue navigates; core answers gate AI
+
+The designer superseded the preceding Continue restriction: both Continue and section links allow moving through incomplete Analysis. Unknown checkboxes are directly visible, with no Answer options disclosure. Required/core answers instead gate project-content AI submission; unknown notes or empty answers cannot bypass it. This is the current rule. Milestone 1 computes readiness from saved owner-authorized records; actual AI queue/provider integration remains later work and must enforce the rule on the server.
+
+
+## October 18, 2026 — Evidence form simplification and count scope
+
+The designer requested removing the causes description and Not sure choice, enabling a one-line Other detail only with Other selected, and trimming repeated helper text about permissible unknown answers. Readiness remains project-wide: three core answers in Project context plus the audience description. The UI now states that scope and links the relevant sections; the navigation/AI-submission rules remain unchanged. Other notes are preserved when deselected without treating them as active explanations.
+
+## October 18, 2026 — Contextual guidance and bounded draft history
+
+The designer requested corresponding Guidance content for every section and storing only the last 10 versions. Apply the rolling limit per section, matching the existing history UI; saves and restores count toward it. Preserve exact versions referenced by reviews or accepted baselines under the existing handoff rule, separately from the latest-ten history shown to the designer. This supersedes unbounded ordinary draft-history wording. The database migration trims existing unreferenced history as well as future saves. Other deferred retention policies remain open.
+
+## October 19, 2026 — Complete technical preparation before flow review
+
+The user requested completing the technical side as far as possible before reviewing the full flow. Continue the current milestone’s service-adapter, configuration, deployment-build, and persistence verification first. The user confirmed Supabase is ready and supplied the AIPoweredID project dashboard; Resend is not ready. Read-only project inspection is not application setup or live verification. Preserve later-milestone boundaries, the existing human review/acceptance rules, the deferred fictional walkthrough, and the approved B4 timing. Actual sender/domain, privileged settings, live SQL application, and hosted verification remain separate concrete setup steps.
+
+The user then explicitly chose **Apply the database setup** for the two tested scripts on project `eefozbgaobaymadewdhu`. Both applied successfully through SQL Editor. Record the [live schema/access evidence](implementation/live-verification-2026-10-19.md) separately from pending credentials, email, native identity, hosting, and complete flow verification. This approval does not create new pilot users or select a sender domain.
+
+## October 19, 2026 — Sending domain and existing Zoho mail
+
+After discussing how automated sign-in mail can coexist with Zoho, the user selected `77cube.dev` and confirmed Porkbun as the DNS provider. Prepare sending-only verification for `auth.77cube.dev` with the planned app sender `signin@auth.77cube.dev`. Preserve the existing Zoho inbox configuration and all current records. See the [email setup record](implementation/email-domain-setup.md) for inspected DNS and pending provider-generated values. Domain selection alone is not evidence that DNS or Resend verification is complete.
+
+At the user's direction, use the other Chrome window already signed in to Resend. The sending-domain entry is now created, and the exact required TXT/two CNAME records are recorded. DNS entry and domain verification remain pending; existing Porkbun records are unchanged. No new API key, DNS change, or email transmission is included in this step.
+
+The user subsequently added the three DNS records and confirmed Done. Read-only Porkbun and public-DNS checks found the expected values and preserved existing records. Resend verification was started and currently shows Pending / Checking DNS. No API credential or email has been created/sent by the agent; provider verification and private sending-key entry remain pending.

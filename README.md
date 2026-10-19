@@ -1,43 +1,52 @@
 # AIPoweredID
 
-Updated: October 17, 2026.
+An instructional-design workspace for workplace e-learning and performance support.
 
-An AI-assisted instructional-design workspace for workplace e-learning and performance support.
+**October 19, 2026:** planning PRs #1 and #2 are merged. Milestone 1 implementation includes project cards, manual Analysis, private backend operations, version history, and browser recovery. Local integration/browser checks pass. The database setup and [basic live access checks](docs/implementation/live-verification-2026-10-19.md) are complete. **Live Supabase authentication, Resend delivery, and hosted persistence have not yet been verified.** See the [implementation status](docs/implementation/milestone-1-status.md).
 
-**Status:** Requirements and experience-design planning. No application has been built in this repository. The agreed MVP covers **Analysis, Design, and partial Development**; Implementation and evaluation execution are later scope.
+The full MVP covers Analysis, Design, and partial Development. Explicitly accepted output versions seed the next stage's editable skeleton; saving, review, and acceptance are separate. Later AI, imports, sharing, and exports are not functioning actions in this first milestone.
 
-Each stage's designer-reviewed output becomes the input for an editable, prefilled skeleton in the next stage. The designer remains responsible for reviewing and accepting AI proposals.
+## Run the local development workspace
 
-## Start here
+Use Node.js 22 or newer (tested locally on Node 26; CI targets Node 22).
 
-1. [Current requirements](docs/requirements.md) — consolidated agreement and scope.
-2. [Detailed notes index](docs/README.md) — exact form questions and review behavior.
-3. [AI creation and quality process](docs/ai/creation-and-quality.md) — prompt strategy, checks, examples, testing, and cost controls.
-4. [Decision log](docs/decision-log.md) — significant refinements and superseded decisions.
-5. [Open decisions and next steps](docs/open-decisions.md) — items still to settle before or during implementation.
-6. [MVP implementation brief](docs/implementation-brief.md) — consolidated workflow, approved export policy, proposed delivery order, and remaining choices.
+```sh
+npm ci
+npm run dev:local
+```
 
-## Key decisions
+Open `http://127.0.0.1:5173`. This is a **local development service**, with a PostgreSQL-compatible PGlite database in ignored `.local-data/`, fictional identities, and a local inbox instead of real email. Use `designer@example.test` or `peer@example.test`, request a code, then choose **Show local development code**. `tabs@example.test` is an additional isolated browser-test fixture. The development service binds only to loopback; it is never imported by the Netlify function.
 
-- Pilot planned for five designers, with an approved-email list and one-time email-code sign-in; guest review remains account-free through shared links.
-- Expected pilot completion volume: approximately 0–1 complete project per month in total; this is a planning estimate, not a quota.
-- $20 total monthly pilot AI budget: warn at $16 and pause new AI requests that would exceed $20; saved work, editing, review, and exports stay available. Provider choice and actual cost/enforcement implementation remain open.
+Restarting the local API expires its fictional sessions; signing in again preserves the database. Only use fictional content here. Browser recovery uses IndexedDB and Web Locks, keeping live tabs' recovery entries separate and offering drafts from closed tabs. Recovery is scoped to the account, project, section, and live page; it is not a backup guarantee.
 
-- Desktop experience with a WCAG 2.2 AA acceptance target.
-- Shared workflow for new and experienced designers, with adjustable guidance and AI contribution.
-- Analysis includes independently written evaluation planning for organizational results, workplace performance, and evidence of learning.
-- Design begins with an independently written performance-analysis review; learning is not assumed.
-- Learning measures are mandatory before instructional Design proceeds; a nonlearning route uses a documented not-applicable rationale.
-- E-learning can be microlearning, a course, or a mix; select Storyline, Rise, or both afterward.
-- Main and enabling objectives use revised Bloom's taxonomy for cognitive learning outcomes.
-- Assessments are defined in Design and carried into the storyboard.
-- Project-wide source settings support direct text entry, Word (.docx)/PowerPoint (.pptx) uploads with basic extraction, permitted web research, or both. No OCR or visual interpretation.
-- Storyboards and complete written performance-support drafts; readable PDF and editable PowerPoint exports. Reviewer comments are optional/off by default in a separate appendix.
-- A full deliverable skeleton with a representative populated section is generated first using **Generate Development sample**.
-- Guest review with required unverified display names, content-anchored comments, and fixed-version links; shared updates create new links.
-- Autosave, recovery, version history, and explicit human review protect work and decisions.
-- Generated images, audio, video, and native authoring-tool projects are outside the MVP.
+## Checks
 
-## Reading the records
+```sh
+npm run check
+npx playwright install chromium
+npm run test:browser
+npm run format:check
+```
 
-The current requirements and detailed notes incorporate the latest decisions from the planning discussion through **October 17, 2026**. Earlier planning drafts are retained in [the archive](docs/archive/README.md) for history and may contain superseded requirements. Open implementation details are labeled; no provider, technology stack, budget estimate, or production prompt pack is selected. Interactive wireframes preserve reviewed design patterns and illustrative sample data; they do not implement a working application.
+The unit/integration suite runs the actual SQL migration in PGlite. Browser tests use the local HTTP backend and durable browser storage. These tests do **not** establish live Supabase/Resend/Netlify behavior or complete WCAG conformance. GitHub Actions runs the same suites without cloud credentials or AI requests.
+
+`npm run check` also bundles the real hosted backend for Node 22 and verifies configured/unconfigured startup without network calls. Provider-contract tests run the installed Supabase SDK against simulated HTTP responses; they cover sign-in issuance/verification/refresh and failures, separately from live acceptance.
+
+## Connect real services
+
+See the [service setup and verification guide](docs/implementation/service-setup.md). Server settings are listed in `.env.example`; keep actual values out of Git and chat. With settings missing, the deployed API returns a setup error and never substitutes fictional authentication or local storage.
+
+No AI key is needed in Milestone 1. There are no AI calls during editing, saving, navigation, or recovery. No subscription purchase, deployment, domain change, source upload, or real invitation has been performed by implementing this foundation.
+
+Use `npm run setup:check -- .env.local` for redacted configuration validation and `npm run setup:database -- .env.local` for a read-only application-RPC connection check once Supabase settings and migrations are ready. The second needs no Resend settings. See the setup guide for the exact checks and limits; neither command replaces live sign-in/persistence verification.
+
+## Planning baseline
+
+- [Requirements](docs/requirements.md) — main source of current product rules.
+- [Decision log](docs/decision-log.md) — approvals and superseded decisions.
+- [Notes index](docs/README.md) — exact questions and interaction decisions.
+- [Milestone 1 specification](docs/implementation/milestone-1.md) and [phased build plan](docs/implementation/phased-build-plan.md).
+- [AI creation and quality](docs/ai/creation-and-quality.md) — revisit prompts, examples, model quality, and cost at each phase's AI connection.
+- [Open decisions](docs/open-decisions.md) — deferred work and pending operational choices.
+
+Five designers and approximately 0–1 completed project per month in total are pilot planning assumptions, not quotas. The shared AI budget is $20/month, with a $16 warning; implementation arrives with the AI queue. Netlify Free, Supabase, and Resend are the selected infrastructure direction, targeting no initial subscription cost within allowances. Other audit findings and the fictional complaint-routing walkthrough remain deferred. Remaining B4 work keeps its agreed pre-production timing.

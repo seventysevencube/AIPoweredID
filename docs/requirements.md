@@ -113,7 +113,13 @@ Use the exact supporting-material prompt: **“Add documentation of any supporti
 
 Capture evaluation measures, baseline/target where known, data source/method, responsibility, timing/frequency, and intended use of findings. Reuse prior desired-performance and source information. Evaluation planning is included even though evaluation execution is excluded.
 
-Core information for a useful Design draft is the task, desired/current performance, and audience. A working title can be supplied or suggested. Saving incomplete work is always allowed. Permitted gaps are summarized before handoff and can remain in an explicitly incomplete draft.
+Core information for a useful Design draft is the task, desired/current performance, and audience. A working title can be supplied or suggested. Saving incomplete work is always allowed. Permitted optional gaps are summarized before handoff and can remain in an explicitly incomplete draft, subject to the core-input AI-submission gate below.
+
+In Analysis entry, **Continue** is a navigation action and stays available with incomplete or unknown answers, just like the section links. Saving and Back remain available too. Navigation preserves unresolved recovery/conflict drafts rather than resolving or discarding them. This supersedes the earlier page-completion restriction.
+
+The required-answer check belongs at **AI submission**: all fields marked **Needed for Design** across Analysis (workplace task, desired performance, current performance, and audience) must contain actual answers. Unknown, blank/whitespace-only, not-applicable, and unconfirmed proposed values do not satisfy that check, even if they contain explanatory notes. Optional gaps can remain; they must not be invented by AI. An incomplete-draft request cannot bypass this core-input gate. Synchronize the current draft before an AI request; unsynced edits or unresolved conflicts must not be bypassed by using an older readiness result. Validate the specific saved inputs on the server before queuing or dispatching project-content AI calls, not just by disabling a browser control. The separate stage-acceptance and conditional learning-measure gates still apply. Milestone 1 exposes readiness calculated from owner-authorized saved records; actual queue/provider enforcement is completed when AI generation is connected.
+
+Show **Not yet known** as a visible checkbox beside the answer, without an Answer options label or disclosure. Unchecking returns to ordinary-answer status and does not delete text. Where relevant, a separate not-applicable checkbox retains its explanation; the two statuses are mutually exclusive. Do not reintroduce an Enter an answer choice.
 
 ### Independently written evaluation planning
 
@@ -295,7 +301,7 @@ During each phase's AI integration, revisit prompts, add reviewed examples, test
 
 These are provider-selection requirements, not a provider choice or a claim about any service's current practices. The no-training and task-needed-material rules remain in the MVP baseline; final retention/deletion assessment follows the approved pre-production timing.
 
-Next planned work: desktop wireframes and a representative end-to-end walkthrough, example storyboard/export templates, unresolved product/operational choices, and an implementation brief. App building has not started.
+Historical next-work note: subsequent implementation authorization and technical direction are recorded in section 10 below. The fictional walkthrough remains deferred.
 
 ## Refinement: decide the solution before confirming deliverables
 
@@ -306,11 +312,19 @@ Derive the output types from that choice: Detailed e-learning storyboard; **Writ
 A performance aid’s purpose determines its learning/nonlearning treatment. Confirm any required route/evaluation-plan change explicitly, retaining relevant workplace-performance and organizational-results measures and recording learning measures as not applicable only for a route with no learning component. Do not force aid-only work through e-learning format or tool questions, and do not force nonlearning aid work through learning objectives/assessments. Preserve previous versions and flag affected downstream content for review.
 
 
+### Analysis form refinements — October 18, 2026
+
+- Possible causes use a checklist without **Not sure** or the repeated descriptive paragraph. The **Other contributing factor** field is one line and enabled only when **Other** is selected. Turning Other off preserves the text for later editing, but excludes it from the active answer. Earlier saved selections and notes remain readable; historical versions follow the retention rule below. Causes remain possible explanations, not established findings.
+- Remove repeated helper sentences saying that unavailable information or “Nothing yet”/“Not known” are valid answers. Retain substantive examples, source/access instructions, actual uncertainty controls, and the conditional learning-measure rule.
+- Readiness counts are explicitly **across all Analysis sections**, with a linked breakdown of remaining answers by section. The four core inputs are three in Project context and performance gap (task, desired performance, current performance) and one in Audience and work environment (roles/responsibilities). Evidence has no newly required fields. Counts do not block navigation; the AI-submission rule above remains in effect.
+- Guidance is specific to each of the seven Analysis sections, with relevant practical tips and a clearly illustrative example. Keep the conditional learning-measure confirmation gate in Evidence of learning guidance.
+- Keep the latest **10 saved versions per section** in ordinary version history, including the current saved version. Each successful save or restore creates one version; older unreferenced versions are removed. Existing history is trimmed when the retention migration is applied. Preserve versions bound to reviews or accepted baselines separately, even beyond the rolling window, to retain exact decision/handoff references. This bounds editable history rather than defining retention for receipts, backups, shared snapshots, exports, or other deferred data categories. It supersedes earlier unbounded draft-history wording.
+
 ## 10. Technical foundation and implementation authorization — October 18, 2026
 
 The user authorized Milestone 1 implementation and merging ready planning changes. Its scope is approved-email code sign-in, private designer projects/cards, manual Analysis entry, reliable autosave/recovery/conflicts, and version foundations. Follow the [milestone specification](implementation/milestone-1.md); technical mechanisms remain subject to verification and cannot weaken approved product behavior.
 
-Use existing Netlify Free hosting, with Supabase Auth/PostgreSQL/private Storage and Resend as the low-cost service foundation. The user's screenshot confirms Netlify's credit-based Free plan with 300 monthly credits; its snapshot balance is not a dedicated app allowance or future guarantee. Aim for minimal non-AI costs, using free allowances where feasible; $0 is a target rather than a fixed approved cap. The user accepts manually resuming an inactive service before scheduled demos and has existing domains available. Do not rely on a temporary Vercel Pro trial. The project region and exact domain remain setup choices. React/TypeScript/Vite is the proposed frontend implementation.
+Use existing Netlify Free hosting, with Supabase Auth/PostgreSQL/private Storage and Resend as the low-cost service foundation. The user's screenshot confirms Netlify's credit-based Free plan with 300 monthly credits; its snapshot balance is not a dedicated app allowance or future guarantee. Aim for minimal non-AI costs, using free allowances where feasible; $0 is a target rather than a fixed approved cap. The user accepts manually resuming an inactive service before scheduled demos and has existing domains available. Do not rely on a temporary Vercel Pro trial. The project region and exact domain remain setup choices. React/TypeScript/Vite is the Milestone 1 frontend implementation.
 
 OpenAI is the approved initial AI provider. Evaluate Luna first per task during phase-specific AI integration; use Sol where measured quality/cost results justify it. Do not automatically run both models on every output. Leave Jev out initially. Preserve stage-specific prompts/examples, structured output checks, source grounding, human review, the shared one-job queue and $20 budget reservations. Specific task/model assignments and measured costs remain to be validated. Milestone 1 does not call AI.
 
