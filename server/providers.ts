@@ -1,6 +1,7 @@
 import { createClient, isAuthRetryableFetchError } from "@supabase/supabase-js";
 import { z } from "zod";
 import type { Identity, IdentityProvider, Rpc } from "./api";
+import { livePolicy } from "./ai/openai";
 import { configuration } from "./config";
 const claimsSchema = z.object({ sub: z.uuid(), session_id: z.uuid() });
 // Only decode tokens returned by successful provider verification, never an unverified request token.
@@ -46,6 +47,15 @@ export function providers(
     if (error) throw Error("database_unavailable");
     return data;
   };
+  const otherRpc =
+    (name: string): Rpc =>
+    async (operation, payload) => {
+      const { data, error } = await client().rpc(name, { operation, payload });
+      if (error) throw Error("database_unavailable");
+      return data;
+    };
+  const aiRpc = otherRpc("ai_rpc"),
+    workflowRpc = otherRpc("workflow_rpc");
   const provider: IdentityProvider = {
     async issue(email) {
       // Native provider tokens never go into the email. Only the application challenge is sent.
@@ -115,6 +125,23 @@ export function providers(
   };
   return {
     rpc,
+    workflowRpc,
+    ...(environment.OPENAI_API_KEY
+      ? {
+          ai: { rpc: aiRpc, policy: livePolicy("analysis") },
+          dispatchAI: async () => {
+            const r = await transport(
+              env.APP_ORIGIN + "/.netlify/functions/ai-worker-background",
+              {
+                method: "POST",
+                headers: { "X-Worker-Secret": env.AUTH_CODE_SECRET },
+                signal: AbortSignal.timeout(8000),
+              },
+            );
+            if (!r.ok) throw Error("ai_interrupted");
+          },
+        }
+      : {}),
     identity: provider,
     secret: env.AUTH_CODE_SECRET,
     origin: env.APP_ORIGIN,

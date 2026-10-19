@@ -33,6 +33,8 @@ Completion evidence:
 
 ## 2. Analysis and the first AI connection
 
+Current preparation: [Analysis brief prompt, output structure, and small review cases](milestone-2-analysis-ai.md). This working draft does not adopt new model, spending, or runtime decisions.
+
 Scope:
 
 - Complete the approved Analysis form and original Evaluation planning questions/layout; preserve permitted unknowns.

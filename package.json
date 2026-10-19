@@ -15,7 +15,8 @@
     "format:check": "prettier --check src server scripts tests netlify *.ts *.json",
     "build:function": "node --import tsx scripts/build-function.ts",
     "setup:check": "node --import tsx scripts/check-config.ts",
-    "setup:database": "node --import tsx scripts/check-database.ts"
+    "setup:database": "node --import tsx scripts/check-database.ts",
+    "ai:simulate": "node --import tsx scripts/simulate-ai-queue.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.118.0",

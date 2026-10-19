@@ -292,3 +292,11 @@ After discussing how automated sign-in mail can coexist with Zoho, the user sele
 At the user's direction, use the other Chrome window already signed in to Resend. The sending-domain entry is now created, and the exact required TXT/two CNAME records are recorded. DNS entry and domain verification remain pending; existing Porkbun records are unchanged. No new API key, DNS change, or email transmission is included in this step.
 
 The user subsequently added the three DNS records and confirmed Done. Read-only Porkbun and public-DNS checks found the expected values and preserved existing records. Resend verification was started and currently shows Pending / Checking DNS. No API credential or email has been created/sent by the agent; provider verification and private sending-key entry remain pending.
+
+## October 19, 2026 — Defer the second-account live test
+
+After successful first-pilot sign-in, autosave/reload, history/restoration, and offline conflict verification, the user said: “Lets table that for now and move to the next step.” This defers the requested second-pilot ownership/isolation test; it does not mark that check passed, authorize another pilot email or message, or declare all Milestone 1 acceptance complete. Proceed to preparation for Analysis and the first AI connection. Preserve the other remaining live checks and approved B4 timing. The fictional instructional walkthrough remains deferred.
+
+## October 19, 2026 — demo priority and real AI setup
+
+The user requested a demo-ready real AI Analysis → Design flow within approximately one hour, tabling broader queue work. Preserve the $20 cap and required-input/learning-confirmation gates. The user privately supplied an OpenAI key locally and in Netlify Production, and explicitly approved applying the private AI/workflow database setup to the existing Supabase project. The release is a vertical demo slice, not completion of all remaining MVP milestones. See [demo implementation status](implementation/demo-ai-status-2026-10-19.md).

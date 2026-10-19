@@ -1,23 +1,59 @@
 // Explicit loopback-only development service. Never imported by a deployed function.
+import { existsSync } from "node:fs";
+if (process.env.LOCAL_BROWSER_TEST !== "1" && existsSync(".env.local"))
+  process.loadEnvFile(".env.local");
 import { createServer } from "node:http";
 import { randomUUID, createHash } from "node:crypto";
 import { mkdir } from "node:fs/promises";
 import { localDatabase } from "./local-db";
+import { openAIProvider, livePolicy } from "../server/ai/openai";
+import { runNextSimulation } from "../server/ai/queue";
 import { createHandler, type Identity } from "../server/api";
 await mkdir(".local-data", { recursive: true });
-const { rpc } = await localDatabase(
+const { rpc, aiRpc, workflowRpc } = await localDatabase(
   process.env.LOCAL_BROWSER_TEST === "1" ? undefined : ".local-data/workspace",
 );
 for (const email of [
   "designer@example.test",
   "peer@example.test",
   "tabs@example.test",
+  "design@example.test",
 ])
   await rpc("pilot_set", { email, active: true });
 const sessions = new Map<string, Identity>();
 const inbox = new Map<string, { code: string; time: string }>();
+// Local AI uses the same durable ledger; a calendar period is explicitly opened once.
+if (process.env.OPENAI_API_KEY) {
+  const check = await aiRpc("budget", {});
+  if (
+    check.error === "unauthorized" ||
+    check.error === "ai_budget_unconfigured"
+  ) {
+    const start = new Date();
+    start.setUTCDate(1);
+    start.setUTCHours(0, 0, 0, 0);
+    const end = new Date(start);
+    end.setUTCMonth(end.getUTCMonth() + 1);
+    await aiRpc("open_period", {
+      starts_at: start.toISOString(),
+      ends_at: end.toISOString(),
+    });
+  }
+}
 const handler = createHandler({
   rpc,
+  workflowRpc,
+  ...(process.env.OPENAI_API_KEY
+    ? {
+        ai: { rpc: aiRpc, policy: livePolicy("analysis") },
+        dispatchAI: async () => {
+          void runNextSimulation(
+            aiRpc,
+            openAIProvider(process.env.OPENAI_API_KEY!),
+          );
+        },
+      }
+    : {}),
   origin: "http://127.0.0.1:5173",
   local: true,
   secret: "local-development-only-do-not-use-in-production",

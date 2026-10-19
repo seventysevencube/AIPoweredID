@@ -1,6 +1,10 @@
 import { createHmac, randomInt, randomUUID } from "node:crypto";
 import { z } from "zod";
 import { recordDataSchema, sections, analysisAIReadiness } from "../src/model";
+import { aiTasks, workflowSections } from "../src/workflow-model";
+import { livePolicy } from "./ai/openai";
+import { outputRecords, workflowInput } from "./ai/workflow";
+import { enqueueAnalysis, type QueueAccess } from "./ai/queue";
 
 export type Rpc = (
   operation: string,
@@ -24,6 +28,9 @@ export type Dependencies = {
   secret: string;
   origin: string;
   local?: boolean;
+  ai?: QueueAccess;
+  workflowRpc?: Rpc;
+  dispatchAI?: () => Promise<void>;
 };
 const emailSchema = z
   .object({ email: z.string().trim().toLowerCase().pipe(z.email()) })
@@ -66,6 +73,27 @@ const errorMessages: Record<string, string> = {
     "Sign-in could not be completed. Request a fresh code and try again.",
   session_unavailable:
     "The sign-in service is temporarily unavailable. Please retry. Your session has not been cleared.",
+  review_required:
+    "Review and accept the current Analysis brief before starting Design.",
+  solution_required:
+    "Choose the solution route and relevant delivery details first.",
+  learning_measures_required:
+    "Identify and confirm learning measures before instructional Design.",
+  draft_exists:
+    "This draft already contains work. The new result is retained separately and has not replaced it.",
+  ai_not_available: "AI generation is not connected yet. You can keep editing.",
+  ai_inputs_changed:
+    "Analysis changed. Reload and synchronize it before generating.",
+  ai_inputs_incomplete:
+    "Complete the Needed for Design answers before generating.",
+  ai_budget_unconfigured:
+    "AI spending protection needs operator setup. You can keep editing.",
+  ai_budget_exceeded:
+    "The shared AI budget cannot cover this request. You can keep editing.",
+  ai_cost_pending:
+    "Cost confirmation pending. AI requests are paused; you can keep editing.",
+  invalid_retry:
+    "This job cannot be retried with these inputs. Review the saved result and current Analysis.",
 };
 export function digest(secret: string, id: string, code: string) {
   return createHmac("sha256", secret).update(`${id}:${code}`).digest("hex");
@@ -208,6 +236,100 @@ export function createHandler(d: Dependencies) {
       };
       await rpc("session", actor);
       const headers = sessionHeaders(identity, !d.local);
+      const workflowRoute = path.match(
+        /^\/api\/projects\/([^/]+)\/workflow(?:\/(accept|apply|wake))?$/,
+      );
+      if (workflowRoute) {
+        if (!d.workflowRpc) throw Error("ai_not_available");
+        const project_id = z.uuid().parse(workflowRoute[1]);
+        const action = workflowRoute[2];
+        let result;
+        if (!action && req.method === "GET")
+          result = await d.workflowRpc("open", { ...actor, project_id });
+        else if (action === "accept" && req.method === "POST") {
+          const body = z
+            .object({
+              revision: z.number().int().positive(),
+              reviewed: z.literal(true),
+            })
+            .strict()
+            .parse(await parseBody(req));
+          result = await d.workflowRpc("accept_analysis", {
+            ...actor,
+            project_id,
+            ...body,
+          });
+        } else if (action === "apply" && req.method === "POST") {
+          if (!d.ai) throw Error("ai_not_available");
+          const body = z
+            .object({ job_id: z.uuid() })
+            .strict()
+            .parse(await parseBody(req));
+          const saved = await d.ai.rpc("job", {
+            ...actor,
+            project_id,
+            ...body,
+          });
+          if (saved.error) throw Error(saved.error);
+          if (saved.job.state !== "completed") throw Error("invalid_request");
+          const task = z.enum(aiTasks).parse(saved.job.task);
+          result = await d.workflowRpc("apply", {
+            ...actor,
+            project_id,
+            ...body,
+            task,
+            sections: outputRecords(saved.job.result, task),
+          });
+        } else if (action === "wake" && req.method === "POST") {
+          const owned = await rpc("open", { ...actor, project_id });
+          if (owned.error) throw Error(owned.error);
+          await d.dispatchAI?.();
+          result = { ok: true };
+        } else throw Error("not_found");
+        if (result.error) throw Error(result.error);
+        return response(result, 200, headers);
+      }
+      const jobRoute = path.match(
+        /^\/api\/projects\/([^/]+)\/ai-jobs(?:\/([^/]+))?$/,
+      );
+      if (path === "/api/ai/budget" || jobRoute) {
+        if (!d.ai)
+          return response(
+            {
+              error: "ai_not_available",
+              message: errorMessages.ai_not_available,
+            },
+            503,
+            headers,
+          );
+        let result;
+        if (path === "/api/ai/budget" && req.method === "GET")
+          result = await d.ai.rpc("budget", actor);
+        else if (jobRoute) {
+          const project_id = z.uuid().parse(jobRoute[1]);
+          if (!jobRoute[2] && req.method === "POST") {
+            const body = await parseBody(req);
+            const task = z.enum(aiTasks).parse(body.task ?? "analysis");
+            const wi = d.workflowRpc
+              ? await workflowInput(d.workflowRpc, actor, project_id, task)
+              : undefined;
+            const access =
+              d.ai.policy.provider === "openai"
+                ? { ...d.ai, policy: livePolicy(task) }
+                : d.ai;
+            result = await enqueueAnalysis(access, actor, project_id, body, wi);
+            if (!result.error) await d.dispatchAI?.();
+          } else if (jobRoute[2] && req.method === "GET")
+            result = await d.ai.rpc("job", {
+              ...actor,
+              project_id,
+              job_id: z.uuid().parse(jobRoute[2]),
+            });
+        }
+        if (!result) return response({ error: "not_found" }, 404, headers);
+        if (result.error) throw Error(result.error);
+        return response(result, req.method === "POST" ? 202 : 200, headers);
+      }
       if (path === "/api/auth/session" && req.method === "GET")
         return response(
           { user: { id: identity.user_id, email: identity.email } },
@@ -263,7 +385,7 @@ export function createHandler(d: Dependencies) {
           headers,
         );
       }
-      const section = z.enum(sections).parse(m[2]);
+      const section = z.enum([...sections, ...workflowSections]).parse(m[2]);
       if (m[3] === "history" && req.method === "GET") {
         const history = await rpc("history", { section, project_id, ...actor });
         return response(
@@ -309,13 +431,21 @@ export function createHandler(d: Dependencies) {
             ? 404
             : code === "conflict" || code === "operation_reused"
               ? 409
-              : code === "rate_limited"
-                ? 429
-                : code === "too_large"
-                  ? 413
-                  : code.startsWith("code_")
-                    ? 400
-                    : 503;
+              : code === "ai_inputs_changed" ||
+                  code === "ai_cost_pending" ||
+                  code === "invalid_retry"
+                ? 409
+                : code === "ai_inputs_incomplete"
+                  ? 422
+                  : code === "ai_budget_exceeded"
+                    ? 429
+                    : code === "rate_limited"
+                      ? 429
+                      : code === "too_large"
+                        ? 413
+                        : code.startsWith("code_")
+                          ? 400
+                          : 503;
       return response(
         {
           error: code in errorMessages ? code : "unavailable",
