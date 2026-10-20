@@ -204,7 +204,9 @@ export function ProjectShell({
   useEffect(() => {
     void api("/ai/budget")
       .then(setBudget)
-      .catch(() => {});
+      .catch((e) => {
+        if (e?.error === "ai_budget_unconfigured") setBudget({ closed: true });
+      });
   }, []);
   // Statuses read this page's live draft, not the last periodic refresh.
   const current = live
@@ -303,12 +305,35 @@ export function ProjectShell({
             <p>
               AI proposes. You review, refine, and choose what moves forward.
             </p>
-            {budget && (
-              <p className="hint">
-                Shared AI allowance: $
-                {(Number(budget.spent_microusd) / 1e6).toFixed(2)} booked of $20
-                this month.
+            {budget?.closed ? (
+              <p className="budgetnote">
+                <span aria-hidden="true">!</span> This month's AI budget is not
+                open yet. AI requests wait until the pilot operator opens it;
+                editing and exports keep working.
               </p>
+            ) : (
+              budget && (
+                <>
+                  <p className="hint">
+                    Shared AI budget: $
+                    {(Number(budget.spent_microusd) / 1e6).toFixed(2)} spent of
+                    $20 this month.
+                  </p>
+                  {budget.warning && (
+                    <p className="budgetnote">
+                      <span aria-hidden="true">!</span> Over $16 of the shared
+                      $20 AI budget is used this month. AI pauses at $20;
+                      editing and exports keep working.
+                    </p>
+                  )}
+                  {budget.paused && (
+                    <p className="budgetnote">
+                      <span aria-hidden="true">!</span> AI is paused while a
+                      charge is checked. Your work is safe.
+                    </p>
+                  )}
+                </>
+              )
             )}
           </div>
         </aside>

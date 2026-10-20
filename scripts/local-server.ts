@@ -7,7 +7,11 @@ import { randomUUID, createHash } from "node:crypto";
 import { mkdir } from "node:fs/promises";
 import { localDatabase } from "./local-db";
 import { openAIProvider, livePolicy } from "../server/ai/openai";
-import { runNextSimulation, simulationPolicy } from "../server/ai/queue";
+import {
+  drainQueue,
+  runNextSimulation,
+  simulationPolicy,
+} from "../server/ai/queue";
 import { fixtureProvider } from "./local-fixture-ai";
 import { createHandler, type Identity } from "../server/api";
 await mkdir(".local-data", { recursive: true });
@@ -24,6 +28,7 @@ for (const email of [
   "develop@example.test",
   "share@example.test",
   "pause@example.test",
+  "home@example.test",
 ])
   await rpc("pilot_set", { email, active: true });
 const sessions = new Map<string, Identity>();
@@ -58,12 +63,7 @@ const handler = createHandler({
     ? {
         ai: { rpc: aiRpc, policy: simulationPolicy },
         dispatchAI: async () => {
-          void (async () => {
-            for (let n = 0; n < 5; n++) {
-              const r = await runNextSimulation(aiRpc, fixture);
-              if (r.error || r.idle || r.cancelled) break;
-            }
-          })();
+          void drainQueue(aiRpc, fixture);
         },
       }
     : process.env.OPENAI_API_KEY

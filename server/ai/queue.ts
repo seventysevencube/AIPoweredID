@@ -225,3 +225,21 @@ export async function runNextSimulation(rpc: Rpc, provider: SimulatedProvider) {
     return { error: "ai_interrupted", job_id: job.id };
   }
 }
+
+// Work through the shared queue until it is empty. No new job starts after the time budget,
+// so a job started at the last moment (at most three 120 s calls) still ends inside the
+// hosting platform's 15-minute background limit.
+export async function drainQueue(
+  rpc: Rpc,
+  provider: SimulatedProvider,
+  { budgetMs = 8 * 60_000, clock = Date.now, maxJobs = 50 } = {},
+) {
+  const stopStarting = clock() + budgetMs;
+  let handled = 0;
+  while (handled < maxJobs && clock() < stopStarting) {
+    const result = await runNextSimulation(rpc, provider);
+    if (result.error || result.idle) break;
+    handled++;
+  }
+  return handled;
+}

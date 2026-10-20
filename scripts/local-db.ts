@@ -96,6 +96,19 @@ export async function localDatabase(path?: string) {
         "utf8",
       ),
     );
+  const operator = await db.query<{ definition: string }>(
+    "select pg_get_functiondef('public.operator_rpc(text,jsonb)'::regprocedure) as definition",
+  );
+  if (!operator.rows[0].definition.includes("pilot_list"))
+    await db.exec(
+      await readFile(
+        new URL(
+          "../supabase/migrations/202610200006_operator_tools.sql",
+          import.meta.url,
+        ),
+        "utf8",
+      ),
+    );
   const call =
     (name: string): Rpc =>
     async (operation, payload) =>

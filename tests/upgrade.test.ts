@@ -113,6 +113,25 @@ test("migration 5 upgrades an existing database and preserves projects, drafts, 
     await expect(
       db.exec(await migration("202610190005_mvp_completion.sql")),
     ).rejects.toThrow();
+    await db.exec("rollback");
+    // Migration 6 only adds read-only operator views and keeps existing operations.
+    await db.exec(await migration("202610200006_operator_tools.sql"));
+    expect(
+      (await call("operator_rpc", "list_projects", { owner_email: email }))
+        .projects,
+    ).toHaveLength(1);
+    expect(
+      (await call("operator_rpc", "pilot_list", {})).accounts[0],
+    ).toMatchObject({ email, signed_in: true, projects: 1 });
+    expect(await call("operator_rpc", "ai_status", {})).toMatchObject({
+      period: null,
+      jobs: [],
+    });
+    expect(
+      (await call("workflow_rpc", "open", { ...actor, project_id })).records[
+        "design-objectives"
+      ].data,
+    ).toEqual(objectives);
   } finally {
     await db.close();
   }

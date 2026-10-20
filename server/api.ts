@@ -186,7 +186,7 @@ const errorMessages: Record<string, string> = {
   ai_inputs_incomplete:
     "Complete the Needed for Design answers before generating.",
   ai_budget_unconfigured:
-    "AI spending protection needs operator setup. You can keep editing.",
+    "This month's AI budget is not open yet. The pilot operator opens it each month; you can keep editing.",
   ai_budget_exceeded:
     "The shared AI budget cannot cover this request. You can keep editing.",
   ai_cost_pending:

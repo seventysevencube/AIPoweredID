@@ -15,6 +15,7 @@ export async function requestJob({
   previous,
   note = "",
   target,
+  fresh = true,
 }: {
   userId: string;
   projectId: string;
@@ -23,6 +24,8 @@ export async function requestJob({
   previous?: { id: string; state: string };
   note?: string;
   target?: string;
+  // false: an unchanged first request replays the same job instead of starting another.
+  fresh?: boolean;
 }): Promise<{ job_id: string; state: string }> {
   const expected_revisions = Object.fromEntries(
     sections.map((s) => [s, current.records[s].revision]),
@@ -30,7 +33,7 @@ export async function requestJob({
   const retrying =
     !!previous && ["failed", "cancelled"].includes(previous.state);
   const submit = (attempt: string, retry_of?: string) => {
-    const key = `ai-intent:${userId}:${projectId}:${task}:${target ?? ""}:${JSON.stringify(expected_revisions)}:${attempt}`;
+    const key = `ai-intent:${userId}:${projectId}:${task}:${target ?? ""}:${JSON.stringify(expected_revisions)}:${current.records["design-solution"]?.revision ?? 0}:${current.accepted_revision ?? 0}:${attempt}`;
     let requestId: string = crypto.randomUUID();
     try {
       const prior = localStorage.getItem(key);
@@ -55,6 +58,8 @@ export async function requestJob({
   return submit(
     retrying
       ? `fresh:${previous!.id}`
-      : `after:${previous?.id ?? "none"}:${digest(note.trim())}`,
+      : fresh
+        ? `after:${previous?.id ?? "none"}:${digest(note.trim())}`
+        : "initial",
   );
 }

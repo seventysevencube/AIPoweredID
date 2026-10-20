@@ -323,3 +323,7 @@ Implementation choices made to build the approved behavior, each open to change:
 - Requests rejected as invalid now return 400, and designer-fixable refusals 422, instead of 503.
 
 Migration 5 (`202610190005_mvp_completion.sql`) had to be applied to the live Supabase project before the merge, because production deploys from `main`. The user applied it and replied "applied" on October 20, 2026; PR #6 was then merged after its checks passed.
+
+## October 20, 2026 — Technical follow-up before live checks
+
+The user asked to focus on technical work before their own tasks (turning off demo sign-up and the live check). Added an explicit monthly budget command (no automatic reset, consistent with the approved budget rules), the missing $16 warning and paused/closed-month notices, operator status, account listing and charge-reconciliation commands (migration 6, read-only views), a worker that drains the queue within a safe time budget, a project home showing stage, updates and next step with Continue returning to the last page on that device, and lazy-loaded pages. No product rules changed.

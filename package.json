@@ -12,6 +12,7 @@
     "check": "npm test && npm run build && npm run build:function",
     "pilot": "tsx scripts/pilot.ts",
     "project": "tsx scripts/project.ts",
+    "ai": "tsx scripts/ai-operator.ts",
     "format": "prettier --write src server scripts tests netlify *.ts *.json",
     "format:check": "prettier --check src server scripts tests netlify *.ts *.json",
     "build:function": "node --import tsx scripts/build-function.ts",
