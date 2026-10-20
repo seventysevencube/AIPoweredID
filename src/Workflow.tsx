@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, lazy, useEffect, useState } from "react";
 import { api } from "./http";
 import { SaveController } from "./save";
 import { recovery } from "./recovery";
@@ -19,10 +19,7 @@ import {
   proposalData,
   solutionDecisions,
 } from "./workflow-model";
-import { SourcesPage } from "./Sources";
-import { DevelopmentPage } from "./Development";
-import { SharingPage } from "./Sharing";
-import { PreferencesPage } from "./Preferences";
+import { requestJob } from "./ai-requests";
 import {
   ProjectShell,
   RecordNotices,
@@ -55,6 +52,24 @@ const failureText: Record<string, string> = {
 };
 const message = (e: unknown) =>
   e instanceof Error ? e.message : "Please try again.";
+// Project pages beyond Design load when first opened.
+const SourcesPage = lazy(() =>
+  import("./Sources").then((m) => ({ default: m.SourcesPage })),
+);
+const DevelopmentPage = lazy(() =>
+  import("./Development").then((m) => ({ default: m.DevelopmentPage })),
+);
+const SharingPage = lazy(() =>
+  import("./Sharing").then((m) => ({ default: m.SharingPage })),
+);
+const PreferencesPage = lazy(() =>
+  import("./Preferences").then((m) => ({ default: m.PreferencesPage })),
+);
+const opening = (
+  <main id="main" className="center">
+    <p role="status">Opening…</p>
+  </main>
+);
 export function Workflow({
   id,
   userId,
@@ -96,39 +111,47 @@ export function Workflow({
   };
   if (section === "development")
     return (
-      <DevelopmentPage
-        key={id + section}
-        {...{ id, userId, snapshot }}
-        onSnapshot={setSnapshot}
-        onNavigate={go}
-      />
+      <Suspense fallback={opening}>
+        <DevelopmentPage
+          key={id + section}
+          {...{ id, userId, snapshot }}
+          onSnapshot={setSnapshot}
+          onNavigate={go}
+        />
+      </Suspense>
     );
   if (section === "preferences")
     return (
-      <PreferencesPage
-        key={id + section}
-        {...{ id, userId, snapshot }}
-        onSnapshot={setSnapshot}
-        onNavigate={go}
-      />
+      <Suspense fallback={opening}>
+        <PreferencesPage
+          key={id + section}
+          {...{ id, userId, snapshot }}
+          onSnapshot={setSnapshot}
+          onNavigate={go}
+        />
+      </Suspense>
     );
   if (section === "sharing")
     return (
-      <SharingPage
-        key={id + section}
-        {...{ id, userId, snapshot }}
-        onSnapshot={setSnapshot}
-        onNavigate={go}
-      />
+      <Suspense fallback={opening}>
+        <SharingPage
+          key={id + section}
+          {...{ id, userId, snapshot }}
+          onSnapshot={setSnapshot}
+          onNavigate={go}
+        />
+      </Suspense>
     );
   if (section === "sources")
     return (
-      <SourcesPage
-        key={id + section}
-        {...{ id, userId, snapshot }}
-        onSnapshot={setSnapshot}
-        onNavigate={go}
-      />
+      <Suspense fallback={opening}>
+        <SourcesPage
+          key={id + section}
+          {...{ id, userId, snapshot }}
+          onSnapshot={setSnapshot}
+          onNavigate={go}
+        />
+      </Suspense>
     );
   if (!workflowSections.includes(section as WorkflowSection))
     return (
@@ -226,44 +249,15 @@ function WorkflowEditor({
   async function generate(task: AITask, fresh = false, note = "") {
     await saved();
     const current = await refresh();
-    const expected_revisions = Object.fromEntries(
-      sections.map((s) => [s, current.records[s].revision]),
-    );
-    // A repeated click replays the same request; a new attempt after a failure gets its own.
-    const previous = current.jobs.find((j) => j.task === task);
-    const retrying =
-      !!previous && ["failed", "cancelled"].includes(previous.state);
-    const submit = (attempt: string, retry_of?: string) => {
-      const intentKey = `ai-intent:${userId}:${id}:${task}:${JSON.stringify(expected_revisions)}:${current.records["design-solution"].revision}:${current.accepted_revision ?? 0}:${attempt}`;
-      let requestId = crypto.randomUUID();
-      try {
-        const prior = localStorage.getItem(intentKey);
-        if (prior) requestId = prior as typeof requestId;
-        else localStorage.setItem(intentKey, requestId);
-      } catch {}
-      return api(base + "/ai-jobs", "POST", {
-        request_id: requestId,
-        expected_revisions,
-        task,
-        ...(retry_of ? { retry_of } : {}),
-        ...(note.trim() ? { note: note.trim() } : {}),
-      });
-    };
-    let pending;
-    // An unchanged retry reuses completed steps; changed inputs need a fresh job.
-    if (retrying && previous?.state === "failed")
-      try {
-        pending = await submit(`retry:${previous.id}`, previous.id);
-      } catch (e) {
-        if ((e as { error?: string }).error !== "invalid_retry") throw e;
-      }
-    pending ??= await submit(
-      retrying
-        ? `fresh:${previous!.id}`
-        : fresh
-          ? `after:${previous?.id ?? "none"}:${digest(note.trim())}`
-          : "initial",
-    );
+    const pending = await requestJob({
+      userId,
+      projectId: id,
+      task,
+      current,
+      previous: current.jobs.find((j) => j.task === task),
+      note,
+      fresh,
+    });
     await refresh();
     if (task === relevant || task === revision)
       setJob({ id: pending.job_id, state: pending.state, task });

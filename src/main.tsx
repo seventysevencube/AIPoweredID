@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { Suspense, lazy, useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { api } from "./http";
 import {
@@ -25,8 +25,7 @@ import {
   type Question,
 } from "./questions";
 import { Workflow } from "./Workflow";
-import { GuestReview } from "./Review";
-import { PrintView } from "./PrintView";
+
 import { BreakReminder } from "./Breaks";
 import { ProjectCard, lastPageKey } from "./ProjectCard";
 import { workflowSections, projectSections } from "./workflow-model";
@@ -38,6 +37,13 @@ const date = (value: string) =>
     dateStyle: "medium",
     timeStyle: "short",
   });
+// Guest review and the print view load only when opened.
+const GuestReview = lazy(() =>
+  import("./Review").then((m) => ({ default: m.GuestReview })),
+);
+const PrintView = lazy(() =>
+  import("./PrintView").then((m) => ({ default: m.PrintView })),
+);
 const pages: string[] = [...workflowSections, ...projectSections, "sharing"];
 function route() {
   return location.hash.slice(1) || "/projects";
@@ -156,11 +162,15 @@ function App() {
           <button onClick={() => void initialize()}>Try again</button>
         </main>
       ) : review ? (
-        <GuestReview token={review[1]} />
+        <Suspense fallback={<p role="status">Opening…</p>}>
+          <GuestReview token={review[1]} />
+        </Suspense>
       ) : !user ? (
         <Auth mode={mode} openSignup={openSignup} onUser={setUser} />
       ) : print ? (
-        <PrintView key={path} id={print[1]} query={print[2] ?? ""} />
+        <Suspense fallback={<p role="status">Preparing…</p>}>
+          <PrintView key={path} id={print[1]} query={print[2] ?? ""} />
+        </Suspense>
       ) : projectId && pages.includes(projectId[2] as Page) ? (
         <Workflow
           key={user.id + projectId[1] + projectId[2]}
