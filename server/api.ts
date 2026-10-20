@@ -1,10 +1,22 @@
-import { createHmac, randomInt, randomUUID } from "node:crypto";
+import {
+  createHash,
+  createHmac,
+  randomBytes,
+  randomInt,
+  randomUUID,
+} from "node:crypto";
 import { z } from "zod";
 import { recordDataSchema, sections, analysisAIReadiness } from "../src/model";
-import { aiTasks, workflowSections } from "../src/workflow-model";
+import {
+  aiTasks,
+  projectSections,
+  workflowSections,
+} from "../src/workflow-model";
+import { hasUsableText } from "../src/extract";
 import { livePolicy } from "./ai/openai";
 import { outputRecords, workflowInput } from "./ai/workflow";
 import { enqueueAnalysis, type QueueAccess } from "./ai/queue";
+import { withBasis } from "../src/dependencies";
 
 export type Rpc = (
   operation: string,
@@ -32,6 +44,8 @@ export type Dependencies = {
   openSignup?: boolean;
   ai?: QueueAccess;
   workflowRpc?: Rpc;
+  sourceRpc?: Rpc;
+  reviewRpc?: Rpc;
   dispatchAI?: () => Promise<void>;
 };
 const emailSchema = z
@@ -45,6 +59,89 @@ const saveSchema = z
     operation_id: z.uuid(),
     base_revision: z.number().int().positive(),
     data: recordDataSchema,
+  })
+  .strict();
+const shareable = [...workflowSections, "development"] as const;
+const shareSchema = z
+  .object({
+    sections: z.array(z.enum(shareable)).min(1).max(shareable.length),
+    sources: z.array(z.uuid()).max(20).default([]),
+  })
+  .strict();
+const guestSchema = z
+  .object({ token: z.string().regex(/^[A-Za-z0-9_-]{43}$/) })
+  .passthrough();
+const commentSchema = z
+  .object({
+    comment_id: z.uuid(),
+    target: z
+      .object({
+        section: z.enum(shareable),
+        item: z.uuid().optional(),
+        label: z.string().max(200).optional(),
+      })
+      .strict(),
+    display_name: z.string().trim().min(1).max(80),
+    body: z.string().trim().min(1).max(4000),
+  })
+  .strict();
+// A fixed copy of the chosen content: designer-visible fields only, plus chosen sources.
+export function reviewSnapshot(
+  opened: { records: Record<string, { revision: number; data: any }> },
+  chosen: readonly string[],
+  materials: { id: string; name: string; kind: string; content: string }[],
+  sourceIds: string[],
+) {
+  const sections = shareable.filter(
+    (s) => chosen.includes(s) && opened.records[s],
+  );
+  const shown = (answers: Record<string, unknown>) =>
+    Object.fromEntries(
+      Object.entries(answers).filter(([k]) => !k.startsWith("_")),
+    );
+  return {
+    sections,
+    versions: Object.fromEntries(
+      sections.map((s) => [s, opened.records[s].revision]),
+    ),
+    records: Object.fromEntries(
+      sections.map((s) => {
+        const data = opened.records[s].data;
+        return [
+          s,
+          {
+            answers: shown(data.answers),
+            items: data.items.map((i: any) => ({
+              id: i.id,
+              answers: shown(i.answers),
+            })),
+          },
+        ];
+      }),
+    ),
+    sources: materials
+      .filter((m) => sourceIds.includes(m.id))
+      .map((m) => ({ name: m.name, kind: m.kind, text: m.content })),
+    shared_at: new Date().toISOString(),
+  };
+}
+function guestHeaders() {
+  const headers = new Headers();
+  headers.set("X-Robots-Tag", "noindex, nofollow");
+  headers.set("Referrer-Policy", "no-referrer");
+  return headers;
+}
+// Extraction happens in the browser; the server re-checks limits and usable text.
+const sourceSchema = z
+  .object({
+    source_id: z.uuid(),
+    name: z.string().trim().min(1).max(200),
+    kind: z.enum(["docx", "pptx", "text"]),
+    content: z.string().max(200_000),
+    refs: z
+      .array(z.object({ label: z.string().max(200) }).strict())
+      .max(500)
+      .default([]),
   })
   .strict();
 const restoreSchema = z
@@ -94,9 +191,32 @@ const errorMessages: Record<string, string> = {
     "The shared AI budget cannot cover this request. You can keep editing.",
   ai_cost_pending:
     "Cost confirmation pending. AI requests are paused; you can keep editing.",
+  design_review_required:
+    "Review each Design page, including the Design plan, and mark it reviewed before generating Development.",
+  treatment_required:
+    "Accept the sample's treatment before generating other sections.",
+  link_unavailable:
+    "This review link is not available. It may have expired or been turned off. Ask the designer for a new link.",
+  too_many_links: "This project has reached its limit of 50 review links.",
+  too_many_comments: "This review has reached its limit of 500 comments.",
+  too_many_sources:
+    "A project can hold up to 20 sources. Remove one before adding another.",
   invalid_retry:
     "This job cannot be retried with these inputs. Review the saved result and current Analysis.",
 };
+// Refusals the designer can act on, as opposed to service outages.
+const requestErrors = new Set([
+  "review_required",
+  "solution_required",
+  "learning_measures_required",
+  "draft_exists",
+  "too_many_sources",
+  "design_review_required",
+  "treatment_required",
+  "too_many_links",
+  "link_unavailable",
+  "too_many_comments",
+]);
 export function digest(secret: string, id: string, code: string) {
   return createHmac("sha256", secret).update(`${id}:${code}`).digest("hex");
 }
@@ -225,6 +345,34 @@ export function createHandler(d: Dependencies) {
           sessionHeaders(identity, !d.local),
         );
       }
+      // Guest review: no account. The token travels in the body, never the URL path or query.
+      if (path.startsWith("/api/review/") && req.method === "POST") {
+        if (!d.reviewRpc) throw Error("not_found");
+        const { token, ...body } = guestSchema.parse(await parseBody(req));
+        const token_hash = createHash("sha256").update(token).digest("hex");
+        const opened = await d.reviewRpc("guest_open", { token_hash });
+        if (opened.error) throw Error(opened.error);
+        if (path === "/api/review/open")
+          return response(opened, 200, guestHeaders());
+        if (path !== "/api/review/comment") throw Error("not_found");
+        const comment = commentSchema.parse(body);
+        // Comments attach to content that is actually in the shared snapshot.
+        const shared = opened.snapshot.records?.[comment.target.section];
+        if (
+          !shared ||
+          (comment.target.item &&
+            !shared.items.some(
+              (i: { id: string }) => i.id === comment.target.item,
+            ))
+        )
+          throw Error("invalid_request");
+        const posted = await d.reviewRpc("guest_comment", {
+          token_hash,
+          ...comment,
+        });
+        if (posted.error) throw Error(posted.error);
+        return response(posted, 200, guestHeaders());
+      }
       const cookie = cookies(req);
       let identity: Identity;
       try {
@@ -286,12 +434,18 @@ export function createHandler(d: Dependencies) {
           if (saved.error) throw Error(saved.error);
           if (saved.job.state !== "completed") throw Error("invalid_request");
           const task = z.enum(aiTasks).parse(saved.job.task);
+          const current = await d.workflowRpc("open", { ...actor, project_id });
+          if (current.error) throw Error(current.error);
           result = await d.workflowRpc("apply", {
             ...actor,
             project_id,
             ...body,
             task,
-            sections: outputRecords(saved.job.result, task),
+            sections: withBasis(
+              outputRecords(saved.job.result, task),
+              current,
+              saved.job.input_manifest ?? {},
+            ),
           });
         } else if (action === "wake" && req.method === "POST") {
           const owned = await rpc("open", { ...actor, project_id });
@@ -321,15 +475,29 @@ export function createHandler(d: Dependencies) {
         else if (jobRoute) {
           const project_id = z.uuid().parse(jobRoute[1]);
           if (!jobRoute[2] && req.method === "POST") {
-            const body = await parseBody(req);
+            const { note, target, ...body } = await parseBody(req);
             const task = z.enum(aiTasks).parse(body.task ?? "analysis");
+            // The designer's optional revision request travels inside the workflow input.
+            const request = z.string().max(2000).optional().parse(note);
+            const item = z.uuid().optional().parse(target);
             const wi = d.workflowRpc
-              ? await workflowInput(d.workflowRpc, actor, project_id, task)
+              ? await workflowInput(
+                  d.workflowRpc,
+                  actor,
+                  project_id,
+                  task,
+                  request,
+                  d.sourceRpc,
+                  item,
+                )
               : undefined;
-            const access =
-              d.ai.policy.provider === "openai"
-                ? { ...d.ai, policy: livePolicy(task) }
-                : d.ai;
+            const access = {
+              ...d.ai,
+              policy:
+                d.ai.policy.provider === "openai"
+                  ? livePolicy(task)
+                  : { ...d.ai.policy, task },
+            };
             result = await enqueueAnalysis(access, actor, project_id, body, wi);
             if (!result.error) await d.dispatchAI?.();
           } else if (jobRoute[2] && req.method === "GET")
@@ -370,6 +538,78 @@ export function createHandler(d: Dependencies) {
           headers,
         );
       }
+      const reviewRoute = path.match(
+        /^\/api\/projects\/([^/]+)\/reviews(?:\/([^/]+)\/(revoke))?$/,
+      );
+      if (reviewRoute) {
+        if (!d.reviewRpc || !d.workflowRpc) throw Error("not_found");
+        const project_id = z.uuid().parse(reviewRoute[1]);
+        let result, token: string | undefined;
+        if (!reviewRoute[2] && req.method === "GET")
+          result = await d.reviewRpc("list", { ...actor, project_id });
+        else if (!reviewRoute[2] && req.method === "POST") {
+          const body = shareSchema.parse(await parseBody(req));
+          const opened = await d.workflowRpc("open", { ...actor, project_id });
+          if (opened.error) throw Error(opened.error);
+          const materials =
+            d.sourceRpc && body.sources.length
+              ? await d.sourceRpc("texts", { ...actor, project_id })
+              : { sources: [] };
+          if (materials.error) throw Error(materials.error);
+          token = randomBytes(32).toString("base64url");
+          result = await d.reviewRpc("create", {
+            ...actor,
+            project_id,
+            link_id: randomUUID(),
+            token_hash: createHash("sha256").update(token).digest("hex"),
+            snapshot: reviewSnapshot(
+              opened,
+              body.sections,
+              materials.sources,
+              body.sources,
+            ),
+          });
+        } else if (reviewRoute[3] && req.method === "POST")
+          result = await d.reviewRpc("revoke", {
+            ...actor,
+            project_id,
+            link_id: z.uuid().parse(reviewRoute[2]),
+          });
+        else throw Error("not_found");
+        if (result.error) throw Error(result.error);
+        return response(
+          { ...result, ...(token ? { token } : {}) },
+          200,
+          headers,
+        );
+      }
+      const sourceRoute = path.match(
+        /^\/api\/projects\/([^/]+)\/source-files(?:\/([^/]+))?$/,
+      );
+      if (sourceRoute) {
+        if (!d.sourceRpc) throw Error("not_found");
+        const project_id = z.uuid().parse(sourceRoute[1]);
+        let result;
+        if (!sourceRoute[2] && req.method === "GET")
+          result = await d.sourceRpc("list", { ...actor, project_id });
+        else if (!sourceRoute[2] && req.method === "POST") {
+          const body = sourceSchema.parse(await parseBody(req));
+          result = await d.sourceRpc("add", {
+            ...actor,
+            project_id,
+            ...body,
+            usable: hasUsableText(body.content),
+          });
+        } else if (sourceRoute[2] && req.method === "DELETE")
+          result = await d.sourceRpc("remove", {
+            ...actor,
+            project_id,
+            source_id: z.uuid().parse(sourceRoute[2]),
+          });
+        else throw Error("not_found");
+        if (result.error) throw Error(result.error);
+        return response(result, 200, headers);
+      }
       const m = path.match(
         /^\/api\/projects\/([^/]+)(?:\/([^/]+)(?:\/(history|restore))?)?$/,
       );
@@ -398,7 +638,9 @@ export function createHandler(d: Dependencies) {
           headers,
         );
       }
-      const section = z.enum([...sections, ...workflowSections]).parse(m[2]);
+      const section = z
+        .enum([...sections, ...workflowSections, ...projectSections])
+        .parse(m[2]);
       if (m[3] === "history" && req.method === "GET") {
         const history = await rpc("history", { section, project_id, ...actor });
         return response(
@@ -448,7 +690,7 @@ export function createHandler(d: Dependencies) {
                   code === "ai_cost_pending" ||
                   code === "invalid_retry"
                 ? 409
-                : code === "ai_inputs_incomplete"
+                : code === "ai_inputs_incomplete" || requestErrors.has(code)
                   ? 422
                   : code === "ai_budget_exceeded"
                     ? 429
@@ -456,7 +698,7 @@ export function createHandler(d: Dependencies) {
                       ? 429
                       : code === "too_large"
                         ? 413
-                        : code.startsWith("code_")
+                        : code.startsWith("code_") || code === "invalid_request"
                           ? 400
                           : 503;
       return response(

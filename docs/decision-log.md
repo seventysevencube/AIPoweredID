@@ -304,3 +304,22 @@ The user requested a demo-ready real AI Analysis → Design flow within approxim
 ## October 19, 2026 — Open demo sign-up
 
 For a live demo, the user asked that people be able to register by receiving a one-time code at their email address. This is an optional server setting, `OPEN_SIGNUP=on`. When it is on, an email not on the approved list is added at code request, and sign-in still requires the emailed code under the existing limits (10-minute expiry, single use, five wrong attempts, one resend per minute). When it is off or missing, the invitation-only list applies as before. New accounts share the existing $20 monthly AI budget. This is a demo access choice. It does not settle the remaining account-lifecycle, retention or B4 policies. See [requirements](requirements.md#open-demo-sign-up--october-19-2026).
+
+## October 19, 2026 — Remaining MVP build
+
+After the demo the user said: "lets wrap the other pending things. Lets push the changes to a branch and merge when all the changes are ready to be pushed." The remaining MVP items were built on one branch in the recommended order: AI failure recovery, Needs update and review status, section revisions, sources, partial Development, guest review, exports, preferences and breaks, and operator deletion. See the [status record](implementation/mvp-completion-2026-10-19.md). Deferred audit work, the formal fictional walkthrough and the second-user live test stay deferred, and the runtime AI provider is unchanged.
+
+Implementation choices made to build the approved behavior, each open to change:
+
+- Needs update compares a content fingerprint of each input with what a draft was built from or last reviewed against; app bookkeeping is excluded. Development depends on the Design pages, the accepted brief and the source rules.
+- Section revisions and Development requests return proposals that change a draft only when the designer chooses to use them; earlier versions stay in history.
+- Development requires every Design page with content to be reviewed and up to date, and the Design plan reviewed. Sections after the sample need the sample's treatment accepted; acceptance never verifies facts or sources.
+- Source limits: 10 MB per file, 20 sources per project, the first 100,000 characters per file. Extraction runs in the browser; only extracted text and references are stored, never the original file. Web research is not connected.
+- Guest links store only a hash of a random 256-bit token; tokens travel in request bodies. Each link holds a fixed copy of designer-visible content and chosen sources.
+- PDF export is a print-ready page saved with the browser's Save as PDF (keeps every character; tagged output). PowerPoint is a direct, editable download.
+- Ready for handoff is stored as a fingerprint of the included content and lapses on any later change.
+- Preferences and break reminders are per project; reflection answers are not sent to AI.
+- The AI request size cap is raised from 90 KB to 200 KB, within the existing $0.05 per-call permit and below the long-context rate.
+- Requests rejected as invalid now return 400, and designer-fixable refusals 422, instead of 503.
+
+Migration 5 (`202610190005_mvp_completion.sql`) must be applied to the live Supabase project before the branch is merged, because production deploys from `main`.

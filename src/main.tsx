@@ -25,7 +25,11 @@ import {
   type Question,
 } from "./questions";
 import { Workflow } from "./Workflow";
-import { workflowSections, type WorkflowSection } from "./workflow-model";
+import { GuestReview } from "./Review";
+import { PrintView } from "./PrintView";
+import { BreakReminder } from "./Breaks";
+import { workflowSections, projectSections } from "./workflow-model";
+import type { Page } from "./ProjectShell";
 import "./style.css";
 type User = { id: string; email: string };
 const date = (value: string) =>
@@ -33,6 +37,7 @@ const date = (value: string) =>
     dateStyle: "medium",
     timeStyle: "short",
   });
+const pages: string[] = [...workflowSections, ...projectSections, "sharing"];
 function route() {
   return location.hash.slice(1) || "/projects";
 }
@@ -86,6 +91,8 @@ function App() {
     }
   }
   const projectId = path.match(/^\/projects\/([a-f0-9-]+)(?:\/([^/]+))?$/);
+  const review = path.match(/^\/review\/([A-Za-z0-9_-]{43})$/);
+  const print = path.match(/^\/projects\/([a-f0-9-]+)\/print(?:\?(.*))?$/);
   return (
     <>
       <a
@@ -122,6 +129,9 @@ function App() {
           Supabase connection
         </div>
       )}
+      {user && projectId && !loading && (
+        <BreakReminder key={projectId[1]} project={projectId[1]} />
+      )}
       {loading ? (
         <main id="main" tabIndex={-1} className="center">
           <p role="status">Opening your workspace…</p>
@@ -136,15 +146,18 @@ function App() {
           </p>
           <button onClick={() => void initialize()}>Try again</button>
         </main>
+      ) : review ? (
+        <GuestReview token={review[1]} />
       ) : !user ? (
         <Auth mode={mode} openSignup={openSignup} onUser={setUser} />
-      ) : projectId &&
-        workflowSections.includes(projectId[2] as WorkflowSection) ? (
+      ) : print ? (
+        <PrintView key={path} id={print[1]} query={print[2] ?? ""} />
+      ) : projectId && pages.includes(projectId[2] as Page) ? (
         <Workflow
           key={user.id + projectId[1] + projectId[2]}
           id={projectId[1]}
           userId={user.id}
-          section={projectId[2] as WorkflowSection}
+          section={projectId[2] as Page}
         />
       ) : projectId ? (
         <Workspace

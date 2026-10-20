@@ -83,6 +83,28 @@ export async function localDatabase(path?: string) {
         "utf8",
       ),
     );
+  const completion = await db.query<{ exists: boolean }>(
+    "select to_regprocedure('public.source_rpc(text,jsonb)') is not null as exists",
+  );
+  if (!completion.rows[0].exists)
+    await db.exec(
+      await readFile(
+        new URL(
+          "../supabase/migrations/202610190005_mvp_completion.sql",
+          import.meta.url,
+        ),
+        "utf8",
+      ),
+    );
+  const call =
+    (name: string): Rpc =>
+    async (operation, payload) =>
+      (
+        await db.query<{ result: any }>(
+          `select public.${name}($1,$2::jsonb) as result`,
+          [operation, JSON.stringify(payload)],
+        )
+      ).rows[0].result;
   const workflowRpc: Rpc = async (operation, payload) =>
     (
       await db.query<{ result: any }>(
@@ -104,5 +126,13 @@ export async function localDatabase(path?: string) {
     );
     return result.rows[0].result;
   };
-  return { db, rpc, aiRpc, workflowRpc };
+  return {
+    db,
+    rpc,
+    aiRpc,
+    workflowRpc,
+    sourceRpc: call("source_rpc"),
+    reviewRpc: call("review_rpc"),
+    operatorRpc: call("operator_rpc"),
+  };
 }

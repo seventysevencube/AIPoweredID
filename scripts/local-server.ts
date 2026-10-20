@@ -7,10 +7,11 @@ import { randomUUID, createHash } from "node:crypto";
 import { mkdir } from "node:fs/promises";
 import { localDatabase } from "./local-db";
 import { openAIProvider, livePolicy } from "../server/ai/openai";
-import { runNextSimulation } from "../server/ai/queue";
+import { runNextSimulation, simulationPolicy } from "../server/ai/queue";
+import { fixtureProvider } from "./local-fixture-ai";
 import { createHandler, type Identity } from "../server/api";
 await mkdir(".local-data", { recursive: true });
-const { rpc, aiRpc, workflowRpc } = await localDatabase(
+const { rpc, aiRpc, workflowRpc, sourceRpc, reviewRpc } = await localDatabase(
   process.env.LOCAL_BROWSER_TEST === "1" ? undefined : ".local-data/workspace",
 );
 for (const email of [
@@ -18,12 +19,20 @@ for (const email of [
   "peer@example.test",
   "tabs@example.test",
   "design@example.test",
+  "flow@example.test",
+  "sources@example.test",
+  "develop@example.test",
+  "share@example.test",
+  "pause@example.test",
 ])
   await rpc("pilot_set", { email, active: true });
 const sessions = new Map<string, Identity>();
 const inbox = new Map<string, { code: string; time: string }>();
+// Browser tests use a fictional AI stand-in: same queue and ledger, no network or charge.
+const fixtureAI = process.env.LOCAL_BROWSER_TEST === "1";
+const fixture = fixtureProvider();
 // Local AI uses the same durable ledger; a calendar period is explicitly opened once.
-if (process.env.OPENAI_API_KEY) {
+if (process.env.OPENAI_API_KEY || fixtureAI) {
   const check = await aiRpc("budget", {});
   if (
     check.error === "unauthorized" ||
@@ -43,17 +52,31 @@ if (process.env.OPENAI_API_KEY) {
 const handler = createHandler({
   rpc,
   workflowRpc,
-  ...(process.env.OPENAI_API_KEY
+  sourceRpc,
+  reviewRpc,
+  ...(fixtureAI
     ? {
-        ai: { rpc: aiRpc, policy: livePolicy("analysis") },
+        ai: { rpc: aiRpc, policy: simulationPolicy },
         dispatchAI: async () => {
-          void runNextSimulation(
-            aiRpc,
-            openAIProvider(process.env.OPENAI_API_KEY!),
-          );
+          void (async () => {
+            for (let n = 0; n < 5; n++) {
+              const r = await runNextSimulation(aiRpc, fixture);
+              if (r.error || r.idle || r.cancelled) break;
+            }
+          })();
         },
       }
-    : {}),
+    : process.env.OPENAI_API_KEY
+      ? {
+          ai: { rpc: aiRpc, policy: livePolicy("analysis") },
+          dispatchAI: async () => {
+            void runNextSimulation(
+              aiRpc,
+              openAIProvider(process.env.OPENAI_API_KEY!),
+            );
+          },
+        }
+      : {}),
   origin: "http://127.0.0.1:5173",
   local: true,
   openSignup: process.env.OPEN_SIGNUP === "on",

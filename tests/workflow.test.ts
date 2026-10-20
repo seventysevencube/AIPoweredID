@@ -4,7 +4,7 @@ import { sections } from "../src/model";
 import { livePolicy } from "../server/ai/openai";
 import { openAIProvider } from "../server/ai/openai";
 import { workflowFields, validateOutput } from "../src/workflow-model";
-import { workflowInput, outputRecords } from "../server/ai/workflow";
+import { workflowInput, outputRecords, budgeted } from "../server/ai/workflow";
 import { localDatabase } from "../scripts/local-db";
 import { randomUUID } from "node:crypto";
 const draft = {
@@ -300,4 +300,336 @@ test("workflow initializes privately; acceptance pins exact version; AI apply ne
   } finally {
     await d.db.close();
   }
+});
+
+test("revision tasks rework exactly one section with the same gates and the designer's request", async () => {
+  const one = {
+    sections: [
+      {
+        key: "design-objectives",
+        fields: workflowFields["design-objectives"].map(([key]) => ({
+          key,
+          text: "Revised",
+        })),
+        items: [],
+      },
+    ],
+  };
+  expect(validateOutput(one, "revise-design-objectives").sections).toHaveLength(
+    1,
+  );
+  expect(() => validateOutput(one, "revise-design-plan")).toThrow();
+  const record = (answers: any, items: any[] = []) => ({
+    revision: 1,
+    data: { answers, items },
+  });
+  const data: any = {
+    accepted_revision: 2,
+    accepted_data: { answers: { gap: { text: "Gap" }, _job: { text: "x" } } },
+    records: {
+      "analysis-brief": { revision: 2 },
+      "design-solution": record({ route: { text: "learning" } }),
+      "design-objectives": record(
+        { overview: { text: "LO-1" }, _basis: { text: "{}" } },
+        [{ id: randomUUID(), answers: { code: { text: "LO-1" } } }],
+      ),
+      "design-assessments": record({ overview: { text: "AS-1" } }),
+      "design-content": record({}),
+      "design-sequence": record({}),
+      "design-plan": record({}),
+      learning: { revision: 4, data: { items: [] } },
+    },
+  };
+  const rpc = async () => data;
+  await expect(
+    workflowInput(rpc, {}, randomUUID(), "revise-design-objectives"),
+  ).rejects.toThrow("learning_measures_required");
+  data.records["design-solution"].data.answers.route = { text: "nonlearning" };
+  data.records["design-solution"].data.answers.rationale = {
+    text: "Fix tools",
+  };
+  const input: any = await workflowInput(
+    rpc,
+    {},
+    randomUUID(),
+    "revise-design-objectives",
+    "  Add a safety objective ",
+  );
+  expect(input.target).toBe("design-objectives");
+  expect(input.designer_request).toBe("Add a safety objective");
+  expect(input.current.answers).toEqual({ overview: { text: "LO-1" } });
+  expect(input.current.items).toEqual([{ code: { text: "LO-1" } }]);
+  expect(Object.keys(input.design)).not.toContain("design-objectives");
+  expect(input.brief.answers._job).toBeUndefined();
+  const solution: any = await workflowInput(
+    rpc,
+    {},
+    randomUUID(),
+    "revise-design-solution",
+  );
+  expect(solution.design).toEqual({});
+  expect(solution.designer_request).toBeUndefined();
+});
+
+test("source text shares a fixed allowance; short sources stay whole, long ones are marked cut", async () => {
+  const list = [
+    { name: "Long", kind: "docx", content: "L".repeat(50_000), refs: [] },
+    { name: "Short", kind: "text", content: "S".repeat(1_000), refs: [] },
+    { name: "Mid", kind: "pptx", content: "M".repeat(20_000), refs: [] },
+  ];
+  const out = budgeted(list, 30_000);
+  expect(out.map((s) => s.name)).toEqual(["Long", "Short", "Mid"]);
+  expect(out[1]).toMatchObject({ text: "S".repeat(1_000) });
+  expect(out[1]).not.toHaveProperty("truncated");
+  expect(out.reduce((n, s) => n + s.text.length, 0)).toBeLessThanOrEqual(
+    30_000,
+  );
+  expect(out[0].truncated).toBe(true);
+  expect(out[2].truncated).toBe(true);
+  const data: any = {
+    accepted_revision: 2,
+    records: {
+      "analysis-brief": { revision: 2 },
+      "design-solution": { revision: 1, data: { answers: {}, items: [] } },
+      sources: {
+        revision: 3,
+        data: {
+          answers: { precedence: { text: "Guide wins" }, _x: { text: "" } },
+          items: [],
+        },
+      },
+    },
+  };
+  const input: any = await workflowInput(
+    async () => data,
+    {},
+    randomUUID(),
+    "solution",
+    "",
+    async () => ({ sources: [list[1]] }),
+  );
+  expect(input.sources.settings).toEqual({
+    precedence: { text: "Guide wins" },
+  });
+  expect(input.sources.materials[0]).toMatchObject({
+    name: "Short",
+    kind: "text",
+  });
+});
+
+test("Development needs a reviewed Design, and later sections need the accepted sample treatment", async () => {
+  const { markReviewed } = await import("../src/dependencies");
+  const { treatmentPrint } = await import("../src/development-model");
+  const text = (t: string) => ({ text: t, status: "provided" as const });
+  const records: any = {
+    "analysis-brief": {
+      revision: 2,
+      data: { answers: { gap: text("Gap") }, items: [] },
+    },
+    "design-solution": {
+      revision: 1,
+      data: {
+        answers: { route: text("nonlearning"), rationale: text("Fix tools") },
+        items: [],
+      },
+    },
+    learning: { revision: 1, data: { answers: {}, items: [] } },
+    sources: { revision: 1, data: { answers: {}, items: [] } },
+  };
+  for (const s of [
+    "design-objectives",
+    "design-assessments",
+    "design-content",
+    "design-sequence",
+  ])
+    records[s] = { revision: 1, data: { answers: {}, items: [] } };
+  records["design-plan"] = {
+    revision: 1,
+    data: { answers: { summary: text("Plan") }, items: [] },
+  };
+  const sampleId = randomUUID(),
+    otherId = randomUUID();
+  records.development = {
+    revision: 1,
+    data: {
+      answers: { treatment: text("Friendly"), _sample: text(sampleId) },
+      items: [
+        {
+          id: sampleId,
+          answers: { code: text("AID-1"), content: text("Steps") },
+        },
+        {
+          id: otherId,
+          answers: { code: text("AID-2"), title: text("Checklist") },
+        },
+      ],
+    },
+  };
+  const data: any = { accepted_revision: 2, records };
+  const rpc = async () => data;
+  await expect(
+    workflowInput(rpc, {}, randomUUID(), "development-sample"),
+  ).rejects.toThrow("design_review_required");
+  for (const s of ["design-solution", "design-plan"])
+    records[s].data = markReviewed(s as any, records[s].data, data);
+  const sample: any = await workflowInput(
+    rpc,
+    {},
+    randomUUID(),
+    "development-sample",
+  );
+  expect(Object.keys(sample.design)).toContain("design-plan");
+  await expect(
+    workflowInput(
+      rpc,
+      {},
+      randomUUID(),
+      "development-section",
+      "",
+      undefined,
+      otherId,
+    ),
+  ).rejects.toThrow("treatment_required");
+  // The sample itself can be reworked before acceptance.
+  expect(
+    await workflowInput(
+      rpc,
+      {},
+      randomUUID(),
+      "development-section",
+      "Shorter",
+      undefined,
+      sampleId,
+    ),
+  ).toMatchObject({ designer_request: "Shorter", target_item: sampleId });
+  records.development.data.answers._treatment_accepted = text(
+    treatmentPrint(records.development.data),
+  );
+  const section: any = await workflowInput(
+    rpc,
+    {},
+    randomUUID(),
+    "development-section",
+    "",
+    undefined,
+    otherId,
+  );
+  expect(section.development.sample).toEqual({
+    code: text("AID-1"),
+    content: text("Steps"),
+  });
+  expect(section.development.current).toEqual({
+    code: text("AID-2"),
+    title: text("Checklist"),
+  });
+  expect(section.development.outline).toHaveLength(2);
+  // Editing the sample after acceptance requires a fresh acceptance.
+  records.development.data.items[0].answers.content = text("Different steps");
+  await expect(
+    workflowInput(
+      rpc,
+      {},
+      randomUUID(),
+      "development-section",
+      "",
+      undefined,
+      otherId,
+    ),
+  ).rejects.toThrow("treatment_required");
+  await expect(
+    workflowInput(
+      rpc,
+      {},
+      randomUUID(),
+      "development-section",
+      "",
+      undefined,
+      randomUUID(),
+    ),
+  ).rejects.toThrow("invalid_request");
+  // Output checks: a section request returns exactly one item and no record fields.
+  const item = {
+    fields: [
+      "code",
+      "title",
+      "kind",
+      "objectives",
+      "assessments",
+      "sources",
+      "content",
+      "interaction",
+      "media",
+      "build",
+      "accessibility",
+      "issues",
+    ].map((key) => ({ key, text: key })),
+  };
+  expect(
+    validateOutput(
+      { sections: [{ key: "development", fields: [], items: [item] }] },
+      "development-section",
+    ).sections[0].items,
+  ).toHaveLength(1);
+  expect(() =>
+    validateOutput(
+      { sections: [{ key: "development", fields: [], items: [item, item] }] },
+      "development-section",
+    ),
+  ).toThrow();
+});
+
+test("preferences shape AI requests with safe defaults; reflection answers stay private", async () => {
+  const { preferencesFor, nextStep } = await import("../src/preferences-model");
+  expect(preferencesFor(undefined)).toEqual({
+    guidance: "standard",
+    contribution: "balanced",
+    detail: "standard",
+    resources: "none",
+  });
+  const text = (t: string) => ({ text: t, status: "provided" as const });
+  const data: any = {
+    accepted_revision: 2,
+    records: {
+      "analysis-brief": {
+        revision: 2,
+        data: { answers: { gap: text("Gap") }, items: [] },
+      },
+      "design-solution": { revision: 1, data: { answers: {}, items: [] } },
+      preferences: {
+        revision: 2,
+        data: {
+          answers: {
+            detail: text("concise"),
+            contribution: text("draft"),
+            reflect_fix: text("Private note about my client"),
+          },
+          items: [],
+        },
+      },
+    },
+  };
+  const input: any = await workflowInput(
+    async () => data,
+    {},
+    randomUUID(),
+    "solution",
+  );
+  expect(input.preferences).toEqual({
+    guidance: "standard",
+    contribution: "draft",
+    detail: "concise",
+    resources: "none",
+  });
+  expect(JSON.stringify(input)).not.toContain("Private note");
+  // The recap names the next useful step without generating anything.
+  expect(
+    nextStep({
+      records: {
+        "analysis-brief": { revision: 1, data: { answers: {}, items: [] } },
+      },
+    } as any).page,
+  ).toBe("analysis-brief");
+  expect(nextStep(data).text).toBe(
+    "Choose the response you will pursue on Performance solution.",
+  );
 });

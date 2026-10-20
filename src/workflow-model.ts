@@ -1,4 +1,5 @@
 import { z } from "zod";
+import type { RecordData } from "./model";
 export const workflowSections = [
   "analysis-brief",
   "design-solution",
@@ -9,6 +10,13 @@ export const workflowSections = [
   "design-plan",
 ] as const;
 export type WorkflowSection = (typeof workflowSections)[number];
+// Project-level records: source settings, AI preferences and the Development draft.
+export const projectSections = [
+  "sources",
+  "preferences",
+  "development",
+] as const;
+export type ProjectSection = (typeof projectSections)[number];
 export const briefFields = [
   ["gap", "Project and performance gap"],
   ["evidence", "Evidence and possible causes"],
@@ -92,15 +100,107 @@ export const itemFields: Partial<
     ["duration", "Proposed duration"],
   ],
 };
-export const aiTasks = ["analysis", "solution", "design"] as const;
+export const developmentFields = [
+  ["treatment", "Presentation and treatment for the whole deliverable"],
+  ["build", "Build and accessibility notes for the whole deliverable"],
+  ["issues", "Open issues"],
+] as const;
+export const developmentItemFields = [
+  ["code", "Section ID"],
+  ["title", "Title"],
+  [
+    "kind",
+    "Type (Storyline scene or screen, Rise lesson or block, aid section)",
+  ],
+  ["objectives", "Objective IDs"],
+  ["assessments", "Assessment IDs"],
+  ["sources", "Sources"],
+  ["content", "Learner-facing content (exact text)"],
+  ["interaction", "Interaction, behavior and feedback"],
+  ["media", "Visuals, media and narration script"],
+  ["build", "Build instructions"],
+  ["accessibility", "Accessibility requirements"],
+  ["issues", "Open issues"],
+] as const;
+// Outline-level item fields; the rest are the written content of a section.
+export const outlineFields = [
+  "code",
+  "title",
+  "kind",
+  "objectives",
+  "assessments",
+  "sources",
+];
+export function fieldsFor(
+  key: OutputKey,
+  task?: AITask,
+): readonly (readonly [string, string])[] {
+  return key === "development"
+    ? task === "development-section"
+      ? []
+      : developmentFields
+    : workflowFields[key];
+}
+export function itemFieldsFor(
+  key: OutputKey,
+): readonly (readonly [string, string])[] | undefined {
+  return key === "development" ? developmentItemFields : itemFields[key];
+}
+// Revision tasks rework one section from its current draft; the rest create first drafts.
+export const reviseTasks = [
+  "revise-design-solution",
+  "revise-design-objectives",
+  "revise-design-assessments",
+  "revise-design-content",
+  "revise-design-sequence",
+  "revise-design-plan",
+] as const;
+// Development: a sample (full outline plus one written section), then one section at a time.
+export const developmentTasks = [
+  "development-sample",
+  "development-section",
+] as const;
+export const aiTasks = [
+  "analysis",
+  "solution",
+  "design",
+  ...reviseTasks,
+  ...developmentTasks,
+] as const;
 export type AITask = (typeof aiTasks)[number];
+export type ReviseTask = (typeof reviseTasks)[number];
+export const isRevision = (task: string): task is ReviseTask =>
+  (reviseTasks as readonly string[]).includes(task);
+export const isDevelopment = (task: string) =>
+  (developmentTasks as readonly string[]).includes(task);
+export type OutputKey = WorkflowSection | "development";
+export function taskSections(task: AITask): OutputKey[] {
+  if (isDevelopment(task)) return ["development"];
+  if (isRevision(task))
+    return [task.slice("revise-".length) as WorkflowSection];
+  return task === "analysis"
+    ? ["analysis-brief"]
+    : task === "solution"
+      ? ["design-solution"]
+      : workflowSections.slice(2);
+}
+// Designer decisions on the Performance solution are never replaced by an AI proposal.
+export const solutionDecisions = [
+  "route",
+  "deliverable",
+  "format",
+  "tools",
+  "allocation",
+  "measures_confirmed",
+  "learning_revision",
+];
 const answer = z.object({ key: z.string(), text: z.string() }).strict();
 export const outputSchema = z
   .object({
     sections: z.array(
       z
         .object({
-          key: z.enum(workflowSections),
+          key: z.enum([...workflowSections, "development"]),
           fields: z.array(answer),
           items: z.array(z.object({ fields: z.array(answer) }).strict()),
         })
@@ -111,12 +211,7 @@ export const outputSchema = z
 export type AIOutput = z.infer<typeof outputSchema>;
 export function validateOutput(value: unknown, task: AITask): AIOutput {
   const output = outputSchema.parse(value);
-  const keys =
-    task === "analysis"
-      ? ["analysis-brief"]
-      : task === "solution"
-        ? ["design-solution"]
-        : workflowSections.slice(2);
+  const keys: string[] = taskSections(task);
   if (
     output.sections.length !== keys.length ||
     new Set(output.sections.map((s) => s.key)).size !== keys.length ||
@@ -124,7 +219,7 @@ export function validateOutput(value: unknown, task: AITask): AIOutput {
   )
     throw Error("invalid_ai_output");
   for (const section of output.sections) {
-    const allowed = workflowFields[section.key].map((f) => f[0]);
+    const allowed = fieldsFor(section.key, task).map((f) => f[0]);
     if (
       new Set(section.fields.map((f) => f.key)).size !== allowed.length ||
       section.fields.length !== allowed.length ||
@@ -133,16 +228,52 @@ export function validateOutput(value: unknown, task: AITask): AIOutput {
       )
     )
       throw Error("invalid_ai_output");
-    const fields = itemFields[section.key]?.map((f) => f[0]) ?? [];
-    if (section.items.length > 40 || (!fields.length && section.items.length))
+    const fields = itemFieldsFor(section.key)?.map((f) => f[0]) ?? [];
+    const [least, most] =
+      task === "development-section"
+        ? [1, 1]
+        : task === "development-sample"
+          ? [1, 20]
+          : [0, 40];
+    if (
+      section.items.length < least ||
+      section.items.length > most ||
+      (!fields.length && section.items.length)
+    )
       throw Error("invalid_ai_output");
+    const longest = section.key === "development" ? 20000 : 10000;
     for (const row of section.items)
       if (
         row.fields.length !== fields.length ||
         new Set(row.fields.map((f) => f.key)).size !== fields.length ||
-        row.fields.some((f) => !fields.includes(f.key) || f.text.length > 10000)
+        row.fields.some(
+          (f) => !fields.includes(f.key) || f.text.length > longest,
+        )
       )
         throw Error("invalid_ai_output");
   }
   return output;
+}
+
+// One validated AI section as an editable draft: every value stays a proposal.
+export function proposalData(
+  section: AIOutput["sections"][number],
+): RecordData {
+  return {
+    answers: Object.fromEntries(
+      section.fields.map((f) => [
+        f.key,
+        { text: f.text, status: "proposed" as const },
+      ]),
+    ),
+    items: section.items.map((row) => ({
+      id: crypto.randomUUID(),
+      answers: Object.fromEntries(
+        row.fields.map((f) => [
+          f.key,
+          { text: f.text, status: "proposed" as const },
+        ]),
+      ),
+    })),
+  };
 }
