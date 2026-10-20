@@ -28,6 +28,7 @@ import { Workflow } from "./Workflow";
 import { GuestReview } from "./Review";
 import { PrintView } from "./PrintView";
 import { BreakReminder } from "./Breaks";
+import { ProjectCard, lastPageKey } from "./ProjectCard";
 import { workflowSections, projectSections } from "./workflow-model";
 import type { Page } from "./ProjectShell";
 import "./style.css";
@@ -82,6 +83,14 @@ function App() {
   useEffect(() => {
     void initialize();
   }, []);
+  // Remember the last page opened in each project on this device, for Continue.
+  useEffect(() => {
+    const m = path.match(/^\/projects\/([a-f0-9-]+)\/([^/?]+)$/);
+    if (!user || !m || m[2] === "print") return;
+    try {
+      localStorage.setItem(lastPageKey(user.id, m[1]), m[2]);
+    } catch {}
+  }, [path, user]);
   async function signout() {
     try {
       await api("/auth/signout", "POST");
@@ -90,7 +99,7 @@ function App() {
       setError(errorText(e));
     }
   }
-  const projectId = path.match(/^\/projects\/([a-f0-9-]+)(?:\/([^/]+))?$/);
+  const projectId = path.match(/^\/projects\/([a-f0-9-]+)(?:\/([^/?]+))?$/);
   const review = path.match(/^\/review\/([A-Za-z0-9_-]{43})$/);
   const print = path.match(/^\/projects\/([a-f0-9-]+)\/print(?:\?(.*))?$/);
   return (
@@ -538,35 +547,7 @@ function Projects({ user, onExpired }: { user: User; onExpired: () => void }) {
       ) : (
         <div className="projectgrid">
           {projects.map((p) => (
-            <article className="projectcard" key={p.id}>
-              <span className="stage">{p.stage}</span>
-              <h2>{p.title}</h2>
-              <p className="hint">Last saved {date(p.saved_at)}</p>
-              <div className="cardrecap">
-                <p>
-                  Continue with
-                  <br />
-                  <strong>
-                    {p.stage === "Design"
-                      ? "Performance solution"
-                      : (labels[p.current_section] ?? labels.context)}
-                  </strong>
-                </p>
-                <p>
-                  {p.stage === "Design"
-                    ? "Review and refine your Design draft"
-                    : typeof p.outstanding === "number"
-                      ? `${p.outstanding} core ${p.outstanding === 1 ? "item" : "items"} still needed for Design`
-                      : "Review your outstanding Analysis information"}
-                </p>
-              </div>
-              <a
-                className="button primary"
-                href={`#/projects/${p.id}/${p.stage === "Design" ? "design-solution" : p.current_section}`}
-              >
-                Continue project <span aria-hidden="true">→</span>
-              </a>
-            </article>
+            <ProjectCard key={p.id} project={p} user={user.id} />
           ))}
         </div>
       )}
