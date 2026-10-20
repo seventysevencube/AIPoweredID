@@ -44,3 +44,14 @@ The new code needs `supabase/migrations/202610190005_mvp_completion.sql`. The us
 - Queue administration, scheduled wake-up and cost reconciliation tooling remain deferred, as before. The paused local operator ledger is untouched.
 - Exact export page and slide templates and accessible-output checks remain open. Guest comment threads, replies and resolution remain unspecified, as before.
 - Remaining B4 policy work keeps its pre-production timing.
+
+## Follow-up: October 20, 2026
+
+Technical work before the live check, on the user's request:
+
+- **Budget month:** `npm run ai -- open-month YYYY-MM` opens the next $20 month explicitly (the current month ends November 1). The app now shows the agreed warning once $16 is used, a notice while AI is paused for a charge check, and a plain notice when no month is open.
+- **Operator tools:** `npm run ai -- status` and `npm run ai -- reconcile …` for the AI queue and paused charges; `npm run pilot -- list` for approved accounts, including demo sign-ups. Migration 6 adds the two read-only views these use; the app does not depend on it.
+- **Worker:** drains the whole queue in one run, starting no new job after eight minutes, so Development full drafts with more than five sections finish without the page open.
+- **Project home:** each card shows the actual stage, how many pages need an update and the next step; Continue returns to the last page opened on that device.
+- **Tidy-ups:** one shared AI request helper; heavier pages load on demand (starting bundle 441 KB → 395 KB).
+- Verification: 68 unit, integration and database tests (including migration 6 on top of 1–5, and a reconciled paused job) and 10 browser workflows pass, in development and on the production build under the live Content-Security-Policy.

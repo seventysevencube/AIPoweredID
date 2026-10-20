@@ -6,6 +6,8 @@ Updated October 19, 2026 (America/Chicago). Read this before continuing work.
 
 **October 19, 2026, later:** the remaining MVP items were built and merged through [PR #6](https://github.com/seventysevencube/AIPoweredID/pull/6) (main `9d00603`); see the [MVP completion status](docs/implementation/mvp-completion-2026-10-19.md). The user applied migration 5 to the live Supabase project before the merge (confirmed October 20, 2026); migrations 1–5 are now applied, and none should be re-run. Live checks of the new features are still pending. The notes below describe the earlier demo release and remain accurate for it.
 
+**October 20, 2026:** operator tools and reliability fixes followed (see the [status record](docs/implementation/mvp-completion-2026-10-19.md#follow-up-october-20-2026)). Migration 6 (`202610200006_operator_tools.sql`) adds read-only operator views used by `npm run pilot -- list` and `npm run ai -- status`; the app itself does not depend on it. Apply it once in the SQL Editor before using those commands. **The production budget month ends November 1, 2026 UTC; open November with `npm run ai -- open-month 2026-11` (an explicit operator step).**
+
 The demo implementation is merged to `main` through [PR #4](https://github.com/seventysevencube/AIPoweredID/pull/4), application release commit `55447cbc7cbf2fd01d2283ab4e14d9ecfc56d598`.
 
 - Live app: https://aipoweredid-demo.netlify.app/

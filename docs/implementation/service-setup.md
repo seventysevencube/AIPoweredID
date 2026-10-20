@@ -28,7 +28,19 @@ October 19 update: the user supplied the [AIPoweredID Supabase project](https://
    ```
 
    Its review links stop first; the project, records, versions, sources, comments and stored request copies are removed from the active app. Backups and AI-provider retention follow their own rules.
-7. Build using `npm ci` and `npm run build`. Netlify configuration serves the client and a standard Request/Response function. Deploy only to an agreed test site when hosting setup is authorized; no DNS change is necessary for that test. The development inbox and identity adapter are excluded from deployed functions.
+
+   To see every approved email, whether it has signed in and how many projects it owns (for example, accounts created during open demo sign-up), run `npm run pilot -- list` (needs migration 6).
+
+8. AI budget and queue, with the same server settings loaded:
+
+   ```sh
+   npm run ai -- status
+   npm run ai -- open-month 2026-11
+   npm run ai -- reconcile <job-id> <confirmed-dollars> "<reference>" --worker-stopped
+   ```
+
+   `status` shows the open budget month's spend and reservations, whether AI is paused, and any queued, running or paused job with its calls (needs migration 6). Budget months do not renew on their own: open each month with `open-month` on or after its first day; until then designers see that the month is not open, and editing and exports keep working. When AI is paused for an uncertain charge, check the provider's usage page and make sure no worker is still running, then record the confirmed charge with `reconcile`; the job becomes a failed job the designer can try again, and AI resumes unless the charge exceeded its limit.
+9. Build using `npm ci` and `npm run build`. Netlify configuration serves the client and a standard Request/Response function. Deploy only to an agreed test site when hosting setup is authorized; no DNS change is necessary for that test. The development inbox and identity adapter are excluded from deployed functions.
 
 Never put secrets in a `VITE_` variable, a repository file, a PR, or a chat message. `.env.example` contains names only. Netlify environment scopes must include function runtime settings, not merely build settings.
 
