@@ -10,6 +10,7 @@ import {
   simulationPolicy,
   type SimulatedProvider,
   type Step,
+  drainQueue,
 } from "../server/ai/queue";
 import { createHandler, type Identity, type Rpc } from "../server/api";
 import { sections } from "../src/model";
@@ -747,4 +748,24 @@ test("owner HTTP routes reject client pricing/actors; worker and accounting cont
     ).rejects.toThrow(/permission denied/);
     await db.db.exec("reset role");
   }
+});
+
+test("the worker drains more than five queued jobs in one run, and starts none after its time budget", async () => {
+  const jobs = [];
+  for (let n = 0; n < 7; n++) jobs.push(await enqueue());
+  const f = provider();
+  expect(await drainQueue(db.aiRpc, f.simulated)).toBe(7);
+  for (const j of jobs)
+    expect((await read(j.job_id)).job.state).toBe("completed");
+  expect(await drainQueue(db.aiRpc, f.simulated)).toBe(0);
+  // With the budget already used up, a newly queued job waits for the next wake-up.
+  const late = await enqueue();
+  let now = 0;
+  expect(
+    await drainQueue(db.aiRpc, f.simulated, {
+      budgetMs: 1000,
+      clock: () => (now += 2000),
+    }),
+  ).toBe(0);
+  expect((await read(late.job_id)).job.state).toBe("queued");
 });

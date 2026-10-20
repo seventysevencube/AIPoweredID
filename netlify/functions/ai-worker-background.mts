@@ -1,7 +1,7 @@
 import { timingSafeEqual } from "node:crypto";
 import { createClient } from "@supabase/supabase-js";
 import { configuration } from "../../server/config";
-import { runNextSimulation } from "../../server/ai/queue";
+import { drainQueue } from "../../server/ai/queue";
 import { openAIProvider } from "../../server/ai/openai";
 export default async (req: Request) => {
   const secret = process.env.AUTH_CODE_SECRET ?? "";
@@ -22,12 +22,6 @@ export default async (req: Request) => {
     if (error) throw Error("database_unavailable");
     return data;
   };
-  for (let n = 0; n < 5; n++) {
-    const result = await runNextSimulation(
-      rpc,
-      openAIProvider(process.env.OPENAI_API_KEY),
-    );
-    if (result.error || result.idle || result.cancelled) break;
-  }
+  await drainQueue(rpc, openAIProvider(process.env.OPENAI_API_KEY));
   return new Response(null, { status: 200 });
 };
