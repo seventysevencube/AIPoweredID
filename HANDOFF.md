@@ -1,6 +1,6 @@
 # AIPoweredID — coding assistant handoff
 
-Updated October 19, 2026 (America/Chicago). Read this before continuing work.
+Updated October 20, 2026 (America/Chicago). Read this before continuing work.
 
 ## Current state
 
@@ -90,4 +90,13 @@ The signed-in live synthetic project **Demo readiness check (fictional)** (`2d47
 
 ## Suggested continuation
 
-Ask the user what to prioritize after the demo. Review the current requirements and implementation gaps before proposing scope. The full milestone plan is in `docs/implementation/phased-build-plan.md`; historical planning-only statements are superseded by later implementation authorization and the status records above. Keep incomplete production/security/human-accessibility checks visible without making deferred audit work a new MVP blocker.
+As of October 20, 2026, all work is merged to main (latest: PRs #8–#10) with CI green; nothing is pending on a branch or pull request. Migrations 1–6 are applied. The technical backlog that needs no user input is done.
+
+Next, in order:
+
+1. **Live check (user, then assistant).** On the live site, using the fictional **Demo readiness check** project: mark each Design page reviewed, generate the Development sample and full draft, try **Ask AI to revise this section** once, export the PowerPoint and open it in PowerPoint, and open a guest review link in a private window and comment. Real AI output for Development, revisions and preferences has never been reviewed; tune the instructions in `server/ai/openai.ts` from the user's screenshots, through a pull request.
+2. **Turn off open demo sign-up** when the demo ends (user: remove `OPEN_SIGNUP` in Netlify and redeploy). `npm run pilot -- list` shows who registered.
+3. **Open the November AI budget month** on or after November 1, 2026 UTC: `npm run ai -- open-month 2026-11` (needs the private `.env.local`; never open a month silently).
+4. Then pre-production work: the implementation choices awaiting confirmation and remaining limits in the [status record](docs/implementation/mvp-completion-2026-10-19.md), and B4 policy work at its pre-production timing.
+
+Deferred audit work, the formal fictional walkthrough and the second-user live test stay deferred unless the user requests them. The full milestone plan is in `docs/implementation/phased-build-plan.md`; historical planning-only statements are superseded by later implementation authorization and the status records above. Keep incomplete production/security/human-accessibility checks visible without making deferred audit work a new MVP blocker.
