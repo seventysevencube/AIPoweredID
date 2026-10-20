@@ -1,6 +1,6 @@
 # Remaining MVP build: status, October 19, 2026
 
-After the demo, the user asked to "wrap the other pending things", building on one branch and merging when everything is ready. This record covers what was built, how it was verified, what the live site needs before merge, and what remains. The [requirements](../requirements.md) stay authoritative. Deferred audit work, the formal fictional walkthrough and the second-user live test remain deferred, and the runtime AI provider is unchanged (OpenAI, GPT-6 Luna).
+After the demo, the user asked to "wrap the other pending things", building on one branch and merging when everything is ready. This record covers what was built, how it was verified, the database update it needed, and what remains. It merged through [PR #6](https://github.com/seventysevencube/AIPoweredID/pull/6) after the user applied migration 5. The [requirements](../requirements.md) stay authoritative. Deferred audit work, the formal fictional walkthrough and the second-user live test remain deferred, and the runtime AI provider is unchanged (OpenAI, GPT-6 Luna).
 
 ## Built
 
@@ -33,9 +33,9 @@ These were needed to build and are recorded in the [decision log](../decision-lo
 - The same nine workflows pass against the production build served with the live site's Content-Security-Policy.
 - No paid AI calls, live database changes or deployments were made while building.
 
-## Before merge: apply migration 5
+## Migration 5: applied
 
-Production deploys from `main`, and the new code needs `supabase/migrations/202610190005_mvp_completion.sql`. Apply it once in the Supabase SQL Editor **before** merging, as with migrations 3 and 4. Do not re-run migrations 1–4. The migration only adds tables and functions and replaces `workflow_rpc` with the same behavior plus the new records; it fails rather than changing data if applied twice.
+The new code needs `supabase/migrations/202610190005_mvp_completion.sql`. The user applied it once in the Supabase SQL Editor before the merge (confirmed October 20, 2026). Migrations 1–5 are now applied; do not re-run any of them. The migration only adds tables and functions and replaces `workflow_rpc` with the same behavior plus the new records; it fails rather than changing data if applied twice.
 
 ## Remaining and limits
 

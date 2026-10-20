@@ -322,4 +322,4 @@ Implementation choices made to build the approved behavior, each open to change:
 - The AI request size cap is raised from 90 KB to 200 KB, within the existing $0.05 per-call permit and below the long-context rate.
 - Requests rejected as invalid now return 400, and designer-fixable refusals 422, instead of 503.
 
-Migration 5 (`202610190005_mvp_completion.sql`) must be applied to the live Supabase project before the branch is merged, because production deploys from `main`.
+Migration 5 (`202610190005_mvp_completion.sql`) had to be applied to the live Supabase project before the merge, because production deploys from `main`. The user applied it and replied "applied" on October 20, 2026; PR #6 was then merged after its checks passed.
