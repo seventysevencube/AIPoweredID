@@ -1232,3 +1232,10 @@ input {
     display: none !important;
   }
 }
+.budgetnote {
+  font-size: 13px;
+  background: #fff2d6;
+  color: #64430b;
+  border-radius: 6px;
+  padding: 8px 10px;
+}
